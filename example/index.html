@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/@adobe/adobe-client-data-layer@2.0.1/dist/adobe-client-data-layer.min.js"></script>
+        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.2.0/dist/index.js"></script>
+        <script src="http://localhost:8080/index.js"></script>
+
+        <script>
+            function fireEvent(event) {
+                magentoStorefrontEvents.publish[event.target.value]()
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="events">
+            <button value="addToCart" onclick="fireEvent(event)">ADD_TO_CART</button>
+            <button value="customUrl" onclick="fireEvent(event)">CUSTOM_URL</button>
+            <button value="initiateCheckout" onclick="fireEvent(event)">INITIATE_CHECKOUT</button>
+            <button value="pageActivitySummary" onclick="fireEvent(event)">PAGE_ACTIVITY_SUMMARY</button>
+            <button value="pageView" onclick="fireEvent(event)">PAGE_VIEW</button>
+            <button value="placeOrder" onclick="fireEvent(event)">PLACE_ORDER</button>
+            <button value="productPageView" onclick="fireEvent(event)">PRODUCT_PAGE_VIEW</button>
+            <button value="referrerUrl" onclick="fireEvent(event)">REFERRER_URL</button>
+            <button value="removeFromCart" onclick="fireEvent(event)">REMOVE_FROM_CART</button>
+            <button value="searchRequestSent" onclick="fireEvent(event)">SEARCH_REQUEST_SENT</button>
+            <button value="searchResponseReceived" onclick="fireEvent(event)">SEARCH_RESPONSE_RECEIVED</button>
+            <button value="searchResultClick" onclick="fireEvent(event)">SEARCH_RESULT_CLICK</button>
+            <button value="signIn" onclick="fireEvent(event)">SIGN_IN</button>
+            <button value="signOut" onclick="fireEvent(event)">SIGN_OUT</button>
+            <button value="updateCart" onclick="fireEvent(event)">UPDATE_CART</button>
+        </div>
+    </body>
+</html>
