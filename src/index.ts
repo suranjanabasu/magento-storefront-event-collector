@@ -8,5 +8,5 @@ import { subscribeToEvents } from "./events";
 
 subscribeToEvents();
 
-export * from "./collector";
+export * from "./analytics";
 export * from "./events";
