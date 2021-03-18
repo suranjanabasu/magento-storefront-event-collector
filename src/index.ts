@@ -5,7 +5,7 @@
 
 import { subscribeToEvents } from "./events";
 
-subscribeToEvents()
+subscribeToEvents();
 
 export * from "./collector";
-export * from "./events"
+export * from "./events";

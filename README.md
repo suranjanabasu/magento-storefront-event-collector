@@ -1,6 +1,6 @@
 # Magento Storefront Event Collector
 
-*Short description here.*
+_Short description here._
 
 ## Purpose
 
@@ -23,6 +23,7 @@ First, start `webpack` to build the library.
 ```bash
 npm start
 ```
+
 Then, start the example site.
 
 ```bash

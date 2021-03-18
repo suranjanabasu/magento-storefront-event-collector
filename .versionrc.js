@@ -1,10 +1,10 @@
 const config = {
-    "skip": {
-        "bump": false,
-        "changelog": false,
-        "commit": false,
-        "tag": false
-    }
-}
+    skip: {
+        bump: false,
+        changelog: false,
+        commit: false,
+        tag: false,
+    },
+};
 
-module.exports = config
+module.exports = config;
