@@ -1,4 +1,10 @@
+/*
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
 /* eslint-disable no-console */
+
 import magentoStorefrontEvents from "@adobe/magento-storefront-events-sdk";
 
 const subscribeToEvents = (): void => {
