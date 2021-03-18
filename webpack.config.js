@@ -1,5 +1,5 @@
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
     mode: "production",
@@ -31,6 +31,6 @@ const config = {
         static: path.join(__dirname, "dist"),
         hot: true,
     },
-}
+};
 
-module.exports = config
+module.exports = config;

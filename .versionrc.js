@@ -5,6 +5,6 @@ const config = {
         commit: false,
         tag: false,
     },
-}
+};
 
-module.exports = config
+module.exports = config;

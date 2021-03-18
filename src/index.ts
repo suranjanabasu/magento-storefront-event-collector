@@ -3,9 +3,9 @@
  * See COPYING.txt for license details.
  */
 
-import {subscribeToEvents} from "./events"
+import { subscribeToEvents } from "./events";
 
-subscribeToEvents()
+subscribeToEvents();
 
-export * from "./collector"
-export * from "./events"
+export * from "./collector";
+export * from "./events";

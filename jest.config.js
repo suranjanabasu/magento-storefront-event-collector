@@ -4,6 +4,6 @@ const config = {
     coverageProvider: "v8",
     preset: "ts-jest",
     testEnvironment: "jsdom",
-}
+};
 
-module.exports = config
+module.exports = config;

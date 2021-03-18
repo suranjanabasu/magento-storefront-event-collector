@@ -6,10 +6,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-export const COLLECTOR_NAME = "magento_store_events"
-export const SNOWPLOW_JS_URL = "https://commerce.adobedtm.com/sp/v2/sp.js"
+export const COLLECTOR_NAME = "magento_store_events";
+export const SNOWPLOW_JS_URL = "https://commerce.adobedtm.com/sp/v2/sp.js";
 
-const magentoStoreEvents = window[COLLECTOR_NAME]
+const magentoStoreEvents = window[COLLECTOR_NAME];
 
 const createCollector = (
     p: any,
@@ -21,20 +21,20 @@ const createCollector = (
     g: any,
 ): void => {
     if (!p[i]) {
-        p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || []
-        p.GlobalSnowplowNamespace.push(i)
+        p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
+        p.GlobalSnowplowNamespace.push(i);
         p[i] = function () {
             // eslint-disable-next-line @typescript-eslint/no-extra-semi
-            ;(p[i].q = p[i].q || []).push(p, l, o, w, i, n, g)
-        }
-        p[i].q = p[i].q || []
-        n = l.createElement(o)
-        g = l.getElementsByTagName(o)[0]
-        n.async = 1
-        n.src = w
-        g.parentNode.insertBefore(n, g)
+            (p[i].q = p[i].q || []).push(p, l, o, w, i, n, g);
+        };
+        p[i].q = p[i].q || [];
+        n = l.createElement(o);
+        g = l.getElementsByTagName(o)[0];
+        n.async = 1;
+        n.src = w;
+        g.parentNode.insertBefore(n, g);
     }
-}
+};
 
 const configureCollector = (): void => {
     magentoStoreEvents(
@@ -65,10 +65,10 @@ const configureCollector = (): void => {
                 performanceTiming: true,
             },
         },
-    )
+    );
 
-    magentoStoreEvents("enableLinkClickTracking")
-    magentoStoreEvents("setOptOutCookie", "mg_dnt")
-}
+    magentoStoreEvents("enableLinkClickTracking");
+    magentoStoreEvents("setOptOutCookie", "mg_dnt");
+};
 
-export {createCollector, configureCollector}
+export { createCollector, configureCollector };
