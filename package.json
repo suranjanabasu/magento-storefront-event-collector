@@ -16,9 +16,9 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --check \"./**/*.{ts,tsx,js,css,json,md}\"",
     "format:fix": "prettier --write  \"./**/*.{ts,tsx,js,css,json,md}\"",
-    "test": "jest --coverage",
-    "test:ci": "jest --ci",
-    "test:watch": "jest --watch",
+    "test": "jest --passWithNoTests",
+    "test:ci": "jest --passWithNoTests --ci",
+    "test:watch": "jest --passWithNoTests --watch",
     "release": "cross-env HUSKY_SKIP_HOOKS=1 standard-version",
     "release:next": "cross-env HUSKY_SKIP_HOOKS=1 standard-version --prerelease next"
   },
