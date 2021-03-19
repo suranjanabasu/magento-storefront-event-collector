@@ -3,149 +3,65 @@
  * See COPYING.txt for license details.
  */
 
-/* eslint-disable no-console */
-
-import magentoStorefrontEvents from "@adobe/magento-storefront-events-sdk";
-import { analytics } from "./analytics";
+import mse from "@adobe/magento-storefront-events-sdk";
+import {
+    addToCartHandler,
+    customUrlHandler,
+    dataLayerChangeHandler,
+    dataLayerEventHandler,
+    initiateCheckoutHandler,
+    pageActivitySummaryHandler,
+    pageViewHandler,
+    placeOrderHandler,
+    productPageViewHandler,
+    referrerUrlHandler,
+    removeFromCartHandler,
+    searchRequestSentHandler,
+    searchResponseReceivedHandler,
+    searchResultClickHandler,
+    signInHandler,
+    signOutHandler,
+    updateCartHandler,
+} from "./handlers";
 
 const subscribeToEvents = (): void => {
-    magentoStorefrontEvents.subscribe.addToCart(() => {
-        analytics.track("addToCart");
-    });
-
-    magentoStorefrontEvents.subscribe.customUrl(() => {
-        analytics.track("customUrl");
-    });
-
-    magentoStorefrontEvents.subscribe.dataLayerChange(() => {
-        analytics.track("dataLayerChange");
-    });
-
-    magentoStorefrontEvents.subscribe.dataLayerEvent(() => {
-        analytics.track("dataLayerEvent");
-    });
-
-    magentoStorefrontEvents.subscribe.initiateCheckout(() => {
-        analytics.track("initiateCheckout");
-    });
-
-    magentoStorefrontEvents.subscribe.pageActivitySummary(() => {
-        analytics.track("pageActivitySummary");
-    });
-
-    magentoStorefrontEvents.subscribe.pageView(() => {
-        analytics.track("pageView");
-    });
-
-    magentoStorefrontEvents.subscribe.placeOrder(() => {
-        analytics.track("placeOrder");
-    });
-
-    magentoStorefrontEvents.subscribe.productPageView(() => {
-        analytics.track("productPageView");
-    });
-
-    magentoStorefrontEvents.subscribe.referrerUrl(() => {
-        analytics.track("referrerUrl");
-    });
-
-    magentoStorefrontEvents.subscribe.removeFromCart(() => {
-        analytics.track("removeFromCart");
-    });
-
-    magentoStorefrontEvents.subscribe.searchRequestSent(() => {
-        analytics.track("searchRequestSent");
-    });
-
-    magentoStorefrontEvents.subscribe.searchResponseReceived(() => {
-        analytics.track("searchResponseReceived");
-    });
-
-    magentoStorefrontEvents.subscribe.searchResultClick(() => {
-        analytics.track("searchResultClick");
-    });
-
-    magentoStorefrontEvents.subscribe.signIn(() => {
-        analytics.track("signIn");
-    });
-
-    magentoStorefrontEvents.subscribe.signOut(() => {
-        analytics.track("signOut");
-    });
-
-    magentoStorefrontEvents.subscribe.updateCart(() => {
-        analytics.track("updateCart");
-    });
+    mse.subscribe.addToCart(addToCartHandler);
+    mse.subscribe.customUrl(customUrlHandler);
+    // mse.subscribe.dataLayerChange(dataLayerChangeHandler);
+    // mse.subscribe.dataLayerEvent(dataLayerEventHandler);
+    mse.subscribe.initiateCheckout(initiateCheckoutHandler);
+    mse.subscribe.pageActivitySummary(pageActivitySummaryHandler);
+    mse.subscribe.pageView(pageViewHandler);
+    mse.subscribe.placeOrder(placeOrderHandler);
+    mse.subscribe.productPageView(productPageViewHandler);
+    mse.subscribe.referrerUrl(referrerUrlHandler);
+    mse.subscribe.removeFromCart(removeFromCartHandler);
+    mse.subscribe.searchRequestSent(searchRequestSentHandler);
+    mse.subscribe.searchResponseReceived(searchResponseReceivedHandler);
+    mse.subscribe.searchResultClick(searchResultClickHandler);
+    mse.subscribe.signIn(signInHandler);
+    mse.subscribe.signOut(signOutHandler);
+    mse.subscribe.updateCart(updateCartHandler);
 };
 
 const unsubscribeFromEvents = (): void => {
-    magentoStorefrontEvents.unsubscribe.addToCart(() =>
-        console.log("addToCart handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.customUrl(() =>
-        console.log("customUrl handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.dataLayerChange(() =>
-        console.log("dataLayerChange handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.dataLayerEvent(() =>
-        console.log("dataLayerEvent handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.initiateCheckout(() =>
-        console.log("initiateCheckout handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.pageActivitySummary(() =>
-        console.log("pageActivitySummary handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.pageView(() =>
-        console.log("pageView handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.placeOrder(() =>
-        console.log("placeOrder handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.productPageView(() =>
-        console.log("productPageView handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.referrerUrl(() =>
-        console.log("referrerUrl handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.removeFromCart(() =>
-        console.log("removeFromCart handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.searchRequestSent(() =>
-        console.log("searchRequestSent handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.searchResponseReceived(() =>
-        console.log("searchResponseReceived handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.searchResultClick(() =>
-        console.log("searchResultClick handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.signIn(() =>
-        console.log("signIn handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.signOut(() =>
-        console.log("signOut handler"),
-    );
-
-    magentoStorefrontEvents.unsubscribe.updateCart(() =>
-        console.log("updateCart handler"),
-    );
+    mse.unsubscribe.addToCart(addToCartHandler);
+    mse.unsubscribe.customUrl(customUrlHandler);
+    mse.unsubscribe.dataLayerChange(dataLayerChangeHandler);
+    mse.unsubscribe.dataLayerEvent(dataLayerEventHandler);
+    mse.unsubscribe.initiateCheckout(initiateCheckoutHandler);
+    mse.unsubscribe.pageActivitySummary(pageActivitySummaryHandler);
+    mse.unsubscribe.pageView(pageViewHandler);
+    mse.unsubscribe.placeOrder(placeOrderHandler);
+    mse.unsubscribe.productPageView(productPageViewHandler);
+    mse.unsubscribe.referrerUrl(referrerUrlHandler);
+    mse.unsubscribe.removeFromCart(removeFromCartHandler);
+    mse.unsubscribe.searchRequestSent(searchRequestSentHandler);
+    mse.unsubscribe.searchResponseReceived(searchResponseReceivedHandler);
+    mse.unsubscribe.searchResultClick(searchResultClickHandler);
+    mse.unsubscribe.signIn(signInHandler);
+    mse.unsubscribe.signOut(signOutHandler);
+    mse.unsubscribe.updateCart(updateCartHandler);
 };
 
 export { subscribeToEvents, unsubscribeFromEvents };
