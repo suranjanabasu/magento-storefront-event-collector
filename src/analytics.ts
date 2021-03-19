@@ -3,9 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
 import Analytics from "analytics";
 import snowplowPlugin from "@analytics/snowplow";
 
