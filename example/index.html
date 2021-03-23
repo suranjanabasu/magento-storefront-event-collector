@@ -1,11 +1,54 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.2.0/dist/index.js"></script>
+        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.3.1/dist/index.js"></script>
         <script src="http://localhost:8080/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setSearchInput({
+                searchType: "popover",
+                query: "red patns",
+                refinementAttribute: null,
+                refinementSelection: null,
+            });
+
+            window.magentoStorefrontEvents.context.setSearchResults({
+                products: [
+                    {
+                        title: "Hoodie",
+                        url: "https://magento.com/hoodie",
+                        rank: 1,
+                        resultType: "product",
+                        sku: "abc123",
+                        imageUrl: "https://magento.com/hoodie.jpg",
+                        price: "49.99",
+                    },
+                ],
+                suggestions: [
+                    {
+                        title: "Hoodie",
+                        url: "https://magento.com/shirt",
+                        rank: 1,
+                        resultType: "suggestion",
+                        sku: "abc123",
+                        imageUrl: "https://magento.com/shirt/shirt.jpg",
+                        price: "19.99",
+                    },
+                ],
+                categories: [
+                    {
+                        title: "Tops",
+                        url: "https://magento.com/tops",
+                        rank: 1,
+                        resultType: "category",
+                    },
+                ],
+                page: 1,
+                perPage: 20,
+            });
+
             function fireEvent(event) {
+                console.log(event.target.value);
                 magentoStorefrontEvents.publish[event.target.value]();
             }
         </script>
@@ -13,60 +56,28 @@
 
     <body>
         <div class="events">
-            <button value="addToCart" onclick="fireEvent(event)">
-                ADD_TO_CART
+            <button value="searchCategoryClick" onclick="fireEvent(event)">
+                searchCategoryClick
             </button>
 
-            <button value="customUrl" onclick="fireEvent(event)">
-                CUSTOM_URL
-            </button>
-
-            <button value="initiateCheckout" onclick="fireEvent(event)">
-                INITIATE_CHECKOUT
-            </button>
-
-            <button value="pageActivitySummary" onclick="fireEvent(event)">
-                PAGE_ACTIVITY_SUMMARY
-            </button>
-
-            <button value="pageView" onclick="fireEvent(event)">
-                PAGE_VIEW
-            </button>
-
-            <button value="placeOrder" onclick="fireEvent(event)">
-                PLACE_ORDER
-            </button>
-
-            <button value="productPageView" onclick="fireEvent(event)">
-                PRODUCT_PAGE_VIEW
-            </button>
-
-            <button value="referrerUrl" onclick="fireEvent(event)">
-                REFERRER_URL
-            </button>
-
-            <button value="removeFromCart" onclick="fireEvent(event)">
-                REMOVE_FROM_CART
+            <button value="searchProductClick" onclick="fireEvent(event)">
+                searchProductClick
             </button>
 
             <button value="searchRequestSent" onclick="fireEvent(event)">
-                SEARCH_REQUEST_SENT
+                searchRequestSent
             </button>
 
             <button value="searchResponseReceived" onclick="fireEvent(event)">
-                SEARCH_RESPONSE_RECEIVED
+                searchResponseReceived
             </button>
 
-            <button value="searchResultClick" onclick="fireEvent(event)">
-                SEARCH_RESULT_CLICK
+            <button value="searchResultsView" onclick="fireEvent(event)">
+                searchResultsView
             </button>
 
-            <button value="signIn" onclick="fireEvent(event)">SIGN_IN</button>
-
-            <button value="signOut" onclick="fireEvent(event)">SIGN_OUT</button>
-
-            <button value="updateCart" onclick="fireEvent(event)">
-                UPDATE_CART
+            <button value="searchSuggestionClick" onclick="fireEvent(event)">
+                searchSuggestionClick
             </button>
         </div>
     </body>

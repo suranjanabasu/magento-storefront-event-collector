@@ -3,15 +3,15 @@
  * See COPYING.txt for license details.
  */
 
-import { analytics } from "../analytics";
+import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
-    analytics.track("searchResultClick", {
+    trackEvent({
         category: "search",
-        action: "searchResultClick",
-        label: "<selectedValue>",
+        action: "category-click",
+        label: "<categoryUrlKey>",
         property: "<pageType>",
-        value: "<product|category|suggestion>",
+        value: "<search-bar | results-page | other>",
         contexts: [],
     });
 };
