@@ -3,19 +3,18 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
+import { createSearchInputContext } from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
-    const searchInputCtx = mse.context.getSearchInput();
+    const searchInputCtx = createSearchInputContext();
 
     trackEvent({
         category: "search",
         action: "api-request-sent",
         label: "<query>",
         property: "<pageType>",
-        value: "<search-bar | results-page | other>",
-        contexts: [],
+        contexts: [searchInputCtx],
     });
 };
 

@@ -51,7 +51,7 @@ type TrackEventParams = {
     action: string;
     label: string;
     property: string;
-    value: string;
+    value?: number;
     contexts: any[];
 };
 

@@ -3,20 +3,22 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
+import {
+    createSearchInputContext,
+    createSearchResultsContext,
+} from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
-    const searchInputCtx = mse.context.getSearchInput();
-    const searchResultsCtx = mse.context.getSearchResults();
+    const searchInputCtx = createSearchInputContext();
+    const searchResultsCtx = createSearchResultsContext();
 
     trackEvent({
         category: "search",
         action: "results-view",
         label: "",
         property: "<pageType>",
-        value: "<search-bar | results-page | other>",
-        contexts: [],
+        contexts: [searchInputCtx, searchResultsCtx],
     });
 };
 
