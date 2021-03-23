@@ -4,3 +4,4 @@
  */
 
 export * from "./search";
+export { default as createTrackerCtx } from "./tracker";

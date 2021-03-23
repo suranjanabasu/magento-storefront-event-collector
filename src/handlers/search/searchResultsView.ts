@@ -3,15 +3,12 @@
  * See COPYING.txt for license details.
  */
 
-import {
-    createSearchInputContext,
-    createSearchResultsContext,
-} from "../../contexts";
+import { createSearchInputCtx, createSearchResultsCtx } from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
-    const searchInputCtx = createSearchInputContext();
-    const searchResultsCtx = createSearchResultsContext();
+    const searchInputCtx = createSearchInputCtx();
+    const searchResultsCtx = createSearchResultsCtx();
 
     trackEvent({
         category: "search",

@@ -3,6 +3,7 @@
  * See COPYING.txt for license details.
  */
 
+import { createTrackerCtx } from "./contexts";
 import { plowing } from "./plowing";
 
 const initializeSnowplow = (spUrl: string): void => {
@@ -36,7 +37,7 @@ const configureSnowplow = ({
         crossDomainLinker: null,
         cookieLifetime: 86400 * 365 * 2,
         stateStorageStrategy: "localStorage",
-        postPath: "/collector/tp2",
+        // postPath: "/collector/tp2",
         contexts: {
             webPage: true,
             performanceTiming: true,
@@ -44,6 +45,10 @@ const configureSnowplow = ({
             geolocation: false,
         },
     });
+
+    const trackerCtx = createTrackerCtx();
+
+    window.snowplow("addGlobalContexts", [trackerCtx]);
 };
 
 type TrackEventParams = {

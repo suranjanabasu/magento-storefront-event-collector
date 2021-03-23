@@ -4,16 +4,16 @@
  */
 
 import {
-    createSearchInputContext,
-    createSearchResultsContext,
-    createSearchResultSuggestionContext,
+    createSearchInputCtx,
+    createSearchResultsCtx,
+    createSearchResultSuggestionCtx,
 } from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
-    const searchInputCtx = createSearchInputContext();
-    const searchResultsCtx = createSearchResultsContext();
-    const searchResultsSuggestionCtx = createSearchResultSuggestionContext();
+    const searchInputCtx = createSearchInputCtx();
+    const searchResultsCtx = createSearchResultsCtx();
+    const searchResultsSuggestionCtx = createSearchResultSuggestionCtx();
 
     trackEvent({
         category: "search",
