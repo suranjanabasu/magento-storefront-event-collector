@@ -1,0 +1,19 @@
+/*
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+const schemas = {
+    SEARCH_INPUT_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-2",
+    SEARCH_RESULTS_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/search-results/jsonschema/1-0-1",
+    SEARCH_RESULT_PRODUCT_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/search-result-product/jsonschema/1-0-1",
+    SEARCH_RESULT_CATEGORY_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/search-result-category/jsonschema/1-0-1",
+    SEARCH_RESULT_SUGGESTION_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/search-result-suggestion/jsonschema/1-0-0",
+};
+
+export default schemas;
