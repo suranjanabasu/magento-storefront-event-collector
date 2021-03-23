@@ -52,7 +52,7 @@ type TrackEventParams = {
     label: string;
     property: string;
     value: string;
-    contexts: any[];
+    contexts: unknown[];
 };
 
 const trackEvent = ({
