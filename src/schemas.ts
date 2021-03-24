@@ -4,6 +4,8 @@
  */
 
 const schemas = {
+    MAGENTO_EXTENSION_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/magento-extension/jsonschema/1-0-0",
     MAGENTO_JS_TRACKER_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/magento-js-tracker/jsonschema/1-0-0",
     SEARCH_INPUT_SCHEMA_URL:

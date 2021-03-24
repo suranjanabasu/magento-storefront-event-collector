@@ -4,6 +4,10 @@
         <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.3.1/dist/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setMagentoExtension({
+                magentoExtensionVersion: "1.2.3",
+            });
+
             window.magentoStorefrontEvents.context.setStorefrontInstance({
                 baseCurrencyCode: "USD",
                 storeViewCurrencyCode: "USD",
