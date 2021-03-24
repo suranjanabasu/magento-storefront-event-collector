@@ -4,15 +4,16 @@
  */
 
 import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
-import pkg from "../../package.json";
+import mse from "@adobe/magento-storefront-events-sdk";
 import schemas from "../schemas";
 
 const createContext = (): Context => {
+    const shopperCtx = mse.context.getShopper();
+
     const context = {
-        schema: schemas.MAGENTO_JS_TRACKER_SCHEMA_URL,
+        schema: schemas.SHOPPER_SCHEMA_URL,
         data: {
-            magentoJsVersion: pkg.version,
-            magentoJsBuild: "0000",
+            shopperId: shopperCtx.shopperId,
         },
     };
 

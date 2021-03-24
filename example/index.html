@@ -2,9 +2,12 @@
     <head>
         <link rel="stylesheet" href="style.css" />
         <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.3.1/dist/index.js"></script>
-        <script src="http://localhost:8080/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setShopper({
+                shopperId: "logged-in",
+            });
+
             window.magentoStorefrontEvents.context.setSearchInput({
                 source: "search-bar",
                 query: "red patns",
@@ -57,6 +60,8 @@
                 magentoStorefrontEvents.publish[event.target.value]();
             }
         </script>
+
+        <script src="http://localhost:8080/index.js"></script>
     </head>
 
     <body>
