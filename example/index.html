@@ -4,6 +4,24 @@
         <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.3.1/dist/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setStorefrontInstance({
+                baseCurrencyCode: "USD",
+                storeViewCurrencyCode: "USD",
+                environment: "production",
+                environmentId: "aaaaaa",
+                instanceId: "bbbbbb",
+                storeCode: "magento",
+                storeId: 111111,
+                storeName: "magento",
+                storeUrl: "https://magento.com",
+                storeViewCode: "default",
+                storeViewId: 222222,
+                storeViewName: "default",
+                websiteCode: "website",
+                websiteId: 333333,
+                websiteName: "website",
+            });
+
             window.magentoStorefrontEvents.context.setShopper({
                 shopperId: "logged-in",
             });
