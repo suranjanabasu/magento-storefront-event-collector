@@ -18,6 +18,8 @@ const schemas = {
         "iglu:com.adobe.magento.entity/search-result-suggestion/jsonschema/1-0-1",
     SHOPPER_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/shopper/jsonschema/1-0-0",
+    STOREFRONT_INSTANCE_SCHEMA_URL:
+        "iglu:com.adobe.magento.entity/storefront-instance/jsonschema/3-0-0",
 };
 
 export default schemas;

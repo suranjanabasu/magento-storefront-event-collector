@@ -3,7 +3,11 @@
  * See COPYING.txt for license details.
  */
 
-import { createTrackerCtx, createShopperCtx } from "./contexts";
+import {
+    createTrackerCtx,
+    createShopperCtx,
+    createStorefrontInstanceCtx,
+} from "./contexts";
 import { plowing } from "./plowing";
 
 const initializeSnowplow = (spUrl: string): void => {
@@ -48,8 +52,13 @@ const configureSnowplow = ({
 
     const trackerCtx = createTrackerCtx();
     const shopperCtx = createShopperCtx();
+    const storefrontInstanceCtx = createStorefrontInstanceCtx();
 
-    window.snowplow("addGlobalContexts", [trackerCtx, shopperCtx]);
+    window.snowplow("addGlobalContexts", [
+        trackerCtx,
+        shopperCtx,
+        storefrontInstanceCtx,
+    ]);
 };
 
 type TrackEventParams = {
