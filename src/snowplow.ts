@@ -7,6 +7,7 @@ import {
     createTrackerCtx,
     createShopperCtx,
     createStorefrontInstanceCtx,
+    createMagentoExtensionCtx,
 } from "./contexts";
 import { plowing } from "./plowing";
 
@@ -50,11 +51,13 @@ const configureSnowplow = ({
         },
     });
 
+    const magentoExtensionCtx = createMagentoExtensionCtx();
     const trackerCtx = createTrackerCtx();
     const shopperCtx = createShopperCtx();
     const storefrontInstanceCtx = createStorefrontInstanceCtx();
 
     window.snowplow("addGlobalContexts", [
+        magentoExtensionCtx,
         trackerCtx,
         shopperCtx,
         storefrontInstanceCtx,
