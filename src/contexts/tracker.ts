@@ -12,6 +12,7 @@ const createContext = (): Context => {
         schema: schemas.MAGENTO_JS_TRACKER_SCHEMA_URL,
         data: {
             magentoJsVersion: pkg.version,
+            // TODO: what do we do now that we run off github actions?
             magentoJsBuild: "0000",
         },
     };
