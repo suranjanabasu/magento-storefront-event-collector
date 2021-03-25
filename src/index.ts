@@ -11,7 +11,7 @@ initializeSnowplow("https://commerce.adobedtm.com/sp/v2/sp.js");
 
 configureSnowplow({
     appId: "magento-storefront-event-collector",
-    collectorUrl: "com-magento-qa1.collector.snplow.net",
+    collectorUrl: "com-magento-prod1.mini.snplow.net",
 });
 
 subscribeToEvents();

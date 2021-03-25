@@ -6,45 +6,50 @@
 
         <script>
             window.magentoStorefrontEvents.context.setSearchInput({
-                searchType: "popover",
+                source: "search-bar",
                 query: "red patns",
+                page: 1,
+                perPage: 20,
                 refinementAttribute: null,
                 refinementSelection: null,
+                sortType: "relevance",
+                sortOrder: "descending",
             });
 
             window.magentoStorefrontEvents.context.setSearchResults({
                 products: [
                     {
-                        title: "Hoodie",
-                        url: "https://magento.com/hoodie",
-                        rank: 1,
-                        resultType: "product",
+                        name: "Red Pants",
                         sku: "abc123",
-                        imageUrl: "https://magento.com/hoodie.jpg",
-                        price: "49.99",
+                        url: "https://magento.com/red-pants",
+                        imageUrl: "https://magento.com/red-pants.jpg",
+                        price: 49.99,
+                        rank: 1,
                     },
                 ],
                 suggestions: [
                     {
-                        title: "Hoodie",
-                        url: "https://magento.com/shirt",
+                        suggestion: "red pants",
                         rank: 1,
-                        resultType: "suggestion",
-                        sku: "abc123",
-                        imageUrl: "https://magento.com/shirt/shirt.jpg",
-                        price: "19.99",
                     },
                 ],
                 categories: [
                     {
-                        title: "Tops",
-                        url: "https://magento.com/tops",
+                        name: "Pants",
+                        url: "https://magento.com/category/pants",
                         rank: 1,
-                        resultType: "category",
+                    },
+                    {
+                        name: "Bottoms",
+                        url: "https://magento.com/category/bottoms",
+                        rank: 2,
                     },
                 ],
                 page: 1,
                 perPage: 20,
+                productCount: 1,
+                categoryCount: 2,
+                suggestionCount: 1,
             });
 
             function fireEvent(event) {

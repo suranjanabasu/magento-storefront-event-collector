@@ -3,16 +3,28 @@
  * See COPYING.txt for license details.
  */
 
+import {
+    createSearchInputContext,
+    createSearchResultsContext,
+    createSearchResultSuggestionContext,
+} from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
+    const searchInputCtx = createSearchInputContext();
+    const searchResultsCtx = createSearchResultsContext();
+    const searchResultsSuggestionCtx = createSearchResultSuggestionContext();
+
     trackEvent({
         category: "search",
         action: "category-click",
         label: "<categoryUrlKey>",
         property: "<pageType>",
-        value: "<search-bar | results-page | other>",
-        contexts: [],
+        contexts: [
+            searchInputCtx,
+            searchResultsCtx,
+            searchResultsSuggestionCtx,
+        ],
     });
 };
 
