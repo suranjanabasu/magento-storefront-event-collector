@@ -4,6 +4,62 @@
         <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.3.1/dist/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setOrder({
+                appliedCouponCode: "",
+                email: "example@email.com",
+                grandTotal: 69.98,
+                orderId: 111111,
+                otherTax: 0.0,
+                paymentMethodCode: "credit card",
+                paymentMethodName: "visa",
+                salesTax: 0.0,
+                subtotalExcludingTax: 69.98,
+                subtotalIncludingTax: 69.98,
+            });
+
+            window.magentoStorefrontEvents.context.setShoppingCart({
+                id: "111111",
+                items: [
+                    {
+                        canApplyMsrp: false,
+                        formattedPrice: "$19.99",
+                        id: "aaaaaa",
+                        prices: [{ value: 19.99, currency: "USD" }],
+                        product: {
+                            productId: "bbbbbb",
+                            name: "T-Shirt",
+                            sku: "ts001",
+                        },
+                        configurableOptions: [],
+                        quantity: 1,
+                    },
+                    {
+                        canApplyMsrp: false,
+                        formattedPrice: "$49.99",
+                        id: "cccccc",
+                        prices: [{ value: 49.99, currency: "USD" }],
+                        product: {
+                            productId: "dddddd",
+                            name: "Hoodie",
+                            sku: "h001",
+                        },
+                        configurableOptions: [],
+                        quantity: 1,
+                    },
+                ],
+                prices: [
+                    {
+                        value: 19.99,
+                        currency: "USD",
+                    },
+                    {
+                        value: 49.99,
+                        currency: "USD",
+                    },
+                ],
+                totalQuantity: 2,
+            });
+
             window.magentoStorefrontEvents.context.setMagentoExtension({
                 magentoExtensionVersion: "1.2.3",
             });

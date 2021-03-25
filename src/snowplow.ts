@@ -4,10 +4,11 @@
  */
 
 import {
-    createTrackerCtx,
-    createShopperCtx,
-    createStorefrontInstanceCtx,
     createMagentoExtensionCtx,
+    createShopperCtx,
+    createShoppingCartCtx,
+    createStorefrontInstanceCtx,
+    createTrackerCtx,
 } from "./contexts";
 import { plowing } from "./plowing";
 
@@ -52,15 +53,17 @@ const configureSnowplow = ({
     });
 
     const magentoExtensionCtx = createMagentoExtensionCtx();
-    const trackerCtx = createTrackerCtx();
     const shopperCtx = createShopperCtx();
+    const shoppingCartCtx = createShoppingCartCtx();
     const storefrontInstanceCtx = createStorefrontInstanceCtx();
+    const trackerCtx = createTrackerCtx();
 
     window.snowplow("addGlobalContexts", [
         magentoExtensionCtx,
-        trackerCtx,
         shopperCtx,
+        shoppingCartCtx,
         storefrontInstanceCtx,
+        trackerCtx,
     ]);
 };
 
