@@ -14,6 +14,7 @@ import {
     searchResponseReceivedHandler,
     searchResultsViewHandler,
     searchSuggestionClickHandler,
+    shoppingCartViewHandler,
 } from "./handlers";
 
 const subscribeToEvents = (): void => {
@@ -25,6 +26,7 @@ const subscribeToEvents = (): void => {
     mse.subscribe.searchResponseReceived(searchResponseReceivedHandler);
     mse.subscribe.searchResultsView(searchResultsViewHandler);
     mse.subscribe.searchSuggestionClick(searchSuggestionClickHandler);
+    mse.subscribe.shoppingCartView(shoppingCartViewHandler);
 };
 
 const unsubscribeFromEvents = (): void => {
@@ -36,6 +38,7 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.searchResponseReceived(searchResponseReceivedHandler);
     mse.unsubscribe.searchResultsView(searchResultsViewHandler);
     mse.unsubscribe.searchSuggestionClick(searchSuggestionClickHandler);
+    mse.unsubscribe.shoppingCartView(shoppingCartViewHandler);
 };
 
 export { subscribeToEvents, unsubscribeFromEvents };
