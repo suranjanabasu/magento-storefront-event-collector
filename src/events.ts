@@ -9,6 +9,7 @@ import {
     addToCartHandler,
     placeOrderHandler,
     productViewHandler,
+    recsRequestSentHandler,
     searchCategoryClickHandler,
     searchProductClickHandler,
     searchRequestSentHandler,
@@ -22,6 +23,7 @@ const subscribeToEvents = (): void => {
     mse.subscribe.addToCart(addToCartHandler);
     mse.subscribe.placeOrder(placeOrderHandler);
     mse.subscribe.productPageView(productViewHandler);
+    mse.subscribe.recsRequestSent(recsRequestSentHandler);
     mse.subscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.subscribe.searchProductClick(searchProductClickHandler);
     mse.subscribe.searchRequestSent(searchRequestSentHandler);
@@ -35,6 +37,7 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.addToCart(addToCartHandler);
     mse.unsubscribe.placeOrder(placeOrderHandler);
     mse.unsubscribe.productPageView(productViewHandler);
+    mse.unsubscribe.recsRequestSent(recsRequestSentHandler);
     mse.unsubscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.unsubscribe.searchProductClick(searchProductClickHandler);
     mse.unsubscribe.searchRequestSent(searchRequestSentHandler);
