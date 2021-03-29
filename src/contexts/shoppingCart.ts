@@ -3,8 +3,9 @@
  * See COPYING.txt for license details.
  */
 
-import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
 import mse from "@adobe/magento-storefront-events-sdk";
+import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
+
 import schemas from "../schemas";
 
 const createShoppingCartItems = () => {

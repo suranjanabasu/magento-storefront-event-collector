@@ -4,6 +4,7 @@
  */
 
 import "@adobe/adobe-client-data-layer";
+
 import { subscribeToEvents } from "./events";
 import { configureSnowplow, initializeSnowplow } from "./snowplow";
 
@@ -16,5 +17,5 @@ configureSnowplow({
 
 subscribeToEvents();
 
-export * from "./snowplow";
 export * from "./events";
+export * from "./snowplow";

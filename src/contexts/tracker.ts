@@ -4,6 +4,7 @@
  */
 
 import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
+
 import pkg from "../../package.json";
 import schemas from "../schemas";
 

@@ -22,10 +22,12 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/eslint-recommended"
     ],
-    "plugins": ["@typescript-eslint/eslint-plugin"],
+    "plugins": ["@typescript-eslint/eslint-plugin", "simple-import-sort"],
     "rules": {
+        "@typescript-eslint/default-param-last": ["error"],
         "no-console": ["error"],
-        "@typescript-eslint/default-param-last": ["error"]
+        "simple-import-sort/imports": ["error"],
+        "simple-import-sort/exports": ["error"]
     },
     "overrides": [
         {

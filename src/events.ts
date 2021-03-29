@@ -4,6 +4,7 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+
 import {
     searchCategoryClickHandler,
     searchProductClickHandler,
