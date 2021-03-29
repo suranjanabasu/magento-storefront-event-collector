@@ -4,4 +4,5 @@
  */
 
 export { default as addToCartHandler } from "./addToCart";
+export { default as placeOrderHandler } from "./placeOrder";
 export * from "./search";
