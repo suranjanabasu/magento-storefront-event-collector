@@ -70,10 +70,10 @@ const configureSnowplow = ({
 type TrackEventParams = {
     category: string;
     action: string;
-    label: string;
-    property: string;
+    label?: string;
+    property?: string;
     value?: number;
-    contexts: unknown[];
+    contexts?: unknown[];
 };
 
 const trackEvent = ({

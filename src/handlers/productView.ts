@@ -12,7 +12,6 @@ const handler = (): void => {
     trackEvent({
         category: "product",
         action: "view",
-        label: "",
         property: "<pageType>",
         contexts: [productCtx],
     });
