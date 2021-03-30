@@ -13,7 +13,7 @@ const createContext = (): SearchInputContext => {
     const context = {
         schema: schemas.SEARCH_INPUT_SCHEMA_URL,
         data: {
-            source: searchInputCtx.source,
+            source: searchInputCtx.source ?? undefined,
             query: searchInputCtx.query,
             page: searchInputCtx.page,
             perPage: searchInputCtx.perPage,

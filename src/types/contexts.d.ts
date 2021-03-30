@@ -4,7 +4,7 @@ type Extension = {
 
 type Product = {
     canonicalUrl?: string | null;
-    categories?: Array<string | null>;
+    categories?: Array<string> | null;
     countryOfManufacture?: string | null;
     createdAt?: string | null;
     mainImageUrl?: string | null;

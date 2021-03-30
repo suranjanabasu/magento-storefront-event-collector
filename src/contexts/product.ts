@@ -15,7 +15,7 @@ const createContext = (): ProductContext => {
         data: {
             productId: productCtx.productId,
             name: productCtx.name,
-            sku: productCtx.sku,
+            sku: productCtx.sku ?? "",
             topLevelSku: productCtx.topLevelSku,
             specialToDate: productCtx.specialToDate,
             specialFromDate: productCtx.specialFromDate,
@@ -28,16 +28,17 @@ const createContext = (): ProductContext => {
             categories: productCtx.categories,
             productType: productCtx.productType,
             pricing: {
-                regularPrice: productCtx.pricing?.regularPrice,
-                minimalPrice: productCtx.pricing?.minimalPrice,
-                maximalPrice: productCtx.pricing?.maximalPrice,
+                // TODO: what happens when these are undefined?
+                regularPrice: productCtx.pricing?.regularPrice ?? 0,
+                minimalPrice: productCtx.pricing?.minimalPrice ?? 0,
+                maximalPrice: productCtx.pricing?.maximalPrice ?? 0,
                 specialPrice: productCtx.pricing?.specialPrice,
                 tierPricing: productCtx.pricing?.tierPricing.map(price => ({
-                    customerGroupId: price.customerGroupId,
+                    customerGroupId: price.customerGroupId ?? null,
                     qty: price.qty,
                     value: price.value,
                 })),
-                currencyCode: productCtx.pricing?.currencyCode,
+                currencyCode: productCtx.pricing?.currencyCode ?? null,
             },
             canonicalUrl: productCtx.canonicalUrl,
             mainImageUrl: productCtx.mainImageUrl,

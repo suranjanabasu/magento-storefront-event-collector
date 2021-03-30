@@ -18,12 +18,14 @@ const createShoppingCartItems = () => {
         basePrice: item.product.pricing?.regularPrice,
         // TODO: how do we reconcile string to int
         cartItemId: parseInt(item.id) || 0,
-        mainImageUrl: item.product.mainImageUrl,
+        mainImageUrl: item.product.mainImageUrl ?? undefined,
         // TODO: what price should we use?
-        offerPrice: item.prices?.[0].value,
+        offerPrice: item.prices?.[0].value ?? 0,
         productName: item.product.name,
-        productSku: item.product.sku,
-        qty: item.quantity,
+        // TODO: what happens if its undefined?
+        productSku: item.product.sku ?? "",
+        // TODO: what happens if its undefined?
+        qty: item.quantity ?? 0,
     }));
 
     return shoppingCartItems;
