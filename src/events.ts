@@ -6,6 +6,7 @@
 import mse from "@adobe/magento-storefront-events-sdk";
 
 import {
+    addToCartHandler,
     searchCategoryClickHandler,
     searchProductClickHandler,
     searchRequestSentHandler,
@@ -15,6 +16,7 @@ import {
 } from "./handlers";
 
 const subscribeToEvents = (): void => {
+    mse.subscribe.addToCart(addToCartHandler);
     mse.subscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.subscribe.searchProductClick(searchProductClickHandler);
     mse.subscribe.searchRequestSent(searchRequestSentHandler);
@@ -24,6 +26,7 @@ const subscribeToEvents = (): void => {
 };
 
 const unsubscribeFromEvents = (): void => {
+    mse.unsubscribe.addToCart(addToCartHandler);
     mse.unsubscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.unsubscribe.searchProductClick(searchProductClickHandler);
     mse.unsubscribe.searchRequestSent(searchRequestSentHandler);

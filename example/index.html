@@ -4,6 +4,33 @@
         <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.3.1/dist/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setProduct({
+                productId: 111111,
+                name: "T-Shirt",
+                sku: "aaaaaa",
+                topLevelSku: "bbbbbb",
+                specialToDate: "01/10/2021",
+                specialFromDate: "01/01/2021",
+                newToDate: "01/10/2021",
+                newFromDate: "01/01/2021",
+                createdAt: "01/01/2021",
+                updatedAt: "01/01/2021",
+                manufacturer: "Magento",
+                countryOfManufacture: "USA",
+                categories: ["Tops", "Shirts"],
+                productType: "normal",
+                pricing: {
+                    regularPrice: 19.99,
+                    minimalPrice: 10.99,
+                    maximalPrice: 24.99,
+                    specialPrice: 14.99,
+                    tierPricing: [],
+                    currencyCode: "USD",
+                },
+                canonicalUrl: "https://magento.com/tshirt",
+                mainImageUrl: "https://magento.com/tshirt.jpg",
+            });
+
             window.magentoStorefrontEvents.context.setOrder({
                 appliedCouponCode: "",
                 email: "example@email.com",
@@ -144,6 +171,10 @@
 
     <body>
         <div class="events">
+            <button value="addToCart" onclick="fireEvent(event)">
+                addToCart
+            </button>
+
             <button value="searchCategoryClick" onclick="fireEvent(event)">
                 searchCategoryClick
             </button>
