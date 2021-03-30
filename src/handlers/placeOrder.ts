@@ -14,7 +14,6 @@ const handler = (): void => {
         // TODO: this should be the cartId, which is a string,
         //       but Snowplow expects a number for value.
         value: 0,
-        contexts: [],
     });
 };
 

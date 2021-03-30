@@ -12,7 +12,6 @@ const handler = (): void => {
     trackEvent({
         category: "product",
         action: "add-to-cart",
-        label: "",
         property: "<pageType>",
         contexts: [productCtx],
     });

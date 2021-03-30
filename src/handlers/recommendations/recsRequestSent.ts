@@ -9,9 +9,7 @@ const handler = (): void => {
     trackEvent({
         category: "recommendation-unit",
         action: "api-request-sent",
-        label: "",
         property: "<pageType>",
-        contexts: [],
     });
 };
 

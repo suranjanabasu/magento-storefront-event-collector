@@ -13,7 +13,6 @@ const handler = (): void => {
     trackEvent({
         category: "search",
         action: "results-view",
-        label: "",
         property: "<pageType>",
         contexts: [searchInputCtx, searchResultsCtx],
     });

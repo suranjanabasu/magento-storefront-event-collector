@@ -3,12 +3,10 @@
  * See COPYING.txt for license details.
  */
 
-import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
-
 import pkg from "../../package.json";
 import schemas from "../schemas";
 
-const createContext = (): Context => {
+const createContext = (): TrackerContext => {
     const context = {
         schema: schemas.MAGENTO_JS_TRACKER_SCHEMA_URL,
         data: {
