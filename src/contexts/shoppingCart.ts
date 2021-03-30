@@ -4,7 +4,6 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
-import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
 
 import schemas from "../schemas";
 
@@ -30,7 +29,7 @@ const createShoppingCartItems = () => {
     return shoppingCartItems;
 };
 
-const createContext = (): Context => {
+const createContext = (): ShoppingCartContext => {
     const shoppingCartCtx = mse.context.getShoppingCart();
     const orderCtx = mse.context.getOrder();
 

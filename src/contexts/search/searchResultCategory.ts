@@ -4,13 +4,12 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
-import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
 
 import schemas from "../../schemas";
 
-const createContext = (): Context => {
-    const searchResults = mse.context.getSearchResults();
-    const category = searchResults.categories[0];
+const createContext = (): SearchResultCategoryContext => {
+    const searchResultsCtx = mse.context.getSearchResults();
+    const category = searchResultsCtx.categories[0];
 
     const context = {
         schema: schemas.SEARCH_RESULT_CATEGORY_SCHEMA_URL,

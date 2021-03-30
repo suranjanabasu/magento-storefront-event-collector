@@ -4,11 +4,10 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
-import { Context } from "@adobe/magento-storefront-events-sdk/dist/types/types/contexts";
 
 import schemas from "../schemas";
 
-const createContext = (): Context => {
+const createContext = (): ShopperContext => {
     const shopperCtx = mse.context.getShopper();
 
     const context = {

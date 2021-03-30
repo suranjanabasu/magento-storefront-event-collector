@@ -73,7 +73,7 @@ type TrackEventParams = {
     label?: string;
     property?: string;
     value?: number;
-    contexts?: unknown[];
+    contexts?: Array<SnowplowContext>;
 };
 
 const trackEvent = ({
