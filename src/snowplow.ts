@@ -43,6 +43,7 @@ const configureSnowplow = ({
         crossDomainLinker: null,
         cookieLifetime: 86400 * 365 * 2,
         stateStorageStrategy: "localStorage",
+        // TODO: use webpack define plugin for this
         // postPath: "/collector/tp2",
         contexts: {
             webPage: true,
