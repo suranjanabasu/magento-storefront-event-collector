@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.2...v0.0.3) (2021-04-01)
+
+
+### Features
+
+* support add to cart event ([c3ab34f](https://github.com/adobe/magento-storefront-event-collector/commit/c3ab34f9cce1be92c1cc7e6d9699b9890c84ca84))
+* support place order event ([f9d8021](https://github.com/adobe/magento-storefront-event-collector/commit/f9d8021ce3e47ec833b581669c553d3727582117))
+* support product view event ([8f2b388](https://github.com/adobe/magento-storefront-event-collector/commit/8f2b388340e4e2a49bb162a2ba5809dfbe93ed86))
+* support recommendation api request sent event ([4f89389](https://github.com/adobe/magento-storefront-event-collector/commit/4f893892b50a614587f22594d73e473dcfbc3e13))
+* support shopping cart view event ([5ebb760](https://github.com/adobe/magento-storefront-event-collector/commit/5ebb760917c3fa329a53296101869c361deb706f))
+
 ### [0.0.2](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.1...v0.0.2) (2021-03-25)
 
 
