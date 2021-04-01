@@ -13,7 +13,7 @@ const handler = (): void => {
     trackEvent({
         category: "search",
         action: "api-response-received",
-        label: "<query>",
+        label: searchInputCtx.data.query,
         property: "<pageType>",
         contexts: [searchInputCtx, searchResultsCtx],
     });

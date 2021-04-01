@@ -9,7 +9,7 @@ test("sends snowplow event", () => {
         "trackStructEvent",
         "search",
         "product-click",
-        "<sku>",
+        "abc123",
         "<pageType>",
         undefined,
         [

@@ -9,7 +9,7 @@ test("sends snowplow event", () => {
         "trackStructEvent",
         "search",
         "api-response-received",
-        "<query>",
+        "red patns",
         "<pageType>",
         undefined,
         [

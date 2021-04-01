@@ -9,7 +9,7 @@ test("sends snowplow event", () => {
         "trackStructEvent",
         "search",
         "category-click",
-        "<categoryUrlKey>",
+        "https://magento.com/category/pants",
         "<pageType>",
         undefined,
         [
@@ -62,9 +62,13 @@ test("sends snowplow event", () => {
                     "iglu:com.adobe.magento.entity/search-results/jsonschema/1-0-3",
             },
             {
-                data: { rank: 1, suggestion: "red pants" },
+                data: {
+                    name: "Pants",
+                    rank: 1,
+                    url: "https://magento.com/category/pants",
+                },
                 schema:
-                    "iglu:com.adobe.magento.entity/search-result-suggestion/jsonschema/1-0-1",
+                    "iglu:com.adobe.magento.entity/search-result-category/jsonschema/1-0-1",
             },
         ],
     );

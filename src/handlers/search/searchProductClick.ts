@@ -18,7 +18,7 @@ const handler = (): void => {
     trackEvent({
         category: "search",
         action: "product-click",
-        label: "<sku>",
+        label: searchResultsProductCtx.data.sku,
         property: "<pageType>",
         contexts: [searchInputCtx, searchResultsCtx, searchResultsProductCtx],
     });
