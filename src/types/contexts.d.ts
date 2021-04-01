@@ -33,6 +33,56 @@ type Product = {
     updatedAt?: string | null;
 };
 
+type RecommendationUnit = {
+    name: string;
+    unitId: string;
+    itemsCount: number;
+    backupsCount: number;
+    configType: string;
+    source: string;
+    recType: string;
+    placement: string | null;
+    yOffsetTop?: number | null;
+    yOffsetBottom?: number | null;
+};
+
+type RecommendedItem = {
+    unitId: string;
+    serviceRank: number;
+    displayRank: number;
+    name: string;
+    sku: string;
+    url: string;
+    imageUrl: string | null;
+    prices: {
+        maximum: {
+            final: number | null;
+            regular: number | null;
+            finalAdjustments?: Array<{
+                code: string;
+                amount: number;
+            }>;
+            regularAdjustments?: Array<{
+                code: string;
+                amount: number;
+            }>;
+        };
+        minimum: {
+            final: number | null;
+            regular: number | null;
+            finalAdjustments?: Array<{
+                code: string;
+                amount: number;
+            }>;
+            regularAdjustments?: Array<{
+                code: string;
+                amount: number;
+            }>;
+        };
+    };
+    currencyCode: string | null;
+};
+
 type SearchInput = {
     page: number;
     perPage: number;
@@ -137,6 +187,16 @@ type ProductContext = {
     data: Product;
 };
 
+type RecommendationUnitContext = {
+    schema: string;
+    data: RecommendationUnit;
+};
+
+type RecommendedItemContext = {
+    schema: string;
+    data: RecommendedItem;
+};
+
 type SearchInputContext = {
     schema: string;
     data: SearchInput;
@@ -185,6 +245,8 @@ type TrackerContext = {
 type SnowplowContext =
     | ExtensionContext
     | ProductContext
+    | RecommendationUnitContext
+    | RecommendedItemContext
     | SearchInputContext
     | SearchResultCategoryContext
     | SearchResultProductContext

@@ -6,6 +6,7 @@ import {
     mockExtension,
     mockOrder,
     mockProduct,
+    mockRecommendations,
     mockSearchInput,
     mockSearchResults,
     mockShopper,
@@ -19,6 +20,7 @@ mse.context.setProduct(mockProduct);
 mse.context.setOrder(mockOrder);
 mse.context.setShoppingCart(mockShoppingCart);
 mse.context.setMagentoExtension(mockExtension);
+mse.context.setRecommendations(mockRecommendations);
 mse.context.setStorefrontInstance(mockStorefront);
 mse.context.setShopper(mockShopper);
 mse.context.setSearchInput(mockSearchInput);

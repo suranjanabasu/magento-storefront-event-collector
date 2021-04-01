@@ -5,6 +5,7 @@
 
 export { default as createMagentoExtensionCtx } from "./extension";
 export { default as createProductCtx } from "./product";
+export * from "./recommendations";
 export * from "./search";
 export { default as createShopperCtx } from "./shopper";
 export { default as createShoppingCartCtx } from "./shoppingCart";
