@@ -92,13 +92,23 @@ const mockRecommendations: Recommendations = {
                     url: "https://magento.com",
                     prices: {
                         maximum: {
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             final: 33.12,
                             regular: 33.12,
                             regularAdjustments: [],
                         },
                         minimum: {
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             final: 33.12,
                             regular: 33.12,
                             regularAdjustments: [],
@@ -133,13 +143,23 @@ const mockRecommendations: Recommendations = {
                     url: "https://magento.com",
                     prices: {
                         maximum: {
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             final: 12.22,
                             regular: 12.22,
                             regularAdjustments: [],
                         },
                         minimum: {
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             final: 12.22,
                             regular: 12.22,
                             regularAdjustments: [],

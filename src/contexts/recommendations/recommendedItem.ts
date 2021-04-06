@@ -47,7 +47,7 @@ const createContext = (
                             amount: finalAdjustment.amount,
                         }),
                     ),
-                    regularAdjustments: product.prices.maximum.finalAdjustments.map(
+                    regularAdjustments: product.prices.maximum.regularAdjustments.map(
                         finalAdjustment => ({
                             code: finalAdjustment.code,
                             amount: finalAdjustment.amount,
@@ -63,7 +63,7 @@ const createContext = (
                             amount: finalAdjustment.amount,
                         }),
                     ),
-                    regularAdjustments: product.prices.minimum.finalAdjustments.map(
+                    regularAdjustments: product.prices.minimum.regularAdjustments.map(
                         finalAdjustment => ({
                             code: finalAdjustment.code,
                             amount: finalAdjustment.amount,

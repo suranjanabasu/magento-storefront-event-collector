@@ -12,13 +12,23 @@ test("creates context", () => {
             prices: {
                 maximum: {
                     final: 33.12,
-                    finalAdjustments: [],
+                    finalAdjustments: [
+                        {
+                            code: "coupon",
+                            amount: 10,
+                        },
+                    ],
                     regular: 33.12,
                     regularAdjustments: [],
                 },
                 minimum: {
                     final: 33.12,
-                    finalAdjustments: [],
+                    finalAdjustments: [
+                        {
+                            code: "coupon",
+                            amount: 10,
+                        },
+                    ],
                     regular: 33.12,
                     regularAdjustments: [],
                 },

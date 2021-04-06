@@ -38,13 +38,23 @@ test("sends snowplow event", () => {
                     prices: {
                         maximum: {
                             final: 33.12,
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             regular: 33.12,
                             regularAdjustments: [],
                         },
                         minimum: {
                             final: 33.12,
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             regular: 33.12,
                             regularAdjustments: [],
                         },
@@ -66,13 +76,23 @@ test("sends snowplow event", () => {
                     prices: {
                         maximum: {
                             final: 12.22,
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             regular: 12.22,
                             regularAdjustments: [],
                         },
                         minimum: {
                             final: 12.22,
-                            finalAdjustments: [],
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
                             regular: 12.22,
                             regularAdjustments: [],
                         },
