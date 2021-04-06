@@ -1,14 +1,14 @@
-import { recsItemAddToCartClickHandler } from "../../../src/handlers";
+import { recsItemClickHandler } from "../../../src/handlers";
 
 test("sends snowplow event", () => {
-    recsItemAddToCartClickHandler();
+    recsItemClickHandler();
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 
     expect(window.snowplow).toHaveBeenCalledWith(
         "trackStructEvent",
         "recommendation-unit",
-        "rec-add-to-cart-click",
+        "rec-click",
         undefined,
         "<pageType>",
         1,
