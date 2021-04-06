@@ -11,6 +11,7 @@ import {
     productViewHandler,
     recsRequestSentHandler,
     recsResponseReceivedHandler,
+    recsUnitRenderHandler,
     searchCategoryClickHandler,
     searchProductClickHandler,
     searchRequestSentHandler,
@@ -26,6 +27,7 @@ const subscribeToEvents = (): void => {
     mse.subscribe.productPageView(productViewHandler);
     mse.subscribe.recsRequestSent(recsRequestSentHandler);
     mse.subscribe.recsResponseReceived(recsResponseReceivedHandler);
+    mse.subscribe.recsUnitRender(recsUnitRenderHandler);
     mse.subscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.subscribe.searchProductClick(searchProductClickHandler);
     mse.subscribe.searchRequestSent(searchRequestSentHandler);
@@ -41,6 +43,7 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.productPageView(productViewHandler);
     mse.unsubscribe.recsRequestSent(recsRequestSentHandler);
     mse.unsubscribe.recsResponseReceived(recsResponseReceivedHandler);
+    mse.unsubscribe.recsUnitRender(recsUnitRenderHandler);
     mse.unsubscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.unsubscribe.searchProductClick(searchProductClickHandler);
     mse.unsubscribe.searchRequestSent(searchRequestSentHandler);
