@@ -9,7 +9,7 @@ test("sends snowplow event", () => {
         "trackStructEvent",
         "checkout",
         "place-order",
-        "<orderId>",
+        "111111",
         "pdp",
         0,
         undefined,
