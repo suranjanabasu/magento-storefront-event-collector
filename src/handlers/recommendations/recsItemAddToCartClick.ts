@@ -12,6 +12,7 @@ import {
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
+    const pageCtx = mse.context.getPage();
     const recommendationsCtx = mse.context.getRecommendations();
 
     const contexts: Array<SnowplowContext> = [];
@@ -39,7 +40,7 @@ const handler = (): void => {
         category: "recommendation-unit",
         action: "rec-add-to-cart-click",
         // TODO: where do we get this from?
-        property: "<pageType>",
+        property: pageCtx.pageType,
         value: recommendationsCtx.units[0].products[0].rank,
         contexts,
     });

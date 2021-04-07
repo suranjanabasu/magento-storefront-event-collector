@@ -10,7 +10,7 @@ test("sends snowplow event", () => {
         "recommendation-unit",
         "api-request-sent",
         undefined,
-        "<pageType>",
+        "pdp",
         undefined,
         undefined,
     );

@@ -1,34 +1,4 @@
-import {
-    MagentoExtension,
-    Order,
-    Page,
-    Product,
-    Recommendations,
-    SearchInput,
-    SearchResults,
-    Shopper,
-    ShoppingCart,
-    StorefrontInstance,
-} from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
-
-const mockExtension: MagentoExtension = {
-    magentoExtensionVersion: "1.2.3",
-};
-
-const mockOrder: Order = {
-    appliedCouponCode: "",
-    email: "example@email.com",
-    grandTotal: 69.98,
-    orderId: 111111,
-    otherTax: 0.0,
-    paymentMethodCode: "credit card",
-    paymentMethodName: "visa",
-    salesTax: 0.0,
-    subtotalExcludingTax: 69.98,
-    subtotalIncludingTax: 69.98,
-};
-
-const mockPage: Page = {
+window.magentoStorefrontEvents.context.setPage({
     pageType: "pdp",
     maxXOffset: 0,
     maxYOffset: 0,
@@ -36,36 +6,9 @@ const mockPage: Page = {
     minYOffset: 0,
     ping_interval: 5,
     pings: 12,
-};
+});
 
-const mockProduct: Product = {
-    productId: 111111,
-    name: "T-Shirt",
-    sku: "aaaaaa",
-    topLevelSku: "bbbbbb",
-    specialToDate: "01/10/2021",
-    specialFromDate: "01/01/2021",
-    newToDate: "01/10/2021",
-    newFromDate: "01/01/2021",
-    createdAt: "01/01/2021",
-    updatedAt: "01/01/2021",
-    manufacturer: "Magento",
-    countryOfManufacture: "USA",
-    categories: ["Tops", "Shirts"],
-    productType: "normal",
-    pricing: {
-        regularPrice: 19.99,
-        minimalPrice: 10.99,
-        maximalPrice: 24.99,
-        specialPrice: 14.99,
-        tierPricing: [],
-        currencyCode: "USD",
-    },
-    canonicalUrl: "https://magento.com/tshirt",
-    mainImageUrl: "https://magento.com/tshirt.jpg",
-};
-
-const mockRecommendations: Recommendations = {
+window.magentoStorefrontEvents.context.setRecommendations({
     units: [
         {
             unitId: "abc123",
@@ -181,9 +124,49 @@ const mockRecommendations: Recommendations = {
             ],
         },
     ],
-};
+});
 
-const mockShoppingCart: ShoppingCart = {
+window.magentoStorefrontEvents.context.setProduct({
+    productId: 111111,
+    name: "T-Shirt",
+    sku: "aaaaaa",
+    topLevelSku: "bbbbbb",
+    specialToDate: "01/10/2021",
+    specialFromDate: "01/01/2021",
+    newToDate: "01/10/2021",
+    newFromDate: "01/01/2021",
+    createdAt: "01/01/2021",
+    updatedAt: "01/01/2021",
+    manufacturer: "Magento",
+    countryOfManufacture: "USA",
+    categories: ["Tops", "Shirts"],
+    productType: "normal",
+    pricing: {
+        regularPrice: 19.99,
+        minimalPrice: 10.99,
+        maximalPrice: 24.99,
+        specialPrice: 14.99,
+        tierPricing: [],
+        currencyCode: "USD",
+    },
+    canonicalUrl: "https://magento.com/tshirt",
+    mainImageUrl: "https://magento.com/tshirt.jpg",
+});
+
+window.magentoStorefrontEvents.context.setOrder({
+    appliedCouponCode: "",
+    email: "example@email.com",
+    grandTotal: 69.98,
+    orderId: 111111,
+    otherTax: 0.0,
+    paymentMethodCode: "credit card",
+    paymentMethodName: "visa",
+    salesTax: 0.0,
+    subtotalExcludingTax: 69.98,
+    subtotalIncludingTax: 69.98,
+});
+
+window.magentoStorefrontEvents.context.setShoppingCart({
     id: "111111",
     items: [
         {
@@ -192,7 +175,7 @@ const mockShoppingCart: ShoppingCart = {
             id: "aaaaaa",
             prices: [{ value: 19.99, currency: "USD" }],
             product: {
-                productId: 111111,
+                productId: "bbbbbb",
                 name: "T-Shirt",
                 sku: "ts001",
             },
@@ -205,7 +188,7 @@ const mockShoppingCart: ShoppingCart = {
             id: "cccccc",
             prices: [{ value: 49.99, currency: "USD" }],
             product: {
-                productId: 222222,
+                productId: "dddddd",
                 name: "Hoodie",
                 sku: "h001",
             },
@@ -224,9 +207,13 @@ const mockShoppingCart: ShoppingCart = {
         },
     ],
     totalQuantity: 2,
-};
+});
 
-const mockStorefront: StorefrontInstance = {
+window.magentoStorefrontEvents.context.setMagentoExtension({
+    magentoExtensionVersion: "1.2.3",
+});
+
+window.magentoStorefrontEvents.context.setStorefrontInstance({
     baseCurrencyCode: "USD",
     storeViewCurrencyCode: "USD",
     environment: "production",
@@ -242,24 +229,24 @@ const mockStorefront: StorefrontInstance = {
     websiteCode: "website",
     websiteId: 333333,
     websiteName: "website",
-};
+});
 
-const mockShopper: Shopper = {
+window.magentoStorefrontEvents.context.setShopper({
     shopperId: "logged-in",
-};
+});
 
-const mockSearchInput: SearchInput = {
+window.magentoStorefrontEvents.context.setSearchInput({
     source: "search-bar",
     query: "red patns",
     page: 1,
     perPage: 20,
-    refinementAttribute: undefined,
-    refinementSelection: undefined,
+    refinementAttribute: null,
+    refinementSelection: null,
     sortType: "relevance",
     sortOrder: "descending",
-};
+});
 
-const mockSearchResults: SearchResults = {
+window.magentoStorefrontEvents.context.setSearchResults({
     products: [
         {
             name: "Red Pants",
@@ -293,17 +280,4 @@ const mockSearchResults: SearchResults = {
     productCount: 1,
     categoryCount: 2,
     suggestionCount: 1,
-};
-
-export {
-    mockExtension,
-    mockOrder,
-    mockPage,
-    mockProduct,
-    mockRecommendations,
-    mockSearchInput,
-    mockSearchResults,
-    mockShopper,
-    mockShoppingCart,
-    mockStorefront,
-};
+});

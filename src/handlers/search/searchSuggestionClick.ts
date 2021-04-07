@@ -3,6 +3,8 @@
  * See COPYING.txt for license details.
  */
 
+import mse from "@adobe/magento-storefront-events-sdk";
+
 import {
     createSearchInputCtx,
     createSearchResultsCtx,
@@ -11,6 +13,7 @@ import {
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
+    const pageCtx = mse.context.getPage();
     const searchInputCtx = createSearchInputCtx();
     const searchResultsCtx = createSearchResultsCtx();
     const searchResultsSuggestionCtx = createSearchResultSuggestionCtx();
@@ -19,7 +22,7 @@ const handler = (): void => {
         category: "search",
         action: "suggestion-click",
         label: searchResultsSuggestionCtx.data.suggestion,
-        property: "<pageType>",
+        property: pageCtx.pageType,
         contexts: [
             searchInputCtx,
             searchResultsCtx,

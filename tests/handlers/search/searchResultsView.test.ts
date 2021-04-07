@@ -10,7 +10,7 @@ test("sends snowplow event", () => {
         "search",
         "results-view",
         undefined,
-        "<pageType>",
+        "pdp",
         undefined,
         [
             {

@@ -10,7 +10,7 @@ test("sends snowplow event", () => {
         "shopping-cart",
         "view",
         undefined,
-        "<pageType>",
+        "pdp",
         0,
         undefined,
     );

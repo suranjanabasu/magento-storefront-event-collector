@@ -10,7 +10,7 @@ test("sends snowplow event", () => {
         "search",
         "category-click",
         "https://magento.com/category/pants",
-        "<pageType>",
+        "pdp",
         undefined,
         [
             {

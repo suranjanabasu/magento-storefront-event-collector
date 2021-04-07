@@ -10,7 +10,7 @@ test("sends snowplow event", () => {
         "recommendation-unit",
         "rec-add-to-cart-click",
         undefined,
-        "<pageType>",
+        "pdp",
         1,
         [
             {

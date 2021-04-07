@@ -9,6 +9,7 @@ import { createRecommendationUnitCtx } from "../../contexts/recommendations";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
+    const pageCtx = mse.context.getPage();
     const recommendationsCtx = mse.context.getRecommendations();
 
     const contexts: Array<SnowplowContext> = [];
@@ -26,7 +27,7 @@ const handler = (): void => {
         category: "recommendation-unit",
         action: "view",
         // TODO: where do we get this from?
-        property: "<pageType>",
+        property: pageCtx.pageType,
         contexts,
     });
 };
