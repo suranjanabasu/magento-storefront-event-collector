@@ -1,16 +1,4 @@
 import pkg from "../../../package.json";
-import {
-    Extension,
-    Product,
-    SearchInput,
-    SearchResultCategory,
-    SearchResultProduct,
-    SearchResults,
-    Shopper,
-    ShoppingCart,
-    Storefront,
-    Tracker,
-} from "../../../src/types/contexts";
 
 const mockProductCtx: Product = {
     productId: 111111,
