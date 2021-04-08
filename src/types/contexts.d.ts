@@ -1,8 +1,8 @@
-type Extension = {
+export type Extension = {
     magentoExtensionVersion: string;
 };
 
-type Product = {
+export type Product = {
     canonicalUrl?: string | null;
     categories?: Array<string> | null;
     countryOfManufacture?: string | null;
@@ -33,7 +33,7 @@ type Product = {
     updatedAt?: string | null;
 };
 
-type SearchInput = {
+export type SearchInput = {
     page: number;
     perPage: number;
     query: string;
@@ -46,13 +46,13 @@ type SearchInput = {
     source?: string;
 };
 
-type SearchResultCategory = {
+export type SearchResultCategory = {
     name: string;
     rank: number;
     url: string;
 };
 
-type SearchResultProduct = {
+export type SearchResultProduct = {
     imageUrl: string;
     name: string;
     price: number;
@@ -61,7 +61,7 @@ type SearchResultProduct = {
     url: string;
 };
 
-type SearchResults = {
+export type SearchResults = {
     products: Array<SearchResultProduct>;
     suggestions: Array<SearchResultSuggestion>;
     categories: Array<SearchResultCategory>;
@@ -72,18 +72,18 @@ type SearchResults = {
     suggestionCount: number;
 };
 
-type SearchResultSuggestion = {
+export type SearchResultSuggestion = {
     suggestion: string;
     rank: number;
 };
 
-type Shopper = {
+export type Shopper = {
     ecid?: string;
     name?: string;
     shopperId: string;
 };
 
-type ShoppingCart = {
+export type ShoppingCart = {
     cartId?: number | null;
     giftMessageSelected?: boolean;
     giftWrappingSelected?: boolean;
@@ -103,7 +103,7 @@ type ShoppingCart = {
     subtotalIncludingTax?: number;
 };
 
-type Storefront = {
+export type Storefront = {
     baseCurrencyCode: string;
     catalogExtensionVersion?: string | null;
     environment: string;
@@ -122,67 +122,67 @@ type Storefront = {
     websiteName: string;
 };
 
-type Tracker = {
+export type Tracker = {
     magentoJsVersion: string;
     magentoJsBuild: string;
 };
 
-type ExtensionContext = {
+export type ExtensionContext = {
     schema: string;
     data: Extension;
 };
 
-type ProductContext = {
+export type ProductContext = {
     schema: string;
     data: Product;
 };
 
-type SearchInputContext = {
+export type SearchInputContext = {
     schema: string;
     data: SearchInput;
 };
 
-type SearchResultCategoryContext = {
+export type SearchResultCategoryContext = {
     schema: string;
     data: SearchResultCategory;
 };
 
-type SearchResultProductContext = {
+export type SearchResultProductContext = {
     schema: string;
     data: SearchResultProduct;
 };
 
-type SearchResultsContext = {
+export type SearchResultsContext = {
     schema: string;
     data: SearchResults;
 };
 
-type SearchResultSuggestionContext = {
+export type SearchResultSuggestionContext = {
     schema: string;
     data: SearchResultSuggestion;
 };
 
-type ShopperContext = {
+export type ShopperContext = {
     schema: string;
     data: Shopper;
 };
 
-type ShoppingCartContext = {
+export type ShoppingCartContext = {
     schema: string;
     data: ShoppingCart;
 };
 
-type StorefrontContext = {
+export type StorefrontContext = {
     schema: string;
     data: Storefront;
 };
 
-type TrackerContext = {
+export type TrackerContext = {
     schema: string;
     data: Tracker;
 };
 
-type SnowplowContext =
+export type SnowplowContext =
     | ExtensionContext
     | ProductContext
     | SearchInputContext

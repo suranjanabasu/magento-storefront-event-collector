@@ -1,14 +1,12 @@
 import { createSearchResultSuggestionCtx } from "../../../src/contexts";
+import schemas from "../../../src/schemas";
+import { mockSearchResultSuggestionCtx } from "../../utils/mocks";
 
 test("creates context", () => {
     const ctx = createSearchResultSuggestionCtx();
 
     expect(ctx).toEqual({
-        data: {
-            rank: 1,
-            suggestion: "red pants",
-        },
-        schema:
-            "iglu:com.adobe.magento.entity/search-result-suggestion/jsonschema/1-0-1",
+        data: mockSearchResultSuggestionCtx,
+        schema: schemas.SEARCH_RESULT_SUGGESTION_SCHEMA_URL,
     });
 });
