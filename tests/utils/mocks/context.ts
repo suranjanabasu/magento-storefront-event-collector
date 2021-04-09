@@ -1,6 +1,6 @@
 import pkg from "../../../package.json";
 
-const mockProductCtx: Product = {
+const mockProductCtx = {
     productId: 111111,
     name: "T-Shirt",
     sku: "aaaaaa",
@@ -27,11 +27,11 @@ const mockProductCtx: Product = {
     mainImageUrl: "https://magento.com/tshirt.jpg",
 };
 
-const mockShopperCtx: Shopper = {
+const mockShopperCtx = {
     shopperId: "logged-in",
 };
 
-const mockShoppingCartCtx: ShoppingCart = {
+const mockShoppingCartCtx = {
     cartId: 111111,
     giftMessageSelected: false,
     giftWrappingSelected: false,
@@ -62,7 +62,7 @@ const mockShoppingCartCtx: ShoppingCart = {
     subtotalIncludingTax: 69.98,
 };
 
-const mockStorefrontCtx: Storefront = {
+const mockStorefrontCtx = {
     baseCurrencyCode: "USD",
     environment: "production",
     environmentId: "aaaaaa",
@@ -80,16 +80,16 @@ const mockStorefrontCtx: Storefront = {
     websiteName: "website",
 };
 
-const mockTrackerCtx: Tracker = {
+const mockTrackerCtx = {
     magentoJsBuild: "0000",
     magentoJsVersion: pkg.version,
 };
 
-const mockExtensionCtx: Extension = {
+const mockExtensionCtx = {
     magentoExtensionVersion: "1.2.3",
 };
 
-const mockSearchInputCtx: SearchInput = {
+const mockSearchInputCtx = {
     page: 1,
     perPage: 20,
     query: "red patns",
@@ -104,13 +104,13 @@ const mockSearchInputCtx: SearchInput = {
     source: "search-bar",
 };
 
-const mockSearchResultCategoryCtx: SearchResultCategory = {
+const mockSearchResultCategoryCtx = {
     name: "Pants",
     rank: 1,
     url: "https://magento.com/category/pants",
 };
 
-const mockSearchResultProductCtx: SearchResultProduct = {
+const mockSearchResultProductCtx = {
     imageUrl: "https://magento.com/red-pants.jpg",
     name: "Red Pants",
     price: 49.99,
@@ -119,7 +119,7 @@ const mockSearchResultProductCtx: SearchResultProduct = {
     url: "https://magento.com/red-pants",
 };
 
-const mockSearchResultsCtx: SearchResults = {
+const mockSearchResultsCtx = {
     categories: [
         {
             name: "Pants",
@@ -160,9 +160,59 @@ const mockSearchResultSuggestionCtx = {
     suggestion: "red pants",
 };
 
+const mockRecommendationUnitCtx = {
+    backupsCount: 0,
+    configType: "preconfigured",
+    itemsCount: 2,
+    name: "most-viewed",
+    placement: "",
+    recType: "primary",
+    source: "api",
+    unitId: "abc123",
+    yOffsetBottom: null,
+    yOffsetTop: null,
+};
+
+const mockRecommendedItemCtx = {
+    currencyCode: "USD",
+    displayRank: 1,
+    imageUrl: null,
+    name: "space sku tst two",
+    prices: {
+        maximum: {
+            final: 33.12,
+            finalAdjustments: [
+                {
+                    code: "coupon",
+                    amount: 10,
+                },
+            ],
+            regular: 33.12,
+            regularAdjustments: [],
+        },
+        minimum: {
+            final: 33.12,
+            finalAdjustments: [
+                {
+                    code: "coupon",
+                    amount: 10,
+                },
+            ],
+            regular: 33.12,
+            regularAdjustments: [],
+        },
+    },
+    serviceRank: 1,
+    sku: "space sku tst two",
+    unitId: "abc123",
+    url: "https://magento.com",
+};
+
 export {
     mockExtensionCtx,
     mockProductCtx,
+    mockRecommendationUnitCtx,
+    mockRecommendedItemCtx,
     mockSearchInputCtx,
     mockSearchResultCategoryCtx,
     mockSearchResultProductCtx,
