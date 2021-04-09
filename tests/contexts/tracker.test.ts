@@ -1,15 +1,12 @@
-import pkg from "../../package.json";
 import { createTrackerCtx } from "../../src/contexts";
+import schemas from "../../src/schemas";
+import { mockTrackerCtx } from "../utils/mocks";
 
 test("creates context", () => {
     const ctx = createTrackerCtx();
 
     expect(ctx).toEqual({
-        data: {
-            magentoJsBuild: "0000",
-            magentoJsVersion: pkg.version,
-        },
-        schema:
-            "iglu:com.adobe.magento.entity/magento-js-tracker/jsonschema/1-0-0",
+        data: mockTrackerCtx,
+        schema: schemas.MAGENTO_JS_TRACKER_SCHEMA_URL,
     });
 });
