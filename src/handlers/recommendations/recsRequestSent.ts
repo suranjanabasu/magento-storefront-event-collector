@@ -3,12 +3,12 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
+import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
 import { trackEvent } from "../../snowplow";
 
-const handler = (): void => {
-    const pageCtx = mse.context.getPage();
+const handler = (event: Event): void => {
+    const pageCtx = event.eventInfo.pageContext;
 
     trackEvent({
         category: "recommendation-unit",

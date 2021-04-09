@@ -3,17 +3,17 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
+import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
 import { trackEvent } from "../snowplow";
 
-const handler = (): void => {
-    const pageType = mse.context.getPage();
+const handler = (event: Event): void => {
+    const pageCtx = event.eventInfo.pageContext;
 
     trackEvent({
         category: "shopping-cart",
         action: "view",
-        property: pageType.pageType,
+        property: pageCtx.pageType,
         // TODO: this should be the cartId, which is a string,
         //       but Snowplow expects a number for value.
         value: 0,
