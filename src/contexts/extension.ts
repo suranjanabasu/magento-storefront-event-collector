@@ -4,11 +4,12 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import { MagentoExtension } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
 
-const createContext = (): ExtensionContext => {
-    const magentoExtensionCtx = mse.context.getMagentoExtension();
+const createContext = (extension?: MagentoExtension): ExtensionContext => {
+    const magentoExtensionCtx = extension ?? mse.context.getMagentoExtension();
 
     const context = {
         schema: schemas.MAGENTO_EXTENSION_SCHEMA_URL,

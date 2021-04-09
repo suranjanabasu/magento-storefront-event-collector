@@ -4,11 +4,12 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import { SearchInput } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../../schemas";
 
-const createContext = (): SearchInputContext => {
-    const searchInputCtx = mse.context.getSearchInput();
+const createContext = (searchInput?: SearchInput): SearchInputContext => {
+    const searchInputCtx = searchInput ?? mse.context.getSearchInput();
 
     const context = {
         schema: schemas.SEARCH_INPUT_SCHEMA_URL,

@@ -4,11 +4,14 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../../schemas";
 
-const createContext = (): SearchResultSuggestionContext => {
-    const searchResultsCtx = mse.context.getSearchResults();
+const createContext = (
+    searchResults?: SearchResults,
+): SearchResultSuggestionContext => {
+    const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
     const suggestion = searchResultsCtx.suggestions[0];
 
     const context = {

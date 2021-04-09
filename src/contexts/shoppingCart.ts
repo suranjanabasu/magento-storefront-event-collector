@@ -4,11 +4,15 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import {
+    Order,
+    ShoppingCart,
+} from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
 
-const createShoppingCartItems = () => {
-    const shoppingCartCtx = mse.context.getShoppingCart();
+const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
+    const shoppingCartCtx = shoppingCart ?? mse.context.getShoppingCart();
 
     if (!shoppingCartCtx.items) {
         return [];
@@ -31,9 +35,12 @@ const createShoppingCartItems = () => {
     return shoppingCartItems;
 };
 
-const createContext = (): ShoppingCartContext => {
-    const shoppingCartCtx = mse.context.getShoppingCart();
-    const orderCtx = mse.context.getOrder();
+const createContext = (
+    shoppingCart?: ShoppingCart,
+    order?: Order,
+): ShoppingCartContext => {
+    const shoppingCartCtx = shoppingCart ?? mse.context.getShoppingCart();
+    const orderCtx = order ?? mse.context.getOrder();
 
     const context = {
         schema: schemas.SHOPPING_CART_SCHEMA_URL,
@@ -44,7 +51,7 @@ const createContext = (): ShoppingCartContext => {
                     ? null
                     : parseInt(shoppingCartCtx.id),
             itemsCount: shoppingCartCtx.totalQuantity,
-            items: createShoppingCartItems(),
+            items: createShoppingCartItems(shoppingCartCtx),
             // TODO: where does this come from?
             possibleOnepageCheckout: false,
             // TODO: confirm this is correct

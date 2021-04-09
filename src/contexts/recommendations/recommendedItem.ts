@@ -4,14 +4,18 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import { Recommendations } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../../schemas";
 
 const createContext = (
     unitId: string,
     productId: number,
+    recommendations?: Recommendations,
 ): RecommendedItemContext | null => {
-    const recommendationsCtx = mse.context.getRecommendations();
+    const recommendationsCtx =
+        recommendations ?? mse.context.getRecommendations();
+
     const unit = recommendationsCtx.units.find(unit => unit.unitId === unitId);
 
     if (!unit) {
