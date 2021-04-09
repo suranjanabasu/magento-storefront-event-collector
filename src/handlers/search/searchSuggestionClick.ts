@@ -18,7 +18,7 @@ const handler = (): void => {
     trackEvent({
         category: "search",
         action: "suggestion-click",
-        label: "<suggestion>",
+        label: searchResultsSuggestionCtx.data.suggestion,
         property: "<pageType>",
         contexts: [
             searchInputCtx,

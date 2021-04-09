@@ -4,6 +4,7 @@ const config = {
     coverageDirectory: "coverage",
     coverageProvider: "v8",
     preset: "ts-jest",
+    setupFilesAfterEnv: ["<rootDir>/tests/utils/setup.ts"],
     testEnvironment: "jsdom",
     verbose: true,
 };

@@ -5,26 +5,22 @@
 
 import {
     createSearchInputCtx,
+    createSearchResultCategoryCtx,
     createSearchResultsCtx,
-    createSearchResultSuggestionCtx,
 } from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
     const searchInputCtx = createSearchInputCtx();
     const searchResultsCtx = createSearchResultsCtx();
-    const searchResultsSuggestionCtx = createSearchResultSuggestionCtx();
+    const searchResultsCategoryCtx = createSearchResultCategoryCtx();
 
     trackEvent({
         category: "search",
         action: "category-click",
-        label: "<categoryUrlKey>",
+        label: searchResultsCategoryCtx.data.url,
         property: "<pageType>",
-        contexts: [
-            searchInputCtx,
-            searchResultsCtx,
-            searchResultsSuggestionCtx,
-        ],
+        contexts: [searchInputCtx, searchResultsCtx, searchResultsCategoryCtx],
     });
 };
 

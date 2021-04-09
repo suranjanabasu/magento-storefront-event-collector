@@ -12,7 +12,7 @@ const handler = (): void => {
     trackEvent({
         category: "search",
         action: "api-request-sent",
-        label: "<query>",
+        label: searchInputCtx.data.query,
         property: "<pageType>",
         contexts: [searchInputCtx],
     });
