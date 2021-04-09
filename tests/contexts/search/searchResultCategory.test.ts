@@ -1,15 +1,12 @@
 import { createSearchResultCategoryCtx } from "../../../src/contexts";
+import schemas from "../../../src/schemas";
+import { mockSearchResultCategoryCtx } from "../../utils/mocks";
 
 test("creates context", () => {
     const ctx = createSearchResultCategoryCtx();
 
     expect(ctx).toEqual({
-        data: {
-            name: "Pants",
-            rank: 1,
-            url: "https://magento.com/category/pants",
-        },
-        schema:
-            "iglu:com.adobe.magento.entity/search-result-category/jsonschema/1-0-1",
+        data: mockSearchResultCategoryCtx,
+        schema: schemas.SEARCH_RESULT_CATEGORY_SCHEMA_URL,
     });
 });
