@@ -173,46 +173,82 @@ const mockRecommendationUnitCtx = {
     yOffsetTop: null,
 };
 
-const mockRecommendedItemCtx = {
-    currencyCode: "USD",
-    displayRank: 1,
-    imageUrl: null,
-    name: "space sku tst two",
-    prices: {
-        maximum: {
-            final: 33.12,
-            finalAdjustments: [
-                {
-                    code: "coupon",
-                    amount: 10,
-                },
-            ],
-            regular: 33.12,
-            regularAdjustments: [],
+const mockRecommendedItemsCtx = [
+    {
+        currencyCode: "USD",
+        displayRank: 1,
+        imageUrl: null,
+        name: "first item",
+        prices: {
+            maximum: {
+                final: 19.99,
+                finalAdjustments: [
+                    {
+                        code: "coupon",
+                        amount: 10,
+                    },
+                ],
+                regular: 29.99,
+                regularAdjustments: [],
+            },
+            minimum: {
+                final: 19.99,
+                finalAdjustments: [
+                    {
+                        code: "coupon",
+                        amount: 10,
+                    },
+                ],
+                regular: 29.99,
+                regularAdjustments: [],
+            },
         },
-        minimum: {
-            final: 33.12,
-            finalAdjustments: [
-                {
-                    code: "coupon",
-                    amount: 10,
-                },
-            ],
-            regular: 33.12,
-            regularAdjustments: [],
-        },
+        serviceRank: 1,
+        sku: "abc123",
+        unitId: "abc123",
+        url: "https://magento.com",
     },
-    serviceRank: 1,
-    sku: "space sku tst two",
-    unitId: "abc123",
-    url: "https://magento.com",
-};
+    {
+        currencyCode: "USD",
+        displayRank: 2,
+        imageUrl: null,
+        name: "second item",
+        prices: {
+            maximum: {
+                final: 9.99,
+                finalAdjustments: [
+                    {
+                        code: "coupon",
+                        amount: 10,
+                    },
+                ],
+                regular: 19.99,
+                regularAdjustments: [],
+            },
+            minimum: {
+                final: 9.99,
+                finalAdjustments: [
+                    {
+                        code: "coupon",
+                        amount: 10,
+                    },
+                ],
+                regular: 19.99,
+                regularAdjustments: [],
+            },
+        },
+        serviceRank: 2,
+        sku: "def456",
+        unitId: "abc123",
+        url: "https://magento.com",
+    },
+];
 
 export {
     mockExtensionCtx,
     mockProductCtx,
     mockRecommendationUnitCtx,
-    mockRecommendedItemCtx,
+    mockRecommendedItemsCtx,
     mockSearchInputCtx,
     mockSearchResultCategoryCtx,
     mockSearchResultProductCtx,
