@@ -1,9 +1,127 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.5.1/dist/index.js"></script>
+        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.6.0/dist/index.js"></script>
 
         <script>
+            window.magentoStorefrontEvents.context.setRecommendations({
+                units: [
+                    {
+                        unitId: "abc123",
+                        unitName: "most-viewed",
+                        unitType: "primary",
+                        searchTime: 2,
+                        totalProducts: 2,
+                        primaryProducts: 2,
+                        backupProducts: 0,
+                        products: [
+                            {
+                                rank: 1,
+                                score: 100.5,
+                                sku: "space sku tst two",
+                                name: "space sku tst two",
+                                productId: 2051,
+                                shortDescription: "short product description",
+                                type: "simple",
+                                visibility: "Catalog, Search",
+                                categories: [
+                                    "",
+                                    "gear",
+                                    "collections",
+                                    "training",
+                                    "men",
+                                    "women",
+                                    "promotions",
+                                    "gift-cards",
+                                    "sale",
+                                    "what-is-new",
+                                    "what-is-new/qa",
+                                ],
+                                weight: 7.0,
+                                currency: "USD",
+                                url: "https://magento.com",
+                                prices: {
+                                    maximum: {
+                                        finalAdjustments: [
+                                            {
+                                                code: "coupon",
+                                                amount: 10,
+                                            },
+                                        ],
+                                        final: 33.12,
+                                        regular: 33.12,
+                                        regularAdjustments: [],
+                                    },
+                                    minimum: {
+                                        finalAdjustments: [
+                                            {
+                                                code: "coupon",
+                                                amount: 10,
+                                            },
+                                        ],
+                                        final: 33.12,
+                                        regular: 33.12,
+                                        regularAdjustments: [],
+                                    },
+                                },
+                                queryType: "primary",
+                            },
+                            {
+                                rank: 2,
+                                score: 100.5,
+                                sku: "space sku tst three",
+                                name: "space sku tst three",
+                                productId: 2052,
+                                shortDescription: "short product description",
+                                type: "simple",
+                                visibility: "Catalog, Search",
+                                categories: [
+                                    "",
+                                    "gear",
+                                    "collections",
+                                    "training",
+                                    "men",
+                                    "women",
+                                    "promotions",
+                                    "gift-cards",
+                                    "sale",
+                                    "what-is-new",
+                                    "what-is-new/qa",
+                                ],
+                                weight: 7.0,
+                                currency: "USD",
+                                url: "https://magento.com",
+                                prices: {
+                                    maximum: {
+                                        finalAdjustments: [
+                                            {
+                                                code: "coupon",
+                                                amount: 10,
+                                            },
+                                        ],
+                                        final: 12.22,
+                                        regular: 12.22,
+                                        regularAdjustments: [],
+                                    },
+                                    minimum: {
+                                        finalAdjustments: [
+                                            {
+                                                code: "coupon",
+                                                amount: 10,
+                                            },
+                                        ],
+                                        final: 12.22,
+                                        regular: 12.22,
+                                        regularAdjustments: [],
+                                    },
+                                },
+                                queryType: "primary",
+                            },
+                        ],
+                    },
+                ],
+            });
+
             window.magentoStorefrontEvents.context.setProduct({
                 productId: 111111,
                 name: "T-Shirt",
@@ -185,6 +303,10 @@
 
             <button value="recsRequestSent" onclick="fireEvent(event)">
                 recsRequestSent
+            </button>
+
+            <button value="recsResponseReceived" onclick="fireEvent(event)">
+                recsResponseReceived
             </button>
 
             <button value="searchCategoryClick" onclick="fireEvent(event)">

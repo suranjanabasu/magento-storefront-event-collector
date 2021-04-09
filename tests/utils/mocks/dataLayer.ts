@@ -2,12 +2,30 @@ import {
     MagentoExtension,
     Order,
     Product,
+    Recommendations,
     SearchInput,
     SearchResults,
     Shopper,
     ShoppingCart,
     StorefrontInstance,
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
+
+const mockExtension: MagentoExtension = {
+    magentoExtensionVersion: "1.2.3",
+};
+
+const mockOrder: Order = {
+    appliedCouponCode: "",
+    email: "example@email.com",
+    grandTotal: 69.98,
+    orderId: 111111,
+    otherTax: 0.0,
+    paymentMethodCode: "credit card",
+    paymentMethodName: "visa",
+    salesTax: 0.0,
+    subtotalExcludingTax: 69.98,
+    subtotalIncludingTax: 69.98,
+};
 
 const mockProduct: Product = {
     productId: 111111,
@@ -36,17 +54,122 @@ const mockProduct: Product = {
     mainImageUrl: "https://magento.com/tshirt.jpg",
 };
 
-const mockOrder: Order = {
-    appliedCouponCode: "",
-    email: "example@email.com",
-    grandTotal: 69.98,
-    orderId: 111111,
-    otherTax: 0.0,
-    paymentMethodCode: "credit card",
-    paymentMethodName: "visa",
-    salesTax: 0.0,
-    subtotalExcludingTax: 69.98,
-    subtotalIncludingTax: 69.98,
+const mockRecommendations: Recommendations = {
+    units: [
+        {
+            unitId: "abc123",
+            unitName: "most-viewed",
+            unitType: "primary",
+            searchTime: 2,
+            totalProducts: 2,
+            primaryProducts: 2,
+            backupProducts: 0,
+            products: [
+                {
+                    rank: 1,
+                    score: 100.5,
+                    sku: "space sku tst two",
+                    name: "space sku tst two",
+                    productId: 2051,
+                    shortDescription: "short product description",
+                    type: "simple",
+                    visibility: "Catalog, Search",
+                    categories: [
+                        "",
+                        "gear",
+                        "collections",
+                        "training",
+                        "men",
+                        "women",
+                        "promotions",
+                        "gift-cards",
+                        "sale",
+                        "what-is-new",
+                        "what-is-new/qa",
+                    ],
+                    weight: 7.0,
+                    currency: "USD",
+                    url: "https://magento.com",
+                    prices: {
+                        maximum: {
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
+                            final: 33.12,
+                            regular: 33.12,
+                            regularAdjustments: [],
+                        },
+                        minimum: {
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
+                            final: 33.12,
+                            regular: 33.12,
+                            regularAdjustments: [],
+                        },
+                    },
+                    queryType: "primary",
+                },
+                {
+                    rank: 2,
+                    score: 100.5,
+                    sku: "space sku tst three",
+                    name: "space sku tst three",
+                    productId: 2052,
+                    shortDescription: "short product description",
+                    type: "simple",
+                    visibility: "Catalog, Search",
+                    categories: [
+                        "",
+                        "gear",
+                        "collections",
+                        "training",
+                        "men",
+                        "women",
+                        "promotions",
+                        "gift-cards",
+                        "sale",
+                        "what-is-new",
+                        "what-is-new/qa",
+                    ],
+                    weight: 7.0,
+                    currency: "USD",
+                    url: "https://magento.com",
+                    prices: {
+                        maximum: {
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
+                            final: 12.22,
+                            regular: 12.22,
+                            regularAdjustments: [],
+                        },
+                        minimum: {
+                            finalAdjustments: [
+                                {
+                                    code: "coupon",
+                                    amount: 10,
+                                },
+                            ],
+                            final: 12.22,
+                            regular: 12.22,
+                            regularAdjustments: [],
+                        },
+                    },
+                    queryType: "primary",
+                },
+            ],
+        },
+    ],
 };
 
 const mockShoppingCart: ShoppingCart = {
@@ -90,10 +213,6 @@ const mockShoppingCart: ShoppingCart = {
         },
     ],
     totalQuantity: 2,
-};
-
-const mockExtension: MagentoExtension = {
-    magentoExtensionVersion: "1.2.3",
 };
 
 const mockStorefront: StorefrontInstance = {
@@ -169,6 +288,7 @@ export {
     mockExtension,
     mockOrder,
     mockProduct,
+    mockRecommendations,
     mockSearchInput,
     mockSearchResults,
     mockShopper,
