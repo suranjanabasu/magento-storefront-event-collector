@@ -1,4 +1,6 @@
 import { searchRequestSentHandler } from "../../../src/handlers";
+import schemas from "../../../src/schemas";
+import { mockSearchInputCtx } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
     searchRequestSentHandler();
@@ -14,18 +16,8 @@ test("sends snowplow event", () => {
         undefined,
         [
             {
-                data: {
-                    page: 1,
-                    perPage: 20,
-                    query: "red patns",
-                    refinementAttribute: undefined,
-                    refinementSelection: undefined,
-                    sortOrder: "descending",
-                    sortType: "relevance",
-                    source: "search-bar",
-                },
-                schema:
-                    "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-2",
+                data: mockSearchInputCtx,
+                schema: schemas.SEARCH_INPUT_SCHEMA_URL,
             },
         ],
     );

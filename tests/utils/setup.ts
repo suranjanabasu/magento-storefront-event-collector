@@ -13,7 +13,7 @@ import {
     mockShopper,
     mockShoppingCart,
     mockStorefront,
-} from "./mocks/data";
+} from "./mocks/dataLayer";
 
 window.snowplow = jest.fn();
 

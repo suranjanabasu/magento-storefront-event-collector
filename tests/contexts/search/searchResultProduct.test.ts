@@ -1,18 +1,12 @@
 import { createSearchResultProductCtx } from "../../../src/contexts";
+import schemas from "../../../src/schemas";
+import { mockSearchResultProductCtx } from "../../utils/mocks";
 
 test("creates context", () => {
     const ctx = createSearchResultProductCtx();
 
     expect(ctx).toEqual({
-        data: {
-            imageUrl: "https://magento.com/red-pants.jpg",
-            name: "Red Pants",
-            price: 49.99,
-            rank: 1,
-            sku: "abc123",
-            url: "https://magento.com/red-pants",
-        },
-        schema:
-            "iglu:com.adobe.magento.entity/search-result-product/jsonschema/1-0-1",
+        data: mockSearchResultProductCtx,
+        schema: schemas.SEARCH_RESULT_PRODUCT_SCHEMA_URL,
     });
 });

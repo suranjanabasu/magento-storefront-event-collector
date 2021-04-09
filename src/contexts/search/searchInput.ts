@@ -18,8 +18,12 @@ const createContext = (searchInput?: SearchInput): SearchInputContext => {
             query: searchInputCtx.query,
             page: searchInputCtx.page,
             perPage: searchInputCtx.perPage,
-            refinementAttribute: searchInputCtx.refinementAttribute,
-            refinementSelection: searchInputCtx.refinementSelection,
+            refinements: [
+                {
+                    name: searchInputCtx.refinementAttribute,
+                    value: searchInputCtx.refinementSelection,
+                },
+            ],
             sortType: searchInputCtx.sortType,
             sortOrder: searchInputCtx.sortOrder,
         },
