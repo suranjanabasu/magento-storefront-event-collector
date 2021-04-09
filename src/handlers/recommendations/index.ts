@@ -3,6 +3,7 @@
  * See COPYING.txt for license details.
  */
 
+export { default as recsItemClickHandler } from "./recsItemClick";
 export { default as recsRequestSentHandler } from "./recsRequestSent";
 export { default as recsResponseReceivedHandler } from "./recsResponseReceived";
 export { default as recsUnitRenderHandler } from "./recsUnitRender";
