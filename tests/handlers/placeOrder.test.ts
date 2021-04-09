@@ -9,8 +9,8 @@ test("sends snowplow event", () => {
         "trackStructEvent",
         "checkout",
         "place-order",
-        "<orderId>",
-        "<pageType>",
+        "111111",
+        "pdp",
         0,
         undefined,
     );

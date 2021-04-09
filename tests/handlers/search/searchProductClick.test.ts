@@ -16,7 +16,7 @@ test("sends snowplow event", () => {
         "search",
         "product-click",
         "abc123",
-        "<pageType>",
+        "pdp",
         undefined,
         [
             {

@@ -12,7 +12,7 @@ test("sends snowplow event", () => {
         "search",
         "api-response-received",
         "red patns",
-        "<pageType>",
+        "pdp",
         undefined,
         [
             {

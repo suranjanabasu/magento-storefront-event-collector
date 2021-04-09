@@ -12,6 +12,7 @@ import {
 import { trackEvent } from "../../snowplow";
 
 const handler = (): void => {
+    const pageCtx = mse.context.getPage();
     const recommendationsCtx = mse.context.getRecommendations();
 
     const recommendationUnitCtxs: Array<RecommendationUnitContext> = [];
@@ -42,7 +43,7 @@ const handler = (): void => {
         category: "recommendation-unit",
         action: "api-response-received",
         // TODO: where do we get this from?
-        property: "<pageType>",
+        property: pageCtx.pageType,
         contexts: [...recommendationUnitCtxs, ...recommendedItemCtxs],
     });
 };

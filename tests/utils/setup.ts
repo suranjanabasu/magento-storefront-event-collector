@@ -5,6 +5,7 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import {
     mockExtension,
     mockOrder,
+    mockPage,
     mockProduct,
     mockRecommendations,
     mockSearchInput,
@@ -16,12 +17,13 @@ import {
 
 window.snowplow = jest.fn();
 
-mse.context.setProduct(mockProduct);
-mse.context.setOrder(mockOrder);
-mse.context.setShoppingCart(mockShoppingCart);
 mse.context.setMagentoExtension(mockExtension);
+mse.context.setOrder(mockOrder);
+mse.context.setPage(mockPage);
+mse.context.setProduct(mockProduct);
 mse.context.setRecommendations(mockRecommendations);
-mse.context.setStorefrontInstance(mockStorefront);
-mse.context.setShopper(mockShopper);
 mse.context.setSearchInput(mockSearchInput);
 mse.context.setSearchResults(mockSearchResults);
+mse.context.setShopper(mockShopper);
+mse.context.setShoppingCart(mockShoppingCart);
+mse.context.setStorefrontInstance(mockStorefront);

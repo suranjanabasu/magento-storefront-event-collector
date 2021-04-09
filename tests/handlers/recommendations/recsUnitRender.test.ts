@@ -15,7 +15,7 @@ test("sends snowplow event", () => {
         "recommendation-unit",
         "impression-render",
         undefined,
-        "<pageType>",
+        "pdp",
         undefined,
         [
             {
