@@ -9,14 +9,15 @@ import { createSearchInputCtx } from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const searchInputCtx = createSearchInputCtx();
+    const { pageContext, searchInputContext } = event.eventInfo;
+
+    const searchInputCtx = createSearchInputCtx(searchInputContext);
 
     trackEvent({
         category: "search",
         action: "api-request-sent",
         label: searchInputCtx.data.query,
-        property: pageCtx.pageType,
+        property: pageContext.pageType,
         contexts: [searchInputCtx],
     });
 };

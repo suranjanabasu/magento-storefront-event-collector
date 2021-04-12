@@ -7,6 +7,7 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { Recommendations } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../../schemas";
+import { getProduct, getUnit } from "../../utils/recommendations";
 
 const createContext = (
     unitId: string,
@@ -16,15 +17,13 @@ const createContext = (
     const recommendationsCtx =
         recommendations ?? mse.context.getRecommendations();
 
-    const unit = recommendationsCtx.units.find(unit => unit.unitId === unitId);
+    const unit = getUnit(unitId, recommendationsCtx);
 
     if (!unit) {
         return null;
     }
 
-    const product = unit.products.find(
-        product => product.productId === productId,
-    );
+    const product = getProduct(unitId, productId, recommendationsCtx);
 
     if (!product) {
         return null;

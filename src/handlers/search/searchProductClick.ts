@@ -13,17 +13,32 @@ import {
 import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const searchInputCtx = createSearchInputCtx();
-    const searchResultsCtx = createSearchResultsCtx();
-    const searchResultsProductCtx = createSearchResultProductCtx();
+    const {
+        sku,
+        pageContext,
+        searchInputContext,
+        searchResultsContext,
+    } = event.eventInfo;
+
+    const searchInputCtx = createSearchInputCtx(searchInputContext);
+    const searchResultsCtx = createSearchResultsCtx(searchResultsContext);
+    const searchResultsProductCtx = createSearchResultProductCtx(
+        sku as string,
+        searchResultsContext,
+    );
+
+    const contexts: Array<SnowplowContext> = [searchInputCtx, searchResultsCtx];
+
+    if (searchResultsProductCtx) {
+        contexts.push(searchResultsProductCtx);
+    }
 
     trackEvent({
         category: "search",
         action: "product-click",
-        label: searchResultsProductCtx.data.sku,
-        property: pageCtx.pageType,
-        contexts: [searchInputCtx, searchResultsCtx, searchResultsProductCtx],
+        label: searchResultsProductCtx?.data.sku,
+        property: pageContext.pageType,
+        contexts,
     });
 };
 

@@ -1,9 +1,9 @@
 import { recsUnitViewHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
-import { mockRecommendationUnitCtx } from "../../utils/mocks/context";
+import { mockEvent, mockRecommendationUnitCtx } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    recsUnitViewHandler();
+    recsUnitViewHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

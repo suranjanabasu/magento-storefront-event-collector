@@ -8,12 +8,12 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
+    const { pageContext } = event.eventInfo;
 
     trackEvent({
         category: "recommendation-unit",
         action: "api-request-sent",
-        property: pageCtx.pageType,
+        property: pageContext.pageType,
     });
 };
 

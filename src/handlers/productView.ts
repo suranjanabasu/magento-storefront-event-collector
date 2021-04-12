@@ -9,13 +9,13 @@ import { createProductCtx } from "../contexts";
 import { trackEvent } from "../snowplow";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const productCtx = createProductCtx();
+    const { pageContext, productContext } = event.eventInfo;
+    const productCtx = createProductCtx(productContext);
 
     trackEvent({
         category: "product",
         action: "view",
-        property: pageCtx.pageType,
+        property: pageContext.pageType,
         contexts: [productCtx],
     });
 };

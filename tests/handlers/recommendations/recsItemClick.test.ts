@@ -1,12 +1,13 @@
 import { recsItemClickHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
+    mockEvent,
     mockRecommendationUnitCtx,
     mockRecommendedItemsCtx,
-} from "../../utils/mocks/context";
+} from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    recsItemClickHandler();
+    recsItemClickHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

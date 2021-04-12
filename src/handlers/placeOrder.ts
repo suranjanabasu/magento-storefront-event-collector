@@ -8,14 +8,13 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 import { trackEvent } from "../snowplow";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const orderCtx = event.eventInfo.orderContext;
+    const { pageContext, orderContext } = event.eventInfo;
 
     trackEvent({
         category: "checkout",
         action: "place-order",
-        label: orderCtx.orderId.toString(),
-        property: pageCtx.pageType,
+        label: orderContext.orderId.toString(),
+        property: pageContext.pageType,
         // TODO: this should be the cartId, which is a string,
         //       but Snowplow expects a number for value.
         value: 0,

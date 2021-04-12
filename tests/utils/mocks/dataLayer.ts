@@ -1,9 +1,12 @@
+import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import {
+    CustomUrl,
     MagentoExtension,
     Order,
     Page,
     Product,
     Recommendations,
+    ReferrerUrl,
     SearchInput,
     SearchResults,
     Shopper,
@@ -81,7 +84,7 @@ const mockRecommendations: Recommendations = {
                     score: 100.5,
                     sku: "abc123",
                     name: "first item",
-                    productId: 2051,
+                    productId: 111111,
                     shortDescription: "short product description",
                     type: "simple",
                     visibility: "Catalog, Search",
@@ -132,7 +135,7 @@ const mockRecommendations: Recommendations = {
                     score: 100.5,
                     sku: "def456",
                     name: "second item",
-                    productId: 2052,
+                    productId: 222222,
                     shortDescription: "short product description",
                     type: "simple",
                     visibility: "Catalog, Search",
@@ -295,7 +298,40 @@ const mockSearchResults: SearchResults = {
     suggestionCount: 1,
 };
 
+const mockReferrerUrl: ReferrerUrl = {
+    referrerUrl: "https://magento.com",
+};
+
+const mockCustomUrl: CustomUrl = {
+    customUrl: "https://magento.com",
+};
+
+const mockEvent: Event = {
+    event: "add-to-cart",
+    eventInfo: {
+        unitId: "abc123",
+        productId: 111111,
+        name: "Pants",
+        sku: "abc123",
+        suggestion: "red pants",
+        customContext: {},
+        customUrlContext: mockCustomUrl,
+        magentoExtensionContext: mockExtension,
+        orderContext: mockOrder,
+        pageContext: mockPage,
+        productContext: mockProduct,
+        recommendationsContext: mockRecommendations,
+        referrerUrlContext: mockReferrerUrl,
+        searchInputContext: mockSearchInput,
+        searchResultsContext: mockSearchResults,
+        shopperContext: mockShopper,
+        shoppingCartContext: mockShoppingCart,
+        storefrontInstanceContext: mockStorefront,
+    },
+};
+
 export {
+    mockEvent,
     mockExtension,
     mockOrder,
     mockPage,

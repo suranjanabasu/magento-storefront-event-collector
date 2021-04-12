@@ -93,12 +93,8 @@ const mockSearchInputCtx = {
     page: 1,
     perPage: 20,
     query: "red patns",
-    refinements: [
-        {
-            name: undefined,
-            value: undefined,
-        },
-    ],
+    refinementAttribute: undefined,
+    refinementSelection: undefined,
     sortOrder: "descending",
     sortType: "relevance",
     source: "search-bar",

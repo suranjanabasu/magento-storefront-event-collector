@@ -10,26 +10,29 @@ import {
     createRecommendedItemCtx,
 } from "../../contexts/recommendations";
 import { trackEvent } from "../../snowplow";
+import { getUnit } from "../../utils/recommendations";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const recommendationsCtx = event.eventInfo.recommendationsContext;
+    const { unitId, pageContext, recommendationsContext } = event.eventInfo;
 
     const contexts: Array<SnowplowContext> = [];
 
-    // TODO: figure out how to determine what unit was rendered
     const recommendationUnitCtx = createRecommendationUnitCtx(
-        recommendationsCtx.units[0].unitId,
+        unitId as string,
+        recommendationsContext,
     );
 
     if (recommendationUnitCtx) {
         contexts.push(recommendationUnitCtx);
     }
 
-    recommendationsCtx.units[0].products.forEach(product => {
+    const unit = getUnit(unitId as string, recommendationsContext);
+
+    unit?.products.forEach(product => {
         const itemCtx = createRecommendedItemCtx(
-            recommendationsCtx.units[0].unitId,
+            unitId as string,
             product.productId,
+            recommendationsContext,
         );
 
         if (itemCtx) {
@@ -40,8 +43,7 @@ const handler = (event: Event): void => {
     trackEvent({
         category: "recommendation-unit",
         action: "impression-render",
-        // TODO: where do we get this from?
-        property: pageCtx.pageType,
+        property: pageContext.pageType,
         contexts,
     });
 };

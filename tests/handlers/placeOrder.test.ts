@@ -1,7 +1,8 @@
 import { placeOrderHandler } from "../../src/handlers";
+import { mockEvent } from "../utils/mocks";
 
 test("sends snowplow event", () => {
-    placeOrderHandler();
+    placeOrderHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

@@ -1,82 +1,122 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.7.0/dist/index.js"></script>
+        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.8.1/dist/index.js"></script>
         <script src="/index.js"></script>
-
-        <script>
-            function fireEvent(event) {
-                console.log(event.target.value);
-                magentoStorefrontEvents.publish[event.target.value]();
-            }
-        </script>
-
         <script src="http://localhost:8080/index.js"></script>
     </head>
 
     <body>
         <div class="events">
-            <button value="addToCart" onclick="fireEvent(event)">
+            <button
+                value="addToCart"
+                onclick="magentoStorefrontEvents.publish.addToCart()"
+            >
                 addToCart
             </button>
 
-            <button value="placeOrder" onclick="fireEvent(event)">
+            <button
+                value="placeOrder"
+                onclick="magentoStorefrontEvents.publish.placeOrder()"
+            >
                 placeOrder
             </button>
 
-            <button value="productPageView" onclick="fireEvent(event)">
-                productView
+            <button
+                value="productPageView"
+                onclick="magentoStorefrontEvents.publish.productPageView()"
+            >
+                productPageView
             </button>
 
-            <button value="recsItemAddToCartClick" onclick="fireEvent(event)">
+            <button
+                value="recsItemAddToCartClick"
+                onclick="magentoStorefrontEvents.publish.recsItemAddToCartClick('abc123', 111111)"
+            >
                 recsItemAddToCartClick
             </button>
 
-            <button value="recsItemClick" onclick="fireEvent(event)">
+            <button
+                value="recsItemClick"
+                onclick="magentoStorefrontEvents.publish.recsItemClick('abc123', 111111)"
+            >
                 recsItemClick
             </button>
 
-            <button value="recsRequestSent" onclick="fireEvent(event)">
+            <button
+                value="recsRequestSent"
+                onclick="magentoStorefrontEvents.publish.recsRequestSent()"
+            >
                 recsRequestSent
             </button>
 
-            <button value="recsResponseReceived" onclick="fireEvent(event)">
+            <button
+                value="recsResponseReceived"
+                onclick="magentoStorefrontEvents.publish.recsResponseReceived()"
+            >
                 recsResponseReceived
             </button>
 
-            <button value="recsUnitRender" onclick="fireEvent(event)">
+            <button
+                value="recsUnitRender"
+                onclick="magentoStorefrontEvents.publish.recsUnitRender('abc123')"
+            >
                 recsUnitRender
             </button>
 
-            <button value="recsUnitView" onclick="fireEvent(event)">
+            <button
+                value="recsUnitView"
+                onclick="magentoStorefrontEvents.publish.recsUnitView('abc123')"
+            >
                 recsUnitView
             </button>
 
-            <button value="searchCategoryClick" onclick="fireEvent(event)">
+            <button
+                value="searchCategoryClick"
+                onclick="magentoStorefrontEvents.publish.searchCategoryClick('Bottoms')"
+            >
                 searchCategoryClick
             </button>
 
-            <button value="searchProductClick" onclick="fireEvent(event)">
+            <button
+                value="searchProductClick"
+                onclick="magentoStorefrontEvents.publish.searchProductClick('abc123')"
+            >
                 searchProductClick
             </button>
 
-            <button value="searchRequestSent" onclick="fireEvent(event)">
+            <button
+                value="searchRequestSent"
+                onclick="magentoStorefrontEvents.publish.searchRequestSent()"
+            >
                 searchRequestSent
             </button>
 
-            <button value="searchResponseReceived" onclick="fireEvent(event)">
+            <button
+                value="searchResponseReceived"
+                onclick="magentoStorefrontEvents.publish.searchResponseReceived()"
+            >
                 searchResponseReceived
             </button>
 
-            <button value="searchResultsView" onclick="fireEvent(event)">
+            <button
+                value="searchResultsView"
+                onclick="magentoStorefrontEvents.publish.searchResultsView()"
+            >
                 searchResultsView
             </button>
 
-            <button value="searchSuggestionClick" onclick="fireEvent(event)">
+            <button
+                value="searchSuggestionClick"
+                onclick="magentoStorefrontEvents.publish.searchSuggestionClick('red pants')"
+            >
                 searchSuggestionClick
             </button>
 
-            <button value="shoppingCartView" onclick="fireEvent(event)">
+            <button
+                value="shoppingCartView"
+                onclick="magentoStorefrontEvents.publish.shoppingCartView()"
+            >
                 shoppingCartView
             </button>
         </div>

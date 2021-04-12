@@ -9,14 +9,13 @@ import { createRecommendationUnitCtx } from "../../contexts/recommendations";
 import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const recommendationsCtx = event.eventInfo.recommendationsContext;
+    const { unitId, pageContext, recommendationsContext } = event.eventInfo;
 
     const contexts: Array<SnowplowContext> = [];
 
-    // TODO: figure out how to determine what unit was rendered
     const recommendationUnitCtx = createRecommendationUnitCtx(
-        recommendationsCtx.units[0].unitId,
+        unitId as string,
+        recommendationsContext,
     );
 
     if (recommendationUnitCtx) {
@@ -26,8 +25,7 @@ const handler = (event: Event): void => {
     trackEvent({
         category: "recommendation-unit",
         action: "view",
-        // TODO: where do we get this from?
-        property: pageCtx.pageType,
+        property: pageContext.pageType,
         contexts,
     });
 };

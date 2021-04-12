@@ -10,38 +10,48 @@ import {
     createRecommendedItemCtx,
 } from "../../contexts/recommendations";
 import { trackEvent } from "../../snowplow";
+import { getProduct } from "../../utils/recommendations";
 
 const handler = (event: Event): void => {
-    const pageCtx = event.eventInfo.pageContext;
-    const recommendationsCtx = event.eventInfo.recommendationsContext;
+    const {
+        unitId,
+        productId,
+        pageContext,
+        recommendationsContext,
+    } = event.eventInfo;
 
     const contexts: Array<SnowplowContext> = [];
 
-    // TODO: figure out how to determine what item was clicked
     const recommendationUnitCtx = createRecommendationUnitCtx(
-        recommendationsCtx.units[0].unitId,
+        unitId as string,
+        recommendationsContext,
     );
 
     if (recommendationUnitCtx) {
         contexts.push(recommendationUnitCtx);
     }
 
-    // TODO: figure out how to determine what item was clicked
     const recommendedItemCtx = createRecommendedItemCtx(
-        recommendationsCtx.units[0].unitId,
-        recommendationsCtx.units[0].products[0].productId,
+        unitId as string,
+        productId as number,
+        recommendationsContext,
     );
 
     if (recommendedItemCtx) {
         contexts.push(recommendedItemCtx);
     }
 
+    const product = getProduct(
+        unitId as string,
+        productId as number,
+        recommendationsContext,
+    );
+
     trackEvent({
         category: "recommendation-unit",
         action: "rec-add-to-cart-click",
-        // TODO: where do we get this from?
-        property: pageCtx.pageType,
-        value: recommendationsCtx.units[0].products[0].rank,
+        property: pageContext.pageType,
+        value: product?.rank,
         contexts,
     });
 };
