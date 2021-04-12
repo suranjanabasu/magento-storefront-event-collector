@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.3...v0.0.4) (2021-04-09)
+
+
+### Features
+
+* populate order id ([ba2bb8b](https://github.com/adobe/magento-storefront-event-collector/commit/ba2bb8b1c85b7013c278d3db72ca6ca8b3c0c12a))
+* populate page type ([48fa6d5](https://github.com/adobe/magento-storefront-event-collector/commit/48fa6d5ef365e0c67d1e159ca937c40a6a79b32a))
+* support recommendation add to cart event ([dc63789](https://github.com/adobe/magento-storefront-event-collector/commit/dc637899a15f1ad6c69eed700d1ca2fdd3b9eef9))
+* support recommendation api response received event ([5ec92ce](https://github.com/adobe/magento-storefront-event-collector/commit/5ec92ce343c46347a124b30065468b8ce3f9b166))
+* support recommendation api response received event ([3f47b81](https://github.com/adobe/magento-storefront-event-collector/commit/3f47b812cf3dc99d6edf64aeb78b8e5520d66278))
+* support recommendation click event ([c8d6426](https://github.com/adobe/magento-storefront-event-collector/commit/c8d6426d7a1695e877b9e0c4d29c35567651bf24))
+* support recommendation render event ([e007582](https://github.com/adobe/magento-storefront-event-collector/commit/e007582eecf5c5c2c554d1d31c3105534a0f3625))
+* support recommendation view event ([42fd248](https://github.com/adobe/magento-storefront-event-collector/commit/42fd248812b67de4931fab1a4362272c5e003964))
+
 ### [0.0.3](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.2...v0.0.3) (2021-04-01)
 
 
