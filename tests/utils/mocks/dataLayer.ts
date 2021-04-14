@@ -252,6 +252,7 @@ const mockShopper: Shopper = {
 };
 
 const mockSearchInput: SearchInput = {
+    searchRequestId: "abc123",
     source: "search-bar",
     query: "red patns",
     page: 1,
@@ -275,6 +276,7 @@ const mockSearchInput: SearchInput = {
 };
 
 const mockSearchResults: SearchResults = {
+    searchRequestId: "abc123",
     products: [
         {
             name: "Red Pants",
