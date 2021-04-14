@@ -84,42 +84,61 @@ type RecommendedItem = {
 };
 
 type SearchInput = {
+    source: string | null;
+    queryType: string;
+    searchRequestId: string;
+    query: string;
     page: number;
     perPage: number;
-    query: string;
-    refinements?: Array<{
-        name?: string;
-        value?: string;
-    }>;
-    sortType: string;
-    sortOrder: string;
-    source?: string;
+    filters: Array<SearchFilter> | null;
+    sortType: string | null;
+    sortOrder: string | null;
+};
+
+type SearchFilter = {
+    name: string;
+    values: Array<string>;
+    operator: string;
 };
 
 type SearchResultCategory = {
     name: string;
-    rank: number;
     url: string;
+    rank: number;
 };
 
 type SearchResultProduct = {
-    imageUrl: string;
     name: string;
-    price: number;
+    url: string;
     rank: number;
     sku: string;
-    url: string;
+    imageUrl: string;
+    price: number;
 };
 
 type SearchResults = {
-    products: Array<SearchResultProduct>;
-    suggestions: Array<SearchResultSuggestion>;
-    categories: Array<SearchResultCategory>;
+    searchRequestId: string;
+    products: Array<SearchResultProduct> | null;
+    suggestions: Array<SearchResultSuggestion> | null;
+    categories: Array<SearchResultCategory> | null;
     page: number;
     perPage: number;
     productCount: number;
     categoryCount: number;
     suggestionCount: number;
+    facets: Array<SearchFacet> | null;
+};
+
+type SearchFacet = {
+    attribute: string;
+    dataType: string;
+    facetType: string;
+    buckets: Array<SearchBucket>;
+};
+
+type SearchBucket = {
+    tite: string;
+    count: number;
 };
 
 type SearchResultSuggestion = {
