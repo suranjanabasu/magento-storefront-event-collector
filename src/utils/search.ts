@@ -45,7 +45,6 @@ const getSuggestion = (
     return suggested;
 };
 
-// TODO: add tests
 const createFilters = (ctx: SearchInput): Array<SearchFilter> => {
     const filters = ctx.filters.flatMap(filter => {
         const filters: Array<SearchFilter> = [];
