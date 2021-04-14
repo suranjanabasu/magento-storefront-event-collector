@@ -1,13 +1,14 @@
 import { searchProductClickHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
+    mockEvent,
     mockSearchInputCtx,
     mockSearchResultProductCtx,
     mockSearchResultsCtx,
 } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    searchProductClickHandler();
+    searchProductClickHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

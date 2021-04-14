@@ -4,11 +4,12 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import { Product } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
 
-const createContext = (): ProductContext => {
-    const productCtx = mse.context.getProduct();
+const createContext = (product?: Product): ProductContext => {
+    const productCtx = product ?? mse.context.getProduct();
 
     const context = {
         schema: schemas.PRODUCT_SCHEMA_URL,

@@ -1,7 +1,8 @@
 import { recsRequestSentHandler } from "../../../src/handlers";
+import { mockEvent } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    recsRequestSentHandler();
+    recsRequestSentHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

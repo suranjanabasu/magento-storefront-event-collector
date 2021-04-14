@@ -1,9 +1,9 @@
 import { addToCartHandler } from "../../src/handlers";
 import schemas from "../../src/schemas";
-import { mockProductCtx } from "../utils/mocks";
+import { mockEvent, mockProductCtx } from "../utils/mocks";
 
 test("sends snowplow event", () => {
-    addToCartHandler();
+    addToCartHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

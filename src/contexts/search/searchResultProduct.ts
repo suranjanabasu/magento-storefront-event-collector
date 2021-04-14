@@ -4,12 +4,22 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
+import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../../schemas";
+import { getProduct } from "../../utils/search";
 
-const createContext = (): SearchResultProductContext => {
-    const searchResultsCtx = mse.context.getSearchResults();
-    const product = searchResultsCtx.products[0];
+const createContext = (
+    sku: string,
+    searchResults?: SearchResults,
+): SearchResultProductContext | null => {
+    const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
+
+    const product = getProduct(sku, searchResultsCtx);
+
+    if (!product) {
+        return null;
+    }
 
     const context = {
         schema: schemas.SEARCH_RESULT_PRODUCT_SCHEMA_URL,

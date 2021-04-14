@@ -1,7 +1,8 @@
 import { shoppingCartViewHandler } from "../../src/handlers";
+import { mockEvent } from "../utils/mocks";
 
 test("sends snowplow event", () => {
-    shoppingCartViewHandler();
+    shoppingCartViewHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

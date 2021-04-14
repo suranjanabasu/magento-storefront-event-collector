@@ -3,7 +3,7 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
+import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
 import {
     createSearchInputCtx,
@@ -12,22 +12,33 @@ import {
 } from "../../contexts";
 import { trackEvent } from "../../snowplow";
 
-const handler = (): void => {
-    const pageCtx = mse.context.getPage();
-    const searchInputCtx = createSearchInputCtx();
-    const searchResultsCtx = createSearchResultsCtx();
-    const searchResultsSuggestionCtx = createSearchResultSuggestionCtx();
+const handler = (event: Event): void => {
+    const {
+        suggestion,
+        pageContext,
+        searchInputContext,
+        searchResultsContext,
+    } = event.eventInfo;
+
+    const searchInputCtx = createSearchInputCtx(searchInputContext);
+    const searchResultsCtx = createSearchResultsCtx(searchResultsContext);
+    const searchResultsSuggestionCtx = createSearchResultSuggestionCtx(
+        suggestion as string,
+        searchResultsContext,
+    );
+
+    const contexts: Array<SnowplowContext> = [searchInputCtx, searchResultsCtx];
+
+    if (searchResultsSuggestionCtx) {
+        contexts.push(searchResultsSuggestionCtx);
+    }
 
     trackEvent({
         category: "search",
         action: "suggestion-click",
-        label: searchResultsSuggestionCtx.data.suggestion,
-        property: pageCtx.pageType,
-        contexts: [
-            searchInputCtx,
-            searchResultsCtx,
-            searchResultsSuggestionCtx,
-        ],
+        label: searchResultsSuggestionCtx?.data.suggestion,
+        property: pageContext.pageType,
+        contexts,
     });
 };
 

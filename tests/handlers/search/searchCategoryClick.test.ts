@@ -1,13 +1,14 @@
 import { searchCategoryClickHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
+    mockEvent,
     mockSearchInputCtx,
     mockSearchResultCategoryCtx,
     mockSearchResultsCtx,
 } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    searchCategoryClickHandler();
+    searchCategoryClickHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 

@@ -3,20 +3,19 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
+import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
 import { createRecommendationUnitCtx } from "../../contexts/recommendations";
 import { trackEvent } from "../../snowplow";
 
-const handler = (): void => {
-    const pageCtx = mse.context.getPage();
-    const recommendationsCtx = mse.context.getRecommendations();
+const handler = (event: Event): void => {
+    const { unitId, pageContext, recommendationsContext } = event.eventInfo;
 
     const contexts: Array<SnowplowContext> = [];
 
-    // TODO: figure out how to determine what unit was rendered
     const recommendationUnitCtx = createRecommendationUnitCtx(
-        recommendationsCtx.units[0].unitId,
+        unitId as string,
+        recommendationsContext,
     );
 
     if (recommendationUnitCtx) {
@@ -26,8 +25,7 @@ const handler = (): void => {
     trackEvent({
         category: "recommendation-unit",
         action: "view",
-        // TODO: where do we get this from?
-        property: pageCtx.pageType,
+        property: pageContext.pageType,
         contexts,
     });
 };

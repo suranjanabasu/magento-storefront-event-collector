@@ -1,9 +1,9 @@
 import { searchRequestSentHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
-import { mockSearchInputCtx } from "../../utils/mocks";
+import { mockEvent, mockSearchInputCtx } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    searchRequestSentHandler();
+    searchRequestSentHandler(mockEvent);
 
     expect(window.snowplow).toHaveBeenCalledTimes(1);
 
