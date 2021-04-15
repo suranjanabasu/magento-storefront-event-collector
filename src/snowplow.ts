@@ -10,6 +10,7 @@ import {
     newTracker,
     setOptOutCookie,
     TrackerConfiguration,
+    trackPageView,
 } from "@snowplow/browser-tracker";
 
 import { createGlobalCtx } from "./contexts";
@@ -57,6 +58,8 @@ const configureSnowplow = ({
         minimumVisitLength: 5,
         heartbeatDelay: 5,
     });
+
+    trackPageView();
 };
 
 export { configureSnowplow };
