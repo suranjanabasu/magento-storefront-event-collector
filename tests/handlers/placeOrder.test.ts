@@ -1,18 +1,18 @@
+import { trackStructEvent } from "@snowplow/browser-tracker";
+
 import { placeOrderHandler } from "../../src/handlers";
 import { mockEvent } from "../utils/mocks";
 
 test("sends snowplow event", () => {
     placeOrderHandler(mockEvent);
 
-    expect(window.snowplow).toHaveBeenCalledTimes(1);
+    expect(trackStructEvent).toHaveBeenCalledTimes(1);
 
-    expect(window.snowplow).toHaveBeenCalledWith(
-        "trackStructEvent",
-        "checkout",
-        "place-order",
-        "111111",
-        "pdp",
-        0,
-        undefined,
-    );
+    expect(trackStructEvent).toHaveBeenCalledWith({
+        category: "checkout",
+        action: "place-order",
+        label: "111111",
+        property: "pdp",
+        value: 0,
+    });
 });

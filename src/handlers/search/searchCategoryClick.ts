@@ -4,13 +4,16 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
 import {
     createSearchInputCtx,
     createSearchResultCategoryCtx,
     createSearchResultsCtx,
 } from "../../contexts";
-import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
     const {
@@ -27,18 +30,21 @@ const handler = (event: Event): void => {
         searchResultsContext,
     );
 
-    const contexts: Array<SnowplowContext> = [searchInputCtx, searchResultsCtx];
+    const context: Array<SelfDescribingJson> = [
+        searchInputCtx,
+        searchResultsCtx,
+    ];
 
     if (searchResultsCategoryCtx) {
-        contexts.push(searchResultsCategoryCtx);
+        context.push(searchResultsCategoryCtx);
     }
 
-    trackEvent({
+    trackStructEvent({
         category: "search",
         action: "category-click",
         label: searchResultsCategoryCtx?.data.url,
         property: pageContext.pageType,
-        contexts,
+        context,
     });
 };
 

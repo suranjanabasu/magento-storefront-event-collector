@@ -4,13 +4,12 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
-
-import { trackEvent } from "../snowplow";
+import { trackStructEvent } from "@snowplow/browser-tracker";
 
 const handler = (event: Event): void => {
     const { pageContext, orderContext } = event.eventInfo;
 
-    trackEvent({
+    trackStructEvent({
         category: "checkout",
         action: "place-order",
         label: orderContext.orderId.toString(),

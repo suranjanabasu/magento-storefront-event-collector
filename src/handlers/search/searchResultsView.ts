@@ -4,9 +4,9 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import { trackStructEvent } from "@snowplow/browser-tracker";
 
 import { createSearchInputCtx, createSearchResultsCtx } from "../../contexts";
-import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
     const {
@@ -18,11 +18,11 @@ const handler = (event: Event): void => {
     const searchInputCtx = createSearchInputCtx(searchInputContext);
     const searchResultsCtx = createSearchResultsCtx(searchResultsContext);
 
-    trackEvent({
+    trackStructEvent({
         category: "search",
         action: "results-view",
         property: pageContext.pageType,
-        contexts: [searchInputCtx, searchResultsCtx],
+        context: [searchInputCtx, searchResultsCtx],
     });
 };
 

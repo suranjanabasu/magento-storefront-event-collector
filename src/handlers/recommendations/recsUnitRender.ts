@@ -4,18 +4,21 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
 import {
     createRecommendationUnitCtx,
     createRecommendedItemCtx,
 } from "../../contexts/recommendations";
-import { trackEvent } from "../../snowplow";
 import { getUnit } from "../../utils/recommendations";
 
 const handler = (event: Event): void => {
     const { unitId, pageContext, recommendationsContext } = event.eventInfo;
 
-    const contexts: Array<SnowplowContext> = [];
+    const context: Array<SelfDescribingJson> = [];
 
     const recommendationUnitCtx = createRecommendationUnitCtx(
         unitId as string,
@@ -23,7 +26,7 @@ const handler = (event: Event): void => {
     );
 
     if (recommendationUnitCtx) {
-        contexts.push(recommendationUnitCtx);
+        context.push(recommendationUnitCtx);
     }
 
     const unit = getUnit(unitId as string, recommendationsContext);
@@ -36,15 +39,15 @@ const handler = (event: Event): void => {
         );
 
         if (itemCtx) {
-            contexts.push(itemCtx);
+            context.push(itemCtx);
         }
     });
 
-    trackEvent({
+    trackStructEvent({
         category: "recommendation-unit",
         action: "impression-render",
         property: pageContext.pageType,
-        contexts,
+        context,
     });
 };
 

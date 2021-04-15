@@ -4,14 +4,17 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
 import { createRecommendationUnitCtx } from "../../contexts/recommendations";
-import { trackEvent } from "../../snowplow";
 
 const handler = (event: Event): void => {
     const { unitId, pageContext, recommendationsContext } = event.eventInfo;
 
-    const contexts: Array<SnowplowContext> = [];
+    const context: Array<SelfDescribingJson> = [];
 
     const recommendationUnitCtx = createRecommendationUnitCtx(
         unitId as string,
@@ -19,14 +22,14 @@ const handler = (event: Event): void => {
     );
 
     if (recommendationUnitCtx) {
-        contexts.push(recommendationUnitCtx);
+        context.push(recommendationUnitCtx);
     }
 
-    trackEvent({
+    trackStructEvent({
         category: "recommendation-unit",
         action: "view",
         property: pageContext.pageType,
-        contexts,
+        context,
     });
 };
 

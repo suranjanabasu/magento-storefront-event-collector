@@ -6,13 +6,11 @@
 import "@adobe/adobe-client-data-layer";
 
 import { subscribeToEvents } from "./events";
-import { configureSnowplow, initializeSnowplow } from "./snowplow";
-
-initializeSnowplow("https://commerce.adobedtm.com/sp/v2/sp.js");
+import { configureSnowplow } from "./snowplow";
 
 configureSnowplow({
     appId: "magento-storefront-event-collector",
-    collectorUrl: "com-magento-prod1.mini.snplow.net",
+    collectorUrl: "https://com-magento-prod1.mini.snplow.net",
 });
 
 subscribeToEvents();

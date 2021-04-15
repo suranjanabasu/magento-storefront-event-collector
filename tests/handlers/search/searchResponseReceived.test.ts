@@ -1,3 +1,5 @@
+import { trackStructEvent } from "@snowplow/browser-tracker";
+
 import { searchResponseReceivedHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
@@ -9,16 +11,14 @@ import {
 test("sends snowplow event", () => {
     searchResponseReceivedHandler(mockEvent);
 
-    expect(window.snowplow).toHaveBeenCalledTimes(1);
+    expect(trackStructEvent).toHaveBeenCalledTimes(1);
 
-    expect(window.snowplow).toHaveBeenCalledWith(
-        "trackStructEvent",
-        "search",
-        "api-response-received",
-        "red patns",
-        "pdp",
-        undefined,
-        [
+    expect(trackStructEvent).toHaveBeenCalledWith({
+        category: "search",
+        action: "api-response-received",
+        label: "red patns",
+        property: "pdp",
+        context: [
             {
                 data: mockSearchInputCtx,
                 schema: schemas.SEARCH_INPUT_SCHEMA_URL,
@@ -28,5 +28,5 @@ test("sends snowplow event", () => {
                 schema: schemas.SEARCH_RESULTS_SCHEMA_URL,
             },
         ],
-    );
+    });
 });

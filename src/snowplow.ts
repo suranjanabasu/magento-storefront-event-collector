@@ -3,12 +3,16 @@
  * See COPYING.txt for license details.
  */
 
-import { createGlobalCtx } from "./contexts";
-import { plowing } from "./plowing";
+import { PerformanceTimingPlugin } from "@snowplow/browser-plugin-performance-timing";
+import {
+    addGlobalContexts,
+    enableActivityTracking,
+    newTracker,
+    setOptOutCookie,
+    TrackerConfiguration,
+} from "@snowplow/browser-tracker";
 
-const initializeSnowplow = (spUrl: string): void => {
-    plowing(spUrl);
-};
+import { createGlobalCtx } from "./contexts";
 
 type ConfigureSnowplowParams = {
     appId: string;
@@ -19,64 +23,40 @@ const configureSnowplow = ({
     appId,
     collectorUrl,
 }: ConfigureSnowplowParams): void => {
-    window.snowplow("newTracker", "sp", collectorUrl, {
+    const configuration: TrackerConfiguration = {
         appId,
         platform: "web",
         discoverRootDomain: true,
         cookieName: "mg",
         encodeBase64: true,
         respectDoNotTrack: false,
-        userFingerprint: true,
-        userFingerprintSeed: 7089491512,
-        pageUnloadTimer: 500,
-        forceSecureTracker: true,
         sessionCookieTimeout: 1800,
         eventMethod: "beacon",
         bufferSize: 1,
         maxPostBytes: 40000,
-        crossDomainLinker: null,
+        crossDomainLinker: undefined,
         cookieLifetime: 86400 * 365 * 2,
         stateStorageStrategy: "localStorage",
         // TODO: use webpack define plugin for this
         // postPath: "/collector/tp2",
         contexts: {
             webPage: true,
-            performanceTiming: true,
-            gaCookies: false,
-            geolocation: false,
         },
-    });
+        plugins: [PerformanceTimingPlugin()],
+    };
+
+    newTracker("sp", collectorUrl, configuration);
 
     const globalCtx = createGlobalCtx();
-    window.snowplow("addGlobalContexts", globalCtx);
+    addGlobalContexts(globalCtx);
+
+    setOptOutCookie("mg_dnt");
+
+    // TODO: do we need enableActivityTrackingCallback?
+    enableActivityTracking({
+        minimumVisitLength: 5,
+        heartbeatDelay: 5,
+    });
 };
 
-type TrackEventParams = {
-    category: string;
-    action: string;
-    label?: string;
-    property?: string;
-    value?: number;
-    contexts?: Array<SnowplowContext>;
-};
-
-const trackEvent = ({
-    category,
-    action,
-    label,
-    property,
-    value,
-    contexts,
-}: TrackEventParams): void => {
-    window.snowplow(
-        "trackStructEvent",
-        category,
-        action,
-        label,
-        property,
-        value,
-        contexts,
-    );
-};
-
-export { configureSnowplow, initializeSnowplow, trackEvent };
+export { configureSnowplow };
