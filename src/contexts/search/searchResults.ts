@@ -14,7 +14,7 @@ const createContext = (searchResults?: SearchResults): SearchResultsContext => {
     const context = {
         schema: schemas.SEARCH_RESULTS_SCHEMA_URL,
         data: {
-            searchRequestId: "abc123",
+            searchRequestId: searchResultsCtx.searchRequestId,
             products: searchResultsCtx.products,
             categories: searchResultsCtx.categories,
             suggestions: searchResultsCtx.suggestions,

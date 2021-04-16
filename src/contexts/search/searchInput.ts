@@ -17,7 +17,7 @@ const createContext = (searchInput?: SearchInput): SearchInputContext => {
         data: {
             source: searchInputCtx.source ?? null,
             queryType: "all",
-            searchRequestId: "abc123",
+            searchRequestId: searchInputCtx.searchRequestId,
             query: searchInputCtx.query,
             page: searchInputCtx.page,
             perPage: searchInputCtx.perPage,
