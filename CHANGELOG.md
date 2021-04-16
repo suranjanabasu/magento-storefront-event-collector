@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.4...v0.0.5) (2021-04-16)
+
+
+### Features
+
+* allow data to be passed in to context creators ([46bea75](https://github.com/adobe/magento-storefront-event-collector/commit/46bea75924ee61fb87708479f783bb5952367daa))
+* leverage custom context data ([fbfa729](https://github.com/adobe/magento-storefront-event-collector/commit/fbfa729ca713285dce954499d7436dcf833d1d2d))
+* support search request id ([bffffeb](https://github.com/adobe/magento-storefront-event-collector/commit/bffffeb1a96d7af597a9cb268024ee42cbe3f61a))
+* update schema versions ([6941c57](https://github.com/adobe/magento-storefront-event-collector/commit/6941c577a895a4cce253f9c5523577a5a4e9bdf0))
+
 ### [0.0.4](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.3...v0.0.4) (2021-04-09)
 
 
