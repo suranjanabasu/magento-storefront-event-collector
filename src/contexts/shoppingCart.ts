@@ -4,10 +4,7 @@
  */
 
 import mse from "@adobe/magento-storefront-events-sdk";
-import {
-    Order,
-    ShoppingCart,
-} from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
+import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
 
@@ -18,34 +15,27 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
         return [];
     }
 
-    const shoppingCartItems = shoppingCartCtx.items.map(item => ({
-        // TODO: same as offerPrice
-        // cart.items[n].prices.price.value
-        basePrice: item.product.pricing?.regularPrice,
-        // TODO: how do we reconcile string to int
-        // suggestion: change snowplow schema to accept string
-        cartItemId: parseInt(item.id) || 0,
-        mainImageUrl: item.product.mainImageUrl ?? undefined,
-        // TODO: what price should we use?
-        // its not an array...
-        // cart.items[n].prices.price.value
-        offerPrice: item.prices?.[0].value ?? 0,
-        productName: item.product.name,
-        // TODO: what happens if its undefined?
-        productSku: item.product.sku ?? "",
-        // TODO: what happens if its undefined?
-        qty: item.quantity ?? 0,
-    }));
+    const shoppingCartItems: Array<ShoppingCartItem> = shoppingCartCtx.items.map(
+        item => ({
+            basePrice: item.prices?.price.value ?? 0,
+            // TODO: how do we reconcile string to int
+            // suggestion: change snowplow schema to accept string
+            cartItemId: parseInt(item.id) || 0,
+            mainImageUrl: item.product.mainImageUrl ?? undefined,
+            offerPrice: item.prices?.price.value ?? 0,
+            productName: item.product.name,
+            // TODO: what happens if its undefined?
+            productSku: item.product.sku ?? "",
+            // TODO: what happens if its undefined?
+            qty: item.quantity ?? 0,
+        }),
+    );
 
     return shoppingCartItems;
 };
 
-const createContext = (
-    shoppingCart?: ShoppingCart,
-    order?: Order,
-): ShoppingCartContext => {
+const createContext = (shoppingCart?: ShoppingCart): ShoppingCartContext => {
     const shoppingCartCtx = shoppingCart ?? mse.context.getShoppingCart();
-    const orderCtx = order ?? mse.context.getOrder();
 
     const context = {
         schema: schemas.SHOPPING_CART_SCHEMA_URL,
@@ -62,12 +52,10 @@ const createContext = (
             // specific to luma
             // why do we care?
             possibleOnepageCheckout: false,
-            // TODO: confirm this is correct
-            // move these to cart context
-            // not sure about subtotalamount
-            subtotalAmount: orderCtx.subtotalExcludingTax,
-            subtotalExcludingTax: orderCtx.subtotalExcludingTax,
-            subtotalIncludingTax: orderCtx.subtotalIncludingTax,
+            subtotalExcludingTax:
+                shoppingCartCtx.prices?.subtotalExcludingTax?.value,
+            subtotalIncludingTax:
+                shoppingCartCtx.prices?.subtotalIncludingTax?.value,
             // TODO: where does these come from?
             // calculated from what the client knows
             // should be simplified

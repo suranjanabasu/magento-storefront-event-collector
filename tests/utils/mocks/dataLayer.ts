@@ -191,9 +191,14 @@ const mockShoppingCart: ShoppingCart = {
     items: [
         {
             canApplyMsrp: false,
-            formattedPrice: "$19.99",
+            formattedPrice: "$20.00",
             id: "aaaaaa",
-            prices: [{ value: 19.99, currency: "USD" }],
+            prices: {
+                price: {
+                    value: 20.0,
+                    currency: "USD",
+                },
+            },
             product: {
                 productId: 111111,
                 name: "T-Shirt",
@@ -204,9 +209,14 @@ const mockShoppingCart: ShoppingCart = {
         },
         {
             canApplyMsrp: false,
-            formattedPrice: "$49.99",
+            formattedPrice: "$50.00",
             id: "cccccc",
-            prices: [{ value: 49.99, currency: "USD" }],
+            prices: {
+                price: {
+                    value: 50.0,
+                    currency: "USD",
+                },
+            },
             product: {
                 productId: 222222,
                 name: "Hoodie",
@@ -216,16 +226,16 @@ const mockShoppingCart: ShoppingCart = {
             quantity: 1,
         },
     ],
-    prices: [
-        {
-            value: 19.99,
+    prices: {
+        subtotalExcludingTax: {
+            value: 70.0,
             currency: "USD",
         },
-        {
-            value: 49.99,
+        subtotalIncludingTax: {
+            value: 73.5,
             currency: "USD",
         },
-    ],
+    },
     totalQuantity: 2,
 };
 
