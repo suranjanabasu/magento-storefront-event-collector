@@ -46,9 +46,9 @@ const getSuggestion = (
 };
 
 const createFilters = (ctx: SearchInput): Array<SearchFilter> => {
-    const filters = ctx.filters.flatMap(filter => {
-        const filters: Array<SearchFilter> = [];
+    const filters: Array<SearchFilter> = [];
 
+    ctx.filters.forEach(filter => {
         // eq
         if (filter.eq) {
             filters.push({
@@ -85,8 +85,6 @@ const createFilters = (ctx: SearchInput): Array<SearchFilter> => {
                 operator: "range",
             });
         }
-
-        return filters;
     });
 
     return filters;
