@@ -252,17 +252,31 @@ const mockShopper: Shopper = {
 };
 
 const mockSearchInput: SearchInput = {
+    searchRequestId: "abc123",
     source: "search-bar",
     query: "red patns",
     page: 1,
     perPage: 20,
-    refinementAttribute: undefined,
-    refinementSelection: undefined,
+    filters: [
+        {
+            attribute: "size",
+            eq: "small",
+        },
+        {
+            attribute: "category",
+            in: ["bottoms", "mens"],
+        },
+        {
+            attribute: "price",
+            range: { from: 19.99, to: 49.99 },
+        },
+    ],
     sortType: "relevance",
     sortOrder: "descending",
 };
 
 const mockSearchResults: SearchResults = {
+    searchRequestId: "abc123",
     products: [
         {
             name: "Red Pants",
@@ -296,6 +310,7 @@ const mockSearchResults: SearchResults = {
     productCount: 1,
     categoryCount: 2,
     suggestionCount: 1,
+    facets: [],
 };
 
 const mockReferrerUrl: ReferrerUrl = {

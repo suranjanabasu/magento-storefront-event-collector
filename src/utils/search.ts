@@ -1,4 +1,5 @@
 import {
+    SearchInput,
     SearchResultCategory,
     SearchResultProduct,
     SearchResults,
@@ -44,4 +45,49 @@ const getSuggestion = (
     return suggested;
 };
 
-export { getCategory, getProduct, getSuggestion };
+const createFilters = (ctx: SearchInput): Array<SearchFilter> => {
+    const filters: Array<SearchFilter> = [];
+
+    ctx.filters.forEach(filter => {
+        // eq
+        if (filter.eq) {
+            filters.push({
+                name: filter.attribute,
+                values: [filter.eq],
+                operator: "eq",
+            });
+        }
+
+        // in
+        if (filter.in?.length) {
+            filters.push({
+                name: filter.attribute,
+                values: filter.in,
+                operator: "in",
+            });
+        }
+
+        // range
+        if (filter.range) {
+            const values: SearchFilter["values"] = [];
+
+            if (filter.range?.from) {
+                values.push(filter.range?.from?.toString());
+            }
+
+            if (filter.range?.to) {
+                values.push(filter.range?.to?.toString());
+            }
+
+            filters.push({
+                name: filter.attribute,
+                values,
+                operator: "range",
+            });
+        }
+    });
+
+    return filters;
+};
+
+export { createFilters, getCategory, getProduct, getSuggestion };

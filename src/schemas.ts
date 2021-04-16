@@ -15,13 +15,13 @@ const schemas = {
     RECOMMENDED_ITEM_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/recommended-item/jsonschema/1-0-3",
     SEARCH_INPUT_SCHEMA_URL:
-        "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-2",
+        "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-6",
     SEARCH_RESULT_CATEGORY_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-result-category/jsonschema/1-0-1",
     SEARCH_RESULT_PRODUCT_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-result-product/jsonschema/1-0-1",
     SEARCH_RESULTS_SCHEMA_URL:
-        "iglu:com.adobe.magento.entity/search-results/jsonschema/1-0-3",
+        "iglu:com.adobe.magento.entity/search-results/jsonschema/1-0-5",
     SEARCH_RESULT_SUGGESTION_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-result-suggestion/jsonschema/1-0-1",
     SHOPPING_CART_SCHEMA_URL:

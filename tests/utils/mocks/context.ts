@@ -90,14 +90,31 @@ const mockExtensionCtx = {
 };
 
 const mockSearchInputCtx = {
+    source: "search-bar",
+    queryType: "all",
+    searchRequestId: "abc123",
+    query: "red patns",
     page: 1,
     perPage: 20,
-    query: "red patns",
-    refinementAttribute: undefined,
-    refinementSelection: undefined,
+    filters: [
+        {
+            name: "size",
+            values: ["small"],
+            operator: "eq",
+        },
+        {
+            name: "category",
+            values: ["bottoms", "mens"],
+            operator: "in",
+        },
+        {
+            name: "price",
+            values: ["19.99", "49.99"],
+            operator: "range",
+        },
+    ],
     sortOrder: "descending",
     sortType: "relevance",
-    source: "search-bar",
 };
 
 const mockSearchResultCategoryCtx = {
@@ -116,6 +133,23 @@ const mockSearchResultProductCtx = {
 };
 
 const mockSearchResultsCtx = {
+    searchRequestId: "abc123",
+    products: [
+        {
+            imageUrl: "https://magento.com/red-pants.jpg",
+            name: "Red Pants",
+            price: 49.99,
+            rank: 1,
+            sku: "abc123",
+            url: "https://magento.com/red-pants",
+        },
+    ],
+    suggestions: [
+        {
+            rank: 1,
+            suggestion: "red pants",
+        },
+    ],
     categories: [
         {
             name: "Pants",
@@ -128,27 +162,12 @@ const mockSearchResultsCtx = {
             url: "https://magento.com/category/bottoms",
         },
     ],
-    categoryCount: 2,
     page: 1,
     perPage: 20,
     productCount: 1,
-    products: [
-        {
-            imageUrl: "https://magento.com/red-pants.jpg",
-            name: "Red Pants",
-            price: 49.99,
-            rank: 1,
-            sku: "abc123",
-            url: "https://magento.com/red-pants",
-        },
-    ],
+    categoryCount: 2,
     suggestionCount: 1,
-    suggestions: [
-        {
-            rank: 1,
-            suggestion: "red pants",
-        },
-    ],
+    facets: [],
 };
 
 const mockSearchResultSuggestionCtx = {
