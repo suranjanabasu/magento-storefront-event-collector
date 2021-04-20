@@ -22,11 +22,13 @@ import { createGlobalCtx } from "./contexts";
 type ConfigureSnowplowParams = {
     appId: string;
     collectorUrl: string;
+    collectorPath: string;
 };
 
 const configureSnowplow = ({
     appId,
     collectorUrl,
+    collectorPath,
 }: ConfigureSnowplowParams): void => {
     const configuration: TrackerConfiguration = {
         appId,
@@ -42,8 +44,7 @@ const configureSnowplow = ({
         crossDomainLinker: undefined,
         cookieLifetime: 86400 * 365 * 2,
         stateStorageStrategy: "localStorage",
-        // TODO: use webpack define plugin for this
-        // postPath: "/collector/tp2",
+        postPath: collectorPath,
         contexts: {
             webPage: true,
         },

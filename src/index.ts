@@ -10,7 +10,8 @@ import { configureSnowplow } from "./snowplow";
 
 configureSnowplow({
     appId: "magento-storefront-event-collector",
-    collectorUrl: "https://com-magento-prod1.mini.snplow.net",
+    collectorUrl: SNOWPLOW_COLLECTOR_URL,
+    collectorPath: SNOWPLOW_COLLECTOR_PATH,
 });
 
 subscribeToEvents();
