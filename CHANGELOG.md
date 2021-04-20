@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.5...v0.0.6) (2021-04-20)
+
+
+### Features
+
+* link click tracking ([47b9c44](https://github.com/adobe/magento-storefront-event-collector/commit/47b9c440d03b0e6ebfca71b8fd0052db1f98730d))
+
+
+### Bug Fixes
+
+* include a doctype in the example ([6434f97](https://github.com/adobe/magento-storefront-event-collector/commit/6434f97c54957da2d3df2ac5fc80d1b4c49598e4))
+
 ### [0.0.5](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.4...v0.0.5) (2021-04-16)
 
 
