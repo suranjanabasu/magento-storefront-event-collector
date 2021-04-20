@@ -1,3 +1,5 @@
+import { trackStructEvent } from "@snowplow/browser-tracker";
+
 import { searchResultsViewHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
@@ -9,16 +11,13 @@ import {
 test("sends snowplow event", () => {
     searchResultsViewHandler(mockEvent);
 
-    expect(window.snowplow).toHaveBeenCalledTimes(1);
+    expect(trackStructEvent).toHaveBeenCalledTimes(1);
 
-    expect(window.snowplow).toHaveBeenCalledWith(
-        "trackStructEvent",
-        "search",
-        "results-view",
-        undefined,
-        "pdp",
-        undefined,
-        [
+    expect(trackStructEvent).toHaveBeenCalledWith({
+        category: "search",
+        action: "results-view",
+        property: "pdp",
+        context: [
             {
                 data: mockSearchInputCtx,
                 schema: schemas.SEARCH_INPUT_SCHEMA_URL,
@@ -28,5 +27,5 @@ test("sends snowplow event", () => {
                 schema: schemas.SEARCH_RESULTS_SCHEMA_URL,
             },
         ],
-    );
+    });
 });

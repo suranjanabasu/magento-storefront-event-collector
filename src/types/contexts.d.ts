@@ -260,18 +260,3 @@ type TrackerContext = {
     schema: string;
     data: Tracker;
 };
-
-type SnowplowContext =
-    | ExtensionContext
-    | ProductContext
-    | RecommendationUnitContext
-    | RecommendedItemContext
-    | SearchInputContext
-    | SearchResultCategoryContext
-    | SearchResultProductContext
-    | SearchResultsContext
-    | SearchResultSuggestionContext
-    | ShopperContext
-    | ShoppingCartContext
-    | StorefrontContext
-    | TrackerContext;

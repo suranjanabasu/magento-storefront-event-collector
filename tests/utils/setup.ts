@@ -15,7 +15,7 @@ import {
     mockStorefront,
 } from "./mocks/dataLayer";
 
-window.snowplow = jest.fn();
+jest.mock("@snowplow/browser-tracker");
 
 mse.context.setMagentoExtension(mockExtension);
 mse.context.setOrder(mockOrder);

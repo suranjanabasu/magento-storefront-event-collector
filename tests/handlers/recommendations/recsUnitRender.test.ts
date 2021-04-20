@@ -1,3 +1,5 @@
+import { trackStructEvent } from "@snowplow/browser-tracker";
+
 import { recsUnitRenderHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
@@ -9,16 +11,13 @@ import {
 test("sends snowplow event", () => {
     recsUnitRenderHandler(mockEvent);
 
-    expect(window.snowplow).toHaveBeenCalledTimes(1);
+    expect(trackStructEvent).toHaveBeenCalledTimes(1);
 
-    expect(window.snowplow).toHaveBeenCalledWith(
-        "trackStructEvent",
-        "recommendation-unit",
-        "impression-render",
-        undefined,
-        "pdp",
-        undefined,
-        [
+    expect(trackStructEvent).toHaveBeenCalledWith({
+        category: "recommendation-unit",
+        action: "impression-render",
+        property: "pdp",
+        context: [
             {
                 data: mockRecommendationUnitCtx,
                 schema: schemas.RECOMMENDATION_UNIT_SCHEMA_URL,
@@ -32,5 +31,5 @@ test("sends snowplow event", () => {
                 schema: schemas.RECOMMENDED_ITEM_SCHEMA_URL,
             },
         ],
-    );
+    });
 });

@@ -3,6 +3,8 @@
  * See COPYING.txt for license details.
  */
 
+import { SelfDescribingJson } from "@snowplow/tracker-core";
+
 import {
     createMagentoExtensionCtx,
     createShopperCtx,
@@ -11,7 +13,7 @@ import {
     createTrackerCtx,
 } from ".";
 
-const createContext = (): Array<SnowplowContext> => {
+const createContext = (): Array<SelfDescribingJson> => {
     const magentoExtensionCtx = createMagentoExtensionCtx();
     const shopperCtx = createShopperCtx();
     const shoppingCartCtx = createShoppingCartCtx();
