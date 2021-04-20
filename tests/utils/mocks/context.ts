@@ -37,19 +37,19 @@ const mockShoppingCartCtx = {
     giftWrappingSelected: false,
     items: [
         {
-            basePrice: undefined,
+            basePrice: 20.0,
             cartItemId: 0,
             mainImageUrl: undefined,
-            offerPrice: 19.99,
+            offerPrice: 20.0,
             productName: "T-Shirt",
             productSku: "ts001",
             qty: 1,
         },
         {
-            basePrice: undefined,
+            basePrice: 50.0,
             cartItemId: 0,
             mainImageUrl: undefined,
-            offerPrice: 49.99,
+            offerPrice: 50.0,
             productName: "Hoodie",
             productSku: "h001",
             qty: 1,
@@ -57,9 +57,8 @@ const mockShoppingCartCtx = {
     ],
     itemsCount: 2,
     possibleOnepageCheckout: false,
-    subtotalAmount: 69.98,
-    subtotalExcludingTax: 69.98,
-    subtotalIncludingTax: 69.98,
+    subtotalExcludingTax: 70.0,
+    subtotalIncludingTax: 73.5,
 };
 
 const mockStorefrontCtx = {

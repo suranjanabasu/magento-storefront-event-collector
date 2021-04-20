@@ -156,20 +156,22 @@ type ShoppingCart = {
     cartId?: number | null;
     giftMessageSelected?: boolean;
     giftWrappingSelected?: boolean;
-    items?: Array<{
-        basePrice?: number;
-        cartItemId: number;
-        mainImageUrl?: string;
-        offerPrice: number;
-        productName: string;
-        productSku: string;
-        qty: number;
-    }>;
+    items?: Array<ShoppingCartItem>;
     itemsCount: number;
     possibleOnepageCheckout?: boolean;
     subtotalAmount?: number;
     subtotalExcludingTax?: number;
     subtotalIncludingTax?: number;
+};
+
+type ShoppingCartItem = {
+    basePrice?: number;
+    cartItemId: number;
+    mainImageUrl?: string;
+    offerPrice: number;
+    productName: string;
+    productSku: string;
+    qty: number;
 };
 
 type Storefront = {
