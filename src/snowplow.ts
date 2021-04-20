@@ -3,6 +3,10 @@
  * See COPYING.txt for license details.
  */
 
+import {
+    enableLinkClickTracking,
+    LinkClickTrackingPlugin,
+} from "@snowplow/browser-plugin-link-click-tracking";
 import { PerformanceTimingPlugin } from "@snowplow/browser-plugin-performance-timing";
 import {
     addGlobalContexts,
@@ -43,7 +47,7 @@ const configureSnowplow = ({
         contexts: {
             webPage: true,
         },
-        plugins: [PerformanceTimingPlugin()],
+        plugins: [PerformanceTimingPlugin(), LinkClickTrackingPlugin()],
     };
 
     newTracker("sp", collectorUrl, configuration);
@@ -60,6 +64,8 @@ const configureSnowplow = ({
     });
 
     trackPageView();
+
+    enableLinkClickTracking();
 };
 
 export { configureSnowplow };

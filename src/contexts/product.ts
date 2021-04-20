@@ -16,6 +16,7 @@ const createContext = (product?: Product): ProductContext => {
         data: {
             productId: productCtx.productId,
             name: productCtx.name,
+            // TODO: what happens when this is undefined?
             sku: productCtx.sku ?? "",
             topLevelSku: productCtx.topLevelSku,
             specialToDate: productCtx.specialToDate,
