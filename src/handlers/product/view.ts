@@ -6,7 +6,7 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import { trackStructEvent } from "@snowplow/browser-tracker";
 
-import { createProductCtx, createShoppingCartCtx } from "../contexts";
+import { createProductCtx, createShoppingCartCtx } from "../../contexts";
 
 const handler = (event: Event): void => {
     const {
@@ -20,7 +20,7 @@ const handler = (event: Event): void => {
 
     trackStructEvent({
         category: "product",
-        action: "add-to-cart",
+        action: "view",
         property: pageContext.pageType,
         context: [productCtx, shoppingCartCtx],
     });

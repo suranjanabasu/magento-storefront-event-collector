@@ -6,20 +6,23 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import { trackStructEvent } from "@snowplow/browser-tracker";
 
-import { createShoppingCartCtx } from "../contexts";
+import { createProductCtx, createShoppingCartCtx } from "../../contexts";
 
 const handler = (event: Event): void => {
-    const { pageContext, shoppingCartContext } = event.eventInfo;
+    const {
+        pageContext,
+        productContext,
+        shoppingCartContext,
+    } = event.eventInfo;
+
+    const productCtx = createProductCtx(productContext);
     const shoppingCartCtx = createShoppingCartCtx(shoppingCartContext);
 
     trackStructEvent({
-        category: "shopping-cart",
-        action: "view",
+        category: "product",
+        action: "add-to-cart",
         property: pageContext.pageType,
-        // TODO: this should be the cartId, which is a string,
-        //       but Snowplow expects a number for value.
-        value: 0,
-        context: [shoppingCartCtx],
+        context: [productCtx, shoppingCartCtx],
     });
 };
 

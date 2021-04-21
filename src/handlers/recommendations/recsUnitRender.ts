@@ -12,7 +12,7 @@ import {
 import {
     createRecommendationUnitCtx,
     createRecommendedItemCtx,
-} from "../../contexts/recommendations";
+} from "../../contexts";
 import { getUnit } from "../../utils/recommendations";
 
 const handler = (event: Event): void => {
