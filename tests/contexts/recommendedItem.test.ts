@@ -1,6 +1,6 @@
-import { createRecommendedItemCtx } from "../../../src/contexts";
-import schemas from "../../../src/schemas";
-import { mockRecommendedItemsCtx } from "../../utils/mocks/context";
+import { createRecommendedItemCtx } from "../../src/contexts";
+import schemas from "../../src/schemas";
+import { mockRecommendedItemsCtx } from "../utils/mocks/context";
 
 test("creates context", () => {
     const ctx = createRecommendedItemCtx("abc123", 111111);

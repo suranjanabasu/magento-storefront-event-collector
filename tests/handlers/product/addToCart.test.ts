@@ -1,22 +1,30 @@
 import { trackStructEvent } from "@snowplow/browser-tracker";
 
-import { productViewHandler } from "../../src/handlers";
-import schemas from "../../src/schemas";
-import { mockEvent, mockProductCtx } from "../utils/mocks";
+import { addToCartHandler } from "../../../src/handlers";
+import schemas from "../../../src/schemas";
+import {
+    mockEvent,
+    mockProductCtx,
+    mockShoppingCartCtx,
+} from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    productViewHandler(mockEvent);
+    addToCartHandler(mockEvent);
 
     expect(trackStructEvent).toHaveBeenCalledTimes(1);
 
     expect(trackStructEvent).toHaveBeenCalledWith({
         category: "product",
-        action: "view",
+        action: "add-to-cart",
         property: "pdp",
         context: [
             {
                 data: mockProductCtx,
                 schema: schemas.PRODUCT_SCHEMA_URL,
+            },
+            {
+                data: mockShoppingCartCtx,
+                schema: schemas.SHOPPING_CART_SCHEMA_URL,
             },
         ],
     });

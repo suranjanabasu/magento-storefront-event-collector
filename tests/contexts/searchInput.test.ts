@@ -1,6 +1,6 @@
-import { createSearchInputCtx } from "../../../src/contexts";
-import schemas from "../../../src/schemas";
-import { mockSearchInputCtx } from "../../utils/mocks";
+import { createSearchInputCtx } from "../../src/contexts";
+import schemas from "../../src/schemas";
+import { mockSearchInputCtx } from "../utils/mocks";
 
 test("creates context", () => {
     const ctx = createSearchInputCtx();

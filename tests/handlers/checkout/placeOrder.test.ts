@@ -1,16 +1,17 @@
 import { trackStructEvent } from "@snowplow/browser-tracker";
 
-import { shoppingCartViewHandler } from "../../src/handlers";
-import { mockEvent } from "../utils/mocks";
+import { placeOrderHandler } from "../../../src/handlers";
+import { mockEvent } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
-    shoppingCartViewHandler(mockEvent);
+    placeOrderHandler(mockEvent);
 
     expect(trackStructEvent).toHaveBeenCalledTimes(1);
 
     expect(trackStructEvent).toHaveBeenCalledWith({
-        category: "shopping-cart",
-        action: "view",
+        category: "checkout",
+        action: "place-order",
+        label: "111111",
         property: "pdp",
         value: 0,
     });

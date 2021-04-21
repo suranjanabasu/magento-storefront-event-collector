@@ -21,10 +21,6 @@ test("creates context", () => {
             schema: schemas.SHOPPER_SCHEMA_URL,
         },
         {
-            data: mockShoppingCartCtx,
-            schema: schemas.SHOPPING_CART_SCHEMA_URL,
-        },
-        {
             data: mockStorefrontCtx,
             schema: schemas.STOREFRONT_INSTANCE_SCHEMA_URL,
         },

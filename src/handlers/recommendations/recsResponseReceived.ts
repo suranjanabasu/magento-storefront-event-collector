@@ -9,7 +9,7 @@ import { trackStructEvent } from "@snowplow/browser-tracker";
 import {
     createRecommendationUnitCtx,
     createRecommendedItemCtx,
-} from "../../contexts/recommendations";
+} from "../../contexts";
 
 const handler = (event: Event): void => {
     const { pageContext, recommendationsContext } = event.eventInfo;

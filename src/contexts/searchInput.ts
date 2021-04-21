@@ -6,8 +6,8 @@
 import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchInput } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import schemas from "../../schemas";
-import { createFilters } from "../../utils/search";
+import schemas from "../schemas";
+import { createFilters } from "../utils/search";
 
 const createContext = (searchInput?: SearchInput): SearchInputContext => {
     const searchInputCtx = searchInput ?? mse.context.getSearchInput();
