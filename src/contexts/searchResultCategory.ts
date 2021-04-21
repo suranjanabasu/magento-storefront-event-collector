@@ -6,8 +6,8 @@
 import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import schemas from "../../schemas";
-import { getCategory } from "../../utils/search";
+import schemas from "../schemas";
+import { getCategory } from "../utils/search";
 
 const createContext = (
     name: string,

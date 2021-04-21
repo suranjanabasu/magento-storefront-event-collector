@@ -1,6 +1,6 @@
-import { createSearchResultProductCtx } from "../../../src/contexts";
-import schemas from "../../../src/schemas";
-import { mockSearchResultProductCtx } from "../../utils/mocks";
+import { createSearchResultProductCtx } from "../../src/contexts";
+import schemas from "../../src/schemas";
+import { mockSearchResultProductCtx } from "../utils/mocks";
 
 test("creates context", () => {
     const ctx = createSearchResultProductCtx("abc123");

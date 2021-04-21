@@ -6,7 +6,7 @@
 import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import schemas from "../../schemas";
+import schemas from "../schemas";
 
 const createContext = (searchResults?: SearchResults): SearchResultsContext => {
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();

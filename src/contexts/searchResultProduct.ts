@@ -6,26 +6,30 @@
 import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import schemas from "../../schemas";
-import { getSuggestion } from "../../utils/search";
+import schemas from "../schemas";
+import { getProduct } from "../utils/search";
 
 const createContext = (
-    suggestion: string,
+    sku: string,
     searchResults?: SearchResults,
-): SearchResultSuggestionContext | null => {
+): SearchResultProductContext | null => {
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
 
-    const suggested = getSuggestion(suggestion, searchResultsCtx);
+    const product = getProduct(sku, searchResultsCtx);
 
-    if (!suggested) {
+    if (!product) {
         return null;
     }
 
     const context = {
-        schema: schemas.SEARCH_RESULT_SUGGESTION_SCHEMA_URL,
+        schema: schemas.SEARCH_RESULT_PRODUCT_SCHEMA_URL,
         data: {
-            suggestion: suggested.suggestion,
-            rank: suggested.rank,
+            name: product.name,
+            sku: product.sku,
+            url: product.url,
+            imageUrl: product.imageUrl,
+            price: product.price,
+            rank: product.rank,
         },
     };
 

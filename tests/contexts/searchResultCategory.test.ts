@@ -1,6 +1,6 @@
-import { createSearchResultCategoryCtx } from "../../../src/contexts";
-import schemas from "../../../src/schemas";
-import { mockSearchResultCategoryCtx } from "../../utils/mocks";
+import { createSearchResultCategoryCtx } from "../../src/contexts";
+import schemas from "../../src/schemas";
+import { mockSearchResultCategoryCtx } from "../utils/mocks";
 
 test("creates context", () => {
     const ctx = createSearchResultCategoryCtx("Pants");

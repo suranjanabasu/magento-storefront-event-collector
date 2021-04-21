@@ -6,8 +6,8 @@
 import mse from "@adobe/magento-storefront-events-sdk";
 import { Recommendations } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import schemas from "../../schemas";
-import { getUnit } from "../../utils/recommendations";
+import schemas from "../schemas";
+import { getUnit } from "../utils/recommendations";
 
 const createContext = (
     unitId: string,
