@@ -4,8 +4,6 @@ import { instantPurchaseHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
     mockEvent,
-    mockOrder,
-    mockPage,
     mockProductCtx,
     mockShoppingCartCtx,
 } from "../../utils/mocks";
