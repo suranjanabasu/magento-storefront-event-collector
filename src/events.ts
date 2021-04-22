@@ -49,7 +49,7 @@ const subscribeToEvents = (): void => {
 
 const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.addToCart(addToCartHandler);
-    mse.subscribe.instantPurchase(instantPurchaseHandler);
+    mse.unsubscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.pageView(pageViewHandler);
     mse.unsubscribe.placeOrder(placeOrderHandler);
     mse.unsubscribe.productPageView(productViewHandler);

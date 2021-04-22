@@ -4,7 +4,10 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
-import { trackStructEvent } from "@snowplow/browser-tracker";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
 import { createProductCtx, createShoppingCartCtx } from "../../contexts";
 
@@ -18,11 +21,17 @@ const handler = (event: Event): void => {
     const productCtx = createProductCtx(productContext);
     const shoppingCartCtx = createShoppingCartCtx(shoppingCartContext);
 
+    const context: Array<SelfDescribingJson> = [productCtx];
+
+    if (shoppingCartCtx) {
+        context.push(shoppingCartCtx);
+    }
+
     trackStructEvent({
         category: "product",
         action: "add-to-cart",
         property: pageContext.pageType,
-        context: [productCtx, shoppingCartCtx],
+        context,
     });
 };
 
