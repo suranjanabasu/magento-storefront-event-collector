@@ -9,120 +9,97 @@
 
     <body>
         <div class="events">
-            <button
-                value="addToCart"
-                onclick="magentoStorefrontEvents.publish.addToCart()"
-            >
+            <button onclick="magentoStorefrontEvents.publish.addToCart()">
                 addToCart
             </button>
 
-            <button
-                value="pageView"
-                onclick="magentoStorefrontEvents.publish.pageView()"
-            >
+            <button onclick="magentoStorefrontEvents.publish.instantPurchase()">
+                instantPurchase
+            </button>
+
+            <button onclick="magentoStorefrontEvents.publish.pageView()">
                 pageView
             </button>
 
-            <button
-                value="placeOrder"
-                onclick="magentoStorefrontEvents.publish.placeOrder()"
-            >
+            <button onclick="magentoStorefrontEvents.publish.placeOrder()">
                 placeOrder
             </button>
 
-            <button
-                value="productPageView"
-                onclick="magentoStorefrontEvents.publish.productPageView()"
-            >
+            <button onclick="magentoStorefrontEvents.publish.productPageView()">
                 productPageView
             </button>
 
             <button
-                value="recsItemAddToCartClick"
                 onclick="magentoStorefrontEvents.publish.recsItemAddToCartClick('abc123', 111111)"
             >
                 recsItemAddToCartClick
             </button>
 
             <button
-                value="recsItemClick"
                 onclick="magentoStorefrontEvents.publish.recsItemClick('abc123', 111111)"
             >
                 recsItemClick
             </button>
 
-            <button
-                value="recsRequestSent"
-                onclick="magentoStorefrontEvents.publish.recsRequestSent()"
-            >
+            <button onclick="magentoStorefrontEvents.publish.recsRequestSent()">
                 recsRequestSent
             </button>
 
             <button
-                value="recsResponseReceived"
                 onclick="magentoStorefrontEvents.publish.recsResponseReceived()"
             >
                 recsResponseReceived
             </button>
 
             <button
-                value="recsUnitRender"
                 onclick="magentoStorefrontEvents.publish.recsUnitRender('abc123')"
             >
                 recsUnitRender
             </button>
 
             <button
-                value="recsUnitView"
                 onclick="magentoStorefrontEvents.publish.recsUnitView('abc123')"
             >
                 recsUnitView
             </button>
 
             <button
-                value="searchCategoryClick"
                 onclick="magentoStorefrontEvents.publish.searchCategoryClick('Bottoms')"
             >
                 searchCategoryClick
             </button>
 
             <button
-                value="searchProductClick"
                 onclick="magentoStorefrontEvents.publish.searchProductClick('abc123')"
             >
                 searchProductClick
             </button>
 
             <button
-                value="searchRequestSent"
                 onclick="magentoStorefrontEvents.publish.searchRequestSent()"
             >
                 searchRequestSent
             </button>
 
             <button
-                value="searchResponseReceived"
                 onclick="magentoStorefrontEvents.publish.searchResponseReceived()"
             >
                 searchResponseReceived
             </button>
 
             <button
-                value="searchResultsView"
                 onclick="magentoStorefrontEvents.publish.searchResultsView()"
             >
                 searchResultsView
             </button>
 
             <button
-                value="searchSuggestionClick"
                 onclick="magentoStorefrontEvents.publish.searchSuggestionClick('red pants')"
             >
                 searchSuggestionClick
             </button>
 
             <button
-                value="shoppingCartView"
                 onclick="magentoStorefrontEvents.publish.shoppingCartView()"
             >
                 shoppingCartView

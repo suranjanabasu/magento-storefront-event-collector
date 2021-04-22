@@ -7,6 +7,7 @@ import mse from "@adobe/magento-storefront-events-sdk";
 
 import {
     addToCartHandler,
+    instantPurchaseHandler,
     pageViewHandler,
     placeOrderHandler,
     productViewHandler,
@@ -27,6 +28,7 @@ import {
 
 const subscribeToEvents = (): void => {
     mse.subscribe.addToCart(addToCartHandler);
+    mse.subscribe.instantPurchase(instantPurchaseHandler);
     mse.subscribe.pageView(pageViewHandler);
     mse.subscribe.placeOrder(placeOrderHandler);
     mse.subscribe.productPageView(productViewHandler);
@@ -47,6 +49,7 @@ const subscribeToEvents = (): void => {
 
 const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.addToCart(addToCartHandler);
+    mse.subscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.pageView(pageViewHandler);
     mse.unsubscribe.placeOrder(placeOrderHandler);
     mse.unsubscribe.productPageView(productViewHandler);
