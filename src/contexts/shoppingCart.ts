@@ -36,8 +36,14 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
     return shoppingCartItems;
 };
 
-const createContext = (shoppingCart?: ShoppingCart): ShoppingCartContext => {
+const createContext = (
+    shoppingCart?: ShoppingCart,
+): ShoppingCartContext | null => {
     const shoppingCartCtx = shoppingCart ?? mse.context.getShoppingCart();
+
+    if (!shoppingCartCtx) {
+        return null;
+    }
 
     const context = {
         schema: schemas.SHOPPING_CART_SCHEMA_URL,

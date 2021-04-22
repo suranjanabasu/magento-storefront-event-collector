@@ -4,13 +4,22 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
-import { trackStructEvent } from "@snowplow/browser-tracker";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
 import { createShoppingCartCtx } from "../../contexts";
 
 const handler = (event: Event): void => {
     const { pageContext, shoppingCartContext } = event.eventInfo;
     const shoppingCartCtx = createShoppingCartCtx(shoppingCartContext);
+
+    const context: Array<SelfDescribingJson> = [];
+
+    if (shoppingCartCtx) {
+        context.push(shoppingCartCtx);
+    }
 
     trackStructEvent({
         category: "shopping-cart",
@@ -19,7 +28,7 @@ const handler = (event: Event): void => {
         // TODO: this should be the cartId, which is a string,
         //       but Snowplow expects a number for value.
         value: 0,
-        context: [shoppingCartCtx],
+        context,
     });
 };
 
