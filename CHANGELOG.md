@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.7...v0.0.8) (2021-04-22)
+
+
+### Features
+
+* add instant purchase event handler ([8304d4c](https://github.com/adobe/magento-storefront-event-collector/commit/8304d4c9941e00110ef2026483c016d5acc47edb))
+* add page view event handler ([691d600](https://github.com/adobe/magento-storefront-event-collector/commit/691d600bfa5d333682a6ad8ff6683fc2692b2474))
+
+
+### Bug Fixes
+
+* handle empty shopping cart ([b79364e](https://github.com/adobe/magento-storefront-event-collector/commit/b79364eeadc564617a61b03fee9c90b1eed0c844))
+
 ### [0.0.7](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.6...v0.0.7) (2021-04-21)
 
 ### [0.0.6](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.5...v0.0.6) (2021-04-20)
