@@ -3,7 +3,6 @@ import schemas from "../../src/schemas";
 import {
     mockExtensionCtx,
     mockShopperCtx,
-    mockShoppingCartCtx,
     mockStorefrontCtx,
     mockTrackerCtx,
 } from "../utils/mocks";
