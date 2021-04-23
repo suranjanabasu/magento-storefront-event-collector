@@ -80,7 +80,6 @@ const mockStorefrontCtx = {
 };
 
 const mockTrackerCtx = {
-    magentoJsBuild: "0000",
     magentoJsVersion: pkg.version,
 };
 

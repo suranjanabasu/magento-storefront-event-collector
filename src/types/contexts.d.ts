@@ -195,7 +195,6 @@ type Storefront = {
 
 type Tracker = {
     magentoJsVersion: string;
-    magentoJsBuild: string;
 };
 
 type ExtensionContext = {
