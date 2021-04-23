@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.9...v0.0.10) (2021-04-23)
+
+
+### Bug Fixes
+
+* resolve id type mismatches ([8e17959](https://github.com/adobe/magento-storefront-event-collector/commit/8e1795928f40f19c4d98d7a4548330c6ecccba42))
+
 ### [0.0.9](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.8...v0.0.9) (2021-04-23)
 
 
