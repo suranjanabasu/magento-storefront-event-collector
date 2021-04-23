@@ -7,6 +7,7 @@ const config = {
     output: {
         filename: "index.js",
         path: path.resolve(__dirname, "dist"),
+        publicPath: "",
         library: {
             name: "MagentoStorefrontEventCollector",
             type: "umd",
@@ -15,7 +16,6 @@ const config = {
         },
         clean: true,
     },
-    publicPath: "",
     module: {
         rules: [
             {
