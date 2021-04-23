@@ -13,7 +13,6 @@ test("sends snowplow event", () => {
         category: "shopping-cart",
         action: "view",
         property: "pdp",
-        value: 0,
         context: [
             {
                 data: mockShoppingCartCtx,

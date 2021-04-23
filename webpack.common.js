@@ -7,10 +7,12 @@ const config = {
     output: {
         filename: "index.js",
         path: path.resolve(__dirname, "dist"),
+        publicPath: "",
         library: {
             name: "MagentoStorefrontEventCollector",
             type: "umd",
             export: "default",
+            umdNamedDefine: true,
         },
         clean: true,
     },
