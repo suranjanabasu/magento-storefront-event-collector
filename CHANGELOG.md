@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.8...v0.0.9) (2021-04-23)
+
+
+### Bug Fixes
+
+* remove invalid data type from value field ([8fad8af](https://github.com/adobe/magento-storefront-event-collector/commit/8fad8afb7efb885308f16af1463bfbab31345176))
+* remove js build from tracker context ([5cb107c](https://github.com/adobe/magento-storefront-event-collector/commit/5cb107c80de94954ff001b7070c341443e08480d))
+
 ### [0.0.8](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.7...v0.0.8) (2021-04-22)
 
 
