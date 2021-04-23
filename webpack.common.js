@@ -11,9 +11,11 @@ const config = {
             name: "MagentoStorefrontEventCollector",
             type: "umd",
             export: "default",
+            umdNamedDefine: true,
         },
         clean: true,
     },
+    publicPath: "",
     module: {
         rules: [
             {

@@ -13,6 +13,5 @@ test("sends snowplow event", () => {
         action: "place-order",
         label: "111111",
         property: "pdp",
-        value: 0,
     });
 });

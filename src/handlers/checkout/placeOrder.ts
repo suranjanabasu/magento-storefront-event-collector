@@ -14,9 +14,6 @@ const handler = (event: Event): void => {
         action: "place-order",
         label: orderContext.orderId.toString(),
         property: pageContext.pageType,
-        // TODO: this should be the cartId, which is a string,
-        //       but Snowplow expects a number for value.
-        value: 0,
     });
 };
 
