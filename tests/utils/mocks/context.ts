@@ -32,13 +32,13 @@ const mockShopperCtx = {
 };
 
 const mockShoppingCartCtx = {
-    cartId: 111111,
+    cartId: "111111",
     giftMessageSelected: false,
     giftWrappingSelected: false,
     items: [
         {
             basePrice: 20.0,
-            cartItemId: 0,
+            cartItemId: "aaaaaa",
             mainImageUrl: undefined,
             offerPrice: 20.0,
             productName: "T-Shirt",
@@ -47,7 +47,7 @@ const mockShoppingCartCtx = {
         },
         {
             basePrice: 50.0,
-            cartItemId: 0,
+            cartItemId: "cccccc",
             mainImageUrl: undefined,
             offerPrice: 50.0,
             productName: "Hoodie",

@@ -11,7 +11,7 @@ import schemas from "../schemas";
 const createContext = (shopper?: Shopper): ShopperContext => {
     const shopperCtx = shopper ?? mse.context.getShopper();
 
-    const context = {
+    const context: ShopperContext = {
         schema: schemas.SHOPPER_SCHEMA_URL,
         data: {
             shopperId: shopperCtx.shopperId,

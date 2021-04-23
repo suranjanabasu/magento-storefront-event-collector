@@ -15,13 +15,13 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
         return [];
     }
 
-    const shoppingCartItems: Array<ShoppingCartItem> = shoppingCartCtx.items.map(
+    const shoppingCartItems: Array<ShoppingCartItem> = shoppingCartCtx.items.map<ShoppingCartItem>(
         item => ({
             // TODO: what happens if its undefined?
             basePrice: item.prices?.price.value ?? 0,
             // TODO: how do we reconcile string to int
             // suggestion: change snowplow schema to accept string
-            cartItemId: parseInt(item.id) || 0,
+            cartItemId: item.id,
             mainImageUrl: item.product.mainImageUrl ?? undefined,
             // TODO: what happens if its undefined?
             offerPrice: item.prices?.price.value ?? 0,
@@ -45,15 +45,10 @@ const createContext = (
         return null;
     }
 
-    const context = {
+    const context: ShoppingCartContext = {
         schema: schemas.SHOPPING_CART_SCHEMA_URL,
         data: {
-            // TODO: how do we reconcile string to int
-            // suggestion: change snowplow schema to accept string
-            cartId:
-                shoppingCartCtx.id === null
-                    ? null
-                    : parseInt(shoppingCartCtx.id),
+            cartId: shoppingCartCtx.id,
             itemsCount: shoppingCartCtx.totalQuantity,
             items: createShoppingCartItems(shoppingCartCtx),
             // TODO: where does this come from?

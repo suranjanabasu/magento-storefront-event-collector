@@ -11,7 +11,7 @@ import schemas from "../schemas";
 const createContext = (searchResults?: SearchResults): SearchResultsContext => {
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
 
-    const context = {
+    const context: SearchResultsContext = {
         schema: schemas.SEARCH_RESULTS_SCHEMA_URL,
         data: {
             searchRequestId: searchResultsCtx.searchRequestId,
