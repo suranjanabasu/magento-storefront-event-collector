@@ -21,7 +21,7 @@ const createContext = (
         return null;
     }
 
-    const context = {
+    const context: SearchResultProductContext = {
         schema: schemas.SEARCH_RESULT_PRODUCT_SCHEMA_URL,
         data: {
             name: product.name,

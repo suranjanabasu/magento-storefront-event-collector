@@ -29,7 +29,7 @@ const createContext = (
         return null;
     }
 
-    const context = {
+    const context: RecommendedItemContext = {
         schema: schemas.RECOMMENDED_ITEM_SCHEMA_URL,
         data: {
             unitId,

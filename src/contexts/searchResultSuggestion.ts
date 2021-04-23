@@ -21,7 +21,7 @@ const createContext = (
         return null;
     }
 
-    const context = {
+    const context: SearchResultSuggestionContext = {
         schema: schemas.SEARCH_RESULT_SUGGESTION_SCHEMA_URL,
         data: {
             suggestion: suggested.suggestion,

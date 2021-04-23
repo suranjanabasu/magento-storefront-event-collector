@@ -12,7 +12,7 @@ import { createFilters } from "../utils/search";
 const createContext = (searchInput?: SearchInput): SearchInputContext => {
     const searchInputCtx = searchInput ?? mse.context.getSearchInput();
 
-    const context = {
+    const context: SearchInputContext = {
         schema: schemas.SEARCH_INPUT_SCHEMA_URL,
         data: {
             source: searchInputCtx.source ?? null,

@@ -11,7 +11,7 @@ import schemas from "../schemas";
 const createContext = (extension?: MagentoExtension): ExtensionContext => {
     const magentoExtensionCtx = extension ?? mse.context.getMagentoExtension();
 
-    const context = {
+    const context: ExtensionContext = {
         schema: schemas.MAGENTO_EXTENSION_SCHEMA_URL,
         data: {
             magentoExtensionVersion:

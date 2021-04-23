@@ -11,7 +11,7 @@ import schemas from "../schemas";
 const createContext = (storefront?: StorefrontInstance): StorefrontContext => {
     const storefrontCtx = storefront ?? mse.context.getStorefrontInstance();
 
-    const context = {
+    const context: StorefrontContext = {
         schema: schemas.STOREFRONT_INSTANCE_SCHEMA_URL,
         data: {
             baseCurrencyCode: storefrontCtx.baseCurrencyCode,

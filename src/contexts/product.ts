@@ -11,7 +11,7 @@ import schemas from "../schemas";
 const createContext = (product?: Product): ProductContext => {
     const productCtx = product ?? mse.context.getProduct();
 
-    const context = {
+    const context: ProductContext = {
         schema: schemas.PRODUCT_SCHEMA_URL,
         data: {
             productId: productCtx.productId,
