@@ -9,7 +9,7 @@ const config = {
         path: path.resolve(__dirname, "dist"),
         publicPath: "",
         library: {
-            name: "MagentoStorefrontEventCollector",
+            name: "magentoStorefrontEventCollector",
             type: "umd",
             export: "default",
             umdNamedDefine: true,

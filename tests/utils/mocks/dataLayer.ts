@@ -1,5 +1,6 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import {
+    Category,
     CustomUrl,
     MagentoExtension,
     Order,
@@ -13,6 +14,12 @@ import {
     ShoppingCart,
     StorefrontInstance,
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
+
+const mockCategory: Category = {
+    name: "pants",
+    urlKey: "pants",
+    urlPath: "/categories/pants",
+};
 
 const mockExtension: MagentoExtension = {
     magentoExtensionVersion: "1.2.3",
@@ -339,6 +346,7 @@ const mockEvent: Event = {
         name: "Pants",
         sku: "abc123",
         suggestion: "red pants",
+        categoryContext: mockCategory,
         customContext: {},
         customUrlContext: mockCustomUrl,
         magentoExtensionContext: mockExtension,
@@ -356,6 +364,7 @@ const mockEvent: Event = {
 };
 
 export {
+    mockCategory,
     mockEvent,
     mockExtension,
     mockOrder,
