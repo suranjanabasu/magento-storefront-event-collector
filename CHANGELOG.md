@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.12...v0.0.13) (2021-04-30)
+
+
+### Bug Fixes
+
+* remove conditionals on required fields ([499127f](https://github.com/adobe/magento-storefront-event-collector/commit/499127fa723c9249bd3ff846d653967f6aba901b))
+
 ### [0.0.12](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.11...v0.0.12) (2021-04-28)
 
 ### [0.0.11](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.10...v0.0.11) (2021-04-26)
