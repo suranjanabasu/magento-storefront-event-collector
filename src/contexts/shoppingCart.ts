@@ -17,19 +17,15 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
 
     const shoppingCartItems: Array<ShoppingCartItem> = shoppingCartCtx.items.map<ShoppingCartItem>(
         item => ({
-            // TODO: what happens if its undefined?
-            basePrice: item.prices?.price.value ?? 0,
+            basePrice: item.prices.price.value,
             // TODO: how do we reconcile string to int
             // suggestion: change snowplow schema to accept string
             cartItemId: item.id,
             mainImageUrl: item.product.mainImageUrl ?? undefined,
-            // TODO: what happens if its undefined?
-            offerPrice: item.prices?.price.value ?? 0,
+            offerPrice: item.prices.price.value,
             productName: item.product.name,
-            // TODO: what happens if its undefined?
-            productSku: item.product.sku ?? "",
-            // TODO: what happens if its undefined?
-            qty: item.quantity ?? 0,
+            productSku: item.product.sku,
+            qty: item.quantity,
         }),
     );
 

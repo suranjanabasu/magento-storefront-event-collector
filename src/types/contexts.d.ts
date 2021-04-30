@@ -166,7 +166,7 @@ type ShoppingCart = {
 
 type ShoppingCartItem = {
     offerPrice: number;
-    basePrice?: number;
+    basePrice: number;
     qty: number;
     productName: string;
     cartItemId: string;
