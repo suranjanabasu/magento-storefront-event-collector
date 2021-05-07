@@ -4,25 +4,46 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
-import { trackStructEvent } from "@snowplow/browser-tracker";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
 import { createSearchInputCtx, createSearchResultsCtx } from "../../contexts";
 
 const handler = (event: Event): void => {
     const {
+        searchUnitId,
         pageContext,
         searchInputContext,
         searchResultsContext,
     } = event.eventInfo;
 
-    const searchInputCtx = createSearchInputCtx(searchInputContext);
-    const searchResultsCtx = createSearchResultsCtx(searchResultsContext);
+    const searchInputCtx = createSearchInputCtx(
+        searchUnitId as string,
+        searchInputContext,
+    );
+
+    const searchResultsCtx = createSearchResultsCtx(
+        searchUnitId as string,
+        searchResultsContext,
+    );
+
+    const context: Array<SelfDescribingJson> = [];
+
+    if (searchInputCtx) {
+        context.push(searchInputCtx);
+    }
+
+    if (searchResultsCtx) {
+        context.push(searchResultsCtx);
+    }
 
     trackStructEvent({
         category: "search",
         action: "results-view",
         property: pageContext.pageType,
-        context: [searchInputCtx, searchResultsCtx],
+        context,
     });
 };
 

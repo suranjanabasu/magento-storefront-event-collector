@@ -17,23 +17,38 @@ import {
 
 const handler = (event: Event): void => {
     const {
+        searchUnitId,
         suggestion,
         pageContext,
         searchInputContext,
         searchResultsContext,
     } = event.eventInfo;
 
-    const searchInputCtx = createSearchInputCtx(searchInputContext);
-    const searchResultsCtx = createSearchResultsCtx(searchResultsContext);
+    const searchInputCtx = createSearchInputCtx(
+        searchUnitId as string,
+        searchInputContext,
+    );
+
+    const searchResultsCtx = createSearchResultsCtx(
+        searchUnitId as string,
+        searchResultsContext,
+    );
+
     const searchResultsSuggestionCtx = createSearchResultSuggestionCtx(
+        searchUnitId as string,
         suggestion as string,
         searchResultsContext,
     );
 
-    const context: Array<SelfDescribingJson> = [
-        searchInputCtx,
-        searchResultsCtx,
-    ];
+    const context: Array<SelfDescribingJson> = [];
+
+    if (searchInputCtx) {
+        context.push(searchInputCtx);
+    }
+
+    if (searchResultsCtx) {
+        context.push(searchResultsCtx);
+    }
 
     if (searchResultsSuggestionCtx) {
         context.push(searchResultsSuggestionCtx);

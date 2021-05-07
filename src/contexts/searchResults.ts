@@ -7,23 +7,37 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
+import { getSearchResultUnit } from "../utils/search";
 
-const createContext = (searchResults?: SearchResults): SearchResultsContext => {
+const createContext = (
+    searchUnitId: string,
+    searchResults?: SearchResults,
+): SearchResultsContext | null => {
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
+
+    const searchResultsUnit = getSearchResultUnit(
+        searchUnitId,
+        searchResultsCtx,
+    );
+
+    if (!searchResultsUnit) {
+        return null;
+    }
 
     const context: SearchResultsContext = {
         schema: schemas.SEARCH_RESULTS_SCHEMA_URL,
         data: {
-            searchRequestId: searchResultsCtx.searchRequestId,
-            products: searchResultsCtx.products,
-            categories: searchResultsCtx.categories,
-            suggestions: searchResultsCtx.suggestions,
-            productCount: searchResultsCtx.productCount,
-            categoryCount: searchResultsCtx.categoryCount,
-            suggestionCount: searchResultsCtx.suggestionCount,
-            page: searchResultsCtx.page,
-            perPage: searchResultsCtx.perPage,
-            facets: searchResultsCtx.facets,
+            searchUnitId: searchResultsUnit.searchUnitId,
+            searchRequestId: searchResultsUnit.searchRequestId,
+            products: searchResultsUnit.products,
+            categories: searchResultsUnit.categories,
+            suggestions: searchResultsUnit.suggestions,
+            productCount: searchResultsUnit.productCount,
+            categoryCount: searchResultsUnit.categoryCount,
+            suggestionCount: searchResultsUnit.suggestionCount,
+            page: searchResultsUnit.page,
+            perPage: searchResultsUnit.perPage,
+            facets: searchResultsUnit.facets,
         },
     };
 

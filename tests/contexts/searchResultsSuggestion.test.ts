@@ -3,7 +3,7 @@ import schemas from "../../src/schemas";
 import { mockSearchResultSuggestionCtx } from "../utils/mocks";
 
 test("creates context", () => {
-    const ctx = createSearchResultSuggestionCtx("red pants");
+    const ctx = createSearchResultSuggestionCtx("search-bar", "red pants");
 
     expect(ctx).toEqual({
         data: mockSearchResultSuggestionCtx,
