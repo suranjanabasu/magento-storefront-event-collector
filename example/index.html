@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.12.0/dist/index.js"></script>
+        <script src="https://unpkg.com/@adobe/magento-storefront-events-sdk@0.14.0/dist/index.js"></script>
         <script src="/index.js"></script>
         <script src="http://localhost:8080/index.js"></script>
     </head>
@@ -64,37 +64,37 @@
             </button>
 
             <button
-                onclick="magentoStorefrontEvents.publish.searchCategoryClick('Bottoms')"
+                onclick="magentoStorefrontEvents.publish.searchCategoryClick('search-bar', 'Bottoms')"
             >
                 searchCategoryClick
             </button>
 
             <button
-                onclick="magentoStorefrontEvents.publish.searchProductClick('abc123')"
+                onclick="magentoStorefrontEvents.publish.searchProductClick('search-bar', 'abc123')"
             >
                 searchProductClick
             </button>
 
             <button
-                onclick="magentoStorefrontEvents.publish.searchRequestSent()"
+                onclick="magentoStorefrontEvents.publish.searchRequestSent('search-bar')"
             >
                 searchRequestSent
             </button>
 
             <button
-                onclick="magentoStorefrontEvents.publish.searchResponseReceived()"
+                onclick="magentoStorefrontEvents.publish.searchResponseReceived('search-bar')"
             >
                 searchResponseReceived
             </button>
 
             <button
-                onclick="magentoStorefrontEvents.publish.searchResultsView()"
+                onclick="magentoStorefrontEvents.publish.searchResultsView('search-bar')"
             >
                 searchResultsView
             </button>
 
             <button
-                onclick="magentoStorefrontEvents.publish.searchSuggestionClick('red pants')"
+                onclick="magentoStorefrontEvents.publish.searchSuggestionClick('search-bar', 'red pants')"
             >
                 searchSuggestionClick
             </button>

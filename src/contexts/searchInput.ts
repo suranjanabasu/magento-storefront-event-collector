@@ -24,15 +24,14 @@ const createContext = (
         schema: schemas.SEARCH_INPUT_SCHEMA_URL,
         data: {
             searchUnitId: searchInputUnit.searchUnitId,
-            source: searchInputUnit.source ?? null,
-            queryType: "all",
+            source: null,
+            queryTypes: searchInputUnit.queryTypes,
             searchRequestId: searchInputUnit.searchRequestId,
-            query: searchInputUnit.query,
-            page: searchInputUnit.page,
-            perPage: searchInputUnit.perPage,
-            filters: createFilters(searchInputUnit),
-            sortType: searchInputUnit.sortType,
-            sortOrder: searchInputUnit.sortOrder,
+            query: searchInputUnit.phrase,
+            page: searchInputUnit.currentPage,
+            perPage: searchInputUnit.pageSize,
+            filter: createFilters(searchInputUnit),
+            sort: searchInputUnit.sort,
         },
     };
 

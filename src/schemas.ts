@@ -15,7 +15,7 @@ const schemas = {
     RECOMMENDED_ITEM_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/recommended-item/jsonschema/1-0-3",
     SEARCH_INPUT_SCHEMA_URL:
-        "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-8",
+        "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-11",
     SEARCH_RESULT_CATEGORY_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-result-category/jsonschema/1-0-1",
     SEARCH_RESULT_PRODUCT_SCHEMA_URL:

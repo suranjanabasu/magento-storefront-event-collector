@@ -285,11 +285,11 @@ const mockSearchInput: SearchInput = {
         {
             searchUnitId: "search-bar",
             searchRequestId: "abc123",
-            source: "search-bar",
-            query: "red patns",
-            page: 1,
-            perPage: 20,
-            filters: [
+            queryTypes: ["products"],
+            phrase: "red patns",
+            currentPage: 1,
+            pageSize: 20,
+            filter: [
                 {
                     attribute: "size",
                     eq: "small",
@@ -303,8 +303,12 @@ const mockSearchInput: SearchInput = {
                     range: { from: 19.99, to: 49.99 },
                 },
             ],
-            sortType: "relevance",
-            sortOrder: "descending",
+            sort: [
+                {
+                    attribute: "relevance",
+                    direction: "DESC",
+                },
+            ],
         },
     ],
 };
