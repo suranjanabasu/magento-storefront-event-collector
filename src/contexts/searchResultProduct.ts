@@ -7,15 +7,25 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
-import { getProduct } from "../utils/search";
+import { getProduct, getSearchResultUnit } from "../utils/search";
 
 const createContext = (
+    searchUnitId: string,
     sku: string,
     searchResults?: SearchResults,
 ): SearchResultProductContext | null => {
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
 
-    const product = getProduct(sku, searchResultsCtx);
+    const searchResultUnit = getSearchResultUnit(
+        searchUnitId,
+        searchResultsCtx,
+    );
+
+    if (!searchResultUnit) {
+        return null;
+    }
+
+    const product = getProduct(sku, searchResultUnit);
 
     if (!product) {
         return null;

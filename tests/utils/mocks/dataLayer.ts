@@ -281,65 +281,75 @@ const mockShopper: Shopper = {
 };
 
 const mockSearchInput: SearchInput = {
-    searchRequestId: "abc123",
-    source: "search-bar",
-    query: "red patns",
-    page: 1,
-    perPage: 20,
-    filters: [
+    units: [
         {
-            attribute: "size",
-            eq: "small",
-        },
-        {
-            attribute: "category",
-            in: ["bottoms", "mens"],
-        },
-        {
-            attribute: "price",
-            range: { from: 19.99, to: 49.99 },
+            searchUnitId: "search-bar",
+            searchRequestId: "abc123",
+            source: "search-bar",
+            query: "red patns",
+            page: 1,
+            perPage: 20,
+            filters: [
+                {
+                    attribute: "size",
+                    eq: "small",
+                },
+                {
+                    attribute: "category",
+                    in: ["bottoms", "mens"],
+                },
+                {
+                    attribute: "price",
+                    range: { from: 19.99, to: 49.99 },
+                },
+            ],
+            sortType: "relevance",
+            sortOrder: "descending",
         },
     ],
-    sortType: "relevance",
-    sortOrder: "descending",
 };
 
 const mockSearchResults: SearchResults = {
-    searchRequestId: "abc123",
-    products: [
+    units: [
         {
-            name: "Red Pants",
-            sku: "abc123",
-            url: "https://magento.com/red-pants",
-            imageUrl: "https://magento.com/red-pants.jpg",
-            price: 49.99,
-            rank: 1,
+            searchUnitId: "search-bar",
+            searchRequestId: "abc123",
+            products: [
+                {
+                    name: "Red Pants",
+                    sku: "abc123",
+                    url: "https://magento.com/red-pants",
+                    imageUrl: "https://magento.com/red-pants.jpg",
+                    price: 49.99,
+                    rank: 1,
+                },
+            ],
+            suggestions: [
+                {
+                    suggestion: "red pants",
+                    rank: 1,
+                },
+            ],
+            categories: [
+                {
+                    name: "Pants",
+                    url: "https://magento.com/category/pants",
+                    rank: 1,
+                },
+                {
+                    name: "Bottoms",
+                    url: "https://magento.com/category/bottoms",
+                    rank: 2,
+                },
+            ],
+            page: 1,
+            perPage: 20,
+            productCount: 1,
+            categoryCount: 2,
+            suggestionCount: 1,
+            facets: [],
         },
     ],
-    suggestions: [
-        {
-            suggestion: "red pants",
-            rank: 1,
-        },
-    ],
-    categories: [
-        {
-            name: "Pants",
-            url: "https://magento.com/category/pants",
-            rank: 1,
-        },
-        {
-            name: "Bottoms",
-            url: "https://magento.com/category/bottoms",
-            rank: 2,
-        },
-    ],
-    page: 1,
-    perPage: 20,
-    productCount: 1,
-    categoryCount: 2,
-    suggestionCount: 1,
-    facets: [],
 };
 
 const mockReferrerUrl: ReferrerUrl = {
@@ -353,6 +363,7 @@ const mockCustomUrl: CustomUrl = {
 const mockEvent: Event = {
     event: "add-to-cart",
     eventInfo: {
+        searchUnitId: "search-bar",
         unitId: "abc123",
         productId: 111111,
         name: "Pants",

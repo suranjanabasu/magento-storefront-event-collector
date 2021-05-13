@@ -88,6 +88,7 @@ const mockExtensionCtx = {
 };
 
 const mockSearchInputCtx = {
+    searchUnitId: "search-bar",
     source: "search-bar",
     queryType: "all",
     searchRequestId: "abc123",
@@ -131,6 +132,7 @@ const mockSearchResultProductCtx = {
 };
 
 const mockSearchResultsCtx = {
+    searchUnitId: "search-bar",
     searchRequestId: "abc123",
     products: [
         {

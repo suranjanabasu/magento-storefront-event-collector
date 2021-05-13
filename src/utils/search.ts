@@ -1,14 +1,37 @@
 import {
     SearchInput,
-    SearchResultCategory,
+    SearchInputUnit,
     SearchResultProduct,
     SearchResults,
     SearchResultSuggestion,
+    SearchResultUnit,
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
+
+const getSearchInputUnit = (
+    searchUnitId: string,
+    ctx: SearchInput,
+): SearchInputUnit | undefined => {
+    const searchInputUnit = ctx.units.find(
+        unit => unit.searchUnitId === searchUnitId,
+    );
+
+    return searchInputUnit;
+};
+
+const getSearchResultUnit = (
+    searchUnitId: string,
+    ctx: SearchResults,
+): SearchResultUnit | undefined => {
+    const searchResultUnit = ctx.units.find(
+        unit => unit.searchUnitId === searchUnitId,
+    );
+
+    return searchResultUnit;
+};
 
 const getCategory = (
     name: string,
-    ctx: SearchResults,
+    ctx: SearchResultUnit,
 ): SearchResultCategory | null => {
     const category = ctx.categories.find(category => category.name === name);
 
@@ -21,7 +44,7 @@ const getCategory = (
 
 const getProduct = (
     sku: string,
-    ctx: SearchResults,
+    ctx: SearchResultUnit,
 ): SearchResultProduct | null => {
     const product = ctx.products.find(product => product.sku === sku);
 
@@ -34,7 +57,7 @@ const getProduct = (
 
 const getSuggestion = (
     suggestion: string,
-    ctx: SearchResults,
+    ctx: SearchResultUnit,
 ): SearchResultSuggestion | null => {
     const suggested = ctx.suggestions.find(s => s.suggestion === suggestion);
 
@@ -45,7 +68,7 @@ const getSuggestion = (
     return suggested;
 };
 
-const createFilters = (ctx: SearchInput): Array<SearchFilter> => {
+const createFilters = (ctx: SearchInputUnit): Array<SearchFilter> => {
     const filters: Array<SearchFilter> = [];
 
     ctx.filters.forEach(filter => {
@@ -90,4 +113,11 @@ const createFilters = (ctx: SearchInput): Array<SearchFilter> => {
     return filters;
 };
 
-export { createFilters, getCategory, getProduct, getSuggestion };
+export {
+    createFilters,
+    getCategory,
+    getProduct,
+    getSearchInputUnit,
+    getSearchResultUnit,
+    getSuggestion,
+};

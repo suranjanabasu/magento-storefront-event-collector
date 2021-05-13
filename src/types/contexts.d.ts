@@ -84,6 +84,7 @@ type RecommendedItem = {
 };
 
 type SearchInput = {
+    searchUnitId: string;
     source: string | null;
     queryType: string;
     searchRequestId: string;
@@ -117,6 +118,7 @@ type SearchResultProduct = {
 };
 
 type SearchResults = {
+    searchUnitId: string;
     searchRequestId: string;
     products: Array<SearchResultProduct> | null;
     suggestions: Array<SearchResultSuggestion> | null;
