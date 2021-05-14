@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.13...v0.0.14) (2021-05-14)
+
+
+### Features
+
+* support multiple search units ([c4f44bc](https://github.com/adobe/magento-storefront-event-collector/commit/c4f44bcd2329e53ba43d736316ec5f031048e748))
+* support new facets structure ([0b86d75](https://github.com/adobe/magento-storefront-event-collector/commit/0b86d75d5a156d0e5b31582b92c911bc35389fb5))
+* support new search input structure ([a8f022a](https://github.com/adobe/magento-storefront-event-collector/commit/a8f022afb4fe4e88d348591dac22bf4365fe67af))
+
 ### [0.0.13](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.12...v0.0.13) (2021-04-30)
 
 
