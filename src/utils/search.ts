@@ -71,7 +71,7 @@ const getSuggestion = (
 const createFilters = (ctx: SearchInputUnit): Array<SearchFilter> => {
     const filters: Array<SearchFilter> = [];
 
-    ctx.filters.forEach(filter => {
+    ctx.filter.forEach(filter => {
         // eq
         if (filter.eq) {
             filters.push({

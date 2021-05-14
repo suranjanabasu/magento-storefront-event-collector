@@ -16,12 +16,8 @@ import {
 import { getProduct } from "../../utils/recommendations";
 
 const handler = (event: Event): void => {
-    const {
-        unitId,
-        productId,
-        pageContext,
-        recommendationsContext,
-    } = event.eventInfo;
+    const { unitId, productId, pageContext, recommendationsContext } =
+        event.eventInfo;
 
     const context: Array<SelfDescribingJson> = [];
 

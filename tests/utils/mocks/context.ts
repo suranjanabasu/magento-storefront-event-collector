@@ -89,13 +89,13 @@ const mockExtensionCtx = {
 
 const mockSearchInputCtx = {
     searchUnitId: "search-bar",
-    source: "search-bar",
-    queryType: "all",
+    source: null,
+    queryTypes: ["products"],
     searchRequestId: "abc123",
     query: "red patns",
     page: 1,
     perPage: 20,
-    filters: [
+    filter: [
         {
             name: "size",
             values: ["small"],
@@ -112,8 +112,12 @@ const mockSearchInputCtx = {
             operator: "range",
         },
     ],
-    sortOrder: "descending",
-    sortType: "relevance",
+    sort: [
+        {
+            attribute: "relevance",
+            direction: "DESC",
+        },
+    ],
 };
 
 const mockSearchResultCategoryCtx = {

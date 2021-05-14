@@ -27,5 +27,5 @@ test("gets suggestion", () => {
 
 test("creates filters", () => {
     const filters = createFilters(mockSearchInput.units[0]);
-    expect(filters).toEqual(mockSearchInputCtx.filters);
+    expect(filters).toEqual(mockSearchInputCtx.filter);
 });

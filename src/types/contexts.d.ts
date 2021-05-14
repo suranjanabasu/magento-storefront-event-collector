@@ -86,20 +86,24 @@ type RecommendedItem = {
 type SearchInput = {
     searchUnitId: string;
     source: string | null;
-    queryType: string;
+    queryTypes: Array<string>;
     searchRequestId: string;
     query: string;
     page: number;
     perPage: number;
-    filters: Array<SearchFilter> | null;
-    sortType: string | null;
-    sortOrder: string | null;
+    filter: Array<SearchFilter> | null;
+    sort: Array<SearchSort> | null;
 };
 
 type SearchFilter = {
     name: string;
     values: Array<string>;
     operator: string;
+};
+
+type SearchSort = {
+    attribute: string;
+    direction: string;
 };
 
 type SearchResultCategory = {

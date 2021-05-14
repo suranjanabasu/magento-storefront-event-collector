@@ -15,8 +15,8 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
         return [];
     }
 
-    const shoppingCartItems: Array<ShoppingCartItem> = shoppingCartCtx.items.map<ShoppingCartItem>(
-        item => ({
+    const shoppingCartItems: Array<ShoppingCartItem> =
+        shoppingCartCtx.items.map<ShoppingCartItem>(item => ({
             basePrice: item.prices.price.value,
             // TODO: how do we reconcile string to int
             // suggestion: change snowplow schema to accept string
@@ -26,8 +26,7 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
             productName: item.product.name,
             productSku: item.product.sku,
             qty: item.quantity,
-        }),
-    );
+        }));
 
     return shoppingCartItems;
 };
