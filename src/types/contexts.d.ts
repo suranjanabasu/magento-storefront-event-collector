@@ -137,14 +137,13 @@ type SearchResults = {
 
 type SearchFacet = {
     attribute: string;
-    dataType: string;
-    facetType: string;
+    title: string;
+    type: string;
     buckets: Array<SearchBucket>;
 };
 
 type SearchBucket = {
-    tite: string;
-    count: number;
+    title: string;
 };
 
 type SearchResultSuggestion = {

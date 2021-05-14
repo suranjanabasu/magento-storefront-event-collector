@@ -348,10 +348,27 @@ const mockSearchResults: SearchResults = {
             ],
             page: 1,
             perPage: 20,
-            productCount: 1,
-            categoryCount: 2,
-            suggestionCount: 1,
-            facets: [],
+            facets: [
+                {
+                    attribute: "size",
+                    title: "Size",
+                    type: "PINNED",
+                    buckets: [
+                        {
+                            title: "S",
+                            count: 4,
+                        },
+                        {
+                            title: "M",
+                            count: 12,
+                        },
+                        {
+                            title: "L",
+                            count: 9,
+                        },
+                    ],
+                },
+            ],
         },
     ],
 };
