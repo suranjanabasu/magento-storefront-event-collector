@@ -3,8 +3,6 @@ name: release
 on:
     push:
         tags:
-            - "v*"
-        tags-ignore:
             - "v*-qa*"
 
 jobs:
@@ -33,6 +31,6 @@ jobs:
             - name: build
               run: npm run build
             - name: release
-              run: npm publish --access public
+              run: npm publish --access public --tag qa
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.ADOBE_BOT_NPM_TOKEN }}
