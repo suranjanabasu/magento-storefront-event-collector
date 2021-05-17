@@ -23,8 +23,9 @@ jobs:
             - name: install
               run: npm ci
             - name: git
-              run: git config user.name "GitHub Actions Bot"
-              run: git config user.email ""
+              run: |
+                  git config user.name "GitHub Actions Bot"
+                  git config user.email ""
             - name: release
               run: npm run release:qa
             - name: tag
