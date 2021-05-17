@@ -1,4 +1,4 @@
-name: release
+name: qa
 
 on:
     push:
@@ -6,8 +6,8 @@ on:
             - "v*-qa*"
 
 jobs:
-    release:
-        name: release
+    qa:
+        name: qa
         runs-on: ubuntu-18.04
         steps:
             - name: checkout
