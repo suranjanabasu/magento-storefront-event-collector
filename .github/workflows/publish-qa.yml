@@ -1,14 +1,13 @@
-name: release
+name: publish-qa
 
 on:
     push:
         tags:
-            - "v*"
-            - "!v*-qa*"
+            - "v*-qa*"
 
 jobs:
-    release:
-        name: release
+    publish-qa:
+        name: publish-qa
         runs-on: ubuntu-18.04
         steps:
             - name: checkout
@@ -23,15 +22,9 @@ jobs:
                   registry-url: https://registry.npmjs.org/
             - name: install
               run: npm ci
-            - name: lint
-              run: npm run lint
-            - name: format
-              run: npm run format
-            - name: test
-              run: npm test
             - name: build
               run: npm run build
-            - name: release
-              run: npm publish --access public
+            - name: publish
+              run: npm publish --access public --tag qa
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.ADOBE_BOT_NPM_TOKEN }}
