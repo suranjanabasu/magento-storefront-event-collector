@@ -23,7 +23,7 @@ jobs:
             - name: install
               run: npm ci
             - name: build
-              run: npm run build
+              run: npm run build:qa
             - name: release
               run: npm run release -- --skip.commit --skip.tag --release-as 0.0.0-${{ github.sha }}
             - name: publish
