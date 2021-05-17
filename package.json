@@ -20,9 +20,7 @@
         "test": "jest --passWithNoTests",
         "test:ci": "jest --passWithNoTests --ci",
         "test:watch": "jest --passWithNoTests --watch",
-        "release": "cross-env HUSKY_SKIP_HOOKS=1 standard-version",
-        "release:qa": "cross-env HUSKY_SKIP_HOOKS=1 standard-version --prerelease qa",
-        "release:prod": "cross-env HUSKY_SKIP_HOOKS=1 standard-version"
+        "release": "cross-env HUSKY_SKIP_HOOKS=1 standard-version"
     },
     "repository": {
         "type": "git",
