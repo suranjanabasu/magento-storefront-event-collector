@@ -14,23 +14,25 @@ type Product = {
     newToDate?: string | null;
     productId: number;
     sku: string;
-    pricing?: {
-        currencyCode: string | null;
-        maximalPrice: number;
-        minimalPrice: number;
-        regularPrice: number;
-        specialPrice?: number;
-        tierPricing?: Array<{
-            customerGroupId: number | null;
-            qty: number;
-            value: number;
-        }>;
-    };
+    pricing?: ProductPricing | null;
     productType?: string | null;
     specialFromDate?: string | null;
     specialToDate?: string | null;
     topLevelSku?: string | null;
     updatedAt?: string | null;
+};
+
+type ProductPricing = {
+    currencyCode: string | null;
+    maximalPrice: number;
+    minimalPrice: number;
+    regularPrice: number;
+    specialPrice?: number;
+    tierPricing?: Array<{
+        customerGroupId: number | null;
+        qty: number;
+        value: number;
+    }>;
 };
 
 type RecommendationUnit = {
