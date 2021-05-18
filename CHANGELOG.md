@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.17...v0.0.18) (2021-05-18)
+
+
+### Bug Fixes
+
+* make product pricing optional ([f0d85e1](https://github.com/adobe/magento-storefront-event-collector/commit/f0d85e1d523792a1b4d5f8304aaa011625995f14))
+
 ### [0.0.17](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.16...v0.0.17) (2021-05-18)
 
 ### [0.0.16](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.15...v0.0.16) (2021-05-17)
