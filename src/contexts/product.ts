@@ -7,6 +7,7 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { Product } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
+import { createPricing } from "../utils/product";
 
 const createContext = (product?: Product): ProductContext => {
     const productCtx = product ?? mse.context.getProduct();
@@ -28,18 +29,7 @@ const createContext = (product?: Product): ProductContext => {
             countryOfManufacture: productCtx.countryOfManufacture,
             categories: productCtx.categories,
             productType: productCtx.productType,
-            pricing: {
-                regularPrice: productCtx.pricing.regularPrice,
-                minimalPrice: productCtx.pricing.minimalPrice,
-                maximalPrice: productCtx.pricing.maximalPrice,
-                specialPrice: productCtx.pricing?.specialPrice,
-                tierPricing: productCtx.pricing?.tierPricing?.map(price => ({
-                    customerGroupId: price.customerGroupId ?? null,
-                    qty: price.qty,
-                    value: price.value,
-                })),
-                currencyCode: productCtx.pricing?.currencyCode ?? null,
-            },
+            pricing: createPricing(productCtx),
             canonicalUrl: productCtx.canonicalUrl,
             mainImageUrl: productCtx.mainImageUrl,
         },
