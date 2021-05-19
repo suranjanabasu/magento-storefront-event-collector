@@ -3,7 +3,7 @@
  * See COPYING.txt for license details.
  */
 
-import { SelfDescribingJson } from "@snowplow/tracker-core";
+import { ContextPrimitive } from "@snowplow/tracker-core";
 
 import {
     createMagentoExtensionCtx,
@@ -12,17 +12,19 @@ import {
     createTrackerCtx,
 } from ".";
 
-const createContext = (): Array<SelfDescribingJson> => {
+const createContext = (): Array<ContextPrimitive> => {
     const magentoExtensionCtx = createMagentoExtensionCtx();
-    const shopperCtx = createShopperCtx();
     const storefrontInstanceCtx = createStorefrontInstanceCtx();
     const trackerCtx = createTrackerCtx();
 
     const contexts = [
-        magentoExtensionCtx,
-        shopperCtx,
-        storefrontInstanceCtx,
+        // static contexts
         trackerCtx,
+        magentoExtensionCtx,
+        storefrontInstanceCtx,
+
+        // dynamic contexts
+        () => createShopperCtx(),
     ];
 
     return contexts;
