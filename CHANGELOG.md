@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.18...v0.0.19) (2021-05-19)
+
+
+### Bug Fixes
+
+* dynamically calculate the shopper context ([46f464c](https://github.com/adobe/magento-storefront-event-collector/commit/46f464c1c30296d198b371522e2543940c63d13a))
+* handle empty data layer during context creation ([d3fb41b](https://github.com/adobe/magento-storefront-event-collector/commit/d3fb41b511a321d17b22ba143b18bafb5314a974))
+
 ### [0.0.18](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.17...v0.0.18) (2021-05-18)
 
 
