@@ -8,7 +8,7 @@ const getUnit = (
     unitId: string,
     ctx: Recommendations,
 ): RecommendationUnit | null => {
-    const unit = ctx.units.find(unit => unit.unitId === unitId);
+    const unit = ctx?.units.find(unit => unit.unitId === unitId);
 
     if (!unit) {
         return null;

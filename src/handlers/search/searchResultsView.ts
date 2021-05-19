@@ -42,7 +42,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "results-view",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
         context,
     });
 };

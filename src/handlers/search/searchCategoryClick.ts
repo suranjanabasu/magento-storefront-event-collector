@@ -57,8 +57,8 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "category-click",
-        label: searchResultsCategoryCtx?.data.url,
-        property: pageContext.pageType,
+        label: searchResultsCategoryCtx?.data.url as string,
+        property: pageContext?.pageType,
         context,
     });
 };

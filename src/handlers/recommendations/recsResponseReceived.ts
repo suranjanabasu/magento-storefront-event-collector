@@ -10,6 +10,10 @@ import {
     createRecommendationUnitCtx,
     createRecommendedItemCtx,
 } from "../../contexts";
+import {
+    RecommendationUnitContext,
+    RecommendedItemContext,
+} from "../../types/contexts";
 
 const handler = (event: Event): void => {
     const { pageContext, recommendationsContext } = event.eventInfo;
@@ -17,7 +21,7 @@ const handler = (event: Event): void => {
     const recommendationUnitCtxs: Array<RecommendationUnitContext> = [];
     const recommendedItemCtxs: Array<RecommendedItemContext> = [];
 
-    recommendationsContext.units.forEach(unit => {
+    recommendationsContext?.units.forEach(unit => {
         const unitCtx = createRecommendationUnitCtx(
             unit.unitId as string,
             recommendationsContext,
@@ -45,7 +49,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "recommendation-unit",
         action: "api-response-received",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
         context: [...recommendationUnitCtxs, ...recommendedItemCtxs],
     });
 };

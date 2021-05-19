@@ -27,7 +27,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "product",
         action: "view",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
         context,
     });
 };

@@ -57,8 +57,8 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "suggestion-click",
-        label: searchResultsSuggestionCtx?.data.suggestion,
-        property: pageContext.pageType,
+        label: searchResultsSuggestionCtx?.data.suggestion as string,
+        property: pageContext?.pageType,
         context,
     });
 };

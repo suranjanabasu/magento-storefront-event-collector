@@ -12,7 +12,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "recommendation-unit",
         action: "api-request-sent",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
     });
 };
 

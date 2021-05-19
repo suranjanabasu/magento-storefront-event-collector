@@ -49,7 +49,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "recommendation-unit",
         action: "rec-add-to-cart-click",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
         value: product?.rank,
         context,
     });
