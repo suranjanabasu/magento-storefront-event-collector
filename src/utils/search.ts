@@ -7,6 +7,8 @@ import {
     SearchResultUnit,
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
+import { SearchFilter, SearchResultCategory } from "../types/contexts";
+
 const getSearchInputUnit = (
     searchUnitId: string,
     ctx: SearchInput,

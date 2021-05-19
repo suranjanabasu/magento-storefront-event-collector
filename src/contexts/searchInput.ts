@@ -7,6 +7,7 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchInput } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
+import { SearchInputContext } from "../types/contexts";
 import { createFilters, getSearchInputUnit } from "../utils/search";
 
 const createContext = (
@@ -14,6 +15,14 @@ const createContext = (
     searchInput?: SearchInput,
 ): SearchInputContext | null => {
     const searchInputCtx = searchInput ?? mse.context.getSearchInput();
+
+    if (!searchInputCtx) {
+        return {
+            schema: schemas.SEARCH_INPUT_SCHEMA_URL,
+            data: {},
+        };
+    }
+
     const searchInputUnit = getSearchInputUnit(searchUnitId, searchInputCtx);
 
     if (!searchInputUnit) {

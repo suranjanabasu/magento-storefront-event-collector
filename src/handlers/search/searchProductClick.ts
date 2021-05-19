@@ -57,8 +57,8 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "product-click",
-        label: searchResultsProductCtx?.data.sku,
-        property: pageContext.pageType,
+        label: searchResultsProductCtx?.data.sku as string,
+        property: pageContext?.pageType,
         context,
     });
 };

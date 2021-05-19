@@ -7,9 +7,17 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { StorefrontInstance } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
+import { StorefrontContext } from "../types/contexts";
 
 const createContext = (storefront?: StorefrontInstance): StorefrontContext => {
     const storefrontCtx = storefront ?? mse.context.getStorefrontInstance();
+
+    if (!storefrontCtx) {
+        return {
+            schema: schemas.STOREFRONT_INSTANCE_SCHEMA_URL,
+            data: {},
+        };
+    }
 
     const context: StorefrontContext = {
         schema: schemas.STOREFRONT_INSTANCE_SCHEMA_URL,

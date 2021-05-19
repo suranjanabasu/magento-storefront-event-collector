@@ -7,6 +7,7 @@ import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
+import { SearchResultProductContext } from "../types/contexts";
 import { getProduct, getSearchResultUnit } from "../utils/search";
 
 const createContext = (
@@ -15,6 +16,13 @@ const createContext = (
     searchResults?: SearchResults,
 ): SearchResultProductContext | null => {
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
+
+    if (!searchResultsCtx) {
+        return {
+            schema: schemas.SEARCH_RESULT_PRODUCT_SCHEMA_URL,
+            data: {},
+        };
+    }
 
     const searchResultUnit = getSearchResultUnit(
         searchUnitId,

@@ -24,7 +24,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "shopping-cart",
         action: "view",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
         context,
     });
 };

@@ -1,3 +1,5 @@
+import { SelfDescribingJson } from "@snowplow/tracker-core";
+
 type Extension = {
     magentoExtensionVersion: string;
 };
@@ -204,67 +206,20 @@ type Tracker = {
     magentoJsVersion: string;
 };
 
-type ExtensionContext = {
-    schema: string;
-    data: Extension;
-};
+type SnowplowContext<DataType> = SelfDescribingJson<
+    DataType | Record<string, unknown>
+>;
 
-type ProductContext = {
-    schema: string;
-    data: Product;
-};
-
-type RecommendationUnitContext = {
-    schema: string;
-    data: RecommendationUnit;
-};
-
-type RecommendedItemContext = {
-    schema: string;
-    data: RecommendedItem;
-};
-
-type SearchInputContext = {
-    schema: string;
-    data: SearchInput;
-};
-
-type SearchResultCategoryContext = {
-    schema: string;
-    data: SearchResultCategory;
-};
-
-type SearchResultProductContext = {
-    schema: string;
-    data: SearchResultProduct;
-};
-
-type SearchResultsContext = {
-    schema: string;
-    data: SearchResults;
-};
-
-type SearchResultSuggestionContext = {
-    schema: string;
-    data: SearchResultSuggestion;
-};
-
-type ShopperContext = {
-    schema: string;
-    data: Shopper;
-};
-
-type ShoppingCartContext = {
-    schema: string;
-    data: ShoppingCart;
-};
-
-type StorefrontContext = {
-    schema: string;
-    data: Storefront;
-};
-
-type TrackerContext = {
-    schema: string;
-    data: Tracker;
-};
+type ExtensionContext = SnowplowContext<Extension>;
+type ProductContext = SnowplowContext<Product>;
+type RecommendationUnitContext = SnowplowContext<RecommendationUnit>;
+type RecommendedItemContext = SnowplowContext<RecommendedItem>;
+type SearchInputContext = SnowplowContext<SearchInput>;
+type SearchResultCategoryContext = SnowplowContext<SearchResultCategory>;
+type SearchResultProductContext = SnowplowContext<SearchResultProduct>;
+type SearchResultsContext = SnowplowContext<SearchResults>;
+type SearchResultSuggestionContext = SnowplowContext<SearchResultSuggestion>;
+type ShopperContext = SnowplowContext<Shopper>;
+type ShoppingCartContext = SnowplowContext<ShoppingCart>;
+type StorefrontContext = SnowplowContext<Storefront>;
+type TrackerContext = SnowplowContext<Tracker>;

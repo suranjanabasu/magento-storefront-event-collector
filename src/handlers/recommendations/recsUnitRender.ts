@@ -46,7 +46,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "recommendation-unit",
         action: "impression-render",
-        property: pageContext.pageType,
+        property: pageContext?.pageType,
         context,
     });
 };

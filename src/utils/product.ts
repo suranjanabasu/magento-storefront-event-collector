@@ -1,5 +1,7 @@
 import { Product } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
+import { ProductPricing } from "../types/contexts";
+
 const createPricing = (ctx: Product): ProductPricing | undefined => {
     if (!ctx.pricing) {
         return undefined;

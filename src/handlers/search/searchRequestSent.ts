@@ -28,8 +28,8 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "api-request-sent",
-        label: searchInputCtx?.data.query,
-        property: pageContext.pageType,
+        label: searchInputCtx?.data.query as string,
+        property: pageContext?.pageType,
         context,
     });
 };
