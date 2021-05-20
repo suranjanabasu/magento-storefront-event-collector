@@ -13,17 +13,10 @@ import {
 } from ".";
 
 const createContext = (): Array<ContextPrimitive> => {
-    const magentoExtensionCtx = createMagentoExtensionCtx();
-    const storefrontInstanceCtx = createStorefrontInstanceCtx();
-    const trackerCtx = createTrackerCtx();
-
     const contexts = [
-        // static contexts
-        trackerCtx,
-        magentoExtensionCtx,
-        storefrontInstanceCtx,
-
-        // dynamic contexts
+        () => createTrackerCtx(),
+        () => createStorefrontInstanceCtx(),
+        () => createMagentoExtensionCtx(),
         () => createShopperCtx(),
     ];
 
