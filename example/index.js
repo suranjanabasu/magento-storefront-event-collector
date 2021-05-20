@@ -23,3 +23,5 @@ mse.context.setSearchResults(mockSearchResults);
 mse.context.setShopper(mockShopper);
 mse.context.setShoppingCart(mockShoppingCart);
 mse.context.setStorefrontInstance(mockStorefront);
+
+mse.publish.pageView();

@@ -64,8 +64,6 @@ const configureSnowplow = ({
         heartbeatDelay: 5,
     });
 
-    trackPageView();
-
     enableLinkClickTracking();
 };
 
