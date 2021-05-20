@@ -1,7 +1,8 @@
 import { trackStructEvent } from "@snowplow/browser-tracker";
 
 import { placeOrderHandler } from "../../../src/handlers";
-import { mockEvent } from "../../utils/mocks";
+import schemas from "../../../src/schemas";
+import { mockEvent, mockShoppingCartCtx } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
     placeOrderHandler(mockEvent);
@@ -13,5 +14,11 @@ test("sends snowplow event", () => {
         action: "place-order",
         label: "111111",
         property: "pdp",
+        context: [
+            {
+                data: mockShoppingCartCtx,
+                schema: schemas.SHOPPING_CART_SCHEMA_URL,
+            },
+        ],
     });
 });

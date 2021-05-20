@@ -44,10 +44,6 @@ const createContext = (
         };
     }
 
-    if (!shoppingCartCtx) {
-        return null;
-    }
-
     const context: ShoppingCartContext = {
         schema: schemas.SHOPPING_CART_SCHEMA_URL,
         data: {
