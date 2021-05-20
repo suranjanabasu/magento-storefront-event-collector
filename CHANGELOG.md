@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.0...v0.1.1) (2021-05-20)
+
+
+### Bug Fixes
+
+* include the shopping cart context with the place order event ([f10c94b](https://github.com/adobe/magento-storefront-event-collector/commit/f10c94b37f5cf939caadb702e5a6516eb65f6461))
+* remove unnecessary early return ([fd5ebec](https://github.com/adobe/magento-storefront-event-collector/commit/fd5ebecdacc3fc39efab8774f52b3eceec0363c5))
+
 ## [0.1.0](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.19...v0.1.0) (2021-05-20)
 
 
