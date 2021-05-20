@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.19...v0.1.0) (2021-05-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* TrackPageView is no longer called for you. You must execute this manually.
+
+### Bug Fixes
+
+* dynamically create all global contexts and remove track page view ([77f1372](https://github.com/adobe/magento-storefront-event-collector/commit/77f1372c2612e1b5eedb28ada47fea32accfd917))
+
 ### [0.0.19](https://github.com/adobe/magento-storefront-event-collector/compare/v0.0.18...v0.0.19) (2021-05-19)
 
 
