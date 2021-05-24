@@ -1,42 +1,30 @@
 # Magento Storefront Event Collector
 
-_Short description here._
+[![version][version-badge]][npm]
+[![downloads][downloads-badge]][npm]
+[![size][size-badge]][bundlephobia]
+[![build][build-badge]][actions]
+[![typescript][typescript-badge]][typescript]
+[![contributing][contributing-badge]][contributing]
 
-## Purpose
+## overview
 
-Full purpose here.
+## installation
 
-## Installation
+## setup
 
-Tell users how to install.
+## quick start
 
-## Usage
+## api reference
 
-Tell users how to use.
-
-## Example
-
-The `example` directory provides a place where you can develop and test this library without installing it into another project. Follow the instructions below to get it up and running.
-
-First, start `webpack` to build the library.
-
-```bash
-npm start
-```
-
-Then, start the example site.
-
-```bash
-cd example
-npm start
-```
-
-Now you can go to `http://localhost:1234` to test events.
-
-## Contributing
-
-Contributions are welcomed! Read the [Contributing Guide](.github/CONTRIBUTING.md) for more information.
-
-## Licensing
-
-This project is licensed under the OSL v3.0 License. See [LICENSE](LICENSE) for more information.
+[npm]: https://www.npmjs.com/package/@adobe/magento-storefront-event-collector
+[version-badge]: https://img.shields.io/npm/v/@adobe/magento-storefront-event-collector.svg?style=flat-square
+[downloads-badge]: https://img.shields.io/npm/dt/@adobe/magento-storefront-event-collector?style=flat-square
+[bundlephobia]: https://bundlephobia.com/result?p=@adobe/magento-storefront-event-collector
+[size-badge]: https://img.shields.io/bundlephobia/minzip/@adobe/magento-storefront-event-collector?style=flat-square
+[actions]: https://github.com/adobe/magento-storefront-event-collector/actions
+[build-badge]: https://img.shields.io/github/workflow/status/adobe/magento-storefront-event-collector/publish-latest?style=flat-square
+[typescript]: https://www.typescriptlang.org/dt/search?search=%40adobe%2Fmagento-storefront-event-collector
+[typescript-badge]: https://img.shields.io/npm/types/@adobe/magento-storefront-event-collector?style=flat-square
+[contributing]: https://github.com/adobe/magento-storefront-event-collector/blob/main/.github/CONTRIBUTING.md
+[contributing-badge]: https://img.shields.io/badge/PRs-welcome-success?style=flat-square
