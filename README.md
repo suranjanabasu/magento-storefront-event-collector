@@ -7,24 +7,41 @@
 [![typescript][typescript-badge]][typescript]
 [![contributing][contributing-badge]][contributing]
 
-## overview
+## Overview
 
-## installation
+This package listens for and handles events sent from the [Magento Storefront Events SDK][sdk]. It runs as a side effect and is meant to be a convenience for users who want to send events to Magento for processing.
 
-## setup
+## Installation
 
-## quick start
+The collector can be used as a hosted script, or bundled in a JavaScript application. The script version is hosted on [unpkg][unpkg], and the bundled version is hosted on [npm][npm].
 
-## api reference
+To load the SDK as a script, use the following snippet.
 
-[npm]: https://www.npmjs.com/package/@adobe/magento-storefront-event-collector
+```
+<script src="https://unpkg.com/@adobe/magento-storefront-event-collector/dist/index.js"></script>
+```
+
+To install the script as a dependency, run this command.
+
+```
+npm install @adobe/magento-storefront-event-collector
+```
+
+## Quick Start
+
+## API Reference
+
+[npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
 [version-badge]: https://img.shields.io/npm/v/@adobe/magento-storefront-event-collector.svg?style=flat-square
 [downloads-badge]: https://img.shields.io/npm/dt/@adobe/magento-storefront-event-collector?style=flat-square
 [bundlephobia]: https://bundlephobia.com/result?p=@adobe/magento-storefront-event-collector
 [size-badge]: https://img.shields.io/bundlephobia/minzip/@adobe/magento-storefront-event-collector?style=flat-square
 [actions]: https://github.com/adobe/magento-storefront-event-collector/actions
 [build-badge]: https://img.shields.io/github/workflow/status/adobe/magento-storefront-event-collector/publish-latest?style=flat-square
-[typescript]: https://www.typescriptlang.org/dt/search?search=%40adobe%2Fmagento-storefront-event-collector
+[typescript]: https://typescriptlang.org/dt/search?search=%40adobe%2Fmagento-storefront-event-collector
 [typescript-badge]: https://img.shields.io/npm/types/@adobe/magento-storefront-event-collector?style=flat-square
 [contributing]: https://github.com/adobe/magento-storefront-event-collector/blob/main/.github/CONTRIBUTING.md
 [contributing-badge]: https://img.shields.io/badge/PRs-welcome-success?style=flat-square
+[sdk]: https://npmjs.com/package/@adobe/magento-storefront-events-sdk
+[unpkg]: https://unpkg.com/@adobe/magento-storefront-event-collector/dist/index.js
+[npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
