@@ -23,13 +23,42 @@ To load the SDK as a script, use the following snippet.
 
 To install the script as a dependency, run this command.
 
-```
+```shell
 npm install @adobe/magento-storefront-event-collector
 ```
 
 ## Quick Start
 
-## API Reference
+After loading the collector script, or importing the package as shown below, there is nothing else that needs to be done.
+
+```javascript
+import "@adobe/magento-storefront-event-collector";
+```
+
+The collector then begins listening for the following events.
+
+-   `addToCart`
+-   `instantPurchase`
+-   `pageView`
+-   `placeOrder`
+-   `productPageView`
+-   `recsItemAddToCartClick`
+-   `recsItemClick`
+-   `recsRequestSent`
+-   `recsResponseReceived`
+-   `recsUnitRender`
+-   `recsUnitView`
+-   `searchCategoryClick`
+-   `searchProductClick`
+-   `searchRequestSent`
+-   `searchResponseReceived`
+-   `searchResultsView`
+-   `searchSuggestionClick`
+-   `shoppingCartView`
+
+When any of these events are fired, the collector runs the associated handler and sends the event along with any relevant information to [Magento][magento] for further processing.
+
+## Support
 
 [npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
 [version-badge]: https://img.shields.io/npm/v/@adobe/magento-storefront-event-collector.svg?style=flat-square
@@ -45,3 +74,4 @@ npm install @adobe/magento-storefront-event-collector
 [sdk]: https://npmjs.com/package/@adobe/magento-storefront-events-sdk
 [unpkg]: https://unpkg.com/@adobe/magento-storefront-event-collector/dist/index.js
 [npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
+[magento]: https://magento.com
