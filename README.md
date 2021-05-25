@@ -80,5 +80,5 @@ If you have any questions or encounter any issues, please reach out at these loc
 [unpkg]: https://unpkg.com/@adobe/magento-storefront-event-collector/dist/index.js
 [npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
 [magento]: https://magento.com
-[issues]: https://github.com/adobe/magento-storefront-events-sdk/issues
+[issues]: https://github.com/adobe/magento-storefront-event-collector/issues
 [zendesk]: https://account.magento.com/zendesk/login
