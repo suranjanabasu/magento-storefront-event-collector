@@ -9,20 +9,10 @@ import {
     trackStructEvent,
 } from "@snowplow/browser-tracker";
 
-import { createSearchInputCtx, createSearchResultsCtx } from "../../contexts";
+import { createSearchResultsCtx } from "../../contexts";
 
 const handler = (event: Event): void => {
-    const {
-        searchUnitId,
-        pageContext,
-        searchInputContext,
-        searchResultsContext,
-    } = event.eventInfo;
-
-    const searchInputCtx = createSearchInputCtx(
-        searchUnitId as string,
-        searchInputContext,
-    );
+    const { searchUnitId, pageContext, searchResultsContext } = event.eventInfo;
 
     const searchResultsCtx = createSearchResultsCtx(
         searchUnitId as string,
@@ -31,10 +21,6 @@ const handler = (event: Event): void => {
 
     const context: Array<SelfDescribingJson> = [];
 
-    if (searchInputCtx) {
-        context.push(searchInputCtx);
-    }
-
     if (searchResultsCtx) {
         context.push(searchResultsCtx);
     }
@@ -42,7 +28,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "api-response-received",
-        label: searchInputCtx?.data.query as string,
+        label: searchResultsCtx?.data.searchRequestId as string,
         property: pageContext?.pageType,
         context,
     });

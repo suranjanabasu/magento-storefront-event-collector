@@ -10,24 +10,13 @@ import {
 } from "@snowplow/browser-tracker";
 
 import {
-    createSearchInputCtx,
     createSearchResultsCtx,
     createSearchResultSuggestionCtx,
 } from "../../contexts";
 
 const handler = (event: Event): void => {
-    const {
-        searchUnitId,
-        suggestion,
-        pageContext,
-        searchInputContext,
-        searchResultsContext,
-    } = event.eventInfo;
-
-    const searchInputCtx = createSearchInputCtx(
-        searchUnitId as string,
-        searchInputContext,
-    );
+    const { searchUnitId, suggestion, pageContext, searchResultsContext } =
+        event.eventInfo;
 
     const searchResultsCtx = createSearchResultsCtx(
         searchUnitId as string,
@@ -41,10 +30,6 @@ const handler = (event: Event): void => {
     );
 
     const context: Array<SelfDescribingJson> = [];
-
-    if (searchInputCtx) {
-        context.push(searchInputCtx);
-    }
 
     if (searchResultsCtx) {
         context.push(searchResultsCtx);

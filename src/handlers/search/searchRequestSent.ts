@@ -28,7 +28,7 @@ const handler = (event: Event): void => {
     trackStructEvent({
         category: "search",
         action: "api-request-sent",
-        label: searchInputCtx?.data.query as string,
+        label: searchInputCtx?.data.searchRequestId as string,
         property: pageContext?.pageType,
         context,
     });

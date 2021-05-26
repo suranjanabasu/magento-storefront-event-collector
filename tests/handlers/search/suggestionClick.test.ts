@@ -4,7 +4,6 @@ import { searchSuggestionClickHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import {
     mockEvent,
-    mockSearchInputCtx,
     mockSearchResultsCtx,
     mockSearchResultSuggestionCtx,
 } from "../../utils/mocks";
@@ -20,10 +19,6 @@ test("sends snowplow event", () => {
         label: "red pants",
         property: "pdp",
         context: [
-            {
-                data: mockSearchInputCtx,
-                schema: schemas.SEARCH_INPUT_SCHEMA_URL,
-            },
             {
                 data: mockSearchResultsCtx,
                 schema: schemas.SEARCH_RESULTS_SCHEMA_URL,
