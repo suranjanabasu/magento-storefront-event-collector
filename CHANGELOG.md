@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.3...v0.1.4) (2021-05-26)
+
+
+### Bug Fixes
+
+* remove search input context from events ([4c44e7e](https://github.com/adobe/magento-storefront-event-collector/commit/4c44e7e2fda2f04851e9b81218c142c519ba5c29))
+
 ### [0.1.3](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.2...v0.1.3) (2021-05-26)
 
 
