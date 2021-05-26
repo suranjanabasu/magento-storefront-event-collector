@@ -58,7 +58,6 @@ const configureSnowplow = ({
 
     setOptOutCookie("mg_dnt");
 
-    // TODO: do we need enableActivityTrackingCallback?
     enableActivityTracking({
         minimumVisitLength: 5,
         heartbeatDelay: 5,
