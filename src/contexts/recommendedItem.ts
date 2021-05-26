@@ -42,7 +42,6 @@ const createContext = (
         data: {
             unitId,
             serviceRank: product.rank,
-            // TODO: is this right?
             displayRank: product.rank,
             name: product.name,
             sku: product.sku,

@@ -2,11 +2,7 @@ import { trackStructEvent } from "@snowplow/browser-tracker";
 
 import { searchResultsViewHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
-import {
-    mockEvent,
-    mockSearchInputCtx,
-    mockSearchResultsCtx,
-} from "../../utils/mocks";
+import { mockEvent, mockSearchResultsCtx } from "../../utils/mocks";
 
 test("sends snowplow event", () => {
     searchResultsViewHandler(mockEvent);
@@ -16,12 +12,9 @@ test("sends snowplow event", () => {
     expect(trackStructEvent).toHaveBeenCalledWith({
         category: "search",
         action: "results-view",
+        label: "abc123",
         property: "pdp",
         context: [
-            {
-                data: mockSearchInputCtx,
-                schema: schemas.SEARCH_INPUT_SCHEMA_URL,
-            },
             {
                 data: mockSearchResultsCtx,
                 schema: schemas.SEARCH_RESULTS_SCHEMA_URL,

@@ -259,6 +259,7 @@ const mockShoppingCart: ShoppingCart = {
         },
     },
     totalQuantity: 2,
+    possibleOnepageCheckout: false,
 };
 
 const mockStorefront: StorefrontInstance = {

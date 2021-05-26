@@ -12,7 +12,7 @@ test("sends snowplow event", () => {
     expect(trackStructEvent).toHaveBeenCalledWith({
         category: "search",
         action: "api-request-sent",
-        label: "red patns",
+        label: "abc123",
         property: "pdp",
         context: [
             {
