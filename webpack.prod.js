@@ -4,7 +4,6 @@ const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
     plugins: [
-        // TODO: confirm these values
         new webpack.DefinePlugin({
             SNOWPLOW_COLLECTOR_URL: JSON.stringify(
                 "https://commerce.adobedc.net",

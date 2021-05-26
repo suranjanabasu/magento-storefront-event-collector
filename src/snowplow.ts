@@ -14,7 +14,6 @@ import {
     newTracker,
     setOptOutCookie,
     TrackerConfiguration,
-    trackPageView,
 } from "@snowplow/browser-tracker";
 
 import { createGlobalCtx } from "./contexts";
@@ -58,7 +57,6 @@ const configureSnowplow = ({
 
     setOptOutCookie("mg_dnt");
 
-    // TODO: do we need enableActivityTrackingCallback?
     enableActivityTracking({
         minimumVisitLength: 5,
         heartbeatDelay: 5,

@@ -40,11 +40,9 @@ const createContext = (
             configType: "preconfigured",
             source: "api",
             recType: unit.unitType,
-            // TODO: where does this come from?
-            placement: "",
-            // TODO: where do these come from?
-            yOffsetTop: null,
-            yOffsetBottom: null,
+            placement: unit.placement,
+            yOffsetTop: unit.yOffsetTop,
+            yOffsetBottom: unit.yOffsetBottom,
         },
     };
 
