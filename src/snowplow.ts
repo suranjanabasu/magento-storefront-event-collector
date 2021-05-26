@@ -14,7 +14,6 @@ import {
     newTracker,
     setOptOutCookie,
     TrackerConfiguration,
-    trackPageView,
 } from "@snowplow/browser-tracker";
 
 import { createGlobalCtx } from "./contexts";
