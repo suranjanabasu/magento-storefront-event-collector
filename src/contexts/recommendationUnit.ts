@@ -40,7 +40,7 @@ const createContext = (
             configType: "preconfigured",
             source: "api",
             recType: unit.unitType,
-            placement: unit.placement,
+            placement: unit.pagePlacement,
             yOffsetTop: unit.yOffsetTop,
             yOffsetBottom: unit.yOffsetBottom,
         },

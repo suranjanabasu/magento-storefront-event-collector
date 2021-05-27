@@ -207,7 +207,7 @@ const mockRecommendationUnitCtx = {
     recType: "primary",
     source: "api",
     unitId: "abc123",
-    placement: "below-main-content",
+    pagePlacement: "below-main-content",
     yOffsetTop: 100,
     yOffsetBottom: 1200,
 };
