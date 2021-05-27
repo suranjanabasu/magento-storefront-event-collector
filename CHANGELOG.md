@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.4...v0.1.5) (2021-05-27)
+
+
+### Features
+
+* support gift options ([73cf94c](https://github.com/adobe/magento-storefront-event-collector/commit/73cf94c6b33712c85a7ee466344c5b1b071dd82f))
+
 ### [0.1.4](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.3...v0.1.4) (2021-05-26)
 
 
