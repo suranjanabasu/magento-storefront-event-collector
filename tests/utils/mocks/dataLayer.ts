@@ -260,6 +260,8 @@ const mockShoppingCart: ShoppingCart = {
     },
     totalQuantity: 2,
     possibleOnepageCheckout: false,
+    giftMessageSelected: false,
+    giftWrappingSelected: false,
 };
 
 const mockStorefront: StorefrontInstance = {

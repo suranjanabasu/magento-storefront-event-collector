@@ -33,8 +33,6 @@ const mockShopperCtx = {
 
 const mockShoppingCartCtx = {
     cartId: "111111",
-    giftMessageSelected: false,
-    giftWrappingSelected: false,
     items: [
         {
             basePrice: 20.0,
@@ -56,9 +54,11 @@ const mockShoppingCartCtx = {
         },
     ],
     itemsCount: 2,
-    possibleOnepageCheckout: false,
     subtotalExcludingTax: 70.0,
     subtotalIncludingTax: 73.5,
+    possibleOnepageCheckout: false,
+    giftMessageSelected: false,
+    giftWrappingSelected: false,
 };
 
 const mockStorefrontCtx = {
