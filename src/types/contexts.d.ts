@@ -164,12 +164,12 @@ type Shopper = {
 type ShoppingCart = {
     cartId?: string | null;
     itemsCount: number;
-    subtotalExcludingTax?: number;
     items?: Array<ShoppingCartItem>;
-    possibleOnepageCheckout?: boolean;
-    subtotalIncludingTax?: number;
-    giftMessageSelected?: boolean;
     subtotalAmount?: number;
+    subtotalIncludingTax?: number;
+    subtotalExcludingTax?: number;
+    possibleOnepageCheckout?: boolean;
+    giftMessageSelected?: boolean;
     giftWrappingSelected?: boolean;
 };
 

@@ -53,8 +53,8 @@ const createContext = (
                 shoppingCartCtx.prices?.subtotalExcludingTax?.value,
             subtotalIncludingTax:
                 shoppingCartCtx.prices?.subtotalIncludingTax?.value,
-            giftMessageSelected: false,
-            giftWrappingSelected: false,
+            giftMessageSelected: shoppingCartCtx.giftMessageSelected,
+            giftWrappingSelected: shoppingCartCtx.giftWrappingSelected,
         },
     };
 
