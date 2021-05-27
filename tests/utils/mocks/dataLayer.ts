@@ -189,7 +189,7 @@ const mockRecommendations: Recommendations = {
                     queryType: "primary",
                 },
             ],
-            placement: "below-main-content",
+            pagePlacement: "below-main-content",
             yOffsetTop: 100,
             yOffsetBottom: 1200,
         },
