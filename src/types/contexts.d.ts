@@ -45,7 +45,7 @@ type RecommendationUnit = {
     configType: string;
     source: string;
     recType: string;
-    pagePlacement: string | null;
+    placement: string | null;
     yOffsetTop?: number | null;
     yOffsetBottom?: number | null;
 };
