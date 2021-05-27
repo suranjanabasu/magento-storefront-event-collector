@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.5...v0.1.6) (2021-05-27)
+
+
+### Bug Fixes
+
+* fix page placement bug ([71fb887](https://github.com/adobe/magento-storefront-event-collector/commit/71fb88734101c8ec4075406330055e08e4f2e4aa))
+
 ### [0.1.5](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.4...v0.1.5) (2021-05-27)
 
 
