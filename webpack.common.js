@@ -1,8 +1,11 @@
 const path = require("path");
+const webpack = require("webpack");
+const { name, version } = require("./package.json");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const banner = `${name}@v${version}`;
+
 const config = {
-    mode: "production",
     entry: "./src/index.ts",
     output: {
         filename: "index.js",
@@ -25,7 +28,7 @@ const config = {
             },
         ],
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin(), new webpack.BannerPlugin(banner)],
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     },
