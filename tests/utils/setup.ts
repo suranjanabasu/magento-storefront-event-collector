@@ -1,5 +1,7 @@
 import "@adobe/adobe-client-data-layer";
 
+import mse from "@adobe/magento-storefront-events-sdk";
+
 import {
     mockCategory,
     mockExtension,
@@ -16,7 +18,7 @@ import {
 
 jest.mock("@snowplow/browser-tracker");
 
-const mse = window.magentoStorefrontEvents;
+window.magentoStorefrontEvents = mse;
 
 mse.context.setCategory(mockCategory);
 mse.context.setMagentoExtension(mockExtension);
