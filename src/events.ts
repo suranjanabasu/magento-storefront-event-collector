@@ -3,8 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
-
 import {
     addToCartHandler,
     instantPurchaseHandler,
@@ -27,6 +25,8 @@ import {
 } from "./handlers";
 
 const subscribeToEvents = (): void => {
+    const mse = window.magentoStorefrontEvents;
+
     mse.subscribe.addToCart(addToCartHandler);
     mse.subscribe.instantPurchase(instantPurchaseHandler);
     mse.subscribe.pageView(pageViewHandler);
@@ -48,6 +48,8 @@ const subscribeToEvents = (): void => {
 };
 
 const unsubscribeFromEvents = (): void => {
+    const mse = window.magentoStorefrontEvents;
+
     mse.unsubscribe.addToCart(addToCartHandler);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.pageView(pageViewHandler);

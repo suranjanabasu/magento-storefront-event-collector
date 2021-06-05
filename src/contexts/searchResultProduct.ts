@@ -3,7 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchResults } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
@@ -15,6 +14,7 @@ const createContext = (
     sku: string,
     searchResults?: SearchResults,
 ): SearchResultProductContext | null => {
+    const mse = window.magentoStorefrontEvents;
     const searchResultsCtx = searchResults ?? mse.context.getSearchResults();
 
     if (!searchResultsCtx) {

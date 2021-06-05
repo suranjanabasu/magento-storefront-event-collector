@@ -3,7 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
 import { Product } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
@@ -11,6 +10,7 @@ import { ProductContext } from "../types/contexts";
 import { createPricing } from "../utils/product";
 
 const createContext = (product?: Product): ProductContext => {
+    const mse = window.magentoStorefrontEvents;
     const productCtx = product ?? mse.context.getProduct();
 
     if (!productCtx) {

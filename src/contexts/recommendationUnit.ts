@@ -3,7 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
 import { Recommendations } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
@@ -14,6 +13,7 @@ const createContext = (
     unitId: string,
     recommendations?: Recommendations,
 ): RecommendationUnitContext | null => {
+    const mse = window.magentoStorefrontEvents;
     const recommendationsCtx =
         recommendations ?? mse.context.getRecommendations();
 

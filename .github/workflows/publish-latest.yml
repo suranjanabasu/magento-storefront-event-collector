@@ -23,7 +23,7 @@ jobs:
             - name: install
               run: npm ci
             - name: build
-              run: npm run build
+              run: npm run build:prod
             - name: publish
               run: npm publish --access public
               env:
