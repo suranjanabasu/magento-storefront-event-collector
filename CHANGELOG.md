@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.7...v1.0.0) (2021-06-07)
+
 ### [0.1.7](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.6...v0.1.7) (2021-06-07)
 
 
