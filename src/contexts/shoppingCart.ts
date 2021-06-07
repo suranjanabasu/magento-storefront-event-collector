@@ -3,13 +3,13 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
 import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
 import { ShoppingCartContext, ShoppingCartItem } from "../types/contexts";
 
 const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
+    const mse = window.magentoStorefrontEvents;
     const shoppingCartCtx = shoppingCart ?? mse.context.getShoppingCart();
 
     if (!shoppingCartCtx.items) {
@@ -33,6 +33,7 @@ const createShoppingCartItems = (shoppingCart?: ShoppingCart) => {
 const createContext = (
     shoppingCart?: ShoppingCart,
 ): ShoppingCartContext | null => {
+    const mse = window.magentoStorefrontEvents;
     const shoppingCartCtx = shoppingCart ?? mse.context.getShoppingCart();
 
     if (!shoppingCartCtx) {

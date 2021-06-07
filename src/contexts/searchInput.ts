@@ -3,7 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
 import { SearchInput } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
@@ -14,6 +13,7 @@ const createContext = (
     searchUnitId: string,
     searchInput?: SearchInput,
 ): SearchInputContext | null => {
+    const mse = window.magentoStorefrontEvents;
     const searchInputCtx = searchInput ?? mse.context.getSearchInput();
 
     if (!searchInputCtx) {

@@ -18,6 +18,8 @@ import {
 
 jest.mock("@snowplow/browser-tracker");
 
+window.magentoStorefrontEvents = mse;
+
 mse.context.setCategory(mockCategory);
 mse.context.setMagentoExtension(mockExtension);
 mse.context.setOrder(mockOrder);

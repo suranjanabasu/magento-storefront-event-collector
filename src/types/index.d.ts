@@ -3,10 +3,13 @@
  * See COPYING.txt for license details.
  */
 
-interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
-}
+import { MagentoStorefrontEvents } from "@adobe/magento-storefront-events-sdk";
 
-declare const SNOWPLOW_COLLECTOR_URL: string;
-declare const SNOWPLOW_COLLECTOR_PATH: string;
+declare global {
+    const SNOWPLOW_COLLECTOR_URL: string;
+    const SNOWPLOW_COLLECTOR_PATH: string;
+
+    interface Window {
+        magentoStorefrontEvents: MagentoStorefrontEvents;
+    }
+}

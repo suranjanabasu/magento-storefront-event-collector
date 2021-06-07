@@ -3,13 +3,13 @@
  * See COPYING.txt for license details.
  */
 
-import mse from "@adobe/magento-storefront-events-sdk";
 import { StorefrontInstance } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";
 import { StorefrontContext } from "../types/contexts";
 
 const createContext = (storefront?: StorefrontInstance): StorefrontContext => {
+    const mse = window.magentoStorefrontEvents;
     const storefrontCtx = storefront ?? mse.context.getStorefrontInstance();
 
     if (!storefrontCtx) {
