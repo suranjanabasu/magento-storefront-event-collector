@@ -58,7 +58,7 @@ type RecommendedItem = {
     sku: string;
     url: string;
     imageUrl: string | null;
-    prices: {
+    prices?: {
         maximum: {
             final: number | null;
             regular: number | null;
@@ -84,7 +84,7 @@ type RecommendedItem = {
             }>;
         };
     };
-    currencyCode: string | null;
+    currencyCode?: string | null;
 };
 
 type SearchInput = {
@@ -122,7 +122,7 @@ type SearchResultProduct = {
     rank: number;
     sku: string;
     imageUrl: string;
-    price: number;
+    price?: number;
 };
 
 type SearchResults = {
