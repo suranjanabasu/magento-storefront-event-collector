@@ -13,7 +13,7 @@ const schemas = {
     RECOMMENDATION_UNIT_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/recommendation-unit/jsonschema/1-0-4",
     RECOMMENDED_ITEM_SCHEMA_URL:
-        "iglu:com.adobe.magento.entity/recommended-item/jsonschema/1-0-3",
+        "iglu:com.adobe.magento.entity/recommended-item/jsonschema/1-0-4",
     SEARCH_INPUT_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-input/jsonschema/1-0-11",
     SEARCH_RESULT_CATEGORY_SCHEMA_URL:

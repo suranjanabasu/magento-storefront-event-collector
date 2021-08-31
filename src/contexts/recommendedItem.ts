@@ -47,7 +47,7 @@ const createContext = (
             sku: product.sku,
             url: product.url,
             imageUrl: product.image?.url ?? null,
-            prices: {
+            ...(product.prices && {prices: {
                 maximum: {
                     final: product.prices.maximum.final,
                     regular: product.prices.maximum.regular,
@@ -84,7 +84,7 @@ const createContext = (
                             }),
                         ),
                 },
-            },
+            }}),
             currencyCode: product.currency,
         },
     };
