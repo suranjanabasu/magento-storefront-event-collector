@@ -128,6 +128,7 @@ type SearchResultProduct = {
 type SearchResults = {
     searchUnitId: string;
     searchRequestId: string;
+    executionTime?: number;
     products: Array<SearchResultProduct> | null;
     suggestions: Array<SearchResultSuggestion> | null;
     categories: Array<SearchResultCategory> | null;

@@ -138,6 +138,7 @@ const mockSearchResultProductCtx = {
 const mockSearchResultsCtx = {
     searchUnitId: "search-bar",
     searchRequestId: "abc123",
+    executionTime: 378.39,
     products: [
         {
             imageUrl: "https://magento.com/red-pants.jpg",
