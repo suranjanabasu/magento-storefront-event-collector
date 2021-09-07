@@ -39,7 +39,7 @@
     "homepage": "https://github.com/adobe/magento-storefront-event-collector#readme",
     "dependencies": {
         "@adobe/adobe-client-data-layer": "^2.0.2",
-        "@adobe/magento-storefront-events-sdk": "0.0.0-ce044a23f3162f824741abd6f9396b907b9a328f",
+        "@adobe/magento-storefront-events-sdk": "^1.1.0",
         "@snowplow/browser-plugin-link-click-tracking": "^3.0.2",
         "@snowplow/browser-plugin-performance-timing": "^3.0.1",
         "@snowplow/browser-tracker": "^3.0.1"
