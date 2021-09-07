@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/adobe/magento-storefront-event-collector/compare/v1.0.1...v1.1.0) (2021-09-07)
+
+
+### Features
+
+* add api execution time tracking ([c410cd3](https://github.com/adobe/magento-storefront-event-collector/commit/c410cd37b0cbfd3a642f6805b76ecf0238d94a95))
+
 ### [1.0.1](https://github.com/adobe/magento-storefront-event-collector/compare/v1.0.0...v1.0.1) (2021-09-07)
 
 
