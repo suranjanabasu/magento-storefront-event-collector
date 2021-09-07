@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/adobe/magento-storefront-event-collector/compare/v1.0.0...v1.0.1) (2021-09-07)
+
+
+### Bug Fixes
+
+* make the search results price optional ([88cb62b](https://github.com/adobe/magento-storefront-event-collector/commit/88cb62bf04d8cb363e6c0a75fb0ea7b9db348c2c))
+* **recommendeditem.ts:** do not add prices to recommendation item context if they are not present ([47625e9](https://github.com/adobe/magento-storefront-event-collector/commit/47625e977e069959e8c9644bc3469644bd30d846))
+* **search-result-product schema:** update search-result-product schema to version 1-0-2 ([c1dd7bb](https://github.com/adobe/magento-storefront-event-collector/commit/c1dd7bbd27d567b2cb1d1eb1453e9329bc8a93c0))
+* make price optional to support b2b ([3bb8e05](https://github.com/adobe/magento-storefront-event-collector/commit/3bb8e05aeb6fdd2582cfc3f21a5564065d919e91))
+
 ## [1.0.0](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.7...v1.0.0) (2021-06-07)
 
 ### [0.1.7](https://github.com/adobe/magento-storefront-event-collector/compare/v0.1.6...v0.1.7) (2021-06-07)
