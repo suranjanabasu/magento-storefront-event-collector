@@ -324,6 +324,7 @@ const mockSearchResults: SearchResults = {
         {
             searchUnitId: "search-bar",
             searchRequestId: "abc123",
+            executionTime: 378.39,
             products: [
                 {
                     name: "Red Pants",

@@ -37,6 +37,7 @@ const createContext = (
         data: {
             searchUnitId: searchResultsUnit.searchUnitId,
             searchRequestId: searchResultsUnit.searchRequestId,
+            executionTime: searchResultsUnit.executionTime,
             products: searchResultsUnit.products,
             categories: searchResultsUnit.categories,
             suggestions: searchResultsUnit.suggestions,

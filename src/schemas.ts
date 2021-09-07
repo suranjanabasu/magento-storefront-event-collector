@@ -21,7 +21,7 @@ const schemas = {
     SEARCH_RESULT_PRODUCT_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-result-product/jsonschema/1-0-2",
     SEARCH_RESULTS_SCHEMA_URL:
-        "iglu:com.adobe.magento.entity/search-results/jsonschema/1-0-8",
+        "iglu:com.adobe.magento.entity/search-results/jsonschema/1-0-9",
     SEARCH_RESULT_SUGGESTION_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/search-result-suggestion/jsonschema/1-0-1",
     SHOPPING_CART_SCHEMA_URL:
