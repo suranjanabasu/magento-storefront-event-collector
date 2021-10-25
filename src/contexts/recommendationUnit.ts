@@ -39,7 +39,7 @@ const createContext = (
             backupsCount: unit.backupProducts,
             configType: "preconfigured",
             source: "api",
-            recType: unit.unitType,
+            recType: unit.typeId,
             placement: unit.pagePlacement,
             yOffsetTop: unit.yOffsetTop,
             yOffsetBottom: unit.yOffsetBottom,

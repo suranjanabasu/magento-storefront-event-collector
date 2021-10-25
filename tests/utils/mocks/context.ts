@@ -205,12 +205,12 @@ const mockRecommendationUnitCtx = {
     configType: "preconfigured",
     itemsCount: 2,
     name: "most-viewed",
-    recType: "primary",
     source: "api",
     unitId: "abc123",
     placement: "below-main-content",
     yOffsetTop: 100,
     yOffsetBottom: 1200,
+    recType: "most-viewed"
 };
 
 const mockRecommendedItemsCtx = [
