@@ -210,7 +210,7 @@ const mockRecommendationUnitCtx = {
     placement: "below-main-content",
     yOffsetTop: 100,
     yOffsetBottom: 1200,
-    recType: "most-viewed"
+    recType: "most-viewed",
 };
 
 const mockRecommendedItemsCtx = [
