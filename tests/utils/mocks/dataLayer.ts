@@ -79,6 +79,7 @@ const mockRecommendations: Recommendations = {
     units: [
         {
             unitId: "abc123",
+            typeId: "most-viewed",
             unitName: "most-viewed",
             unitType: "primary",
             searchTime: 2,
