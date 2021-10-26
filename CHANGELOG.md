@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/adobe/magento-storefront-event-collector/compare/v1.1.0...v1.1.1) (2021-10-26)
+
+
+### Bug Fixes
+
+* **package.json:** upping the mse sdk version ([6512103](https://github.com/adobe/magento-storefront-event-collector/commit/651210380663f420e35f2a9000ac6eed4fd6310c))
+* **recommendations.d.ts:** recType was improper value, fixed it ([a8a8add](https://github.com/adobe/magento-storefront-event-collector/commit/a8a8add22f8d703d39d8c8dd35e07ffaad634f26)), closes [#78](https://github.com/adobe/magento-storefront-event-collector/issues/78)
+
 ## [1.1.0](https://github.com/adobe/magento-storefront-event-collector/compare/v1.0.1...v1.1.0) (2021-09-07)
 
 
