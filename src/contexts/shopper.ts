@@ -16,7 +16,7 @@ const createContext = (shopper?: Shopper): ShopperContext => {
         return {
             schema: schemas.SHOPPER_SCHEMA_URL,
             data: {
-                shopperId: "guest"
+                shopperId: "guest",
             },
         };
     }
