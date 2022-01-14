@@ -1,6 +1,6 @@
 {
     "name": "@adobe/magento-storefront-event-collector",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Magento storefront event collector",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
