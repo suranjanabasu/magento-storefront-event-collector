@@ -4,31 +4,23 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
-import {
-    SelfDescribingJson,
-    trackStructEvent,
-} from "@snowplow/browser-tracker";
 
-import { createShoppingCartCtx } from "../../contexts";
+import { createEventForwardingCtx } from "../../contexts";
+import { EventForwardingContext } from "../../types/contexts";
+import aepHandler from "./placeOrderAEPHandler";
+import snowplowHandler from "./placeOrderSnowplowHandler";
 
 const handler = (event: Event): void => {
-    const { pageContext, orderContext, shoppingCartContext } = event.eventInfo;
+    const { eventForwardingContext } = event.eventInfo;
+    const eventForwardingCtx: EventForwardingContext = createEventForwardingCtx(
+        eventForwardingContext,
+    );
 
-    const shoppingCartCtx = createShoppingCartCtx(shoppingCartContext);
-
-    const context: Array<SelfDescribingJson> = [];
-
-    if (shoppingCartCtx) {
-        context.push(shoppingCartCtx);
+    if (eventForwardingCtx.aep) {
+        aepHandler(event);
     }
 
-    trackStructEvent({
-        category: "checkout",
-        action: "place-order",
-        label: orderContext?.orderId.toString(),
-        property: pageContext?.pageType,
-        context,
-    });
+    snowplowHandler(event);
 };
 
 export default handler;

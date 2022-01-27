@@ -1,7 +1,7 @@
-import { createGlobalCtx } from "../../src/contexts";
+import { createSnowplowCtx } from "../../src/contexts";
 
 test("creates context", () => {
-    const ctx = createGlobalCtx();
+    const ctx = createSnowplowCtx();
 
     expect(ctx).toEqual([
         expect.any(Function),

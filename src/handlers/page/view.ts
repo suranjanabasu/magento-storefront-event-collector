@@ -3,10 +3,20 @@
  * See COPYING.txt for license details.
  */
 
-import { trackPageView } from "@snowplow/browser-tracker";
+import { createEventForwardingCtx } from "../../contexts";
+import { EventForwardingContext } from "../../types/contexts";
+import aepHandler from "./viewAEP";
+import snowplowHandler from "./viewSnowplow";
 
 const handler = (): void => {
-    trackPageView();
+    const eventForwardingCtx: EventForwardingContext =
+        createEventForwardingCtx();
+
+    if (eventForwardingCtx.aep) {
+        aepHandler();
+    }
+
+    snowplowHandler();
 };
 
 export default handler;

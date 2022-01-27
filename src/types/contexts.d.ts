@@ -225,3 +225,15 @@ type ShopperContext = SnowplowContext<Shopper>;
 type ShoppingCartContext = SnowplowContext<ShoppingCart>;
 type StorefrontContext = SnowplowContext<Storefront>;
 type TrackerContext = SnowplowContext<Tracker>;
+
+// non-Snowplow contexts
+
+type EventForwardingContext = {
+    aep?: boolean;
+    snowplow?: boolean;
+};
+
+type AEPContext = {
+    imsOrgId?: string;
+    datastreamId?: string;
+};

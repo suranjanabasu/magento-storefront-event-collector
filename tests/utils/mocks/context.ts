@@ -79,6 +79,16 @@ const mockStorefrontCtx = {
     websiteName: "website",
 };
 
+const mockAepCtx = {
+    imsOrgId: "1234@AdobeOrg",
+    datastreamId: "1234:dev",
+};
+
+const mockEventForwardingCtx = {
+    aep: false,
+    snowplow: true,
+};
+
 const mockTrackerCtx = {
     magentoJsVersion: pkg.version,
 };
@@ -285,6 +295,8 @@ const mockRecommendedItemsCtx = [
 ];
 
 export {
+    mockAepCtx,
+    mockEventForwardingCtx,
     mockExtensionCtx,
     mockProductCtx,
     mockRecommendationUnitCtx,

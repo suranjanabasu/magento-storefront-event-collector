@@ -16,7 +16,7 @@ import {
     TrackerConfiguration,
 } from "@snowplow/browser-tracker";
 
-import { createGlobalCtx } from "./contexts";
+import { createSnowplowCtx } from "./contexts";
 
 type ConfigureSnowplowParams = {
     appId: string;
@@ -52,8 +52,8 @@ const configureSnowplow = ({
 
     newTracker("sp", collectorUrl, configuration);
 
-    const globalCtx = createGlobalCtx();
-    addGlobalContexts(globalCtx);
+    const snowplowCtx = createSnowplowCtx();
+    addGlobalContexts(snowplowCtx);
 
     setOptOutCookie("mg_dnt");
 
