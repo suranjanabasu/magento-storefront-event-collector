@@ -8,6 +8,8 @@ import { createAEPCtx } from "./contexts";
 import { AEPContext } from "./types/contexts";
 const alloy = createInstance({ name: "alloy" });
 
+let tryConnectToAlloy = true;
+
 function isValid(aep: AEPContext) {
     return (
         aep.datastreamId &&
@@ -17,7 +19,7 @@ function isValid(aep: AEPContext) {
     );
 }
 
-const configureAlloy = (): void => {
+function configureAlloy(): void {
     const aepCtx: AEPContext = createAEPCtx();
 
     if (isValid(aepCtx)) {
@@ -26,11 +28,22 @@ const configureAlloy = (): void => {
             orgId: aepCtx.imsOrgId,
             // TODO ahammond: possibly remove debug when feature complete
             debugEnabled: true,
-        }).then(() => {
-            window.alloy = alloy;
-        });
-        // TODO error tracking
+        })
+            .then(() => {
+                window.alloy = alloy;
+            })
+            .error(() => {
+                // TODO ahammond: more error handling
+                tryConnectToAlloy = false;
+            });
     }
+}
+
+const getAlloy = (): any => {
+    if (!window.alloy && tryConnectToAlloy) {
+        configureAlloy();
+    }
+    return window.alloy;
 };
 
-export { configureAlloy };
+export { getAlloy };

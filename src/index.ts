@@ -3,7 +3,6 @@
  * See COPYING.txt for license details.
  */
 
-import { configureAlloy } from "./alloy";
 import { subscribeToEvents } from "./events";
 import { configureSnowplow } from "./snowplow";
 
@@ -13,7 +12,6 @@ const initialize = () => {
         collectorUrl: SNOWPLOW_COLLECTOR_URL,
         collectorPath: SNOWPLOW_COLLECTOR_PATH,
     });
-    configureAlloy();
     subscribeToEvents();
 };
 

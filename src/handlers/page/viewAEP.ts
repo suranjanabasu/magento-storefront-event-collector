@@ -2,9 +2,10 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+import { getAlloy } from "../../alloy";
 
 const aepHandler = (): void => {
-    const alloy = window.alloy;
+    const alloy = getAlloy();
     if (alloy) {
         alloy("sendEvent", {
             web: {

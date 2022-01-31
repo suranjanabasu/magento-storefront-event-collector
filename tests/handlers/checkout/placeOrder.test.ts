@@ -1,5 +1,8 @@
 import { trackStructEvent } from "@snowplow/browser-tracker";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+jest.mock("@adobe/alloy", () => ({ createInstance: jest.fn(() => {}) }));
+
 import { placeOrderHandler } from "../../../src/handlers";
 import schemas from "../../../src/schemas";
 import { mockEvent, mockShoppingCartCtx } from "../../utils/mocks";
