@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.3](https://github.com/adobe/magento-storefront-event-collector/compare/v1.1.2...v1.1.3) (2022-02-01)
+
+### Features
+
+* forward page view events to the Adobe Experience Platform Edge when the appropriate AEP context is set, closes [#83](https://github.com/adobe/magento-storefront-event-collector/pull/83), [#84](https://github.com/adobe/magento-storefront-event-collector/pull/84) and [#85](https://github.com/adobe/magento-storefront-event-collector/pull/85).
+
 ## [1.1.2](https://github.com/adobe/magento-storefront-event-collector/compare/v1.1.1...v1.1.2) (2022-01-14)
 
 ### Features
