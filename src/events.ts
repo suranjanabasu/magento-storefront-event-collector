@@ -4,7 +4,14 @@
  */
 
 import {
+    Event,
+    EventHandler,
+} from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+
+import { createEventForwardingCtx } from "./contexts";
+import {
     addToCartHandler,
+    aepPageViewHandler,
     instantPurchaseHandler,
     pageViewHandler,
     placeOrderHandler,
@@ -23,13 +30,48 @@ import {
     searchSuggestionClickHandler,
     shoppingCartViewHandler,
 } from "./handlers";
+import { EventForwardingContext } from "./types/contexts";
+
+/* TODO: annhammo would like to clear the "do not send to Snowplow"
+ * functionality with product management prior to enabling it in
+ * production.
+ */
+/* const isSnowplow = (event: Event): boolean => {
+    const ctx: EventForwardingContext = createEventForwardingCtx(
+        event.eventInfo.eventForwardingContext,
+    );
+    return ctx.snowplow ?? false;
+}; */
+const isSnowplow = (event: Event): boolean => true;
+
+const isAep = (event: Event): boolean => {
+    const ctx: EventForwardingContext = createEventForwardingCtx(
+        event.eventInfo.eventForwardingContext,
+    );
+    return ctx.aep ?? false;
+};
+
+const handleIf = (
+    predicate: (e: Event) => boolean,
+    handler: EventHandler,
+): EventHandler => {
+    return (event: Event) => {
+        if (predicate(event)) {
+            handler(event);
+        }
+    };
+};
+
+const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
+const handleAepPageView = handleIf(isAep, aepPageViewHandler);
 
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
     mse.subscribe.addToCart(addToCartHandler);
     mse.subscribe.instantPurchase(instantPurchaseHandler);
-    mse.subscribe.pageView(pageViewHandler);
+    mse.subscribe.pageView(handleSnowplowPageView);
+    mse.subscribe.pageView(handleAepPageView);
     mse.subscribe.placeOrder(placeOrderHandler);
     mse.subscribe.productPageView(productViewHandler);
     mse.subscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);
@@ -52,7 +94,8 @@ const unsubscribeFromEvents = (): void => {
 
     mse.unsubscribe.addToCart(addToCartHandler);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
-    mse.unsubscribe.pageView(pageViewHandler);
+    mse.unsubscribe.pageView(handleSnowplowPageView);
+    mse.unsubscribe.pageView(handleAepPageView);
     mse.unsubscribe.placeOrder(placeOrderHandler);
     mse.unsubscribe.productPageView(productViewHandler);
     mse.unsubscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);

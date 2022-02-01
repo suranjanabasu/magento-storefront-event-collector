@@ -4,23 +4,48 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
-import { createEventForwardingCtx } from "../../contexts";
-import { EventForwardingContext } from "../../types/contexts";
-import aepHandler from "./searchProductClickAEP";
-import snowplowHandler from "./searchProductClickSnowplow";
+import {
+    createSearchResultProductCtx,
+    createSearchResultsCtx,
+} from "../../contexts";
 
 const handler = (event: Event): void => {
-    const { eventForwardingContext } = event.eventInfo;
-    const eventForwardingCtx: EventForwardingContext = createEventForwardingCtx(
-        eventForwardingContext,
+    const { searchUnitId, sku, pageContext, searchResultsContext } =
+        event.eventInfo;
+
+    const searchResultsCtx = createSearchResultsCtx(
+        searchUnitId as string,
+        searchResultsContext,
     );
 
-    if (eventForwardingCtx.aep) {
-        aepHandler(event);
+    const searchResultsProductCtx = createSearchResultProductCtx(
+        searchUnitId as string,
+        sku as string,
+        searchResultsContext,
+    );
+
+    const context: Array<SelfDescribingJson> = [];
+
+    if (searchResultsCtx) {
+        context.push(searchResultsCtx);
     }
 
-    snowplowHandler(event);
+    if (searchResultsProductCtx) {
+        context.push(searchResultsProductCtx);
+    }
+
+    trackStructEvent({
+        category: "search",
+        action: "product-click",
+        label: searchResultsProductCtx?.data.sku as string,
+        property: pageContext?.pageType,
+        context,
+    });
 };
 
 export default handler;

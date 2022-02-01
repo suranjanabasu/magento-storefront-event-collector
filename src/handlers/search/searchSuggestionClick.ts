@@ -4,23 +4,48 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
-import { createEventForwardingCtx } from "../../contexts";
-import { EventForwardingContext } from "../../types/contexts";
-import aepHandler from "./searchSuggestionClickAEP";
-import snowplowHandler from "./searchSuggestionClickSnowplow";
+import {
+    createSearchResultsCtx,
+    createSearchResultSuggestionCtx,
+} from "../../contexts";
 
 const handler = (event: Event): void => {
-    const { eventForwardingContext } = event.eventInfo;
-    const eventForwardingCtx: EventForwardingContext = createEventForwardingCtx(
-        eventForwardingContext,
+    const { searchUnitId, suggestion, pageContext, searchResultsContext } =
+        event.eventInfo;
+
+    const searchResultsCtx = createSearchResultsCtx(
+        searchUnitId as string,
+        searchResultsContext,
     );
 
-    if (eventForwardingCtx.aep) {
-        aepHandler(event);
+    const searchResultsSuggestionCtx = createSearchResultSuggestionCtx(
+        searchUnitId as string,
+        suggestion as string,
+        searchResultsContext,
+    );
+
+    const context: Array<SelfDescribingJson> = [];
+
+    if (searchResultsCtx) {
+        context.push(searchResultsCtx);
     }
 
-    snowplowHandler(event);
+    if (searchResultsSuggestionCtx) {
+        context.push(searchResultsSuggestionCtx);
+    }
+
+    trackStructEvent({
+        category: "search",
+        action: "suggestion-click",
+        label: searchResultsSuggestionCtx?.data.suggestion as string,
+        property: pageContext?.pageType,
+        context,
+    });
 };
 
 export default handler;

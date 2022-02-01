@@ -4,23 +4,34 @@
  */
 
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import {
+    SelfDescribingJson,
+    trackStructEvent,
+} from "@snowplow/browser-tracker";
 
-import { createEventForwardingCtx } from "../../contexts";
-import { EventForwardingContext } from "../../types/contexts";
-import aepHandler from "./searchResponseReceivedAEP";
-import snowplowHandler from "./searchResponseReceivedSnowplow";
+import { createSearchResultsCtx } from "../../contexts";
 
 const handler = (event: Event): void => {
-    const { eventForwardingContext } = event.eventInfo;
-    const eventForwardingCtx: EventForwardingContext = createEventForwardingCtx(
-        eventForwardingContext,
+    const { searchUnitId, pageContext, searchResultsContext } = event.eventInfo;
+
+    const searchResultsCtx = createSearchResultsCtx(
+        searchUnitId as string,
+        searchResultsContext,
     );
 
-    if (eventForwardingCtx.aep) {
-        aepHandler(event);
+    const context: Array<SelfDescribingJson> = [];
+
+    if (searchResultsCtx) {
+        context.push(searchResultsCtx);
     }
 
-    snowplowHandler(event);
+    trackStructEvent({
+        category: "search",
+        action: "api-response-received",
+        label: searchResultsCtx?.data.searchRequestId as string,
+        property: pageContext?.pageType,
+        context,
+    });
 };
 
 export default handler;
