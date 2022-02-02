@@ -56,14 +56,27 @@ The collector then begins listening for the following events.
 -   `searchSuggestionClick`
 -   `shoppingCartView`
 
-When any of these events are fired, the collector runs the associated handler and sends the event along with any relevant information to [Magento][magento] for further processing.
+The handlers forward events to two edges:
+
+-   Adobe Commerce Data Services (maintained by Adobe Engineering and used to power merchant performance dashboards)
+
+    Required contexts:
+
+    `StorefrontInstance`
+
+-   [Adobe Experience Platform](https://business.adobe.com/products/experience-platform/adobe-experience-platform.html) (requires a subscription and additional merchant [setup](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/datastreams.html?lang=en); data can be used by merchants inside the Adobe Experience Platform for detailed analytics, targeted merchandising, real time customer data profiles, and more)
+
+    Required contexts:
+
+    `AEP`
+
+    `EventForwarding.aep: true`
 
 ## Support
 
 If you have any questions or encounter any issues, please reach out at these locations.
 
 -   [GitHub][issues]
--   [Zendesk][zendesk]
 
 [npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
 [version-badge]: https://img.shields.io/npm/v/@adobe/magento-storefront-event-collector.svg?style=flat-square

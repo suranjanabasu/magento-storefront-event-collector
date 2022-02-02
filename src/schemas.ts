@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 const schemas = {
     MAGENTO_EXTENSION_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/magento-extension/jsonschema/1-0-0",

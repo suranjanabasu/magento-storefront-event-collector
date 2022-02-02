@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 import pkg from "../../package.json";
 import schemas from "../schemas";
 import { TrackerContext } from "../types/contexts";

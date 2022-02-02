@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 export { default as recsItemAddToCartClickHandler } from "./recsItemAddToCartClick";
 export { default as recsItemClickHandler } from "./recsItemClick";
 export { default as recsRequestSentHandler } from "./recsRequestSent";

@@ -3,7 +3,10 @@ const webpack = require("webpack");
 const { name, version } = require("./package.json");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const banner = `${name}@v${version}`;
+const copyRightText =
+    "Copyright © Adobe, Inc. All rights reserved.See COPYING.txt for license details.";
+
+const banner = `${name}@v${version}\n${copyRightText}`;
 
 const config = {
     entry: "./src/index.ts",

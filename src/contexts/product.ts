@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 import { Product } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import schemas from "../schemas";

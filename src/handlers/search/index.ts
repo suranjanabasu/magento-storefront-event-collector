@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 export { default as searchCategoryClickHandler } from "./searchCategoryClick";
 export { default as searchProductClickHandler } from "./searchProductClick";
 export { default as searchRequestSentHandler } from "./searchRequestSent";

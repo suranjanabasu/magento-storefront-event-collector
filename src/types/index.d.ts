@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 import { MagentoStorefrontEvents } from "@adobe/magento-storefront-events-sdk";
 
 declare global {

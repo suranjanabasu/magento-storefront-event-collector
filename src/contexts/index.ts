@@ -1,8 +1,3 @@
-/*
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 export { default as createAEPCtx } from "./aep";
 export { default as createEventForwardingCtx } from "./eventForwarding";
 export { default as createMagentoExtensionCtx } from "./extension";
