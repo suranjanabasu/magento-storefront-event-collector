@@ -13,26 +13,32 @@ function isValid(aep: AEPContext) {
     );
 }
 
-function configureAlloy(): void {
+function configureAlloy(): Promise<any> {
     const aepCtx: AEPContext = createAEPCtx();
 
-    if (isValid(aepCtx)) {
-        alloy("configure", {
-            edgeConfigId: aepCtx.datastreamId,
-            orgId: aepCtx.imsOrgId,
-            // TODO ahammond: possibly remove debug when feature complete
-            debugEnabled: true,
-        }).then(() => {
-            window.alloy = alloy;
-        });
-    }
+    return new Promise((resolve, reject) => {
+        if (isValid(aepCtx)) {
+            alloy("configure", {
+                edgeConfigId: aepCtx.datastreamId,
+                orgId: aepCtx.imsOrgId,
+                // TODO ahammond: possibly remove debug when feature complete
+                debugEnabled: true,
+            }).then(() => {
+                resolve(alloy);
+            });
+        } else {
+            reject();
+        }
+    });
 }
 
-const getAlloy = (): any => {
-    if (!window.alloy) {
-        configureAlloy();
-    }
-    return window.alloy;
+const getAlloy = (): Promise<any> => {
+    return window.alloy
+        ? Promise.resolve(window.alloy)
+        : configureAlloy().then(alloy => {
+              window.alloy = alloy;
+              return alloy;
+          });
 };
 
 export { getAlloy };

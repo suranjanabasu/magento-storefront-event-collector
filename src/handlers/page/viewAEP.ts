@@ -1,8 +1,7 @@
 import { getAlloy } from "../../alloy";
 
 const aepHandler = (): void => {
-    const alloy = getAlloy();
-    if (alloy) {
+    getAlloy().then(alloy =>
         alloy("sendEvent", {
             web: {
                 webPageDetails: {
@@ -12,8 +11,8 @@ const aepHandler = (): void => {
                     },
                 },
             },
-        });
-    }
+        }),
+    );
 };
 
 export default aepHandler;
