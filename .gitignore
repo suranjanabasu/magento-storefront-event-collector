@@ -103,3 +103,6 @@ lib
 
 # TernJS port file
 .tern-port
+
+# macOS files
+.DS_Store

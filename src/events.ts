@@ -6,6 +6,7 @@ import {
 import { createEventForwardingCtx } from "./contexts";
 import {
     addToCartHandler,
+    addToCartHandlerAEP,
     aepPageViewHandler,
     instantPurchaseHandler,
     pageViewHandler,
@@ -57,13 +58,19 @@ const handleIf = (
     };
 };
 
+// add to cart
+const handleSnowplowAddToCart = handleIf(isSnowplow, addToCartHandler);
+const handleAepAddToCart = handleIf(isSnowplow, addToCartHandlerAEP);
+
+// page view
 const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
 const handleAepPageView = handleIf(isAep, aepPageViewHandler);
 
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
-    mse.subscribe.addToCart(addToCartHandler);
+    mse.subscribe.addToCart(handleSnowplowAddToCart);
+    mse.subscribe.addToCart(handleAepAddToCart);
     mse.subscribe.instantPurchase(instantPurchaseHandler);
     mse.subscribe.pageView(handleSnowplowPageView);
     mse.subscribe.pageView(handleAepPageView);
@@ -87,7 +94,8 @@ const subscribeToEvents = (): void => {
 const unsubscribeFromEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
-    mse.unsubscribe.addToCart(addToCartHandler);
+    mse.unsubscribe.addToCart(handleSnowplowAddToCart);
+    mse.unsubscribe.addToCart(handleAepAddToCart);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.pageView(handleSnowplowPageView);
     mse.unsubscribe.pageView(handleAepPageView);
