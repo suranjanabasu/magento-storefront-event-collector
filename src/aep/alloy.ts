@@ -1,7 +1,7 @@
 import { createInstance } from "@adobe/alloy";
 
-import { createAEPCtx } from "./contexts";
-import { AEPContext } from "./types/contexts";
+import { AEPContext } from "../types/contexts";
+import { createContext } from "./contexts";
 
 const alloy = createInstance({ name: "alloy" });
 
@@ -15,7 +15,7 @@ function isValid(aep: AEPContext) {
 }
 
 function configureAlloy(): Promise<any> {
-    const aepCtx: AEPContext = createAEPCtx();
+    const aepCtx: AEPContext = createContext();
 
     return new Promise((resolve, reject) => {
         if (isValid(aepCtx)) {

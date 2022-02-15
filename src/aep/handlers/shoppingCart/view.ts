@@ -2,7 +2,7 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas/shoppingCart";
 
 import { getAlloy } from "../../alloy";
-import { BeaconSchema, ProductListItem } from "../../types/aep";
+import { BeaconSchema, ProductListItem } from "../../types/schema";
 
 /**
  * map shopping cart items to aep format
@@ -22,11 +22,12 @@ const getProductsInCart = (
         quantity: item.quantity,
         priceTotal: item.prices.price.value,
         currencyCode: item.prices.price.currency,
+        discountAmount: "" as any,
     }));
 };
 
-/**  */
-const aepHandler = async (event: Event): Promise<void> => {
+/** handles shopping cart view event for AEP */
+export const shoppingCartViewHandler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
 
     const { shoppingCartContext } = event.eventInfo;
@@ -54,9 +55,5 @@ const aepHandler = async (event: Event): Promise<void> => {
         payload.productListItems = productList;
     }
 
-    if (alloy) {
-        alloy("sendEvent", payload);
-    }
+    alloy("sendEvent", { xdm: { ...payload } });
 };
-
-export default aepHandler;

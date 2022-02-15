@@ -2,7 +2,7 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import { getAlloy } from "../../alloy";
-import { BeaconSchema, ProductListItem } from "../../types/aep";
+import { BeaconSchema, ProductListItem } from "../../types/schema";
 
 const getProductInCart = (
     productId: number,
@@ -28,7 +28,7 @@ const getProductInCart = (
 };
 
 /** Sends an event to aep with an addToCart payload */
-const aepHandler = async (event: Event): Promise<void> => {
+export const addToCartHandler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
     // note: the shopping cart context includes the updated product in the cart
     const { productContext, shoppingCartContext } = event.eventInfo;
@@ -60,9 +60,5 @@ const aepHandler = async (event: Event): Promise<void> => {
         payload.productListItems = [{ ...product }];
     }
 
-    if (alloy) {
-        alloy("sendEvent", payload);
-    }
+    alloy("sendEvent", payload);
 };
-
-export default aepHandler;

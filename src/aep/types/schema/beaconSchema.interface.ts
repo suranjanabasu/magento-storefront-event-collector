@@ -1,5 +1,5 @@
 import { Commerce } from "./commerce.interface";
-import { PageView } from "./pageView.interface";
+import { WebPageDetails } from "./pageView.interface";
 import { ProductListItem } from "./productListItems.interface";
 
 // Only add fields that are being sent to aep from us. We don't need to copy every field
@@ -8,5 +8,5 @@ import { ProductListItem } from "./productListItems.interface";
 export interface BeaconSchema {
     commerce?: Commerce;
     productListItems?: ProductListItem[];
-    web?: PageView;
+    web?: WebPageDetails;
 }

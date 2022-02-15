@@ -1,8 +1,10 @@
 import { getAlloy } from "../../alloy";
 
-const aepHandler = (): void => {
-    getAlloy().then(alloy =>
-        alloy("sendEvent", {
+export const pageViewHandler = async (): Promise<void> => {
+    const alloy = await getAlloy();
+
+    alloy("sendEvent", {
+        xdm: {
             web: {
                 webPageDetails: {
                     pageViews: {
@@ -11,8 +13,6 @@ const aepHandler = (): void => {
                     },
                 },
             },
-        }),
-    );
+        },
+    });
 };
-
-export default aepHandler;
