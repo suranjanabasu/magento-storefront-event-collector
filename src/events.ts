@@ -8,6 +8,7 @@ import {
     addToCartHandler,
     addToCartHandlerAEP,
     aepPageViewHandler,
+    aepShoppingCartViewHandler,
     instantPurchaseHandler,
     pageViewHandler,
     placeOrderHandler,
@@ -66,14 +67,19 @@ const handleAepAddToCart = handleIf(isSnowplow, addToCartHandlerAEP);
 const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
 const handleAepPageView = handleIf(isAep, aepPageViewHandler);
 
+// shopping cart view
+const handleSnowplowShoppingCartView = handleIf(
+    isSnowplow,
+    shoppingCartViewHandler,
+);
+const handleAepShoppingCartView = handleIf(isAep, aepShoppingCartViewHandler);
+
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
     mse.subscribe.addToCart(handleSnowplowAddToCart);
-    mse.subscribe.addToCart(handleAepAddToCart);
     mse.subscribe.instantPurchase(instantPurchaseHandler);
     mse.subscribe.pageView(handleSnowplowPageView);
-    mse.subscribe.pageView(handleAepPageView);
     mse.subscribe.placeOrder(placeOrderHandler);
     mse.subscribe.productPageView(productViewHandler);
     mse.subscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);
@@ -88,17 +94,20 @@ const subscribeToEvents = (): void => {
     mse.subscribe.searchResponseReceived(searchResponseReceivedHandler);
     mse.subscribe.searchResultsView(searchResultsViewHandler);
     mse.subscribe.searchSuggestionClick(searchSuggestionClickHandler);
-    mse.subscribe.shoppingCartView(shoppingCartViewHandler);
+    mse.subscribe.shoppingCartView(handleSnowplowShoppingCartView);
+
+    // aep events
+    mse.subscribe.pageView(handleAepPageView);
+    mse.subscribe.addToCart(handleAepAddToCart);
+    mse.subscribe.shoppingCartView(handleAepShoppingCartView);
 };
 
 const unsubscribeFromEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
     mse.unsubscribe.addToCart(handleSnowplowAddToCart);
-    mse.unsubscribe.addToCart(handleAepAddToCart);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.pageView(handleSnowplowPageView);
-    mse.unsubscribe.pageView(handleAepPageView);
     mse.unsubscribe.placeOrder(placeOrderHandler);
     mse.unsubscribe.productPageView(productViewHandler);
     mse.unsubscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);
@@ -113,7 +122,12 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.searchResponseReceived(searchResponseReceivedHandler);
     mse.unsubscribe.searchResultsView(searchResultsViewHandler);
     mse.unsubscribe.searchSuggestionClick(searchSuggestionClickHandler);
-    mse.unsubscribe.shoppingCartView(shoppingCartViewHandler);
+    mse.unsubscribe.shoppingCartView(handleSnowplowShoppingCartView);
+
+    // aep events
+    mse.unsubscribe.addToCart(handleAepAddToCart);
+    mse.unsubscribe.pageView(handleAepPageView);
+    mse.unsubscribe.shoppingCartView(handleAepShoppingCartView);
 };
 
 export { subscribeToEvents, unsubscribeFromEvents };

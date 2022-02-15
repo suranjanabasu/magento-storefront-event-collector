@@ -5,3 +5,6 @@ import { IdAndValue } from "./idAndValue.interface";
  * to a shopping cart.
  */
 export type ProductListAdds = IdAndValue;
+
+/** View or views of a product-list has occurred. */
+export type ProductListViews = IdAndValue;

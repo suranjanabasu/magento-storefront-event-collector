@@ -27,4 +27,10 @@ export interface ProductListItem {
      * The ISO 4217 alphabetic currency code used for pricing the product.
      */
     currencyCode?: string;
+
+    /** new field */
+    discountAmount?: number;
+
+    /** new field */
+    selectedOptions?: string[];
 }
