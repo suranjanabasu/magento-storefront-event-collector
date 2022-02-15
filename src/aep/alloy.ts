@@ -33,7 +33,7 @@ function configureAlloy(): Promise<any> {
     });
 }
 
-const getAlloy = (): Promise<any> => {
+export const getAlloy = (): Promise<any> => {
     return window.alloy
         ? Promise.resolve(window.alloy)
         : configureAlloy().then(alloy => {
@@ -41,5 +41,3 @@ const getAlloy = (): Promise<any> => {
               return alloy;
           });
 };
-
-export { getAlloy };

@@ -1,4 +1,3 @@
-export { default as createAEPCtx } from "./aep";
 export { default as createEventForwardingCtx } from "./eventForwarding";
 export { default as createMagentoExtensionCtx } from "./extension";
 export { default as createProductCtx } from "./product";
