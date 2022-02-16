@@ -11,24 +11,26 @@ import { BeaconSchema } from "./types/schema";
 
 const alloyInstance: AlloyInstance = createInstance({ name: "alloy" });
 
-function configureAlloy(): Promise<any> {
+const configure = async (): Promise<AlloyInstance> => {
     const aepCtx: AEPContext = createContext();
 
-    return new Promise((resolve, reject) => {
+    try {
         if (isValidContext(aepCtx)) {
-            alloyInstance("configure", {
+            await alloyInstance("configure", {
                 edgeConfigId: aepCtx.datastreamId as string,
                 orgId: aepCtx.imsOrgId as string,
                 // TODO ahammond: possibly remove debug when feature complete
                 debugEnabled: true,
-            }).then(() => {
-                resolve(alloyInstance);
             });
+
+            return alloyInstance;
         } else {
-            reject();
+            throw new Error("Alloy Context Not Valid");
         }
-    });
-}
+    } catch (error) {
+        throw new Error(error as string);
+    }
+};
 
 /** return alloy instance if it exists on the window, configures instance if it doesn't exist */
 const getAlloy = async (): Promise<AlloyInstance> => {
@@ -36,7 +38,7 @@ const getAlloy = async (): Promise<AlloyInstance> => {
         return window.alloy;
     }
 
-    window.alloy = await configureAlloy();
+    window.alloy = await configure();
     return window.alloy;
 };
 
