@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { subscribeToAEPEvents } from "./events";
 
 /* 
@@ -10,6 +11,7 @@ import { subscribeToAEPEvents } from "./events";
 const MAGENTO_STOREFRONT_EVENTS_SDK = "magento-storefront-events-sdk";
 
 const handleMessage = (event: MessageEvent) => {
+    console.log({ event });
     // skip other messages
     if (event.data !== MAGENTO_STOREFRONT_EVENTS_SDK) {
         return;

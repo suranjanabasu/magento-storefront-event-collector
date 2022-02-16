@@ -1,7 +1,7 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas/shoppingCart";
 
-import { getAlloy } from "../../alloy";
+import { alloy } from "../../alloy";
 import { BeaconSchema, ProductListItem } from "../../types/schema";
 
 /**
@@ -28,8 +28,6 @@ const getProductsInCart = (
 
 /** handles shopping cart view event for AEP */
 export const shoppingCartViewHandler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
-
     const { shoppingCartContext } = event.eventInfo;
 
     const payload: BeaconSchema = {
@@ -55,5 +53,5 @@ export const shoppingCartViewHandler = async (event: Event): Promise<void> => {
         payload.productListItems = productList;
     }
 
-    alloy("sendEvent", { xdm: { ...payload } });
+    alloy.sendEvent(payload);
 };
