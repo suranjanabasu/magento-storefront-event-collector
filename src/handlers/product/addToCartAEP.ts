@@ -61,7 +61,7 @@ const aepHandler = async (event: Event): Promise<void> => {
     }
 
     if (alloy) {
-        alloy("sendEvent", payload);
+        alloy("sendEvent", {eventType: "commerce.productListAdds", xdm: payload});
     }
 };
 
