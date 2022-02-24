@@ -97,6 +97,18 @@ const mockExtensionCtx = {
     magentoExtensionVersion: "1.2.3",
 };
 
+const mockDataServicesExtensionCtx = {
+    version: "1.2.3",
+};
+
+const mockRecommendationsExtensionCtx = {
+    version: "1.2.3",
+};
+
+const mockSearchExtensionCtx = {
+    version: "1.2.3",
+};
+
 const mockSearchInputCtx = {
     searchUnitId: "search-bar",
     source: null,
@@ -296,11 +308,14 @@ const mockRecommendedItemsCtx = [
 
 export {
     mockAepCtx,
+    mockDataServicesExtensionCtx,
     mockEventForwardingCtx,
     mockExtensionCtx,
     mockProductCtx,
+    mockRecommendationsExtensionCtx,
     mockRecommendationUnitCtx,
     mockRecommendedItemsCtx,
+    mockSearchExtensionCtx,
     mockSearchInputCtx,
     mockSearchResultCategoryCtx,
     mockSearchResultProductCtx,

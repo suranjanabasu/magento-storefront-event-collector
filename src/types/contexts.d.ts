@@ -4,6 +4,18 @@ type Extension = {
     magentoExtensionVersion: string;
 };
 
+type DataServicesExtension = {
+    version: string;
+};
+
+type RecommendationsExtension = {
+    version: string;
+};
+
+type SearchExtension = {
+    version: string;
+};
+
 type Product = {
     canonicalUrl?: string | null;
     categories?: Array<string> | null;
@@ -213,6 +225,10 @@ type SnowplowContext<DataType> = SelfDescribingJson<
 >;
 
 type ExtensionContext = SnowplowContext<Extension>;
+type DataServicesExtensionContext = SnowplowContext<DataServicesExtension>;
+type RecommendationsExtensionContext =
+    SnowplowContext<RecommendationsExtension>;
+type SearchExtensionContext = SnowplowContext<SearchExtension>;
 type ProductContext = SnowplowContext<Product>;
 type RecommendationUnitContext = SnowplowContext<RecommendationUnit>;
 type RecommendedItemContext = SnowplowContext<RecommendedItem>;

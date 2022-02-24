@@ -4,11 +4,14 @@ import mse from "@adobe/magento-storefront-events-sdk";
 
 import {
     mockCategory,
+    mockDataServicesExtension,
     mockExtension,
     mockOrder,
     mockPage,
     mockProduct,
     mockRecommendations,
+    mockRecommendationsExtension,
+    mockSearchExtension,
     mockSearchInput,
     mockSearchResults,
     mockShopper,
@@ -22,6 +25,9 @@ window.magentoStorefrontEvents = mse;
 
 mse.context.setCategory(mockCategory);
 mse.context.setMagentoExtension(mockExtension);
+mse.context.setDataServicesExtension(mockDataServicesExtension);
+mse.context.setRecommendationsExtension(mockRecommendationsExtension);
+mse.context.setSearchExtension(mockSearchExtension);
 mse.context.setOrder(mockOrder);
 mse.context.setPage(mockPage);
 mse.context.setProduct(mockProduct);

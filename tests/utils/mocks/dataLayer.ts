@@ -2,12 +2,15 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 import {
     Category,
     CustomUrl,
+    DataServicesExtension,
     MagentoExtension,
     Order,
     Page,
     Product,
     Recommendations,
+    RecommendationsExtension,
     ReferrerUrl,
+    SearchExtension,
     SearchInput,
     SearchResults,
     Shopper,
@@ -25,6 +28,18 @@ const mockCategory: Category = {
 
 const mockExtension: MagentoExtension = {
     magentoExtensionVersion: "1.2.3",
+};
+
+const mockDataServicesExtension: DataServicesExtension = {
+    version: "1.2.3",
+};
+
+const mockRecommendationsExtension: RecommendationsExtension = {
+    version: "1.2.3",
+};
+
+const mockSearchExtension: SearchExtension = {
+    version: "1.2.3",
 };
 
 const mockOrder: Order = {
@@ -419,17 +434,23 @@ const mockEvent: Event = {
         // (backwards compatibility)
         // aepContext: mockAepCtx,
         // eventForwardingContext: mockEventForwardingCtx,
+        dataServicesExtensionContext: mockDataServicesExtension,
+        recommendationsExtensionContext: mockRecommendationsExtension,
+        searchExtensionContext: mockSearchExtension,
     },
 };
 
 export {
     mockCategory,
+    mockDataServicesExtension,
     mockEvent,
     mockExtension,
     mockOrder,
     mockPage,
     mockProduct,
     mockRecommendations,
+    mockRecommendationsExtension,
+    mockSearchExtension,
     mockSearchInput,
     mockSearchResults,
     mockShopper,

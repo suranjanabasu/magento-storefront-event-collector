@@ -1,9 +1,12 @@
 export { default as createAEPCtx } from "./aep";
+export { default as createDataServicesExtensionCtx } from "./dataServicesExtension";
 export { default as createEventForwardingCtx } from "./eventForwarding";
 export { default as createMagentoExtensionCtx } from "./extension";
 export { default as createProductCtx } from "./product";
+export { default as createRecommendationsExtensionCtx } from "./recommendationsExtension";
 export { default as createRecommendationUnitCtx } from "./recommendationUnit";
 export { default as createRecommendedItemCtx } from "./recommendedItem";
+export { default as createSearchExtensionCtx } from "./searchExtension";
 export { default as createSearchInputCtx } from "./searchInput";
 export { default as createSearchResultCategoryCtx } from "./searchResultCategory";
 export { default as createSearchResultProductCtx } from "./searchResultProduct";

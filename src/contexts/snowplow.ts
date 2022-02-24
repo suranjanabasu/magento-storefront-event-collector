@@ -1,7 +1,10 @@
 import { ContextPrimitive } from "@snowplow/tracker-core";
 
 import {
+    createDataServicesExtensionCtx,
     createMagentoExtensionCtx,
+    createRecommendationsExtensionCtx,
+    createSearchExtensionCtx,
     createShopperCtx,
     createStorefrontInstanceCtx,
     createTrackerCtx,
@@ -12,6 +15,9 @@ const createContext = (): Array<ContextPrimitive> => {
         () => createTrackerCtx(),
         () => createStorefrontInstanceCtx(),
         () => createMagentoExtensionCtx(),
+        () => createDataServicesExtensionCtx(),
+        () => createRecommendationsExtensionCtx(),
+        () => createSearchExtensionCtx(),
         () => createShopperCtx(),
     ];
 

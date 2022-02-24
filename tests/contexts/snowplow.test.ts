@@ -8,5 +8,8 @@ test("creates context", () => {
         expect.any(Function),
         expect.any(Function),
         expect.any(Function),
+        expect.any(Function),
+        expect.any(Function),
+        expect.any(Function),
     ]);
 });

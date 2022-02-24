@@ -1,9 +1,12 @@
 import {
+    mockDataServicesExtension,
     mockExtension,
     mockOrder,
     mockPage,
     mockProduct,
     mockRecommendations,
+    mockRecommendationsExtension,
+    mockSearchExtension,
     mockSearchInput,
     mockSearchResults,
     mockShopper,
@@ -14,6 +17,9 @@ import {
 const mse = window.magentoStorefrontEvents;
 
 mse.context.setMagentoExtension(mockExtension);
+mse.context.setDataServicesExtension(mockDataServicesExtension);
+mse.context.setRecommendationsExtension(mockRecommendationsExtension);
+mse.context.setSearchExtension(mockSearchExtension);
 mse.context.setOrder(mockOrder);
 mse.context.setPage(mockPage);
 mse.context.setProduct(mockProduct);
