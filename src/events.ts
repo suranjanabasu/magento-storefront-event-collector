@@ -14,6 +14,7 @@ import {
     placeOrderHandler,
     placeOrderHandlerAEP,
     productViewHandler,
+    productViewHandlerAEP,
     recsItemAddToCartClickHandler,
     recsItemClickHandler,
     recsRequestSentHandler,
@@ -77,6 +78,10 @@ const handleSnowplowInstantPurchase = handleIf(
 );
 const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
+// product view
+const handleSnowplowProductView = handleIf(isSnowplow, productViewHandler);
+const handleAepProductView = handleIf(isAep, productViewHandlerAEP);
+
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
@@ -88,7 +93,8 @@ const subscribeToEvents = (): void => {
     mse.subscribe.pageView(handleAepPageView);
     mse.subscribe.placeOrder(handleSnowplowPlaceOrder);
     mse.subscribe.placeOrder(handleAepPlaceOrder);
-    mse.subscribe.productPageView(productViewHandler);
+    mse.subscribe.productPageView(handleSnowplowProductView);
+    mse.subscribe.productPageView(handleAepProductView);
     mse.subscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);
     mse.subscribe.recsItemClick(recsItemClickHandler);
     mse.subscribe.recsRequestSent(recsRequestSentHandler);
@@ -112,8 +118,10 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.pageView(handleSnowplowPageView);
     mse.unsubscribe.pageView(handleAepPageView);
-    mse.unsubscribe.placeOrder(placeOrderHandler);
-    mse.unsubscribe.productPageView(productViewHandler);
+    mse.unsubscribe.placeOrder(handleSnowplowPlaceOrder);
+    mse.unsubscribe.placeOrder(handleAepPlaceOrder);
+    mse.unsubscribe.productPageView(handleSnowplowProductView);
+    mse.unsubscribe.productPageView(handleAepProductView);
     mse.unsubscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);
     mse.unsubscribe.recsItemClick(recsItemClickHandler);
     mse.unsubscribe.recsRequestSent(recsRequestSentHandler);

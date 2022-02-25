@@ -4,9 +4,15 @@ export type Commerce = {
     order?: Order;
     shipping?: Shipping;
     promotionID?: string;
+    productViews?: ProductView;
 };
 
 export type ProductListAdds = {
+    id?: string;
+    value: number;
+};
+
+export type ProductView = {
     id?: string;
     value: number;
 };
