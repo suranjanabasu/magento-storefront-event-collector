@@ -30,7 +30,7 @@ mse.context.setShopper(mockShopper);
 mse.context.setShoppingCart(mockShoppingCart);
 mse.context.setStorefrontInstance(mockStorefront);
 
-/* beacon poc code below*/
+/* beacon/experience platform specific code below*/
 mse.context.setAEP({
     imsOrgId: "53A16ACB5CC1D3760A495C99@AdobeOrg",
     datastreamId: "1144fb8d-b234-4c44-85ac-af91ed64c2dd:dev",
@@ -39,6 +39,6 @@ mse.context.setEventForwarding({
     snowplow: true,
     aep: true,
 });
-/* end beacon poc */
+/* end beacon */
 
-mse.publish.pageView();
+// mse.publish.pageView();

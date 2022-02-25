@@ -8,6 +8,7 @@ const getProductInCart = (
     productId: number,
     cart: ShoppingCart,
 ): ProductListItem | undefined => {
+    // TODO ahammond we have a util to get *all* items from a cart, should move there and add filter to the method
     if (!cart.items?.length) {
         return undefined;
     }

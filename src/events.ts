@@ -9,8 +9,10 @@ import {
     addToCartHandlerAEP,
     aepPageViewHandler,
     instantPurchaseHandler,
+    instantPurchaseHandlerAEP,
     pageViewHandler,
     placeOrderHandler,
+    placeOrderHandlerAEP,
     productViewHandler,
     recsItemAddToCartClickHandler,
     recsItemClickHandler,
@@ -58,23 +60,34 @@ const handleIf = (
     };
 };
 
-// add to cart
+// page
+const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
+const handleAepPageView = handleIf(isAep, aepPageViewHandler);
+
+// cart
 const handleSnowplowAddToCart = handleIf(isSnowplow, addToCartHandler);
 const handleAepAddToCart = handleIf(isSnowplow, addToCartHandlerAEP);
 
-// page view
-const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
-const handleAepPageView = handleIf(isAep, aepPageViewHandler);
+// order
+const handleSnowplowPlaceOrder = handleIf(isSnowplow, placeOrderHandler);
+const handleAepPlaceOrder = handleIf(isAep, placeOrderHandlerAEP);
+const handleSnowplowInstantPurchase = handleIf(
+    isSnowplow,
+    instantPurchaseHandler,
+);
+const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
     mse.subscribe.addToCart(handleSnowplowAddToCart);
     mse.subscribe.addToCart(handleAepAddToCart);
-    mse.subscribe.instantPurchase(instantPurchaseHandler);
+    mse.subscribe.instantPurchase(handleSnowplowInstantPurchase);
+    mse.subscribe.instantPurchase(handleAepInstantPurchase);
     mse.subscribe.pageView(handleSnowplowPageView);
     mse.subscribe.pageView(handleAepPageView);
-    mse.subscribe.placeOrder(placeOrderHandler);
+    mse.subscribe.placeOrder(handleSnowplowPlaceOrder);
+    mse.subscribe.placeOrder(handleAepPlaceOrder);
     mse.subscribe.productPageView(productViewHandler);
     mse.subscribe.recsItemAddToCartClick(recsItemAddToCartClickHandler);
     mse.subscribe.recsItemClick(recsItemClickHandler);
