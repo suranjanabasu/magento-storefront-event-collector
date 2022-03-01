@@ -6,11 +6,10 @@ const createOrder = (
     orderContext: sdkSchemas.Order,
     storefrontInstanceContext: sdkSchemas.StorefrontInstance,
 ): Order => {
-    // TODO ahammond xdm schema honors multiple payment types but SDK doesn't
-    // revisit this single item list after SDK changes
     const payment: Payment = {
         transactionID: orderContext.orderId.toString(),
         paymentAmount: orderContext.grandTotal,
+        // todo ahammond these should be an enum, change in sdk, retest
         paymentType: orderContext.paymentMethodName,
         currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
     };

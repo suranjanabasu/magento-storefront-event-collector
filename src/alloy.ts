@@ -22,7 +22,7 @@ function configureAlloy(): Promise<any> {
             alloy("configure", {
                 edgeConfigId: aepCtx.datastreamId,
                 orgId: aepCtx.imsOrgId,
-                // TODO ahammond: possibly remove debug when feature complete
+                // TODO ahammond: remove debug when feature complete
                 debugEnabled: true,
             }).then(() => {
                 resolve(alloy);

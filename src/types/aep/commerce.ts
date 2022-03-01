@@ -1,6 +1,8 @@
 /* top level object for all transaction events */
 export type Commerce = {
     productListAdds?: ProductListAdds;
+    cart?: Cart;
+    checkouts?: Checkout;
     order?: Order;
     shipping?: Shipping;
     promotionID?: string;
@@ -15,6 +17,10 @@ export type ProductListAdds = {
 export type ProductView = {
     id?: string;
     value: number;
+};
+
+export type Cart = {
+    cartId?: string;
 };
 
 export type Shipping = {
@@ -32,4 +38,9 @@ export type Payment = {
     paymentAmount?: number;
     paymentType?: string;
     currencyCode?: string;
+};
+
+export type Checkout = {
+    id?: string;
+    value: number;
 };

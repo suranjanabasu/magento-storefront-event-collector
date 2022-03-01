@@ -18,7 +18,7 @@ import {
     StorefrontInstance,
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-// import { mockAepCtx, mockEventForwardingCtx } from "./context";
+import { mockAepCtx, mockEventForwardingCtx } from "./context";
 
 const mockCategory: Category = {
     name: "pants",
@@ -429,11 +429,8 @@ const mockEvent: Event = {
         shopperContext: mockShopper,
         shoppingCartContext: mockShoppingCart,
         storefrontInstanceContext: mockStorefront,
-        // TODO ahammond: these are optional contexts which we won't test with till we define more events to AEP
-        // commenting out on purpose as these are not required in the SDK and we want to ensure no tests fail without them
-        // (backwards compatibility)
-        // aepContext: mockAepCtx,
-        // eventForwardingContext: mockEventForwardingCtx,
+        aepContext: mockAepCtx,
+        eventForwardingContext: mockEventForwardingCtx,
         dataServicesExtensionContext: mockDataServicesExtension,
         recommendationsExtensionContext: mockRecommendationsExtension,
         searchExtensionContext: mockSearchExtension,

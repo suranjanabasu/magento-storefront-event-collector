@@ -52,7 +52,6 @@ const aepHandler = async (event: Event): Promise<void> => {
         );
 
         if (!product) {
-            // TODO: custom logger
             // eslint-disable-next-line no-console
             console.error("No matching product found in ShoppingCart");
             return;

@@ -7,10 +7,12 @@ import { createEventForwardingCtx } from "./contexts";
 import {
     addToCartHandler,
     addToCartHandlerAEP,
-    aepPageViewHandler,
+    initiateCheckoutHandler,
+    initiateCheckoutHandlerAEP,
     instantPurchaseHandler,
     instantPurchaseHandlerAEP,
     pageViewHandler,
+    pageViewHandlerAEP,
     placeOrderHandler,
     placeOrderHandlerAEP,
     productViewHandler,
@@ -63,11 +65,18 @@ const handleIf = (
 
 // page
 const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
-const handleAepPageView = handleIf(isAep, aepPageViewHandler);
+const handleAepPageView = handleIf(isAep, pageViewHandlerAEP);
 
 // cart
+const handleSnowplowInitiateCheckout = handleIf(
+    isSnowplow,
+    initiateCheckoutHandler,
+);
+const handleAEPInitiateCheckout = handleIf(isAep, initiateCheckoutHandlerAEP);
+
+// product
 const handleSnowplowAddToCart = handleIf(isSnowplow, addToCartHandler);
-const handleAepAddToCart = handleIf(isSnowplow, addToCartHandlerAEP);
+const handleAepAddToCart = handleIf(isAep, addToCartHandlerAEP);
 
 // order
 const handleSnowplowPlaceOrder = handleIf(isSnowplow, placeOrderHandler);
@@ -87,6 +96,8 @@ const subscribeToEvents = (): void => {
 
     mse.subscribe.addToCart(handleSnowplowAddToCart);
     mse.subscribe.addToCart(handleAepAddToCart);
+    mse.subscribe.initiateCheckout(handleSnowplowInitiateCheckout);
+    mse.subscribe.initiateCheckout(handleAEPInitiateCheckout);
     mse.subscribe.instantPurchase(handleSnowplowInstantPurchase);
     mse.subscribe.instantPurchase(handleAepInstantPurchase);
     mse.subscribe.pageView(handleSnowplowPageView);
@@ -115,7 +126,10 @@ const unsubscribeFromEvents = (): void => {
 
     mse.unsubscribe.addToCart(handleSnowplowAddToCart);
     mse.unsubscribe.addToCart(handleAepAddToCart);
+    mse.unsubscribe.initiateCheckout(handleSnowplowInitiateCheckout);
+    mse.unsubscribe.initiateCheckout(handleAEPInitiateCheckout);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
+    mse.unsubscribe.instantPurchase(handleAepInstantPurchase);
     mse.unsubscribe.pageView(handleSnowplowPageView);
     mse.unsubscribe.pageView(handleAepPageView);
     mse.unsubscribe.placeOrder(handleSnowplowPlaceOrder);
