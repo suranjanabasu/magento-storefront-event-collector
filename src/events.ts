@@ -5,6 +5,8 @@ import {
 
 import { createEventForwardingCtx } from "./contexts";
 import {
+    abandonCartHandler,
+    abandonCartHandlerAEP,
     addToCartHandler,
     addToCartHandlerAEP,
     initiateCheckoutHandler,
@@ -73,7 +75,10 @@ const handleSnowplowInitiateCheckout = handleIf(
     isSnowplow,
     initiateCheckoutHandler,
 );
-const handleAEPInitiateCheckout = handleIf(isAep, initiateCheckoutHandlerAEP);
+const handleAepInitiateCheckout = handleIf(isAep, initiateCheckoutHandlerAEP);
+
+const handleSnowplowAbandonCart = handleIf(isSnowplow, abandonCartHandler);
+const handleAepAbandonCart = handleIf(isAep, abandonCartHandlerAEP);
 
 // product
 const handleSnowplowAddToCart = handleIf(isSnowplow, addToCartHandler);
@@ -86,6 +91,9 @@ const handleSnowplowShoppingCartView = handleIf(
 );
 const handleAepShoppingCartView = handleIf(isAep, shoppingCartViewHandlerAEP);
 
+const handleSnowplowProductView = handleIf(isSnowplow, productViewHandler);
+const handleAepProductView = handleIf(isAep, productViewHandlerAEP);
+
 // order
 const handleSnowplowPlaceOrder = handleIf(isSnowplow, placeOrderHandler);
 const handleAepPlaceOrder = handleIf(isAep, placeOrderHandlerAEP);
@@ -95,17 +103,15 @@ const handleSnowplowInstantPurchase = handleIf(
 );
 const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
-// product view
-const handleSnowplowProductView = handleIf(isSnowplow, productViewHandler);
-const handleAepProductView = handleIf(isAep, productViewHandlerAEP);
-
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
+    mse.subscribe.abandonCart(handleSnowplowAbandonCart);
+    mse.subscribe.abandonCart(handleAepAbandonCart);
     mse.subscribe.addToCart(handleSnowplowAddToCart);
     mse.subscribe.addToCart(handleAepAddToCart);
     mse.subscribe.initiateCheckout(handleSnowplowInitiateCheckout);
-    mse.subscribe.initiateCheckout(handleAEPInitiateCheckout);
+    mse.subscribe.initiateCheckout(handleAepInitiateCheckout);
     mse.subscribe.instantPurchase(handleSnowplowInstantPurchase);
     mse.subscribe.instantPurchase(handleAepInstantPurchase);
     mse.subscribe.pageView(handleSnowplowPageView);
@@ -133,10 +139,12 @@ const subscribeToEvents = (): void => {
 const unsubscribeFromEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
+    mse.unsubscribe.abandonCart(handleSnowplowAbandonCart);
+    mse.unsubscribe.abandonCart(handleAepAbandonCart);
     mse.unsubscribe.addToCart(handleSnowplowAddToCart);
     mse.unsubscribe.addToCart(handleAepAddToCart);
     mse.unsubscribe.initiateCheckout(handleSnowplowInitiateCheckout);
-    mse.unsubscribe.initiateCheckout(handleAEPInitiateCheckout);
+    mse.unsubscribe.initiateCheckout(handleAepInitiateCheckout);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
     mse.unsubscribe.instantPurchase(handleAepInstantPurchase);
     mse.unsubscribe.pageView(handleSnowplowPageView);

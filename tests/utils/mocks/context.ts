@@ -86,7 +86,7 @@ const mockAepCtx = {
 
 const mockEventForwardingCtx = {
     aep: false,
-    snowplow: true,
+    // snowplow: true,
 };
 
 const mockTrackerCtx = {

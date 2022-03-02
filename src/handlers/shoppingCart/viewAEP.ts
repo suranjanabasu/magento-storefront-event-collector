@@ -21,7 +21,7 @@ const aepHandler = async (event: Event): Promise<void> => {
                 value: 1,
             },
             cart: {
-                cartId: shoppingCartContext.id ?? "1",
+                ID: shoppingCartContext.id,
             },
         },
     };

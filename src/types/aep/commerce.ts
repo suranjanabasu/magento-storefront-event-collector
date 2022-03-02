@@ -3,6 +3,7 @@ export type Commerce = {
     productListAdds?: ProductListAdds;
     productListViews?: ProductListViews;
     cart?: Cart;
+    cartAbandons?: CartAbandon;
     checkouts?: Checkout;
     order?: Order;
     shipping?: Shipping;
@@ -16,7 +17,7 @@ export type ProductView = {
 };
 
 export type Cart = {
-    cartId?: string;
+    ID?: string | null;
 };
 
 export type Shipping = {
@@ -52,6 +53,11 @@ export type ProductListAdds = {
 
 /** View or views of a product-list has occurred. */
 export type ProductListViews = {
+    id?: string;
+    value: number;
+};
+
+export type CartAbandon = {
     id?: string;
     value: number;
 };
