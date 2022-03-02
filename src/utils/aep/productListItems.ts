@@ -3,6 +3,11 @@ import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/ty
 import { SelectedOption } from "../../types/aep";
 import { ProductListItem } from "../../types/aep";
 
+/**
+ * create a list of shopping cart items from the `ShoppingCart` context for AEP
+ *
+ * @remarks `discountAmount` and `selectedOtions` are not supported in the sdk type yet
+ */
 const createProductListItems = (
     shoppingCartContext: ShoppingCart,
 ): ProductListItem[] => {

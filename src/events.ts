@@ -30,6 +30,7 @@ import {
     searchResultsViewHandler,
     searchSuggestionClickHandler,
     shoppingCartViewHandler,
+    shoppingCartViewHandlerAEP,
 } from "./handlers";
 import { EventForwardingContext } from "./types/contexts";
 
@@ -78,6 +79,13 @@ const handleAEPInitiateCheckout = handleIf(isAep, initiateCheckoutHandlerAEP);
 const handleSnowplowAddToCart = handleIf(isSnowplow, addToCartHandler);
 const handleAepAddToCart = handleIf(isAep, addToCartHandlerAEP);
 
+// shopping cart view
+const handleSnowplowShoppingCartView = handleIf(
+    isSnowplow,
+    shoppingCartViewHandler,
+);
+const handleAepShoppingCartView = handleIf(isAep, shoppingCartViewHandlerAEP);
+
 // order
 const handleSnowplowPlaceOrder = handleIf(isSnowplow, placeOrderHandler);
 const handleAepPlaceOrder = handleIf(isAep, placeOrderHandlerAEP);
@@ -118,7 +126,8 @@ const subscribeToEvents = (): void => {
     mse.subscribe.searchResponseReceived(searchResponseReceivedHandler);
     mse.subscribe.searchResultsView(searchResultsViewHandler);
     mse.subscribe.searchSuggestionClick(searchSuggestionClickHandler);
-    mse.subscribe.shoppingCartView(shoppingCartViewHandler);
+    mse.subscribe.shoppingCartView(handleSnowplowShoppingCartView);
+    mse.subscribe.shoppingCartView(handleAepShoppingCartView);
 };
 
 const unsubscribeFromEvents = (): void => {
@@ -149,6 +158,8 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.searchResultsView(searchResultsViewHandler);
     mse.unsubscribe.searchSuggestionClick(searchSuggestionClickHandler);
     mse.unsubscribe.shoppingCartView(shoppingCartViewHandler);
+    mse.unsubscribe.shoppingCartView(handleSnowplowShoppingCartView);
+    mse.unsubscribe.shoppingCartView(handleAepShoppingCartView);
 };
 
 export { subscribeToEvents, unsubscribeFromEvents };
