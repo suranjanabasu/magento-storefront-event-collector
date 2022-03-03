@@ -1,0 +1,55 @@
+import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
+import { SearchResultSuggestion } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
+
+import { getAlloy } from "../../alloy";
+import { createSearchResultsCtx } from "../../contexts";
+import { BeaconSchema } from "../../types/aep";
+import { SearchResultProduct } from "../../types/contexts";
+
+const XDM_EVENT_TYPE = "commerce.searchResponse";
+
+const handler = async (event: Event): Promise<void> => {
+    const alloy = await getAlloy();
+
+    const { searchUnitId, searchResultsContext } = event.eventInfo;
+
+    const searchResultsCtx = createSearchResultsCtx(
+        searchUnitId as string,
+        searchResultsContext,
+    );
+
+    const suggestionsFromCtx: SearchResultSuggestion[] =
+        (searchResultsCtx?.data?.suggestions as SearchResultSuggestion[]) ?? [];
+
+    const suggestions: string[] = suggestionsFromCtx.map(
+        (suggestion: SearchResultSuggestion) => suggestion.suggestion,
+    );
+
+    const productsFromCtx: SearchResultProduct[] =
+        (searchResultsCtx?.data?.products as SearchResultProduct[]) ?? [];
+
+    const productListItems = productsFromCtx.map(
+        (product: SearchResultProduct) => {
+            return { SKU: product.sku, name: product.name };
+        },
+    );
+
+    const payload: BeaconSchema = {
+        eventType: XDM_EVENT_TYPE,
+        commerce: {
+            searchResponse: {
+                value: 1,
+                id: "1",
+            },
+            search: {
+                suggestions: suggestions,
+                numberOfResults: searchResultsCtx?.data?.productCount as number,
+            },
+        },
+        productListItems,
+    };
+
+    alloy("sendEvent", { xdm: payload });
+};
+
+export default handler;

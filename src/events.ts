@@ -28,7 +28,9 @@ import {
     searchCategoryClickHandler,
     searchProductClickHandler,
     searchRequestSentHandler,
+    searchRequestSentHandlerAEP,
     searchResponseReceivedHandler,
+    searchResponseReceivedHandlerAEP,
     searchResultsViewHandler,
     searchSuggestionClickHandler,
     shoppingCartViewHandler,
@@ -103,6 +105,21 @@ const handleSnowplowInstantPurchase = handleIf(
 );
 const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
+// search
+const handleSnowplowSearchRequestSent = handleIf(
+    isSnowplow,
+    searchRequestSentHandler,
+);
+const handleAepSearchRequestSent = handleIf(isAep, searchRequestSentHandlerAEP);
+const handleSnowplowSearchResponseReceived = handleIf(
+    isSnowplow,
+    searchResponseReceivedHandler,
+);
+const handleAepSearchResponseReceived = handleIf(
+    isAep,
+    searchResponseReceivedHandlerAEP,
+);
+
 const subscribeToEvents = (): void => {
     const mse = window.magentoStorefrontEvents;
 
@@ -128,8 +145,10 @@ const subscribeToEvents = (): void => {
     mse.subscribe.recsUnitView(recsUnitViewHandler);
     mse.subscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.subscribe.searchProductClick(searchProductClickHandler);
-    mse.subscribe.searchRequestSent(searchRequestSentHandler);
-    mse.subscribe.searchResponseReceived(searchResponseReceivedHandler);
+    mse.subscribe.searchRequestSent(handleSnowplowSearchRequestSent);
+    mse.subscribe.searchRequestSent(handleAepSearchRequestSent);
+    mse.subscribe.searchResponseReceived(handleSnowplowSearchResponseReceived);
+    mse.subscribe.searchResponseReceived(handleAepSearchResponseReceived);
     mse.subscribe.searchResultsView(searchResultsViewHandler);
     mse.subscribe.searchSuggestionClick(searchSuggestionClickHandler);
     mse.subscribe.shoppingCartView(handleSnowplowShoppingCartView);
@@ -161,8 +180,12 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.recsUnitView(recsUnitViewHandler);
     mse.unsubscribe.searchCategoryClick(searchCategoryClickHandler);
     mse.unsubscribe.searchProductClick(searchProductClickHandler);
-    mse.unsubscribe.searchRequestSent(searchRequestSentHandler);
-    mse.unsubscribe.searchResponseReceived(searchResponseReceivedHandler);
+    mse.unsubscribe.searchRequestSent(handleSnowplowSearchRequestSent);
+    mse.unsubscribe.searchRequestSent(handleAepSearchRequestSent);
+    mse.unsubscribe.searchResponseReceived(
+        handleSnowplowSearchResponseReceived,
+    );
+    mse.unsubscribe.searchResponseReceived(handleAepSearchResponseReceived);
     mse.unsubscribe.searchResultsView(searchResultsViewHandler);
     mse.unsubscribe.searchSuggestionClick(searchSuggestionClickHandler);
     mse.unsubscribe.shoppingCartView(shoppingCartViewHandler);
