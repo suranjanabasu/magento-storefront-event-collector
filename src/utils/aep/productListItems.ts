@@ -1,7 +1,7 @@
 import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import { ProductListItem, SelectedOption } from "../../types/aep";
-import { getDiscountAmount } from "./discount";
+import { getDiscountAmount } from "../discount";
 
 /**
  * create a list of shopping cart items from the `ShoppingCart` context for AEP
@@ -28,11 +28,9 @@ const createProductListItems = (
                 quantity: item.quantity,
                 priceTotal: item.prices.price.value,
                 currencyCode: item.prices.price.currency,
-                // TODO discountAmount: add when sdk schema is fixed
+                discountAmount: getDiscountAmount(item.product),
                 selectedOptions: selectedOptions,
             };
-
-            productListItem.discountAmount = getDiscountAmount(item.product);
 
             returnList.push(productListItem);
         });
