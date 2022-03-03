@@ -24,7 +24,7 @@ export type ProductListItem = {
      */
     currencyCode?: string;
     /**
-     * amount by which regular price is reduced on this itme
+     * amount by which regular price is reduced on this item
      */
     discountAmount?: number;
     /**

@@ -1,7 +1,7 @@
 import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import { SelectedOption } from "../../types/aep";
-import { ProductListItem } from "../../types/aep";
+import { ProductListItem, SelectedOption } from "../../types/aep";
+import { getDiscountAmount } from "./discount";
 
 /**
  * create a list of shopping cart items from the `ShoppingCart` context for AEP
@@ -21,7 +21,8 @@ const createProductListItems = (
                     value: option.valueLabel,
                 });
             });
-            const productListItem = {
+
+            const productListItem: ProductListItem = {
                 SKU: item.product.sku,
                 name: item.product.name,
                 quantity: item.quantity,
@@ -30,6 +31,8 @@ const createProductListItems = (
                 // TODO discountAmount: add when sdk schema is fixed
                 selectedOptions: selectedOptions,
             };
+
+            productListItem.discountAmount = getDiscountAmount(item.product);
 
             returnList.push(productListItem);
         });
