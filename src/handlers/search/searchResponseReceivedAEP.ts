@@ -11,7 +11,8 @@ const XDM_EVENT_TYPE = "commerce.searchResponse";
 const handler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
 
-    const { searchUnitId, searchResultsContext } = event.eventInfo;
+    const { searchUnitId, searchResultsContext, debugContext } =
+        event.eventInfo;
 
     const searchResultsCtx = createSearchResultsCtx(
         searchUnitId as string,
@@ -35,6 +36,7 @@ const handler = async (event: Event): Promise<void> => {
     );
 
     const payload: BeaconSchema = {
+        _id: debugContext?.eventId,
         eventType: XDM_EVENT_TYPE,
         commerce: {
             searchResponse: {

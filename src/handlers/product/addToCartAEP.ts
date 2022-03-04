@@ -8,9 +8,11 @@ import { getDiscountAmount } from "../../utils/discount";
 const aepHandler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
     // note: the shopping cart context does not include the updated product in the cart
-    const { productContext, shoppingCartContext } = event.eventInfo;
+    const { productContext, shoppingCartContext, debugContext } =
+        event.eventInfo;
 
     const payload: BeaconSchema = {
+        _id: debugContext?.eventId,
         commerce: {
             productListAdds: {
                 id: productContext.productId.toString(),
@@ -32,7 +34,7 @@ const aepHandler = async (event: Event): Promise<void> => {
     };
 
     if (alloy) {
-        alloy("sendEvent", payload);
+        alloy("sendEvent", { xdm: payload });
     }
 };
 

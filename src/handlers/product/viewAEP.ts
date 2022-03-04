@@ -8,7 +8,7 @@ const XDM_EVENT_TYPE = "commerce.productViews";
 const aepHandler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
 
-    const { productContext } = event.eventInfo;
+    const { productContext, debugContext } = event.eventInfo;
 
     const productListItem: ProductListItem = {
         SKU: productContext.sku,
@@ -25,6 +25,7 @@ const aepHandler = async (event: Event): Promise<void> => {
     }
 
     const payload: BeaconSchema = {
+        _id: debugContext?.eventId,
         eventType: XDM_EVENT_TYPE,
         commerce: {
             productViews: {

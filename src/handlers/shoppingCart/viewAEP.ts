@@ -10,9 +10,10 @@ const XDM_EVENT_TYPE = "commerce.productListViews";
 const aepHandler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
 
-    const { shoppingCartContext } = event.eventInfo;
+    const { shoppingCartContext, debugContext } = event.eventInfo;
 
     const payload: BeaconSchema = {
+        _id: debugContext?.eventId,
         eventType: XDM_EVENT_TYPE,
         commerce: {
             cart: {

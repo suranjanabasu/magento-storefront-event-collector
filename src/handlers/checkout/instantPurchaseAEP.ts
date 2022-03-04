@@ -11,11 +11,16 @@ const XDM_EVENT_TYPE = "commerce.instantPurchase";
 // NOTE instant purchase only differs by eventType from place order/order complete
 const aepHandler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
-    const { storefrontInstanceContext, orderContext, shoppingCartContext } =
-        event.eventInfo;
+    const {
+        storefrontInstanceContext,
+        orderContext,
+        shoppingCartContext,
+        debugContext,
+    } = event.eventInfo;
 
     // get commerce fields
     const payload: BeaconSchema = {
+        _id: debugContext?.eventId,
         eventType: XDM_EVENT_TYPE,
         commerce: {
             order: createOrder(orderContext, storefrontInstanceContext),

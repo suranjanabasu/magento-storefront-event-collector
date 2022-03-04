@@ -1,11 +1,12 @@
+import { WebPageDetails } from ".";
 import { Commerce } from "./commerce";
-import { PageView } from "./pageView";
 import { ProductListItem } from "./productListItem";
 
 /** The Beacon Schema that matches our schema object in AEP */
 export type BeaconSchema = {
+    _id?: string;
     eventType?: string;
-    web?: PageView;
     commerce?: Commerce;
     productListItems?: ProductListItem[];
+    web?: WebPageDetails;
 };

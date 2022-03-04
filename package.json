@@ -45,7 +45,7 @@
         "@snowplow/browser-tracker": "^3.0.1"
     },
     "devDependencies": {
-        "@adobe/magento-storefront-events-sdk": "^1.1.8",
+        "@adobe/magento-storefront-events-sdk": "^1.1.9",
         "@types/jest": "^26.0.23",
         "@typescript-eslint/eslint-plugin": "^4.2.0",
         "@typescript-eslint/parser": "^4.2.0",
