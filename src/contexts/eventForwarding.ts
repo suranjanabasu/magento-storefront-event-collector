@@ -15,7 +15,7 @@ const createContext = (
 
     const context: EventForwardingContext = {
         aep: eventForwardingCtx.aep,
-        commerce: eventForwardingCtx.commerce,
+        // snowplow: eventForwardingCtx.snowplow,
     };
 
     return context;

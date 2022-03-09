@@ -23,6 +23,11 @@ const aepHandler = async (event: Event): Promise<void> => {
         eventType: XDM_EVENT_TYPE,
         commerce: {
             order: createOrder(orderContext, storefrontInstanceContext),
+            // TODO ahammond get from order context after sdk change
+            // shipping: {
+            //     shippingMethod: "standard",
+            //     shippingAmount: 10,
+            // },
             promotionID: orderContext.appliedCouponCode,
         },
         productListItems: createProductListItems(shoppingCartContext),

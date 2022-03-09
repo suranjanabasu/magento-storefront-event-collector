@@ -246,7 +246,7 @@ type TrackerContext = SnowplowContext<Tracker>;
 
 type EventForwardingContext = {
     aep?: boolean;
-    commerce?: boolean;
+    // snowplow?: boolean;
 };
 
 type AEPContext = {

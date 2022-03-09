@@ -38,13 +38,17 @@ import {
 } from "./handlers";
 import { EventForwardingContext } from "./types/contexts";
 
-const isCommerce = (event: Event): boolean => {
+/* TODO: annhammo would like to clear the "do not send to Snowplow"
+ * functionality with product management prior to enabling it in
+ * production.
+ */
+/* const isSnowplow = (event: Event): boolean => {
     const ctx: EventForwardingContext = createEventForwardingCtx(
         event.eventInfo.eventForwardingContext,
     );
-    // default to true unless explicitly set to false
-    return ctx.commerce === false ? false : true;
-};
+    return ctx.snowplow ?? false;
+}; */
+const isSnowplow = (event: Event): boolean => true;
 
 const isAep = (event: Event): boolean => {
     const ctx: EventForwardingContext = createEventForwardingCtx(
@@ -65,50 +69,50 @@ const handleIf = (
 };
 
 // page
-const handleSnowplowPageView = handleIf(isCommerce, pageViewHandler);
+const handleSnowplowPageView = handleIf(isSnowplow, pageViewHandler);
 const handleAepPageView = handleIf(isAep, pageViewHandlerAEP);
 
 // cart
 const handleSnowplowInitiateCheckout = handleIf(
-    isCommerce,
+    isSnowplow,
     initiateCheckoutHandler,
 );
 const handleAepInitiateCheckout = handleIf(isAep, initiateCheckoutHandlerAEP);
 
-const handleSnowplowAbandonCart = handleIf(isCommerce, abandonCartHandler);
+const handleSnowplowAbandonCart = handleIf(isSnowplow, abandonCartHandler);
 const handleAepAbandonCart = handleIf(isAep, abandonCartHandlerAEP);
 
 // product
-const handleSnowplowAddToCart = handleIf(isCommerce, addToCartHandler);
+const handleSnowplowAddToCart = handleIf(isSnowplow, addToCartHandler);
 const handleAepAddToCart = handleIf(isAep, addToCartHandlerAEP);
 
 // shopping cart view
 const handleSnowplowShoppingCartView = handleIf(
-    isCommerce,
+    isSnowplow,
     shoppingCartViewHandler,
 );
 const handleAepShoppingCartView = handleIf(isAep, shoppingCartViewHandlerAEP);
 
-const handleSnowplowProductView = handleIf(isCommerce, productViewHandler);
+const handleSnowplowProductView = handleIf(isSnowplow, productViewHandler);
 const handleAepProductView = handleIf(isAep, productViewHandlerAEP);
 
 // order
-const handleSnowplowPlaceOrder = handleIf(isCommerce, placeOrderHandler);
+const handleSnowplowPlaceOrder = handleIf(isSnowplow, placeOrderHandler);
 const handleAepPlaceOrder = handleIf(isAep, placeOrderHandlerAEP);
 const handleSnowplowInstantPurchase = handleIf(
-    isCommerce,
+    isSnowplow,
     instantPurchaseHandler,
 );
 const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
 // search
 const handleSnowplowSearchRequestSent = handleIf(
-    isCommerce,
+    isSnowplow,
     searchRequestSentHandler,
 );
 const handleAepSearchRequestSent = handleIf(isAep, searchRequestSentHandlerAEP);
 const handleSnowplowSearchResponseReceived = handleIf(
-    isCommerce,
+    isSnowplow,
     searchResponseReceivedHandler,
 );
 const handleAepSearchResponseReceived = handleIf(

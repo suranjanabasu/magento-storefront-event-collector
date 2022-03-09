@@ -17,10 +17,6 @@ const createOrder = (
     return {
         purchaseID: orderContext.orderId.toString(),
         payments: [payment],
-        shipping: {
-            shippingMethod: orderContext.shipping?.shippingMethod,
-            shippingAmount: Number(orderContext.shipping?.shippingAmount),
-        },
     };
 };
 

@@ -6,6 +6,7 @@ export type Commerce = {
     cartAbandons?: CartAbandon;
     checkouts?: Checkout;
     order?: Order;
+    shipping?: Shipping;
     promotionID?: string;
     productViews?: ProductView;
     search?: Search;
@@ -22,15 +23,14 @@ export type Cart = {
     ID?: string | null;
 };
 
-export type Order = {
-    purchaseID: string;
-    payments: Payment[];
-    shipping?: Shipping;
-};
-
 export type Shipping = {
     shippingMethod?: string;
     shippingAmount?: number;
+};
+
+export type Order = {
+    purchaseID: string;
+    payments: Payment[];
 };
 
 export type Payment = {
@@ -66,7 +66,7 @@ export type CartAbandon = {
 };
 
 export type Search = {
-    query?: string;
+    queryString?: string;
     refinements?: Filter[];
     sort?: Sort[];
     suggestions?: string[];

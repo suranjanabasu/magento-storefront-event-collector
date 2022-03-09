@@ -64,7 +64,7 @@ const handler = async (event: Event): Promise<void> => {
                 id: "1",
             },
             search: {
-                query: searchInputContext.units[0].phrase,
+                queryString: searchInputContext.units[0].phrase,
                 sort,
                 refinements: filters,
             },
