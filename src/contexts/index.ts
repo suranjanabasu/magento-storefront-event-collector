@@ -1,3 +1,4 @@
+export { default as createAEPCtx } from "./aep";
 export { default as createDataServicesExtensionCtx } from "./dataServicesExtension";
 export { default as createEventForwardingCtx } from "./eventForwarding";
 export { default as createMagentoExtensionCtx } from "./extension";

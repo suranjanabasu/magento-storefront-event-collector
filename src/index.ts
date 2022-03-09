@@ -1,14 +1,12 @@
-import { alloy } from "./alloy";
 import { subscribeToEvents } from "./events";
 import { configureSnowplow } from "./snowplow";
 
-const initialize = async () => {
+const initialize = () => {
     configureSnowplow({
         appId: "magento-storefront-event-collector",
         collectorUrl: SNOWPLOW_COLLECTOR_URL,
         collectorPath: SNOWPLOW_COLLECTOR_PATH,
     });
-    await alloy.configure();
     subscribeToEvents();
 };
 
