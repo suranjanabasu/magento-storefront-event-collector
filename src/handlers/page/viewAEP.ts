@@ -17,6 +17,7 @@ const aepHandler = (event: Event): void => {
                 },
                 siteSection: pageContext.pageType,
                 /** temporary until sdk update gets merged */
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 name: (pageContext as any).pageName || undefined,
             },
         },
