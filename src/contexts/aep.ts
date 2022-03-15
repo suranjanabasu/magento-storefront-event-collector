@@ -18,4 +18,12 @@ const createContext = (aep?: AEP): AEPContext => {
     return context;
 };
 
+/** checks that we have both datastreamId and imsOrgId */
+export const isValidContext = ({
+    datastreamId = "",
+    imsOrgId = "",
+}: AEPContext): boolean => {
+    return datastreamId !== "" && imsOrgId !== "";
+};
+
 export default createContext;
