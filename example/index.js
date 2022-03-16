@@ -36,7 +36,7 @@ mse.context.setAEP({
     datastreamId: "1144fb8d-b234-4c44-85ac-af91ed64c2dd:dev",
 });
 mse.context.setEventForwarding({
-    snowplow: true,
+    commerce: true,
     aep: true,
 });
 /* end beacon */
