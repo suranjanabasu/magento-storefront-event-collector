@@ -9,6 +9,8 @@ import {
     abandonCartHandlerAEP,
     addToCartHandler,
     addToCartHandlerAEP,
+    createAccountHandlerAEP,
+    editAccountHandlerAEP,
     initiateCheckoutHandler,
     initiateCheckoutHandlerAEP,
     instantPurchaseHandler,
@@ -35,6 +37,8 @@ import {
     searchSuggestionClickHandler,
     shoppingCartViewHandler,
     shoppingCartViewHandlerAEP,
+    signInHandlerAEP,
+    signOutHandlerAEP,
 } from "./handlers";
 import { EventForwardingContext } from "./types/contexts";
 
@@ -101,6 +105,12 @@ const handleSnowplowInstantPurchase = handleIf(
 );
 const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
+// account
+const handleAepSignIn = handleIf(isAep, signInHandlerAEP);
+const handleAepSignOut = handleIf(isAep, signOutHandlerAEP);
+const handleAepCreateAccount = handleIf(isAep, createAccountHandlerAEP);
+const handleAepEditAccount = handleIf(isAep, editAccountHandlerAEP);
+
 // search
 const handleSnowplowSearchRequestSent = handleIf(
     isCommerce,
@@ -123,6 +133,8 @@ const subscribeToEvents = (): void => {
     mse.subscribe.abandonCart(handleAepAbandonCart);
     mse.subscribe.addToCart(handleSnowplowAddToCart);
     mse.subscribe.addToCart(handleAepAddToCart);
+    mse.subscribe.createAccount(handleAepCreateAccount);
+    mse.subscribe.editAccount(handleAepEditAccount);
     mse.subscribe.initiateCheckout(handleSnowplowInitiateCheckout);
     mse.subscribe.initiateCheckout(handleAepInitiateCheckout);
     mse.subscribe.instantPurchase(handleSnowplowInstantPurchase);
@@ -149,6 +161,8 @@ const subscribeToEvents = (): void => {
     mse.subscribe.searchSuggestionClick(searchSuggestionClickHandler);
     mse.subscribe.shoppingCartView(handleSnowplowShoppingCartView);
     mse.subscribe.shoppingCartView(handleAepShoppingCartView);
+    mse.subscribe.signIn(handleAepSignIn);
+    mse.subscribe.signOut(handleAepSignOut);
 };
 
 const unsubscribeFromEvents = (): void => {
@@ -158,6 +172,8 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.abandonCart(handleAepAbandonCart);
     mse.unsubscribe.addToCart(handleSnowplowAddToCart);
     mse.unsubscribe.addToCart(handleAepAddToCart);
+    mse.unsubscribe.createAccount(handleAepCreateAccount);
+    mse.unsubscribe.editAccount(handleAepEditAccount);
     mse.unsubscribe.initiateCheckout(handleSnowplowInitiateCheckout);
     mse.unsubscribe.initiateCheckout(handleAepInitiateCheckout);
     mse.unsubscribe.instantPurchase(instantPurchaseHandler);
@@ -187,6 +203,8 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.shoppingCartView(shoppingCartViewHandler);
     mse.unsubscribe.shoppingCartView(handleSnowplowShoppingCartView);
     mse.unsubscribe.shoppingCartView(handleAepShoppingCartView);
+    mse.unsubscribe.signIn(handleAepSignIn);
+    mse.unsubscribe.signOut(handleAepSignOut);
 };
 
 export { subscribeToEvents, unsubscribeFromEvents };

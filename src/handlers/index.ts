@@ -1,3 +1,4 @@
+export * from "./account";
 export * from "./checkout";
 export * from "./page";
 export * from "./product";

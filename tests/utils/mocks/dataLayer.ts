@@ -1,5 +1,6 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import {
+    Account,
     Category,
     CustomUrl,
     DataServicesExtension,
@@ -19,6 +20,12 @@ import {
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import { mockAepCtx, mockEventForwardingCtx } from "./context";
+
+const mockAccount: Account = {
+    firstName: "firstName",
+    lastName: "lastName",
+    emailAddress: "test@commerce.com",
+};
 
 const mockCategory: Category = {
     name: "pants",
@@ -438,6 +445,7 @@ const mockEvent: Event = {
 };
 
 export {
+    mockAccount,
     mockCategory,
     mockDataServicesExtension,
     mockEvent,
