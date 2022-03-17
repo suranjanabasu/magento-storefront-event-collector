@@ -13,7 +13,9 @@ const aepHandler = async (event: Event): Promise<void> => {
     const payload: BeaconSchema = {
         _id: debugContext?.eventId,
         eventType: XDM_EVENT_TYPE,
-        account: createAccount(accountContext || ({} as Account)),
+        _atag: {
+            account: createAccount(accountContext || ({} as Account)),
+        },
         userAccount: {
             login: 1,
         },

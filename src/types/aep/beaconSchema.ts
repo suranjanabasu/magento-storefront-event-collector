@@ -9,7 +9,9 @@ export type BeaconSchema = {
     commerce?: Commerce;
     productListItems?: ProductListItem[];
     web?: Web;
-    account?: Account;
+    _atag?: {
+        account?: Account;
+    };
     userAccount?: AccountActions;
 };
 
