@@ -19,7 +19,7 @@ const createOrder = (
         payments: [payment],
         shipping: {
             shippingMethod: orderContext.shipping?.shippingMethod,
-            shippingAmount: Number(orderContext.shipping?.shippingAmount),
+            shippingAmount: orderContext.shipping?.shippingAmount,
         },
     };
 };

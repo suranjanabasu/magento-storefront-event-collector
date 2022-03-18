@@ -7,7 +7,7 @@ const createAccount = (accountContext: sdkSchemas.Account): Account => {
         accountContext;
     const address: Address = {
         city: shippingAddress?.city,
-        // TODO country: shippingAddress?.country,
+        country: shippingAddress?.country,
         postalCode: shippingAddress?.postalCode,
     };
 
@@ -19,9 +19,8 @@ const createAccount = (accountContext: sdkSchemas.Account): Account => {
     }
 
     return {
-        // TODO get these from sdk
-        // accountID: accountContext.accountId,
-        // accountType: accountContext.accountType,
+        accountID: accountContext.accountId,
+        accountType: accountContext.accountType,
         personalEmail: {
             address: emailAddress,
         },
@@ -29,7 +28,7 @@ const createAccount = (accountContext: sdkSchemas.Account): Account => {
         lastName,
         homePhone: {
             phoneNumber: shippingAddress?.phoneNumber,
-            // TODO countryCode: accountContext.countryCode,
+            countryCode: accountContext.countryCode,
         },
         homeAddress: [address],
     };

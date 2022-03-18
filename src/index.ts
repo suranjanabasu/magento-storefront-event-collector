@@ -12,7 +12,6 @@ const initializeAlloy = async () => {
 
         await alloy.configure();
     } catch (error) {
-        // TODO: better error handling
         console.warn("Alloy could not be configured.");
     }
 };
