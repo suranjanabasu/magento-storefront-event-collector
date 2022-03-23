@@ -10,7 +10,7 @@ const schemas = {
     MAGENTO_JS_TRACKER_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/magento-js-tracker/jsonschema/2-0-0",
     PRODUCT_SCHEMA_URL:
-        "iglu:com.adobe.magento.entity/product/jsonschema/2-0-3",
+        "iglu:com.adobe.magento.entity/product/jsonschema/2-0-4",
     RECOMMENDATION_UNIT_SCHEMA_URL:
         "iglu:com.adobe.magento.entity/recommendation-unit/jsonschema/1-0-4",
     RECOMMENDED_ITEM_SCHEMA_URL:
