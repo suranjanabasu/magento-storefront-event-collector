@@ -38,8 +38,8 @@ type Product = {
 
 type ProductPricing = {
     currencyCode: string | null;
-    maximalPrice: number;
-    minimalPrice: number;
+    maximalPrice?: number;
+    minimalPrice?: number;
     regularPrice: number;
     specialPrice?: number;
     tierPricing?: Array<{
