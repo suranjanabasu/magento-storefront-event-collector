@@ -26,7 +26,10 @@ const aepHandler = async (event: Event): Promise<void> => {
             order: createOrder(orderContext, storefrontInstanceContext),
             promotionID: orderContext.appliedCouponCode,
         },
-        productListItems: createProductListItems(shoppingCartContext),
+        productListItems: createProductListItems(
+            shoppingCartContext,
+            storefrontInstanceContext,
+        ),
     };
 
     if (alloy) {

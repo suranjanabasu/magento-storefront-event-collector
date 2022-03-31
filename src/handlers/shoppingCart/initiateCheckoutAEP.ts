@@ -8,7 +8,8 @@ const XDM_EVENT_TYPE = "commerce.checkouts";
 
 const handler = async (event: Event): Promise<void> => {
     const alloy = await getAlloy();
-    const { shoppingCartContext, debugContext } = event.eventInfo;
+    const { shoppingCartContext, debugContext, storefrontInstanceContext } =
+        event.eventInfo;
 
     const payload: BeaconSchema = {
         _id: debugContext?.eventId,
@@ -22,7 +23,10 @@ const handler = async (event: Event): Promise<void> => {
                 ID: shoppingCartContext.id,
             },
         },
-        productListItems: createProductListItems(shoppingCartContext),
+        productListItems: createProductListItems(
+            shoppingCartContext,
+            storefrontInstanceContext,
+        ),
     };
 
     alloy("sendEvent", { xdm: payload });

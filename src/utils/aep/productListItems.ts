@@ -1,4 +1,7 @@
-import { ShoppingCart } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
+import {
+    ShoppingCart,
+    StorefrontInstance,
+} from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
 import { ProductListItem, SelectedOption } from "../../types/aep";
 import { getDiscountAmount } from "../discount";
@@ -10,6 +13,7 @@ import { getDiscountAmount } from "../discount";
  */
 const createProductListItems = (
     shoppingCartContext: ShoppingCart,
+    storefrontContext: StorefrontInstance,
 ): ProductListItem[] => {
     const returnList: ProductListItem[] = [];
     if (shoppingCartContext.items?.length) {
@@ -27,7 +31,9 @@ const createProductListItems = (
                 name: item.product.name,
                 quantity: item.quantity,
                 priceTotal: item.prices.price.value,
-                currencyCode: item.prices.price.currency,
+                currencyCode:
+                    item.prices.price.currency ??
+                    storefrontContext.storeViewCurrencyCode,
                 discountAmount: getDiscountAmount(item.product),
                 selectedOptions: selectedOptions,
             };
