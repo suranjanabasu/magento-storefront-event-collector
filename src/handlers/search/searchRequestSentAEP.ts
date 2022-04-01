@@ -4,15 +4,13 @@ import {
     SearchSort,
 } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { createSearchInputCtx } from "../../contexts";
 import { BeaconSchema, Filter, Sort } from "../../types/aep";
 
 const XDM_EVENT_TYPE = "commerce.searchRequest";
 
 const handler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
-
     const { searchUnitId, searchInputContext, debugContext } = event.eventInfo;
 
     const searchInputCtx = createSearchInputCtx(
@@ -71,7 +69,7 @@ const handler = async (event: Event): Promise<void> => {
         },
     };
 
-    alloy("sendEvent", { xdm: payload });
+    sendEvent(payload);
 };
 
 export default handler;

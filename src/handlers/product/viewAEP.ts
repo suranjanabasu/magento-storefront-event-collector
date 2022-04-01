@@ -1,13 +1,11 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { BeaconSchema, ProductListItem } from "../../types/aep";
 
 const XDM_EVENT_TYPE = "commerce.productViews";
 
 const aepHandler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
-
     const { productContext, debugContext } = event.eventInfo;
 
     const productListItem: ProductListItem = {
@@ -36,7 +34,7 @@ const aepHandler = async (event: Event): Promise<void> => {
         productListItems: [productListItem],
     };
 
-    alloy("sendEvent", { xdm: payload });
+    sendEvent(payload);
 };
 
 export default aepHandler;

@@ -1,7 +1,7 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import { SearchResultSuggestion } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { createSearchResultsCtx } from "../../contexts";
 import { BeaconSchema } from "../../types/aep";
 import { SearchResultProduct } from "../../types/contexts";
@@ -9,8 +9,6 @@ import { SearchResultProduct } from "../../types/contexts";
 const XDM_EVENT_TYPE = "commerce.searchResponse";
 
 const handler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
-
     const { searchUnitId, searchResultsContext, debugContext } =
         event.eventInfo;
 
@@ -51,7 +49,7 @@ const handler = async (event: Event): Promise<void> => {
         productListItems,
     };
 
-    alloy("sendEvent", { xdm: payload });
+    sendEvent(payload);
 };
 
 export default handler;

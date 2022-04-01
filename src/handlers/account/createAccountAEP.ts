@@ -1,13 +1,12 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 import { Account } from "@adobe/magento-storefront-events-sdk/dist/types/types/schemas";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { BeaconSchema } from "../../types/aep";
 import { createAccount } from "../../utils/aep/account";
 
 const XDM_EVENT_TYPE = "account.createProfile";
 const aepHandler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
     const { debugContext, accountContext } = event.eventInfo;
 
     const payload: BeaconSchema = {
@@ -21,9 +20,7 @@ const aepHandler = async (event: Event): Promise<void> => {
         },
     };
 
-    if (alloy) {
-        alloy("sendEvent", { xdm: payload });
-    }
+    sendEvent(payload);
 };
 
 export default aepHandler;

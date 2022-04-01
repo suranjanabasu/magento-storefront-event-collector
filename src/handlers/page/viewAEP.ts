@@ -1,9 +1,9 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { BeaconSchema } from "../../types/aep";
 
-const aepHandler = (event: Event): void => {
+const aepHandler = async (event: Event): Promise<void> => {
     const { pageContext, debugContext } = event.eventInfo;
 
     const payload: BeaconSchema = {
@@ -23,11 +23,7 @@ const aepHandler = (event: Event): void => {
         },
     };
 
-    getAlloy().then(alloy =>
-        alloy("sendEvent", {
-            xdm: payload,
-        }),
-    );
+    sendEvent(payload);
 };
 
 export default aepHandler;

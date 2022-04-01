@@ -1,12 +1,11 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { BeaconSchema } from "../../types/aep";
 import { getDiscountAmount } from "../../utils/discount";
 
 /** Sends an event to aep with an addToCart payload */
 const aepHandler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
     // note: the shopping cart context does not include the updated product in the cart
     const { productContext, shoppingCartContext, debugContext } =
         event.eventInfo;
@@ -33,9 +32,7 @@ const aepHandler = async (event: Event): Promise<void> => {
         ],
     };
 
-    if (alloy) {
-        alloy("sendEvent", { xdm: payload });
-    }
+    sendEvent(payload);
 };
 
 export default aepHandler;

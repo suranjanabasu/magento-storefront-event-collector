@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
-import { alloy } from "./alloy";
+import { configure, hasConfig } from "./alloy";
 import { subscribeToEvents } from "./events";
 import { configureSnowplow } from "./snowplow";
 
 /** initialize alloy if magentoStorefrontEvents exists and aep is set to true */
 const initializeAlloy = async () => {
     try {
-        if (!alloy.hasConfig) {
+        if (!hasConfig()) {
             return;
         }
 
-        await alloy.configure();
+        await configure();
     } catch (error) {
         console.warn("Alloy could not be configured.");
     }

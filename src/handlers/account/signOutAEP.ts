@@ -1,11 +1,10 @@
 import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/events";
 
-import { getAlloy } from "../../alloy";
+import { sendEvent } from "../../alloy";
 import { BeaconSchema } from "../../types/aep";
 
 const XDM_EVENT_TYPE = "userAccount.logout";
 const aepHandler = async (event: Event): Promise<void> => {
-    const alloy = await getAlloy();
     const { debugContext } = event.eventInfo;
 
     const payload: BeaconSchema = {
@@ -16,9 +15,7 @@ const aepHandler = async (event: Event): Promise<void> => {
         },
     };
 
-    if (alloy) {
-        alloy("sendEvent", { xdm: payload });
-    }
+    sendEvent(payload);
 };
 
 export default aepHandler;

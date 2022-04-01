@@ -24,8 +24,11 @@ export type Cart = {
 
 export type Order = {
     purchaseID: string;
+    purchaseOrderNumber?: string;
     payments: Payment[];
     shipping?: Shipping;
+    priceTotal?: number;
+    currencyCode?: string;
 };
 
 export type Shipping = {

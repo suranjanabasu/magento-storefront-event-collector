@@ -1,22 +1,20 @@
+/* TS wrapper around `@adobe/alloy`*/
+
 import { createInstance } from "@adobe/alloy";
 
-import { AlloyInstance } from "./aep/types/alloy.types";
-import { isValidContext } from "./contexts/aep";
+import { AlloyIndentity, AlloyInstance } from "./aep/types/alloy.types";
 import createContext from "./contexts/aep";
 import { BeaconSchema } from "./types/aep";
 import { AEPContext } from "./types/contexts";
 
-/*
-    We create a wrapper around `@adobe/alloy` for better type protection.
-*/
-
 const alloyInstance: AlloyInstance = createInstance({ name: "alloy" });
 
-/* configure alloy and assign it to the window object */
+/**
+ *  configures alloy and assigns it to the window object
+ */
 const configure = async (): Promise<AlloyInstance> => {
     const aepCtx: AEPContext = createContext();
-
-    if (isValidContext(aepCtx)) {
+    if (aepCtx.datastreamId !== "" && aepCtx.imsOrgId !== "") {
         await alloyInstance("configure", {
             edgeConfigId: aepCtx.datastreamId as string,
             orgId: aepCtx.imsOrgId as string,
@@ -32,8 +30,11 @@ const configure = async (): Promise<AlloyInstance> => {
     }
 };
 
-/** return alloy instance if it exists on the window, configures instance if it doesn't exist */
-export const getAlloy = async (): Promise<AlloyInstance> => {
+/**
+ * returns alloy instance if it exists on the window
+ * configures instance if it doesn't exist
+ */
+const getAlloy = async (): Promise<AlloyInstance> => {
     if (typeof window.alloy === "function") {
         return window.alloy;
     }
@@ -44,20 +45,35 @@ export const getAlloy = async (): Promise<AlloyInstance> => {
     return windowAlloy;
 };
 
-/** sends event payload that matches the BeaconSchema that's been defined */
+/**
+ * sends event payload that matches the BeaconSchema that's been defined
+ */
 const sendEvent = async (schema: BeaconSchema): Promise<void> => {
     try {
         const instance = await getAlloy();
+
+        // attach identity field
+        const result: AlloyIndentity = (await instance(
+            "getIdentity",
+        )) as AlloyIndentity;
+        if (!schema._atag) {
+            schema._atag = {};
+        }
+        schema._atag.identification = {
+            core: {
+                ecid: result.identity.ECID,
+            },
+        };
+
         const xdm = { xdm: { ...schema } };
 
-        await instance("sendEvent", xdm);
+        // send async
+        instance("sendEvent", xdm);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error("sendEvent error:", error);
     }
 };
-
-// isValidContext and hasConfig can be combined later
 
 /**
  * checks to make sure aep in the eventForwarding context is set to true and
@@ -76,4 +92,4 @@ const hasConfig = (): boolean => {
 };
 
 /** preconfigured alloy instance that allows us to send an event */
-export const alloy = { sendEvent, configure, hasConfig };
+export { configure, getAlloy, hasConfig, sendEvent };
