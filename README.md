@@ -37,11 +37,14 @@ import "@adobe/magento-storefront-event-collector";
 
 The collector then begins listening for the following events.
 
--   `addToCart`
--   `instantPurchase`
 -   `pageView`
--   `placeOrder`
+-   `addToCart`
 -   `productPageView`
+-   `shoppingCartView`
+-   `instantPurchase`
+-   `initiateCheckout`
+-   `placeOrder`
+-   `abandonCart`
 -   `recsItemAddToCartClick`
 -   `recsItemClick`
 -   `recsRequestSent`
@@ -54,7 +57,10 @@ The collector then begins listening for the following events.
 -   `searchResponseReceived`
 -   `searchResultsView`
 -   `searchSuggestionClick`
--   `shoppingCartView`
+-   `createAccount`
+-   `editAccount`
+-   `signIn`
+-   `signOut`
 
 The handlers forward events to two edges:
 
@@ -92,6 +98,4 @@ If you have any questions or encounter any issues, please reach out at these loc
 [sdk]: https://npmjs.com/package/@adobe/magento-storefront-events-sdk
 [unpkg]: https://unpkg.com/@adobe/magento-storefront-event-collector/dist/index.js
 [npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
-[magento]: https://magento.com
 [issues]: https://github.com/adobe/magento-storefront-event-collector/issues
-[zendesk]: https://account.magento.com/zendesk/login

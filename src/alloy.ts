@@ -59,11 +59,7 @@ const sendEvent = async (schema: BeaconSchema): Promise<void> => {
         if (!schema._atag) {
             schema._atag = {};
         }
-        schema._atag.identification = {
-            core: {
-                ecid: result.identity.ECID,
-            },
-        };
+        schema._atag.ECID = result.identity.ECID;
 
         const xdm = { xdm: { ...schema } };
 
