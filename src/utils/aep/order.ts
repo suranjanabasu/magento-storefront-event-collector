@@ -6,17 +6,17 @@ const createOrder = (
     orderContext: sdkSchemas.Order,
     storefrontInstanceContext: sdkSchemas.StorefrontInstance,
 ): Order => {
-    const payment: Payment = {
+    const payment = (payment: sdkSchemas.Payment): Payment => ({
         transactionID: orderContext.orderId.toString(),
         paymentAmount: orderContext.grandTotal,
         // todo ahammond these should be an enum, change in sdk, retest
-        paymentType: orderContext.paymentMethodName,
+        paymentType: payment.paymentMethodName,
         currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
-    };
+    });
 
     return {
         purchaseID: orderContext.orderId.toString(),
-        payments: [payment],
+        payments: orderContext.payments?.map(payment) ?? [],
         shipping: {
             shippingMethod: orderContext.shipping?.shippingMethod,
             shippingAmount: orderContext.shipping?.shippingAmount,
