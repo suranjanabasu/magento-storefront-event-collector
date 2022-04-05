@@ -25,7 +25,9 @@ const aepHandler = async (event: Event): Promise<void> => {
             {
                 SKU: productContext.sku,
                 name: productContext.name,
-                priceTotal: productContext.pricing?.regularPrice,
+                priceTotal:
+                    productContext.pricing?.specialPrice ??
+                    productContext.pricing?.regularPrice,
                 currencyCode: productContext.pricing?.currencyCode ?? undefined,
                 discountAmount: getDiscountAmount(productContext),
             },

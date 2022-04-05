@@ -2,6 +2,7 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 
 import { sendEvent } from "../../alloy";
 import { BeaconSchema, ProductListItem } from "../../types/aep";
+import { getDiscountAmount } from "../../utils/discount";
 
 const XDM_EVENT_TYPE = "commerce.productViews";
 
@@ -11,16 +12,12 @@ const aepHandler = async (event: Event): Promise<void> => {
     const productListItem: ProductListItem = {
         SKU: productContext.sku,
         name: productContext.name,
-        priceTotal: productContext.pricing?.regularPrice,
+        priceTotal:
+            productContext.pricing?.specialPrice ??
+            productContext.pricing?.regularPrice,
         currencyCode: productContext.pricing?.currencyCode ?? undefined,
+        discountAmount: getDiscountAmount(productContext),
     };
-
-    if (productContext.pricing) {
-        productListItem.discountAmount =
-            productContext.pricing.regularPrice -
-            (productContext.pricing.specialPrice ??
-                productContext.pricing.regularPrice);
-    }
 
     const payload: BeaconSchema = {
         _id: debugContext?.eventId,
