@@ -10,9 +10,10 @@ export type BeaconSchema = {
     productListItems?: ProductListItem[];
     web?: Web;
     _atag?: {
-        ECID?: string;
         account?: Account;
     };
+    personID?: string;
+    personalEmail?: Email;
     userAccount?: AccountActions;
 };
 

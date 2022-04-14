@@ -15,6 +15,9 @@ const aepHandler = async (event: Event): Promise<void> => {
         _atag: {
             account: createAccount(accountContext || ({} as Account)),
         },
+        personalEmail: {
+            address: accountContext?.emailAddress,
+        },
         userAccount: {
             updateProfile: 1,
         },

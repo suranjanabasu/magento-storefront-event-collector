@@ -24,7 +24,7 @@ import { mockAepCtx, mockEventForwardingCtx } from "./context";
 const mockAccount: Account = {
     firstName: "firstName",
     lastName: "lastName",
-    emailAddress: "test@commerce.com",
+    emailAddress: "beacon3@commerce.com",
 };
 
 const mockCategory: Category = {

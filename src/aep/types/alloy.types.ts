@@ -33,6 +33,6 @@ export type AlloyInstance = (
 
 export type AlloyIndentity = {
     identity: {
-        ECID: string;
+        ECID?: string;
     };
 };
