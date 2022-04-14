@@ -18,7 +18,7 @@ const handler = async (event: Event): Promise<void> => {
                 value: 1,
             },
             cart: {
-                ID: shoppingCartContext.id,
+                cartID: shoppingCartContext.id,
             },
         },
         productListItems: createProductListItems(

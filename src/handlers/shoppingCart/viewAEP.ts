@@ -16,7 +16,7 @@ const aepHandler = async (event: Event): Promise<void> => {
         eventType: XDM_EVENT_TYPE,
         commerce: {
             cart: {
-                ID: shoppingCartContext.id,
+                cartID: shoppingCartContext.id,
             },
             productListViews: {
                 id: "1",

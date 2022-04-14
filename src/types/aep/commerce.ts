@@ -19,7 +19,7 @@ export type ProductView = {
 };
 
 export type Cart = {
-    ID?: string | null;
+    cartID?: string | null;
 };
 
 export type Order = {
