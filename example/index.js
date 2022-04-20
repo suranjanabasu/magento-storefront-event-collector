@@ -35,7 +35,8 @@ mse.context.setStorefrontInstance(mockStorefront);
 /* beacon/experience platform specific code below*/
 mse.context.setAEP({
     imsOrgId: "53A16ACB5CC1D3760A495C99@AdobeOrg",
-    datastreamId: "1144fb8d-b234-4c44-85ac-af91ed64c2dd:dev",
+    // datastreamId: "1144fb8d-b234-4c44-85ac-af91ed64c2dd:dev", // aniham
+    datastreamId: "4d8ccd3b-9463-43bf-862a-c908fad3b20b", // beacon
 });
 mse.context.setEventForwarding({
     commerce: true,

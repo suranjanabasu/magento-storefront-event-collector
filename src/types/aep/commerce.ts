@@ -11,6 +11,7 @@ export type Commerce = {
     search?: Search;
     searchRequest?: SearchRequest;
     searchResponse?: SearchResponse;
+    shipping?: Shipping;
 };
 
 export type ProductView = {
@@ -26,7 +27,6 @@ export type Order = {
     purchaseID: string;
     purchaseOrderNumber?: string;
     payments: Payment[];
-    shipping?: Shipping;
     priceTotal?: number;
     currencyCode?: string;
 };

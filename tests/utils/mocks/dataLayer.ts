@@ -57,9 +57,25 @@ const mockOrder: Order = {
     otherTax: 0.0,
     paymentMethodCode: "credit card",
     paymentMethodName: "visa",
+    payments: [
+        {
+            paymentMethodCode: "credit card",
+            paymentMethodName: "visa",
+            total: 30,
+        },
+        {
+            paymentMethodCode: "cash",
+            paymentMethodName: "cash",
+            total: 39.98,
+        },
+    ],
     salesTax: 0.0,
     subtotalExcludingTax: 69.98,
     subtotalIncludingTax: 69.98,
+    shipping: {
+        shippingAmount: 5.99,
+        shippingMethod: "ground",
+    },
 };
 
 const mockPage: Page = {

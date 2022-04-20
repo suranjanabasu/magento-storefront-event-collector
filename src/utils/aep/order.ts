@@ -6,21 +6,35 @@ const createOrder = (
     orderContext: sdkSchemas.Order,
     storefrontInstanceContext: sdkSchemas.StorefrontInstance,
 ): Order => {
-    const payment = (payment: sdkSchemas.Payment): Payment => ({
-        transactionID: orderContext.orderId.toString(),
-        paymentAmount: orderContext.grandTotal,
-        // todo ahammond these should be an enum, change in sdk, retest
-        paymentType: payment.paymentMethodName,
-        currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
-    });
+    let payments: Payment[] = [];
+
+    if (orderContext.payments && orderContext.payments.length) {
+        // try payments array first
+        payments = orderContext.payments.map(payment => {
+            return {
+                currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
+                paymentAmount: payment.total,
+                // todo ahammond these should be an enum, change in sdk, retest (DINT-324)
+                paymentType: payment.paymentMethodCode,
+                transactionID: orderContext.orderId.toString(),
+            };
+        });
+    } else {
+        // no payments array, try deprecated top level payment fields
+        payments = [
+            {
+                currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
+                paymentAmount: orderContext.grandTotal,
+                // todo ahammond these should be an enum, change in sdk, retest (DINT-324)
+                paymentType: orderContext.paymentMethodCode,
+                transactionID: orderContext.orderId.toString(),
+            },
+        ];
+    }
 
     return {
         purchaseID: orderContext.orderId.toString(),
-        payments: orderContext.payments?.map(payment) ?? [],
-        shipping: {
-            shippingMethod: orderContext.shipping?.shippingMethod,
-            shippingAmount: orderContext.shipping?.shippingAmount,
-        },
+        payments,
     };
 };
 
