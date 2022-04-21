@@ -12,7 +12,6 @@ const createOrder = (
         // try payments array first
         payments = orderContext.payments.map(payment => {
             return {
-                currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
                 paymentAmount: payment.total,
                 // todo ahammond these should be an enum, change in sdk, retest (DINT-324)
                 paymentType: payment.paymentMethodCode,
@@ -23,7 +22,6 @@ const createOrder = (
         // no payments array, try deprecated top level payment fields
         payments = [
             {
-                currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
                 paymentAmount: orderContext.grandTotal,
                 // todo ahammond these should be an enum, change in sdk, retest (DINT-324)
                 paymentType: orderContext.paymentMethodCode,
@@ -34,6 +32,7 @@ const createOrder = (
 
     return {
         purchaseID: orderContext.orderId.toString(),
+        currencyCode: storefrontInstanceContext.storeViewCurrencyCode,
         payments,
     };
 };

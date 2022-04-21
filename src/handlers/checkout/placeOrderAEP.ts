@@ -21,6 +21,9 @@ const aepHandler = async (event: Event): Promise<void> => {
         _id: debugContext?.eventId,
         eventType: XDM_EVENT_TYPE,
         commerce: {
+            purchases: {
+                value: 1,
+            },
             order: createOrder(orderContext, storefrontInstanceContext),
             promotionID: orderContext.appliedCouponCode,
             shipping: {

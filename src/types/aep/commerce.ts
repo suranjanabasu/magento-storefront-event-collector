@@ -5,6 +5,7 @@ export type Commerce = {
     cart?: Cart;
     cartAbandons?: CartAbandon;
     checkouts?: Checkout;
+    purchases?: Purchases;
     order?: Order;
     promotionID?: string;
     productViews?: ProductView;
@@ -21,6 +22,10 @@ export type ProductView = {
 
 export type Cart = {
     cartID?: string | null;
+};
+
+export type Purchases = {
+    value: number;
 };
 
 export type Order = {
