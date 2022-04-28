@@ -9,43 +9,25 @@ export type BeaconSchema = {
     commerce?: Commerce;
     productListItems?: ProductListItem[];
     web?: Web;
-    _atag?: {
-        account?: Account;
-    };
+    person?: Account;
     personID?: string;
     personalEmail?: Email;
     userAccount?: AccountActions;
 };
 
 export type Account = {
-    firstName?: string;
-    lastName?: string;
-    personalEmail?: Email;
     accountID?: string;
     accountType?: string;
-    homeAddress?: Address[];
-    homePhone?: Phone;
+    personlEmailID?: string;
 };
 
 export type Email = {
     address?: string;
 };
 
-export type Phone = {
-    phoneNumber?: string;
-    countryCode?: string;
-};
-
-export type Address = {
-    street1?: string;
-    street2?: string;
-    city?: string;
-    country?: string;
-    postalCode?: string;
-};
-
 export type AccountActions = {
     login?: number;
     logout?: number;
+    createProfile?: number;
     updateProfile?: number;
 };
