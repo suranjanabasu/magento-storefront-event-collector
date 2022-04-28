@@ -13,7 +13,7 @@ const aepHandler = async (event: Event): Promise<void> => {
         person: {
             accountID: accountContext?.accountId,
             accountType: accountContext?.accountType,
-            personlEmailID: accountContext?.emailAddress,
+            personalEmailID: accountContext?.emailAddress,
         },
         personalEmail: {
             address: accountContext?.emailAddress,
