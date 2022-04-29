@@ -14,7 +14,6 @@ const handler = async (event: Event): Promise<void> => {
         eventType: XDM_EVENT_TYPE,
         commerce: {
             cartAbandons: {
-                id: "1",
                 value: 1,
             },
             cart: {

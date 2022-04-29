@@ -39,7 +39,6 @@ const handler = async (event: Event): Promise<void> => {
         commerce: {
             searchResponse: {
                 value: 1,
-                id: "1",
             },
             search: {
                 suggestions: suggestions,

@@ -14,7 +14,6 @@ const aepHandler = async (event: Event): Promise<void> => {
         _id: debugContext?.eventId,
         commerce: {
             productListAdds: {
-                id: productContext.productId.toString(),
                 value: 1,
             },
             cart: {

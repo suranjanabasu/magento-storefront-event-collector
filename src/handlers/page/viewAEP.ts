@@ -12,7 +12,6 @@ const aepHandler = async (event: Event): Promise<void> => {
         web: {
             webPageDetails: {
                 pageViews: {
-                    id: "1",
                     value: 1,
                 },
                 siteSection: pageContext.pageType,

@@ -19,7 +19,6 @@ const aepHandler = async (event: Event): Promise<void> => {
                 cartID: shoppingCartContext.id,
             },
             productListViews: {
-                id: "1",
                 value: 1,
             },
         },

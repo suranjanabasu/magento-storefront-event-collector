@@ -16,12 +16,11 @@ export type Commerce = {
 };
 
 export type ProductView = {
-    id?: string;
     value: number;
 };
 
 export type Cart = {
-    cartID?: string | null;
+    cartID: string | null;
 };
 
 export type Purchases = {
@@ -49,7 +48,6 @@ export type Payment = {
 };
 
 export type Checkout = {
-    id?: string;
     value: number;
 };
 
@@ -64,12 +62,10 @@ export type ProductListAdds = {
 
 /** View or views of a product-list has occurred. */
 export type ProductListViews = {
-    id?: string;
     value: number;
 };
 
 export type CartAbandon = {
-    id?: string;
     value: number;
 };
 
@@ -93,11 +89,9 @@ export type Sort = {
 };
 
 export type SearchRequest = {
-    id?: string;
     value: number;
 };
 
 export type SearchResponse = {
-    id?: string;
     value: number;
 };

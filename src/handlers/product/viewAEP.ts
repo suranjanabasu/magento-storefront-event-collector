@@ -24,7 +24,6 @@ const aepHandler = async (event: Event): Promise<void> => {
         eventType: XDM_EVENT_TYPE,
         commerce: {
             productViews: {
-                id: productContext.productId.toString(),
                 value: 1,
             },
         },
