@@ -34,6 +34,6 @@ export type ProductListItem = {
 };
 
 export type SelectedOption = {
-    type: string;
+    attribute: string;
     value: string;
 };

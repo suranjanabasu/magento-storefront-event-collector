@@ -21,7 +21,7 @@ const createProductListItems = (
             const selectedOptions: SelectedOption[] = [];
             item.configurableOptions?.forEach(option => {
                 selectedOptions.push({
-                    type: option.optionLabel,
+                    attribute: option.optionLabel,
                     value: option.valueLabel,
                 });
             });
@@ -30,7 +30,7 @@ const createProductListItems = (
                 SKU: item.product.sku,
                 name: item.product.name,
                 quantity: item.quantity,
-                priceTotal: item.prices.price.value,
+                priceTotal: item.prices.price.value * item.quantity,
                 currencyCode:
                     item.prices.price.currency ??
                     storefrontContext.storeViewCurrencyCode,

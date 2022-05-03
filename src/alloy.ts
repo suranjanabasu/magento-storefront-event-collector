@@ -56,7 +56,7 @@ const sendEvent = async (schema: BeaconSchema): Promise<void> => {
         const result: AlloyIndentity = (await instance(
             "getIdentity",
         )) as AlloyIndentity;
-        schema.personID = result.identity.ECID;
+        schema.personID = result.identity.ECID || "unknown";
 
         const xdm = { xdm: { ...schema } };
 
