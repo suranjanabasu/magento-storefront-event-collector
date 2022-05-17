@@ -9,7 +9,7 @@
 
 ## Overview
 
-This package listens for and handles events sent from the [Magento Storefront Events SDK][sdk]. It runs as a side effect and is meant to be a convenience for users who want to send events to Magento for processing.
+This package listens for and handles events published by the [Magento Storefront Events SDK][sdk] to the adobeDataLayer[acdl]. It runs as a side effect and is meant to be a convenience for users who want to send event data to Adobe Commerce.
 
 ## Installation
 
@@ -27,7 +27,7 @@ To install the script as a dependency, run this command.
 npm install @adobe/magento-storefront-event-collector
 ```
 
-## Quick Start
+## Quick start
 
 After loading the collector script, or importing the package as shown below, there is nothing else that needs to be done.
 
@@ -35,7 +35,9 @@ After loading the collector script, or importing the package as shown below, the
 import "@adobe/magento-storefront-event-collector";
 ```
 
-The collector then begins listening for the following events.
+## Usage
+
+The collector listens for the following events.
 
 -   `pageView`
 -   `addToCart`
@@ -61,6 +63,7 @@ The collector then begins listening for the following events.
 -   `editAccount`
 -   `signIn`
 -   `signOut`
+-   `custom`
 
 The handlers forward events to two edges:
 
@@ -70,13 +73,139 @@ The handlers forward events to two edges:
 
     `StorefrontInstance`
 
--   [Adobe Experience Platform](https://business.adobe.com/products/experience-platform/adobe-experience-platform.html) (requires a subscription and additional merchant [setup](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/datastreams.html?lang=en); data can be used by merchants inside the Adobe Experience Platform for detailed analytics, targeted merchandising, real time customer data profiles, and more)
+    Events not forwarded to Adobe Commerce:
+
+    `createAccount`
+
+    `editAccount`
+
+    `signIn`
+
+    `signOut`
+
+    `custom`
+
+-   [Adobe Experience Platform (AEP)](https://business.adobe.com/products/experience-platform/adobe-experience-platform.html) (requires a subscription and additional merchant [setup](https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/datastreams.html?lang=en); data can be used by merchants inside the Adobe Experience Platform for detailed analytics, targeted merchandising, real time customer data profiles, and more)
 
     Required contexts:
 
     `AEP`
 
     `EventForwarding.aep: true`
+
+    Events not forwarded to AEP Edge:
+
+    `recsItemAddToCartClick`
+
+    `recsItemClick`
+
+    `recsRequestSent`
+
+    `searchResponseReceived`
+
+    `searchCategoryClick`
+
+    `searchProductClick`
+
+    `searchResultsView`
+
+    `searchSuggestionClick`
+
+### Turning off collection per edge
+
+Events are sent to Adobe Commerce Data Services by default. To turn collection off collection, set `EventForwarding.commerce: false`.
+
+Events are not set to AEP Edge unless explicitly configured (`EventForwarding.aep: true`);
+
+### Handling custom events
+
+Custom events are supported for the Adobe Experience Platform only. Custom data will not be forwarded to Adobe Commerce dashboards and metrics trackers.
+
+For any `custom` event, the collector adds a `personId` (`ecid`) to `customContext` and wraps an `xdm` object around it before forwarding to the Edge.
+
+Example:
+
+Custom event published through MSE SDK:
+
+```javascript
+mse.publish.custom({
+    customContext: { customStrAttr: "cheetah", customNumAttr: 128 },
+});
+```
+
+In AEP Edge:
+
+```javascript
+{
+    xdm: {
+        personId: 'ecid1234',
+        customStrAttr: 'cheetah',
+        customNumAttr: 128
+    }
+}
+```
+
+**note** Using custom events may affect OOTB Adobe Analytics reports.
+
+### Handling event overrides (custom attributes)
+
+Attribute overrides for standard events are supported for the Experience Platform only. Custom data will not be forwarded to Commerce dashboards and metrics trackers.
+
+For any event with a set `customContext`, the collector overrides `personId` and Adobe Analytics counters, and forwards all other attributes set in `customContext`.
+
+Examples:
+
+Product view with overrides published though MSE SDK:
+
+```javascript
+mse.publish.productPageView({
+    customContext: { customCode: "okapi" },
+});
+```
+
+In AEP Edge:
+
+```javascript
+{
+    xdm: {
+        eventType: 'commerce.productViews',
+        personId: 'ecid1234',
+        customCode: 'okapi',
+        commerce: {
+            productViews: {
+                value : 1
+            }
+        }
+    }
+}
+```
+
+Product view with Adobe Commerce overrides published though MSE SDK:
+
+```javascript
+mse.publish.productPageView({
+    customContext: { commerce: { customCode: "mongoose" } },
+});
+```
+
+In AEP Edge:
+
+```javascript
+{
+    xdm: {
+        eventType: 'commerce.productViews',
+        personId: 'ecid1234',
+        commerce: {
+            customCode: 'mongoose',
+            productViews: {
+                value : 1
+            }
+        }
+    }
+}
+```
+
+**Note** Overriding events with custom attributes may affect OOTB Adobe Analytics reports.
 
 ## Support
 
@@ -96,6 +225,7 @@ If you have any questions or encounter any issues, please reach out at these loc
 [contributing]: https://github.com/adobe/magento-storefront-event-collector/blob/main/.github/CONTRIBUTING.md
 [contributing-badge]: https://img.shields.io/badge/PRs-welcome-success?style=flat-square
 [sdk]: https://npmjs.com/package/@adobe/magento-storefront-events-sdk
+[acdl]: https://github.com/adobe/adobe-client-data-layer
 [unpkg]: https://unpkg.com/@adobe/magento-storefront-event-collector/dist/index.js
 [npm]: https://npmjs.com/package/@adobe/magento-storefront-event-collector
 [issues]: https://github.com/adobe/magento-storefront-event-collector/issues

@@ -5,16 +5,22 @@ import { BeaconSchema } from "../../types/aep";
 
 const XDM_EVENT_TYPE = "userAccount.logout";
 const aepHandler = async (event: Event): Promise<void> => {
-    const { debugContext } = event.eventInfo;
+    const { debugContext, customContext } = event.eventInfo;
 
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        userAccount: {
-            logout: 1,
-        },
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {};
+    }
+
+    payload.userAccount = {
+        logout: 1,
     };
 
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
     sendEvent(payload);
 };
 

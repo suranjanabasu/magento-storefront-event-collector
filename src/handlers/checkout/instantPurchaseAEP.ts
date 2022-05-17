@@ -15,28 +15,38 @@ const aepHandler = async (event: Event): Promise<void> => {
         orderContext,
         shoppingCartContext,
         debugContext,
+        customContext,
     } = event.eventInfo;
 
-    // get commerce fields
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        commerce: {
-            purchases: {
-                value: 1,
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {
+            commerce: {
+                order: createOrder(orderContext, storefrontInstanceContext),
+                promotionID: orderContext.appliedCouponCode,
+                shipping: {
+                    shippingMethod: orderContext.shipping?.shippingMethod,
+                    shippingAmount: orderContext.shipping?.shippingAmount || 0,
+                },
             },
-            order: createOrder(orderContext, storefrontInstanceContext),
-            promotionID: orderContext.appliedCouponCode,
-            shipping: {
-                shippingMethod: orderContext.shipping?.shippingMethod,
-                shippingAmount: orderContext.shipping?.shippingAmount || 0,
-            },
-        },
-        productListItems: createProductListItems(
-            shoppingCartContext,
-            storefrontInstanceContext,
-        ),
+            productListItems: createProductListItems(
+                shoppingCartContext,
+                storefrontInstanceContext,
+            ),
+        };
+    }
+
+    payload.commerce = payload.commerce || {};
+
+    payload.commerce.purchases = {
+        value: 1,
     };
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };

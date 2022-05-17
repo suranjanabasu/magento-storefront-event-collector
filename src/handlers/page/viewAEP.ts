@@ -3,24 +3,31 @@ import { Event } from "@adobe/magento-storefront-events-sdk/dist/types/types/eve
 import { sendEvent } from "../../alloy";
 import { BeaconSchema } from "../../types/aep";
 
-const aepHandler = async (event: Event): Promise<void> => {
-    const { pageContext, debugContext } = event.eventInfo;
+const XDM_EVENT_TYPE = "web.webpagedetails.pageViews";
 
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: "web.webpagedetails.pageViews",
-        web: {
-            webPageDetails: {
-                pageViews: {
-                    value: 1,
+const aepHandler = async (event: Event): Promise<void> => {
+    const { pageContext, debugContext, customContext } = event.eventInfo;
+
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {
+            web: {
+                webPageDetails: {
+                    pageViews: {
+                        value: 1,
+                    },
+                    siteSection: pageContext.pageType,
+                    name: pageContext.pageName,
                 },
-                siteSection: pageContext.pageType,
-                /** temporary until sdk update gets merged */
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                name: (pageContext as any).pageName || undefined,
             },
-        },
-    };
+        };
+    }
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };

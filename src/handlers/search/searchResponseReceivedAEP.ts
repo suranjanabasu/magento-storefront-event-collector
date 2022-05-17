@@ -9,7 +9,7 @@ import { SearchResultProduct } from "../../types/contexts";
 const XDM_EVENT_TYPE = "commerce.searchResponse";
 
 const handler = async (event: Event): Promise<void> => {
-    const { searchUnitId, searchResultsContext, debugContext } =
+    const { searchUnitId, searchResultsContext, debugContext, customContext } =
         event.eventInfo;
 
     const searchResultsCtx = createSearchResultsCtx(
@@ -33,20 +33,31 @@ const handler = async (event: Event): Promise<void> => {
         },
     );
 
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        commerce: {
-            searchResponse: {
-                value: 1,
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {
+            commerce: {
+                search: {
+                    suggestions: suggestions,
+                    numberOfResults: searchResultsCtx?.data
+                        ?.productCount as number,
+                },
             },
-            search: {
-                suggestions: suggestions,
-                numberOfResults: searchResultsCtx?.data?.productCount as number,
-            },
-        },
-        productListItems,
+            productListItems,
+        };
+    }
+
+    payload.commerce = payload.commerce || {};
+
+    payload.commerce.searchResponse = {
+        value: 1,
     };
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };

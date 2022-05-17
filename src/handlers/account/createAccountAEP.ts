@@ -5,23 +5,31 @@ import { BeaconSchema } from "../../types/aep";
 
 const XDM_EVENT_TYPE = "account.createProfile";
 const aepHandler = async (event: Event): Promise<void> => {
-    const { debugContext, accountContext } = event.eventInfo;
+    const { debugContext, accountContext, customContext } = event.eventInfo;
 
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        person: {
-            accountID: accountContext?.accountId,
-            accountType: accountContext?.accountType,
-            personalEmailID: accountContext?.emailAddress,
-        },
-        personalEmail: {
-            address: accountContext?.emailAddress,
-        },
-        userAccount: {
-            createProfile: 1,
-        },
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {
+            person: {
+                accountID: accountContext?.accountId,
+                accountType: accountContext?.accountType,
+                personalEmailID: accountContext?.emailAddress,
+            },
+            personalEmail: {
+                address: accountContext?.emailAddress,
+            },
+        };
+    }
+
+    payload.userAccount = {
+        createProfile: 1,
     };
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };

@@ -17,11 +17,41 @@
 
     <body>
         <div class="events">
+            <button onclick="magentoStorefrontEvents.publish.custom({customFieldStr: 'strValue', customFieldNum: 1.45})">
+                customEvent
+            </button>
+
             <button onclick="magentoStorefrontEvents.publish.pageView()">
                 pageView
             </button>
 
-            <button onclick="magentoStorefrontEvents.publish.productPageView()">
+            <button onclick="publishCustomPageView()">
+                customPageView
+            </button>
+
+            <script>
+                function publishCustomPageView() {
+                    magentoStorefrontEvents.publish.custom({
+                        eventType: "web.webpagedetails.pageViews",
+                        web: {
+                            webPageDetails: {
+                                pageViews: {
+                                    value: 1,
+                                },
+                            },
+                        },
+                    });
+                }
+            </script>
+
+            <button onclick="magentoStorefrontEvents.publish.productPageView(
+                {
+                commerce: {
+                    productViews: {
+                        value: 1,
+                    },
+                },
+                })">
                 productPageView
             </button>
 

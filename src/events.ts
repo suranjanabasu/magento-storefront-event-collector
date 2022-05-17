@@ -10,6 +10,7 @@ import {
     addToCartHandler,
     addToCartHandlerAEP,
     createAccountHandlerAEP,
+    customHandlerAEP,
     editAccountHandlerAEP,
     initiateCheckoutHandler,
     initiateCheckoutHandlerAEP,
@@ -67,6 +68,9 @@ const handleIf = (
         }
     };
 };
+
+// custom event - AEP only
+const handleAepCustom = handleIf(isAep, customHandlerAEP);
 
 // page
 const handleSnowplowPageView = handleIf(isCommerce, pageViewHandler);
@@ -133,6 +137,7 @@ const subscribeToEvents = (): void => {
     mse.subscribe.abandonCart(handleAepAbandonCart);
     mse.subscribe.addToCart(handleSnowplowAddToCart);
     mse.subscribe.addToCart(handleAepAddToCart);
+    mse.subscribe.custom(handleAepCustom);
     mse.subscribe.createAccount(handleAepCreateAccount);
     mse.subscribe.editAccount(handleAepEditAccount);
     mse.subscribe.initiateCheckout(handleSnowplowInitiateCheckout);
@@ -173,6 +178,7 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.addToCart(handleSnowplowAddToCart);
     mse.unsubscribe.addToCart(handleAepAddToCart);
     mse.unsubscribe.createAccount(handleAepCreateAccount);
+    mse.unsubscribe.custom(handleAepCustom);
     mse.unsubscribe.editAccount(handleAepEditAccount);
     mse.unsubscribe.initiateCheckout(handleSnowplowInitiateCheckout);
     mse.unsubscribe.initiateCheckout(handleAepInitiateCheckout);

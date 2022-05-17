@@ -7,24 +7,38 @@ import { createProductListItems } from "../../utils/aep/productListItems";
 const XDM_EVENT_TYPE = "commerce.cartAbandons";
 
 const handler = async (event: Event): Promise<void> => {
-    const { shoppingCartContext, debugContext, storefrontInstanceContext } =
-        event.eventInfo;
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        commerce: {
-            cartAbandons: {
-                value: 1,
+    const {
+        shoppingCartContext,
+        debugContext,
+        storefrontInstanceContext,
+        customContext,
+    } = event.eventInfo;
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {
+            commerce: {
+                cart: {
+                    cartID: shoppingCartContext.id,
+                },
             },
-            cart: {
-                cartID: shoppingCartContext.id,
-            },
-        },
-        productListItems: createProductListItems(
-            shoppingCartContext,
-            storefrontInstanceContext,
-        ),
+            productListItems: createProductListItems(
+                shoppingCartContext,
+                storefrontInstanceContext,
+            ),
+        };
+    }
+
+    payload.commerce = payload.commerce || {};
+
+    payload.commerce.cartAbandons = {
+        value: 1,
     };
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };

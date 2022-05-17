@@ -11,62 +11,73 @@ import { BeaconSchema, Filter, Sort } from "../../types/aep";
 const XDM_EVENT_TYPE = "commerce.searchRequest";
 
 const handler = async (event: Event): Promise<void> => {
-    const { searchUnitId, searchInputContext, debugContext } = event.eventInfo;
+    const { searchUnitId, searchInputContext, debugContext, customContext } =
+        event.eventInfo;
 
-    const searchInputCtx = createSearchInputCtx(
-        searchUnitId as string,
-        searchInputContext,
-    );
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        const searchInputCtx = createSearchInputCtx(
+            searchUnitId as string,
+            searchInputContext,
+        );
 
-    const sortFromCtx: SearchSort[] =
-        (searchInputCtx?.data.sort as SearchSort[]) ?? [];
+        const sortFromCtx: SearchSort[] =
+            (searchInputCtx?.data.sort as SearchSort[]) ?? [];
 
-    const sort: Sort[] = sortFromCtx.map((searchSort: SearchSort) => {
-        return {
-            attribute: searchSort.attribute,
-            order: searchSort.direction,
-        } as Sort;
-    });
-
-    const filtersFromCtx: SearchFilter[] =
-        (searchInputCtx?.data.filter as SearchFilter[]) ?? [];
-
-    const filters: Filter[] = filtersFromCtx.map(
-        (searchFilter: SearchFilter) => {
-            let value: string[] = [];
-            let isRange = false;
-            if (searchFilter.eq) {
-                value.push(searchFilter.eq);
-            } else if (searchFilter.in) {
-                value = searchFilter.in;
-            } else if (searchFilter.range) {
-                // we represent range in the event as "from value[0] to value[1]"
-                isRange = true;
-                value.push(String(searchFilter.range.from));
-                value.push(String(searchFilter.range.to));
-            }
+        const sort: Sort[] = sortFromCtx.map((searchSort: SearchSort) => {
             return {
-                attribute: searchFilter.attribute,
-                value,
-                isRange,
-            } as Filter;
-        },
-    );
+                attribute: searchSort.attribute,
+                order: searchSort.direction,
+            } as Sort;
+        });
 
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        commerce: {
-            searchRequest: {
-                value: 1,
+        const filtersFromCtx: SearchFilter[] =
+            (searchInputCtx?.data.filter as SearchFilter[]) ?? [];
+
+        const filters: Filter[] = filtersFromCtx.map(
+            (searchFilter: SearchFilter) => {
+                let value: string[] = [];
+                let isRange = false;
+                if (searchFilter.eq) {
+                    value.push(searchFilter.eq);
+                } else if (searchFilter.in) {
+                    value = searchFilter.in;
+                } else if (searchFilter.range) {
+                    // we represent range in the event as "from value[0] to value[1]"
+                    isRange = true;
+                    value.push(String(searchFilter.range.from));
+                    value.push(String(searchFilter.range.to));
+                }
+                return {
+                    attribute: searchFilter.attribute,
+                    value,
+                    isRange,
+                } as Filter;
             },
-            search: {
-                query: searchInputContext.units[0].phrase,
-                sort,
-                refinements: filters,
+        );
+
+        payload = {
+            commerce: {
+                search: {
+                    query: searchInputContext.units[0].phrase,
+                    sort,
+                    refinements: filters,
+                },
             },
-        },
+        };
+    }
+
+    payload.commerce = payload.commerce || {};
+
+    payload.commerce.searchRequest = {
+        value: 1,
     };
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };

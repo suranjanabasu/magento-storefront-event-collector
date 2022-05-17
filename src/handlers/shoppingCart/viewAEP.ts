@@ -8,25 +8,38 @@ const XDM_EVENT_TYPE = "commerce.productListViews";
 
 /** shoppingCartView handler for AEP event */
 const aepHandler = async (event: Event): Promise<void> => {
-    const { shoppingCartContext, debugContext, storefrontInstanceContext } =
-        event.eventInfo;
+    const {
+        shoppingCartContext,
+        debugContext,
+        storefrontInstanceContext,
+        customContext,
+    } = event.eventInfo;
 
-    const payload: BeaconSchema = {
-        _id: debugContext?.eventId,
-        eventType: XDM_EVENT_TYPE,
-        commerce: {
-            cart: {
-                cartID: shoppingCartContext.id,
+    let payload: BeaconSchema;
+    if (customContext) {
+        // override payload on custom context
+        payload = customContext as BeaconSchema;
+    } else {
+        payload = {
+            commerce: {
+                cart: {
+                    cartID: shoppingCartContext.id,
+                },
+                productListViews: {
+                    value: 1,
+                },
             },
-            productListViews: {
-                value: 1,
-            },
-        },
-        productListItems: createProductListItems(
-            shoppingCartContext,
-            storefrontInstanceContext,
-        ),
-    };
+            productListItems: createProductListItems(
+                shoppingCartContext,
+                storefrontInstanceContext,
+            ),
+        };
+    }
+
+    payload.commerce = payload.commerce || {};
+
+    payload._id = debugContext?.eventId;
+    payload.eventType = XDM_EVENT_TYPE;
 
     sendEvent(payload);
 };
