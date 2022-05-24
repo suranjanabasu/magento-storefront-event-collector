@@ -20,6 +20,7 @@ const configure = async (): Promise<AlloyInstance> => {
             orgId: aepCtx.imsOrgId as string,
             // TODO ahammond: remove debug when feature complete
             debugEnabled: true,
+            defaultConsent: "pending",
         });
 
         window.alloy = alloyInstance;
@@ -83,6 +84,26 @@ const hasConfig = (): boolean => {
         config.imsOrgId !== ""
     );
 };
+
+const setConsent = async (): Promise<void> => {
+    const mg_dnt_cookie = document.cookie.indexOf("mg_dnt") !== -1;
+    const instance = await getAlloy();
+    const consent = mg_dnt_cookie ? "out" : "in";
+
+    instance("setConsent", {
+        consent: [
+            {
+                standard: "Adobe",
+                version: "1.0",
+                value: {
+                    general: consent,
+                },
+            },
+        ],
+    });
+};
+
+setInterval(setConsent, 1000);
 
 /** preconfigured alloy instance that allows us to send an event */
 export { configure, getAlloy, hasConfig, sendEvent };

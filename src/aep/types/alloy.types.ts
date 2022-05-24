@@ -1,6 +1,6 @@
 import { BeaconSchema } from "../../types/aep";
 
-export type CommandType = "configure" | "sendEvent" | "getIdentity";
+export type CommandType = "configure" | "sendEvent" | "getIdentity"  | "setConsent";
 
 export type ConfigOptions = {
     // required fields
@@ -26,9 +26,21 @@ export interface XDM<T> {
     xdm: T;
 }
 
+export type consentOptions = {
+    consent: [
+        {
+            standard: "Adobe";
+            version: "1.0" | "2.0";
+            value: {
+                general: "in" | "out";
+            };
+        },
+    ];
+};
+
 export type AlloyInstance = (
     command: CommandType,
-    options?: ConfigOptions | XDM<BeaconSchema>,
+    options?: ConfigOptions | XDM<BeaconSchema> | consentOptions,
 ) => Promise<void | AlloyIndentity>;
 
 export type AlloyIndentity = {
