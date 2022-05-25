@@ -14,8 +14,6 @@ import {
     editAccountHandlerAEP,
     initiateCheckoutHandler,
     initiateCheckoutHandlerAEP,
-    instantPurchaseHandler,
-    instantPurchaseHandlerAEP,
     pageViewHandler,
     pageViewHandlerAEP,
     placeOrderHandler,
@@ -103,11 +101,6 @@ const handleAepProductView = handleIf(isAep, productViewHandlerAEP);
 // order
 const handleSnowplowPlaceOrder = handleIf(isCommerce, placeOrderHandler);
 const handleAepPlaceOrder = handleIf(isAep, placeOrderHandlerAEP);
-const handleSnowplowInstantPurchase = handleIf(
-    isCommerce,
-    instantPurchaseHandler,
-);
-const handleAepInstantPurchase = handleIf(isAep, instantPurchaseHandlerAEP);
 
 // account
 const handleAepSignIn = handleIf(isAep, signInHandlerAEP);
@@ -142,8 +135,6 @@ const subscribeToEvents = (): void => {
     mse.subscribe.editAccount(handleAepEditAccount);
     mse.subscribe.initiateCheckout(handleSnowplowInitiateCheckout);
     mse.subscribe.initiateCheckout(handleAepInitiateCheckout);
-    mse.subscribe.instantPurchase(handleSnowplowInstantPurchase);
-    mse.subscribe.instantPurchase(handleAepInstantPurchase);
     mse.subscribe.pageView(handleSnowplowPageView);
     mse.subscribe.pageView(handleAepPageView);
     mse.subscribe.placeOrder(handleSnowplowPlaceOrder);
@@ -182,8 +173,6 @@ const unsubscribeFromEvents = (): void => {
     mse.unsubscribe.editAccount(handleAepEditAccount);
     mse.unsubscribe.initiateCheckout(handleSnowplowInitiateCheckout);
     mse.unsubscribe.initiateCheckout(handleAepInitiateCheckout);
-    mse.unsubscribe.instantPurchase(instantPurchaseHandler);
-    mse.unsubscribe.instantPurchase(handleAepInstantPurchase);
     mse.unsubscribe.pageView(handleSnowplowPageView);
     mse.unsubscribe.pageView(handleAepPageView);
     mse.unsubscribe.placeOrder(handleSnowplowPlaceOrder);

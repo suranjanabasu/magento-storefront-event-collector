@@ -13,7 +13,6 @@ Planned events for Beacon to be implemented in the collector.
 | shoppingCartView       | Phase 1 | :white_check_mark: | :white_check_mark: |                    |
 | productPageView        | Phase 1 | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | placeOrder             | Phase 1 | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| instantPurchase        | Phase 1 | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | abandonCart            | Phase 1 |                    |                    |                    |
 | categoryPageView       | Phase 1 |                    |                    |                    |
 | searchResponseRecieved | Phase 1 |                    |                    |                    |

@@ -43,7 +43,6 @@ The collector listens for the following events.
 -   `addToCart`
 -   `productPageView`
 -   `shoppingCartView`
--   `instantPurchase`
 -   `initiateCheckout`
 -   `placeOrder`
 -   `abandonCart`
