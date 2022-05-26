@@ -207,6 +207,47 @@ In AEP Edge:
 
 **Note** Overriding events with custom attributes may affect OOTB Adobe Analytics reports.
 
+## Shopper Consent and Data Collection Opt out
+
+The "mg_dnt" cookie is used by Product Recommendations to restrict data collection.
+
+when the [cookie restriction mode](https://docs.magento.com/user-guide/stores/compliance-cookie-restriction-mode.html) is enabled, data services will set the "mg_dnt" cookie to true.
+
+```javascript
+const listenForCookieEvents = $ => {
+    const DNT_COOKIE = "mg_dnt";
+    let userAllowedSaveCookie = !!$.mage.cookies.get(
+        "user_allowed_save_cookie",
+    );
+
+    if (userAllowedSaveCookie) {
+        $.mage.cookies.clear(DNT_COOKIE);
+    } else {
+        $.mage.cookies.set(DNT_COOKIE, true);
+    }
+};
+```
+
+By default, the user consent preference in AEP is set to "opt in", unless the cookie restriction mode is enabled and the "mg_dnt" cookie is present.
+
+The script will keep polling to check for any changes and send the updated preference to AEP.
+
+```javascript
+const doNotTrackCookie = document.cookie.indexOf("mg_dnt") !== -1;
+alloy("setConsent", {
+    consent: [
+        {
+            standard: "Adobe",
+            version: "1.0",
+            value: {
+                general: doNotTrackCookie ? "out" : "in",
+            },
+        },
+    ],
+});
+setInterval(setConsent, 1000);
+```
+
 ## Support
 
 If you have any questions or encounter any issues, please reach out at these locations.
