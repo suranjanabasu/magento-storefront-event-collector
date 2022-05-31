@@ -18,8 +18,7 @@ const configure = async (): Promise<AlloyInstance> => {
         await alloyInstance("configure", {
             edgeConfigId: aepCtx.datastreamId as string,
             orgId: aepCtx.imsOrgId as string,
-            // TODO ahammond: remove debug when feature complete
-            debugEnabled: true,
+            defaultConsent: "pending",
         });
 
         window.alloy = alloyInstance;
@@ -83,6 +82,26 @@ const hasConfig = (): boolean => {
         config.imsOrgId !== ""
     );
 };
+
+const setConsent = async (): Promise<void> => {
+    const doNotTrackCookie = document.cookie.indexOf("mg_dnt") !== -1;
+    const instance = await getAlloy();
+
+    instance("setConsent", {
+        consent: [
+            {
+                standard: "Adobe",
+                version: "1.0",
+                value: {
+                    general: doNotTrackCookie ? "out" : "in",
+                },
+            },
+        ],
+    });
+};
+
+//start polling every second to look for changes
+setInterval(setConsent, 1000);
 
 /** preconfigured alloy instance that allows us to send an event */
 export { configure, getAlloy, hasConfig, sendEvent };
